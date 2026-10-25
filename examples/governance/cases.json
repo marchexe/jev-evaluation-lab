@@ -1,0 +1,92 @@
+[
+  {
+    "id": "hr-recruitment-reviewed",
+    "domain": "hr",
+    "description": "An HR assistant reads named applicants' resumes and job requirements to rank candidates for a recruiter. The recruiter checks every ranking against the resumes and decides whom to interview; the system cannot reject applicants itself.",
+    "reviewFocus": "Identifiable applicant data and a concrete human approval mechanism."
+  },
+  {
+    "id": "hr-synthetic-training",
+    "domain": "hr",
+    "description": "A recruiter training tool ranks fictional resumes against fictional job openings. Every input is generated synthetically; no information about real applicants or other identifiable people is processed. A trainer reviews the rankings before trainees see them.",
+    "reviewFocus": "Recruitment task with an explicit exclusion of identifiable data."
+  },
+  {
+    "id": "hr-oversight-absent",
+    "domain": "hr",
+    "description": "A workforce tool uses employee IDs and individual productivity histories to assign tomorrow's shifts to warehouse staff. It publishes assignments automatically. No human reviews, monitors, or can override its assignments.",
+    "reviewFocus": "Explicit absence of oversight differs from silence about oversight."
+  },
+  {
+    "id": "finance-credit-reviewed",
+    "domain": "finance",
+    "description": "A bank lending assistant reads an applicant's named credit report and account history, then proposes a loan limit. A credit officer reviews the proposal and supporting data and must approve the limit before an offer is issued.",
+    "reviewFocus": "Credit assessment purpose, individual financial records, and review."
+  },
+  {
+    "id": "finance-reporting-data-excluded",
+    "domain": "finance",
+    "description": "An accounting assistant reads synthetic company ledgers to draft example monthly financial reports for accountants. All ledgers are fictional and contain no data about identifiable people. The description does not explain how the reports are reviewed.",
+    "reviewFocus": "Explicit data exclusion and missing oversight information can coexist."
+  },
+  {
+    "id": "finance-data-unspecified",
+    "domain": "finance",
+    "description": "A finance assistant detects unusual transactions and produces a daily alert report for an accounting team. Its data sources and review process are not described.",
+    "reviewFocus": "A finance domain alone does not establish identifiable data or oversight."
+  },
+  {
+    "id": "education-grading-reviewed",
+    "domain": "education",
+    "description": "A school tool reads essays linked to student names and proposes grades and feedback for those students. The teacher reads every essay, edits feedback, and approves the final grade before it is released.",
+    "reviewFocus": "Learner assessment, student data, and a specific oversight step."
+  },
+  {
+    "id": "education-tutor-unclear-data",
+    "domain": "education",
+    "description": "A tutoring assistant uses anonymized learner profiles and exercise answers to suggest the next practice problem to students. A teacher can inspect and override each suggestion. The description does not explain whether profiles can be linked back to learners.",
+    "reviewFocus": "Anonymization claim leaves identifiability unresolved."
+  },
+  {
+    "id": "education-admissions-oversight-missing",
+    "domain": "education",
+    "description": "An admissions assistant reads named student applications and predicts suitability for a college program. Its scores are used to prioritize applications. Human review or control is not discussed.",
+    "reviewFocus": "Admissions assessment with identifiable data and missing oversight documentation."
+  },
+  {
+    "id": "support-draft-reviewed",
+    "domain": "customer_support",
+    "description": "A customer support assistant reads customer messages containing names and order IDs and drafts replies for support agents. Each agent checks and approves a reply before sending it to the customer.",
+    "reviewFocus": "Support purpose with documented personal data and human approval."
+  },
+  {
+    "id": "support-public-faq-data-excluded",
+    "domain": "customer_support",
+    "description": "A support tool generates product FAQ answers from public manuals and a fixed menu of generic topics. Users cannot enter free text. No account data, user identifiers, or information linked to identifiable people enters any processing. A documentation editor approves every answer before publication.",
+    "reviewFocus": "Generic support workflow that explicitly excludes identifiable data."
+  },
+  {
+    "id": "support-vague-oversight",
+    "domain": "customer_support",
+    "description": "A support assistant reads customer account histories to answer billing questions. Humans stay in control. No review, monitoring, approval, or override mechanism is explained.",
+    "reviewFocus": "A vague oversight claim is different from both silence and a documented mechanism."
+  },
+  {
+    "id": "ambiguous-vague",
+    "domain": "ambiguous",
+    "description": "Our intelligent platform makes organizations better with responsible AI.",
+    "reviewFocus": "Unspecified use case, data, and oversight; incomplete description."
+  },
+  {
+    "id": "ambiguous-contradictory",
+    "domain": "ambiguous",
+    "description": "A support assistant processes no information about identifiable people, but reads named customers' account histories to generate replies. A support agent must review every reply before sending. No human ever reviews any reply or can intervene.",
+    "reviewFocus": "Contradictory data and oversight claims should remain visible."
+  },
+  {
+    "id": "ambiguous-outside-taxonomy",
+    "domain": "ambiguous",
+    "description": "An industrial controller reads machine temperature sensors and adjusts a cooling valve to protect a factory motor. It processes no information linked to identifiable people. An operator monitors the readings and can stop or override the controller.",
+    "reviewFocus": "Clear intended use outside the supported taxonomy; forced Choice needs its companion Noul."
+  }
+]

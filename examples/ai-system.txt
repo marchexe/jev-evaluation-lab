@@ -1,0 +1,4 @@
+A customer support assistant reads a customer's question and relevant product
+documentation, then generates a draft reply. A support agent reviews and approves
+each reply before it is sent. For example, it reads a question about resetting a
+password and produces step-by-step instructions from the product help article.

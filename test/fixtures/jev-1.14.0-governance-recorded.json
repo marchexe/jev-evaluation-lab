@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "profile": "governance",
+  "mode": "live",
+  "startedAt": "2026-10-24T22:56:08.590Z",
+  "sdkVersion": "0.7.0",
+  "requestId": "req_01a17020eea37e9c96b6e5a3850eaea3",
+  "latencyMs": 365.55,
+  "request": {
+    "model": "jev-latest",
+    "state": {
+      "ai_system_description": "An HR assistant reads named applicants' resumes and job requirements to rank candidates for a recruiter. The recruiter checks every ranking against the resumes and decides whom to interview; the system cannot reject applicants itself."
+    },
+    "questions": {
+      "intended_use_case": {
+        "type": "choice",
+        "instructions": "What is the main intended use of the system in `ai_system_description`?",
+        "criteria": {
+          "hr_recruitment": "Screens, ranks, or selects job applicants.",
+          "hr_workforce_management": "Allocates work or evaluates existing workers.",
+          "finance_credit_assessment": "Assesses a borrower for lending or credit terms.",
+          "finance_operations": "Supports financial reporting, accounting, payments, or transaction monitoring.",
+          "education_assessment": "Evaluates learners, grades work, or supports admission decisions.",
+          "education_learning_support": "Provides tutoring, learning materials, or study assistance.",
+          "customer_support": "Answers customer service questions or handles support requests."
+        }
+      },
+      "supported_use_case": {
+        "type": "noul",
+        "instructions": "Does `ai_system_description` identify a main intended use in recruitment, workforce management, credit assessment, financial operations, educational assessment, learning support, or customer support?",
+        "criteria": {
+          "true": "The description establishes a main task in one of the listed use cases.",
+          "false": "The main task is outside the listed use cases, or the description leaves the intended use unspecified."
+        }
+      },
+      "personal_data_evidence": {
+        "type": "choice",
+        "instructions": "What does `ai_system_description` document about processing information linked to identifiable people?",
+        "criteria": {
+          "documented_processing": "Inputs, outputs, or operations involve identifiable people, such as named resumes, customer account records, or student profiles, without a contradictory exclusion. Removing names alone does not exclude processing if other identifiers remain.",
+          "explicitly_excluded": "The description explicitly states that no information linked to identifiable people is processed, or confines all processing to synthetic or irreversibly anonymous data with no identifiable inputs, without contradictory identifiable data use.",
+          "not_documented": "The description gives no information about whether data relates to identifiable people, including when it says data details are unspecified. Missing information is not an explicit exclusion.",
+          "unclear": "The description addresses data handling but leaves identifiability unresolved, for example by saying only \"anonymized\" or \"privacy friendly\".",
+          "conflicting": "The description makes incompatible claims, such as denying all identifiable data processing while describing named customer inputs."
+        }
+      },
+      "human_oversight_evidence": {
+        "type": "choice",
+        "instructions": "What does `ai_system_description` document about human review or control of the system outputs and actions?",
+        "criteria": {
+          "documented": "A human role and a concrete review, approval, monitoring, override, or intervention step are described without a contradictory denial. This records a mechanism, not its adequacy.",
+          "explicitly_absent": "The description explicitly rules out human review and intervention for the system outputs and actions without describing a contradictory oversight step. Automated operation alone does not establish absence.",
+          "not_documented": "No human review or control arrangement is described, including when the text says oversight is unspecified. Missing information is not evidence that oversight is absent.",
+          "unclear": "Human oversight is mentioned without a concrete mechanism, for example \"humans stay in control\" without explaining how.",
+          "conflicting": "The description makes incompatible claims about the same oversight step, such as requiring approval before every action while explicitly denying any human review."
+        }
+      },
+      "description_completeness": {
+        "type": "score",
+        "instructions": "How completely does `ai_system_description` document the purpose, users or affected people, data inputs, outputs and their use, and human oversight?",
+        "criteria": [
+          "The description gives a name or broad claim without an identifiable purpose.",
+          "The description identifies a purpose but leaves data inputs or outputs and their use unspecified.",
+          "The description explains the purpose, data inputs, outputs and their use, but leaves users or affected people or the oversight arrangement unspecified.",
+          "The description explains the purpose, users or affected people, data inputs, outputs and their use, and the oversight arrangement. An explicit statement that oversight is absent still documents the arrangement."
+        ]
+      }
+    }
+  },
+  "response": {
+    "model": "jev-1.14.0",
+    "answers": {
+      "intended_use_case": {
+        "type": "choice",
+        "choice": "hr_recruitment",
+        "confidence": 1,
+        "probabilities": {
+          "hr_recruitment": 1,
+          "hr_workforce_management": 0,
+          "finance_credit_assessment": 0,
+          "finance_operations": 0,
+          "education_assessment": 0,
+          "education_learning_support": 0,
+          "customer_support": 0
+        }
+      },
+      "supported_use_case": {
+        "type": "noul",
+        "noul": 0.99
+      },
+      "personal_data_evidence": {
+        "type": "choice",
+        "choice": "documented_processing",
+        "confidence": 1,
+        "probabilities": {
+          "documented_processing": 1,
+          "explicitly_excluded": 0,
+          "not_documented": 0,
+          "unclear": 0,
+          "conflicting": 0
+        }
+      },
+      "human_oversight_evidence": {
+        "type": "choice",
+        "choice": "documented",
+        "confidence": 1,
+        "probabilities": {
+          "documented": 1,
+          "explicitly_absent": 0,
+          "not_documented": 0,
+          "unclear": 0,
+          "conflicting": 0
+        }
+      },
+      "description_completeness": {
+        "type": "score",
+        "score": 2.99,
+        "confidence": 0.99,
+        "legend": {
+          "0": "The description gives a name or broad claim without an identifiable purpose.",
+          "1": "The description identifies a purpose but leaves data inputs or outputs and their use unspecified.",
+          "2": "The description explains the purpose, data inputs, outputs and their use, but leaves users or affected people or the oversight arrangement unspecified.",
+          "3": "The description explains the purpose, users or affected people, data inputs, outputs and their use, and the oversight arrangement. An explicit statement that oversight is absent still documents the arrangement."
+        },
+        "probabilities": {
+          "0": 0,
+          "1": 0,
+          "2": 0.01,
+          "3": 0.99
+        }
+      }
+    },
+    "usage": {
+      "input_tokens": 1251,
+      "output_tokens": 267
+    }
+  }
+}
