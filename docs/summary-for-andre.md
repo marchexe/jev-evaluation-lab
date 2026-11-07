@@ -1,0 +1,9 @@
+# Jev Evaluation Lab: technical update
+
+The existing Next.js/assistant-ui workspace now supports live editing of typed Jev questions, explicit versioned execution/reset, validated JSON import/export, and CLI reproduction without browser automation. Evidence reviews remain separate from predictions; evaluation filters by actual model and exact question content/version. SDK responses, distributions and provenance remain intact.
+
+The frozen Text/Graph experiment and provisional AI-label arithmetic reproduce. Graph improves discovery within the curated synthetic corpus, but most gains depend on supplied control relationships. It misses an unlinked approval policy in 9/12 Dispatch configurations, finds the five-hop queue source only at rank seven, and retains lexical no-evidence matches. All 159 original relevance labels remain unconfirmed; there is no independent human benchmark.
+
+A separate real-Jev study compared two fixed question configurations on 17 development and 12 newly written held-out synthetic passages. Against AI design expectations, held-out classification agreement changed from 10/12 to 11/12. Explicit timing/conflict wording helped, but vague-control boundaries remain unresolved. The alternative relevance Noul still promotes the editorial distractor at 0.82 and adds a held-out training-review false positive at 0.57. We retained deterministic production retrieval rather than shipping a model filter/reranker.
+
+All 58 study responses are preserved; two additional live checks verify edited governance questions and the browser/API/export path. Total usage: 45,724 input / 5,220 output tokens, about $0.00192 at the published rate. Unit tests, typecheck, production build and 19 desktop/mobile browser tests pass. Next work should independently review fresh complete source pools and measure graph-link coverage/curator effort before claiming general retrieval gains. None of these judgments establishes legal compliance.

@@ -39,6 +39,7 @@ test('invalid API requests never invoke assessment', async () => {
   }
   assert.equal((await handle(request({}, { body: '{invalid' }))).status, 400);
   assert.equal((await handle(request({}, { headers: { 'content-type': 'text/plain' } }))).status, 415);
+  assert.equal((await handle(request({}, { headers: { 'content-type': 'application/jsonp' } }))).status, 415);
   assert.equal((await handle(request({}, { headers: { 'content-type': 'application/json', origin: 'https://other.example' } }))).status, 403);
   assert.equal((await handle(request({}, { body: 'x'.repeat(64001) }))).status, 413);
   assert.equal((await handle(new Request('http://localhost:3000/api/assess'))).status, 405);

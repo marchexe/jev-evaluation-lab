@@ -19,6 +19,7 @@ async function main() {
       output: { type: 'string' },
       profile: { type: 'string', default: 'technical' },
       case: { type: 'string' },
+      config: { type: 'string' },
       help: { type: 'boolean', short: 'h' },
     },
   });
@@ -26,6 +27,7 @@ async function main() {
   if (values.help) {
     console.log('Usage: npm run classify -- [--profile technical|governance] [--live] [--input description.txt] [--output result.json]');
     console.log('Use --case <id> to select one description from examples/governance/cases.json (or a JSON --input).');
+    console.log('Use --config <question-config.json> with --profile governance for versioned custom wording.');
     console.log('Default: preview the request locally. --live sends one paid request to Jev.');
     return;
   }
@@ -46,7 +48,8 @@ async function main() {
     if (!selected) throw new Error('Unknown case ID. See examples/governance/cases.json.');
     description = selected.description;
   }
-  const request = buildAssessmentRequest(description, { profile: values.profile });
+  const questionConfiguration = values.config ? JSON.parse(await readFile(resolve(values.config), 'utf8')) : undefined;
+  const request = buildAssessmentRequest(description, { profile: values.profile, questionConfiguration });
 
   if (!values.live) {
     console.log(JSON.stringify(request, null, 2));
@@ -66,7 +69,7 @@ async function main() {
   await mkdir(dirname(outputPath), { recursive: true });
   console.error(`Sending the description and ${Object.keys(request.questions).length} questions to Jev (one paid request; retries disabled).`);
   const structuredResult = await assessDescription(description, {
-    profile: values.profile, model: request.model, live: true, apiKey,
+    profile: values.profile, model: request.model, live: true, apiKey, questionConfiguration,
   });
   console.error(`Jev request latency: ${structuredResult.latencyMs} ms`);
   const json = `${JSON.stringify(structuredResult, null, 2)}\n`;

@@ -4,6 +4,7 @@ import {
 import { assessDescription } from '../assessment.js';
 import { isLiveInferenceEnabled } from './config.js';
 import { isSameOrigin } from './origin.js';
+import { validateQuestionConfiguration } from '../question-config.js';
 
 export const MAX_DESCRIPTION_LENGTH = 12_000;
 const MAX_BODY_BYTES = 64_000;
@@ -13,13 +14,13 @@ function json(body, status = 200) {
 }
 
 // The injectable operation is for offline error-path tests, never a second classifier.
-export function createAssessmentHandler(assess = assessDescription) {
+export function createInferenceHandler(validate, run) {
   return async function handleAssessment(request) {
     if (request.method !== 'POST') return json({ error: 'Use POST to analyze a description.' }, 405);
     if (!isSameOrigin(request)) {
       return json({ error: 'Cross-origin assessment requests are not allowed.' }, 403);
     }
-    if (!request.headers.get('content-type')?.startsWith('application/json')) {
+    if (request.headers.get('content-type')?.split(';')[0].trim().toLowerCase() !== 'application/json') {
       return json({ error: 'Send an application/json request.' }, 415);
     }
     if (Number(request.headers.get('content-length')) > MAX_BODY_BYTES) {
@@ -50,14 +51,8 @@ export function createAssessmentHandler(assess = assessDescription) {
     } catch {
       return json({ error: 'Request body must be valid JSON.' }, 400);
     }
-    if (!input || typeof input !== 'object' || Array.isArray(input)
-      || Object.keys(input).some((key) => !['description', 'live'].includes(key))
-      || input.live !== true || typeof input.description !== 'string' || !input.description.trim()) {
-      return json({ error: 'Provide a nonempty description and live: true. No other fields are accepted.' }, 400);
-    }
-    if (input.description.length > MAX_DESCRIPTION_LENGTH) {
-      return json({ error: `Description must be at most ${MAX_DESCRIPTION_LENGTH} characters.` }, 400);
-    }
+    const failure = validate(input);
+    if (failure) return json({ error: failure.error }, failure.status ?? 400);
     if (request.signal.aborted) return json({ error: 'Assessment cancelled.' }, 499);
     if (!isLiveInferenceEnabled()) {
       return json({ error: 'Live inference is disabled by server configuration.' }, 503);
@@ -67,9 +62,7 @@ export function createAssessmentHandler(assess = assessDescription) {
     }
     try {
       // One invocation; SDK retries are already disabled in the existing backend.
-      const assessment = await assess(input.description, {
-        profile: 'governance', live: true, signal: request.signal,
-      });
+      const assessment = await run(input, request.signal);
       return json(assessment);
     } catch (error) {
       if (error instanceof APIUserAbortError || request.signal.aborted) {
@@ -90,4 +83,21 @@ export function createAssessmentHandler(assess = assessDescription) {
       return json({ error: 'Assessment failed. Check the server configuration. No retry was attempted.' }, 502);
     }
   };
+}
+
+/** @param {(description: string, options: any) => Promise<any>} [assess] */
+export function createAssessmentHandler(assess = assessDescription) {
+  return createInferenceHandler((input) => {
+    if (!input || typeof input !== 'object' || Array.isArray(input)
+      || Object.keys(input).some((key) => !['description', 'live', 'questionConfiguration'].includes(key))
+      || input.live !== true || typeof input.description !== 'string' || !input.description.trim()) {
+      return { error: 'Provide a nonempty description, live: true and optionally questionConfiguration. Other fields are rejected.' };
+    }
+    if (input.description.length > MAX_DESCRIPTION_LENGTH) return { error: 'Description must be at most 12000 characters.' };
+    if (input.questionConfiguration !== undefined) {
+      try { validateQuestionConfiguration(input.questionConfiguration, 'governance'); }
+      catch (error) { return { error: error.message }; }
+    }
+  }, (input, signal) => assess(input.description, { profile: 'governance', live: true, signal,
+    ...(input.questionConfiguration === undefined ? {} : { questionConfiguration: input.questionConfiguration }) }));
 }

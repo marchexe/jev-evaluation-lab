@@ -13,8 +13,8 @@ test('initial page, all 15 examples and mobile layout do not start inference', a
   await page.goto('/');
   await expect(page).toHaveTitle('Jev Evaluation Lab');
   await expect(page.getByRole('link', { name: 'Jev Evaluation Lab', exact: true })).toBeVisible();
-  await expect(page.locator('.profile-badge')).toHaveText('profile: governance');
-  await expect(page.getByRole('heading', { name: 'Jev assessment' })).toBeVisible();
+  await expect(page.locator('.profile-badge')).toHaveText('synthetic research workspace');
+  await expect(page.getByRole('heading', { name: 'Jev Evaluation Lab', exact: true })).toBeVisible();
   const desktopInput = await page.getByLabel('AI system description').boundingBox();
   expect(desktopInput!.y).toBeLessThan(150);
   await expect(page.getByRole('region', { name: 'Assessment overview' })).toHaveCount(0);

@@ -18,3 +18,5 @@ request-preview.json
 jev-assessment*.json
 jev-history*.json
 jev-evaluation*.json
+jev-evidence*.json
+!test/fixtures/jev-evidence-*.json

@@ -1,0 +1,1605 @@
+{
+  "schemaVersion": 1,
+  "status": "AI-authored design expectations, NOT independent human ground truth; no labels sent to Jev.",
+  "protocolHash": "sha256:e0ea12732c0293eda6abdbcb5bd188fa4a112f6376ade9641a55a238edad18a7",
+  "expectedRequests": 58,
+  "completedRequests": 58,
+  "complete": true,
+  "actualModels": [
+    "jev-1.14.0"
+  ],
+  "usage": {
+    "inputTokens": 43690,
+    "outputTokens": 4873,
+    "estimatedUsd": 0.00183498,
+    "pricing": {
+      "source": "https://docs.typesafe.ai/models",
+      "checkedAt": "2026-11-07",
+      "usdPerMillionInputTokens": 0.042,
+      "usdPerMillionOutputTokens": 0,
+      "estimateOnly": true
+    }
+  },
+  "meanLatencyMs": 203.34206896551717,
+  "groups": [
+    {
+      "split": "development",
+      "version": "oversight-evidence-1",
+      "n": 16,
+      "agreements": 14,
+      "excludedUncertain": 1,
+      "errors": [
+        {
+          "caseId": "tutor-overview@1:34-108",
+          "passage": {
+            "id": "tutor-overview@1:34-108",
+            "documentId": "tutor-overview",
+            "revision": "1",
+            "systemId": "tutor",
+            "section": "Study tutor / Responsibility",
+            "start": 34,
+            "end": 108,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "Humans remain in control of the Study tutor. Responsible use is important."
+          },
+          "expected": "ambiguous",
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.96,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbdc8c755e8c6f8b7d496a4e4e"
+        },
+        {
+          "caseId": "dispatch-signoff@1:34-107",
+          "passage": {
+            "id": "dispatch-signoff@1:34-107",
+            "documentId": "dispatch-signoff",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Queue procedure / Final gate",
+            "start": 34,
+            "end": 107,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "A staff member must countersign each proposal before it leaves the queue."
+          },
+          "expected": "ambiguous",
+          "expectedRelevance": true,
+          "predicted": "supported",
+          "noul": 0.97,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbe6217da3a0377419216813e7"
+        }
+      ],
+      "falseSupport": 1,
+      "missedContradictions": 0,
+      "relevanceThreshold": 0.5,
+      "relevanceN": 17,
+      "relevanceErrors": [
+        {
+          "caseId": "dispatch-runbook@1:181-255",
+          "passage": {
+            "id": "dispatch-runbook@1:181-255",
+            "documentId": "dispatch-runbook",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Dispatch runbook / Scope",
+            "start": 181,
+            "end": 255,
+            "startLine": 9,
+            "endLine": 9,
+            "text": "This runbook describes the same deployment covered by the Dispatch policy."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.03,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbdaef71ce823548153de28143"
+        },
+        {
+          "caseId": "dispatch-editorial@1:44-168",
+          "passage": {
+            "id": "dispatch-editorial@1:44-168",
+            "documentId": "dispatch-editorial",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Editorial procedure / Editorial checks",
+            "start": 44,
+            "end": 168,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "A human editor reviews the spelling of release notes. This process does not review the Dispatch assistant's recommendations."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": false,
+          "predicted": "insufficient_evidence",
+          "noul": 0.81,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbe2ee74668d6f976c68a5c3f6"
+        },
+        {
+          "caseId": "dispatch-signoff@1:119-198",
+          "passage": {
+            "id": "dispatch-signoff@1:119-198",
+            "documentId": "dispatch-signoff",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Queue procedure / Scope",
+            "start": 119,
+            "end": 198,
+            "startLine": 9,
+            "endLine": 9,
+            "text": "This procedure applies to the Dispatch assistant's proposed delivery sequences."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.15,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbe7b970cfa52df567a8854de6"
+        },
+        {
+          "caseId": "dispatch-gates@2:370-688",
+          "passage": {
+            "id": "dispatch-gates@2:370-688",
+            "documentId": "dispatch-gates",
+            "revision": "2",
+            "systemId": "dispatch",
+            "section": "Dispatch gate register / Related sources",
+            "start": 370,
+            "end": 688,
+            "startLine": 13,
+            "endLine": 13,
+            "text": "See [Queue gate](evidence:dispatch-signoff@1#Queue%20procedure%20%2F%20Final%20gate), [Execution](evidence:dispatch-runbook@1#Dispatch%20runbook%20%2F%20Execution), [Historical gate](evidence:dispatch-gates@1#Dispatch%20gate%20register%20%2F%20Gate%20rule), and [Unpublished annex](evidence:unpublished-annex@1#Annex)."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.38,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbee227fe7a308219aa139db95"
+        },
+        {
+          "caseId": "dispatch-gates@2:709-820",
+          "passage": {
+            "id": "dispatch-gates@2:709-820",
+            "documentId": "dispatch-gates",
+            "revision": "2",
+            "systemId": "dispatch",
+            "section": "Dispatch gate register / Revision notes",
+            "start": 709,
+            "end": 820,
+            "startLine": 17,
+            "endLine": 17,
+            "text": "Revision 2 supersedes revision 1 of this register. It does not revise the queue procedure or resolve its scope."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.03,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbef8f754ab2a0ca686d89241b"
+        }
+      ],
+      "rows": [
+        {
+          "caseId": "dispatch-policy@1:47-186",
+          "passage": {
+            "id": "dispatch-policy@1:47-186",
+            "documentId": "dispatch-policy",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Dispatch policy / Recommendation approval",
+            "start": 47,
+            "end": 186,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "A human supervisor must approve every recommendation before the Dispatch assistant executes it. The supervisor may reject a recommendation."
+          },
+          "expected": "supported",
+          "expectedRelevance": true,
+          "predicted": "supported",
+          "noul": 0.99,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbd57c71c4a66356679274ce4d"
+        },
+        {
+          "caseId": "dispatch-policy@1:199-271",
+          "passage": {
+            "id": "dispatch-policy@1:199-271",
+            "documentId": "dispatch-policy",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Dispatch policy / Inputs",
+            "start": 199,
+            "end": 271,
+            "startLine": 9,
+            "endLine": 9,
+            "text": "The assistant proposes delivery sequences from synthetic parcel records."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": false,
+          "predicted": "insufficient_evidence",
+          "noul": 0.09,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbd7cd7a9cbf67e46c54b3418e"
+        },
+        {
+          "caseId": "dispatch-runbook@1:34-169",
+          "passage": {
+            "id": "dispatch-runbook@1:34-169",
+            "documentId": "dispatch-runbook",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Dispatch runbook / Execution",
+            "start": 34,
+            "end": 169,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "The Dispatch assistant executes every recommendation automatically without human approval. Operators cannot stop or override execution."
+          },
+          "expected": "contradicted",
+          "expectedRelevance": true,
+          "predicted": "contradicted",
+          "noul": 0.99,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbd95d73c292171ac4b4b7397f"
+        },
+        {
+          "caseId": "dispatch-runbook@1:181-255",
+          "passage": {
+            "id": "dispatch-runbook@1:181-255",
+            "documentId": "dispatch-runbook",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Dispatch runbook / Scope",
+            "start": 181,
+            "end": 255,
+            "startLine": 9,
+            "endLine": 9,
+            "text": "This runbook describes the same deployment covered by the Dispatch policy."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.03,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbdaef71ce823548153de28143"
+        },
+        {
+          "caseId": "tutor-overview@1:34-108",
+          "passage": {
+            "id": "tutor-overview@1:34-108",
+            "documentId": "tutor-overview",
+            "revision": "1",
+            "systemId": "tutor",
+            "section": "Study tutor / Responsibility",
+            "start": 34,
+            "end": 108,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "Humans remain in control of the Study tutor. Responsible use is important."
+          },
+          "expected": "ambiguous",
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.96,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbdc8c755e8c6f8b7d496a4e4e"
+        },
+        {
+          "caseId": "tutor-overview@1:122-192",
+          "passage": {
+            "id": "tutor-overview@1:122-192",
+            "documentId": "tutor-overview",
+            "revision": "1",
+            "systemId": "tutor",
+            "section": "Study tutor / Outputs",
+            "start": 122,
+            "end": 192,
+            "startLine": 9,
+            "endLine": 9,
+            "text": "The tutor suggests practice exercises from fictional learning records."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": false,
+          "predicted": "insufficient_evidence",
+          "noul": 0.08,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbddf3736a9fbc45763a858d21"
+        },
+        {
+          "caseId": "ledger-overview@1:33-101",
+          "passage": {
+            "id": "ledger-overview@1:33-101",
+            "documentId": "ledger-overview",
+            "revision": "1",
+            "systemId": "ledger",
+            "section": "Ledger summarizer / Purpose",
+            "start": 33,
+            "end": 101,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "The system converts fictional ledger entries into monthly summaries."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": false,
+          "predicted": "insufficient_evidence",
+          "noul": 0.04,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbdfb77b8499038d25017e2a6e"
+        },
+        {
+          "caseId": "ledger-overview@1:115-210",
+          "passage": {
+            "id": "ledger-overview@1:115-210",
+            "documentId": "ledger-overview",
+            "revision": "1",
+            "systemId": "ledger",
+            "section": "Ledger summarizer / Outputs",
+            "start": 115,
+            "end": 210,
+            "startLine": 9,
+            "endLine": 9,
+            "text": "Summary tables are stored in a training workspace. The input schema contains amounts and dates."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": false,
+          "predicted": "insufficient_evidence",
+          "noul": 0.03,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbe1507c84b00ba37e100ac5d3"
+        },
+        {
+          "caseId": "dispatch-editorial@1:44-168",
+          "passage": {
+            "id": "dispatch-editorial@1:44-168",
+            "documentId": "dispatch-editorial",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Editorial procedure / Editorial checks",
+            "start": 44,
+            "end": 168,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "A human editor reviews the spelling of release notes. This process does not review the Dispatch assistant's recommendations."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": false,
+          "predicted": "insufficient_evidence",
+          "noul": 0.81,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbe2ee74668d6f976c68a5c3f6"
+        },
+        {
+          "caseId": "dispatch-editorial@1:186-243",
+          "passage": {
+            "id": "dispatch-editorial@1:186-243",
+            "documentId": "dispatch-editorial",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Editorial procedure / Publication",
+            "start": 186,
+            "end": 243,
+            "startLine": 9,
+            "endLine": 9,
+            "text": "The notes describe changes to the demonstration software."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": false,
+          "predicted": "insufficient_evidence",
+          "noul": 0.02,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbe4817158b648f65680ded11e"
+        },
+        {
+          "caseId": "dispatch-signoff@1:34-107",
+          "passage": {
+            "id": "dispatch-signoff@1:34-107",
+            "documentId": "dispatch-signoff",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Queue procedure / Final gate",
+            "start": 34,
+            "end": 107,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "A staff member must countersign each proposal before it leaves the queue."
+          },
+          "expected": "ambiguous",
+          "expectedRelevance": true,
+          "predicted": "supported",
+          "noul": 0.97,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbe6217da3a0377419216813e7"
+        },
+        {
+          "caseId": "dispatch-signoff@1:119-198",
+          "passage": {
+            "id": "dispatch-signoff@1:119-198",
+            "documentId": "dispatch-signoff",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Queue procedure / Scope",
+            "start": 119,
+            "end": 198,
+            "startLine": 9,
+            "endLine": 9,
+            "text": "This procedure applies to the Dispatch assistant's proposed delivery sequences."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.15,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbe7b970cfa52df567a8854de6"
+        },
+        {
+          "caseId": "dispatch-gates@1:40-157",
+          "passage": {
+            "id": "dispatch-gates@1:40-157",
+            "documentId": "dispatch-gates",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Dispatch gate register / Gate rule",
+            "start": 40,
+            "end": 157,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "A designated staff member must countersign each proposed delivery sequence before the Dispatch assistant executes it."
+          },
+          "expected": "supported",
+          "expectedRelevance": true,
+          "predicted": "supported",
+          "noul": 0.98,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbe9247176a553ab5f09a84c0d"
+        },
+        {
+          "caseId": "dispatch-gates@2:46-208",
+          "passage": {
+            "id": "dispatch-gates@2:46-208",
+            "documentId": "dispatch-gates",
+            "revision": "2",
+            "systemId": "dispatch",
+            "section": "Dispatch gate register / Control mapping",
+            "start": 46,
+            "end": 208,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "This register calls Human Oversight the Two-person Gate control for the Dispatch assistant. The Gate rule and Related sources sections specify this local control."
+          },
+          "expected": null,
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.92,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbeaef775bbd41041c0bbd74a4"
+        },
+        {
+          "caseId": "dispatch-gates@2:224-348",
+          "passage": {
+            "id": "dispatch-gates@2:224-348",
+            "documentId": "dispatch-gates",
+            "revision": "2",
+            "systemId": "dispatch",
+            "section": "Dispatch gate register / Gate rule",
+            "start": 224,
+            "end": 348,
+            "startLine": 9,
+            "endLine": 9,
+            "text": "The Dispatch assistant executes proposed delivery sequences without a countersignature. Staff authorization is not required."
+          },
+          "expected": "contradicted",
+          "expectedRelevance": true,
+          "predicted": "contradicted",
+          "noul": 0.99,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbec89772bb5cd545993b6897e"
+        },
+        {
+          "caseId": "dispatch-gates@2:370-688",
+          "passage": {
+            "id": "dispatch-gates@2:370-688",
+            "documentId": "dispatch-gates",
+            "revision": "2",
+            "systemId": "dispatch",
+            "section": "Dispatch gate register / Related sources",
+            "start": 370,
+            "end": 688,
+            "startLine": 13,
+            "endLine": 13,
+            "text": "See [Queue gate](evidence:dispatch-signoff@1#Queue%20procedure%20%2F%20Final%20gate), [Execution](evidence:dispatch-runbook@1#Dispatch%20runbook%20%2F%20Execution), [Historical gate](evidence:dispatch-gates@1#Dispatch%20gate%20register%20%2F%20Gate%20rule), and [Unpublished annex](evidence:unpublished-annex@1#Annex)."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.38,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbee227fe7a308219aa139db95"
+        },
+        {
+          "caseId": "dispatch-gates@2:709-820",
+          "passage": {
+            "id": "dispatch-gates@2:709-820",
+            "documentId": "dispatch-gates",
+            "revision": "2",
+            "systemId": "dispatch",
+            "section": "Dispatch gate register / Revision notes",
+            "start": 709,
+            "end": 820,
+            "startLine": 17,
+            "endLine": 17,
+            "text": "Revision 2 supersedes revision 1 of this register. It does not revise the queue procedure or resolve its scope."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.03,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbef8f754ab2a0ca686d89241b"
+        }
+      ]
+    },
+    {
+      "split": "development",
+      "version": "oversight-evidence-2-research",
+      "n": 16,
+      "agreements": 15,
+      "excludedUncertain": 1,
+      "errors": [
+        {
+          "caseId": "tutor-overview@1:34-108",
+          "passage": {
+            "id": "tutor-overview@1:34-108",
+            "documentId": "tutor-overview",
+            "revision": "1",
+            "systemId": "tutor",
+            "section": "Study tutor / Responsibility",
+            "start": 34,
+            "end": 108,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "Humans remain in control of the Study tutor. Responsible use is important."
+          },
+          "expected": "ambiguous",
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.95,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbdd557502af4ee060fb1bae14"
+        }
+      ],
+      "falseSupport": 0,
+      "missedContradictions": 0,
+      "relevanceThreshold": 0.5,
+      "relevanceN": 17,
+      "relevanceErrors": [
+        {
+          "caseId": "dispatch-editorial@1:44-168",
+          "passage": {
+            "id": "dispatch-editorial@1:44-168",
+            "documentId": "dispatch-editorial",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Editorial procedure / Editorial checks",
+            "start": 44,
+            "end": 168,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "A human editor reviews the spelling of release notes. This process does not review the Dispatch assistant's recommendations."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": false,
+          "predicted": "insufficient_evidence",
+          "noul": 0.82,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbe3ba7323bcf94fb129778de8"
+        },
+        {
+          "caseId": "dispatch-gates@2:709-820",
+          "passage": {
+            "id": "dispatch-gates@2:709-820",
+            "documentId": "dispatch-gates",
+            "revision": "2",
+            "systemId": "dispatch",
+            "section": "Dispatch gate register / Revision notes",
+            "start": 709,
+            "end": 820,
+            "startLine": 17,
+            "endLine": 17,
+            "text": "Revision 2 supersedes revision 1 of this register. It does not revise the queue procedure or resolve its scope."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.46,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbf08376a38657bac8c2e0ca21"
+        }
+      ],
+      "rows": [
+        {
+          "caseId": "dispatch-policy@1:47-186",
+          "passage": {
+            "id": "dispatch-policy@1:47-186",
+            "documentId": "dispatch-policy",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Dispatch policy / Recommendation approval",
+            "start": 47,
+            "end": 186,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "A human supervisor must approve every recommendation before the Dispatch assistant executes it. The supervisor may reject a recommendation."
+          },
+          "expected": "supported",
+          "expectedRelevance": true,
+          "predicted": "supported",
+          "noul": 0.99,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbd6e775b69a4e1f37e8021b6a"
+        },
+        {
+          "caseId": "dispatch-policy@1:199-271",
+          "passage": {
+            "id": "dispatch-policy@1:199-271",
+            "documentId": "dispatch-policy",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Dispatch policy / Inputs",
+            "start": 199,
+            "end": 271,
+            "startLine": 9,
+            "endLine": 9,
+            "text": "The assistant proposes delivery sequences from synthetic parcel records."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": false,
+          "predicted": "insufficient_evidence",
+          "noul": 0.06,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbd889719c9294b08dcd5b6c79"
+        },
+        {
+          "caseId": "dispatch-runbook@1:34-169",
+          "passage": {
+            "id": "dispatch-runbook@1:34-169",
+            "documentId": "dispatch-runbook",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Dispatch runbook / Execution",
+            "start": 34,
+            "end": 169,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "The Dispatch assistant executes every recommendation automatically without human approval. Operators cannot stop or override execution."
+          },
+          "expected": "contradicted",
+          "expectedRelevance": true,
+          "predicted": "contradicted",
+          "noul": 0.99,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbda307599b0c34c8cd045281d"
+        },
+        {
+          "caseId": "dispatch-runbook@1:181-255",
+          "passage": {
+            "id": "dispatch-runbook@1:181-255",
+            "documentId": "dispatch-runbook",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Dispatch runbook / Scope",
+            "start": 181,
+            "end": 255,
+            "startLine": 9,
+            "endLine": 9,
+            "text": "This runbook describes the same deployment covered by the Dispatch policy."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.8,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbdbbc7c4ab30aa6f7ed9a10d2"
+        },
+        {
+          "caseId": "tutor-overview@1:34-108",
+          "passage": {
+            "id": "tutor-overview@1:34-108",
+            "documentId": "tutor-overview",
+            "revision": "1",
+            "systemId": "tutor",
+            "section": "Study tutor / Responsibility",
+            "start": 34,
+            "end": 108,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "Humans remain in control of the Study tutor. Responsible use is important."
+          },
+          "expected": "ambiguous",
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.95,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbdd557502af4ee060fb1bae14"
+        },
+        {
+          "caseId": "tutor-overview@1:122-192",
+          "passage": {
+            "id": "tutor-overview@1:122-192",
+            "documentId": "tutor-overview",
+            "revision": "1",
+            "systemId": "tutor",
+            "section": "Study tutor / Outputs",
+            "start": 122,
+            "end": 192,
+            "startLine": 9,
+            "endLine": 9,
+            "text": "The tutor suggests practice exercises from fictional learning records."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": false,
+          "predicted": "insufficient_evidence",
+          "noul": 0.05,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbdef275e1a20217ae51d21d10"
+        },
+        {
+          "caseId": "ledger-overview@1:33-101",
+          "passage": {
+            "id": "ledger-overview@1:33-101",
+            "documentId": "ledger-overview",
+            "revision": "1",
+            "systemId": "ledger",
+            "section": "Ledger summarizer / Purpose",
+            "start": 33,
+            "end": 101,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "The system converts fictional ledger entries into monthly summaries."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": false,
+          "predicted": "insufficient_evidence",
+          "noul": 0.03,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbe0867a689bf0ea863113383a"
+        },
+        {
+          "caseId": "ledger-overview@1:115-210",
+          "passage": {
+            "id": "ledger-overview@1:115-210",
+            "documentId": "ledger-overview",
+            "revision": "1",
+            "systemId": "ledger",
+            "section": "Ledger summarizer / Outputs",
+            "start": 115,
+            "end": 210,
+            "startLine": 9,
+            "endLine": 9,
+            "text": "Summary tables are stored in a training workspace. The input schema contains amounts and dates."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": false,
+          "predicted": "insufficient_evidence",
+          "noul": 0.02,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbe224774798234c7e881bce15"
+        },
+        {
+          "caseId": "dispatch-editorial@1:44-168",
+          "passage": {
+            "id": "dispatch-editorial@1:44-168",
+            "documentId": "dispatch-editorial",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Editorial procedure / Editorial checks",
+            "start": 44,
+            "end": 168,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "A human editor reviews the spelling of release notes. This process does not review the Dispatch assistant's recommendations."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": false,
+          "predicted": "insufficient_evidence",
+          "noul": 0.82,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbe3ba7323bcf94fb129778de8"
+        },
+        {
+          "caseId": "dispatch-editorial@1:186-243",
+          "passage": {
+            "id": "dispatch-editorial@1:186-243",
+            "documentId": "dispatch-editorial",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Editorial procedure / Publication",
+            "start": 186,
+            "end": 243,
+            "startLine": 9,
+            "endLine": 9,
+            "text": "The notes describe changes to the demonstration software."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": false,
+          "predicted": "insufficient_evidence",
+          "noul": 0.06,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbe55b74c398b15726735cf71c"
+        },
+        {
+          "caseId": "dispatch-signoff@1:34-107",
+          "passage": {
+            "id": "dispatch-signoff@1:34-107",
+            "documentId": "dispatch-signoff",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Queue procedure / Final gate",
+            "start": 34,
+            "end": 107,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "A staff member must countersign each proposal before it leaves the queue."
+          },
+          "expected": "ambiguous",
+          "expectedRelevance": true,
+          "predicted": "ambiguous",
+          "noul": 0.97,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbe6ca77498b73d1718ea9dafd"
+        },
+        {
+          "caseId": "dispatch-signoff@1:119-198",
+          "passage": {
+            "id": "dispatch-signoff@1:119-198",
+            "documentId": "dispatch-signoff",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Queue procedure / Scope",
+            "start": 119,
+            "end": 198,
+            "startLine": 9,
+            "endLine": 9,
+            "text": "This procedure applies to the Dispatch assistant's proposed delivery sequences."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.75,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbe8887b0c9997efe2dc297f93"
+        },
+        {
+          "caseId": "dispatch-gates@1:40-157",
+          "passage": {
+            "id": "dispatch-gates@1:40-157",
+            "documentId": "dispatch-gates",
+            "revision": "1",
+            "systemId": "dispatch",
+            "section": "Dispatch gate register / Gate rule",
+            "start": 40,
+            "end": 157,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "A designated staff member must countersign each proposed delivery sequence before the Dispatch assistant executes it."
+          },
+          "expected": "supported",
+          "expectedRelevance": true,
+          "predicted": "supported",
+          "noul": 0.98,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbea1f726f90069eb525532c99"
+        },
+        {
+          "caseId": "dispatch-gates@2:46-208",
+          "passage": {
+            "id": "dispatch-gates@2:46-208",
+            "documentId": "dispatch-gates",
+            "revision": "2",
+            "systemId": "dispatch",
+            "section": "Dispatch gate register / Control mapping",
+            "start": 46,
+            "end": 208,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "This register calls Human Oversight the Two-person Gate control for the Dispatch assistant. The Gate rule and Related sources sections specify this local control."
+          },
+          "expected": null,
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.94,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbebb8795881bf3ccb76e5c3a3"
+        },
+        {
+          "caseId": "dispatch-gates@2:224-348",
+          "passage": {
+            "id": "dispatch-gates@2:224-348",
+            "documentId": "dispatch-gates",
+            "revision": "2",
+            "systemId": "dispatch",
+            "section": "Dispatch gate register / Gate rule",
+            "start": 224,
+            "end": 348,
+            "startLine": 9,
+            "endLine": 9,
+            "text": "The Dispatch assistant executes proposed delivery sequences without a countersignature. Staff authorization is not required."
+          },
+          "expected": "contradicted",
+          "expectedRelevance": true,
+          "predicted": "contradicted",
+          "noul": 0.99,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbed577b258c18f916632e9e3a"
+        },
+        {
+          "caseId": "dispatch-gates@2:370-688",
+          "passage": {
+            "id": "dispatch-gates@2:370-688",
+            "documentId": "dispatch-gates",
+            "revision": "2",
+            "systemId": "dispatch",
+            "section": "Dispatch gate register / Related sources",
+            "start": 370,
+            "end": 688,
+            "startLine": 13,
+            "endLine": 13,
+            "text": "See [Queue gate](evidence:dispatch-signoff@1#Queue%20procedure%20%2F%20Final%20gate), [Execution](evidence:dispatch-runbook@1#Dispatch%20runbook%20%2F%20Execution), [Historical gate](evidence:dispatch-gates@1#Dispatch%20gate%20register%20%2F%20Gate%20rule), and [Unpublished annex](evidence:unpublished-annex@1#Annex)."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.87,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbeeec741285405c0b44048f8e"
+        },
+        {
+          "caseId": "dispatch-gates@2:709-820",
+          "passage": {
+            "id": "dispatch-gates@2:709-820",
+            "documentId": "dispatch-gates",
+            "revision": "2",
+            "systemId": "dispatch",
+            "section": "Dispatch gate register / Revision notes",
+            "start": 709,
+            "end": 820,
+            "startLine": 17,
+            "endLine": 17,
+            "text": "Revision 2 supersedes revision 1 of this register. It does not revise the queue procedure or resolve its scope."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.46,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbf08376a38657bac8c2e0ca21"
+        }
+      ]
+    },
+    {
+      "split": "heldout",
+      "version": "oversight-evidence-1",
+      "n": 12,
+      "agreements": 10,
+      "excludedUncertain": 0,
+      "errors": [
+        {
+          "caseId": "holdout-07",
+          "passage": {
+            "id": "holdout-07@1:36-139",
+            "documentId": "holdout-07",
+            "revision": "1",
+            "systemId": "study-helper-b",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 139,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "People remain in charge of the study helper. Its documentation does not explain how this control works."
+          },
+          "expected": "ambiguous",
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.97,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbfa867207ac83f3ebf379fe0a"
+        },
+        {
+          "caseId": "holdout-09",
+          "passage": {
+            "id": "holdout-09@1:36-228",
+            "documentId": "holdout-09",
+            "revision": "1",
+            "systemId": "conflicting-demo",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 228,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "Every recommendation requires approval before execution. The same assistant executes all recommendations immediately without waiting for approval. Both statements describe the same deployment."
+          },
+          "expected": "ambiguous",
+          "expectedRelevance": true,
+          "predicted": "contradicted",
+          "noul": 0.99,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbfd5075ccba5186c6472c18fa"
+        }
+      ],
+      "falseSupport": 0,
+      "missedContradictions": 0,
+      "relevanceThreshold": 0.5,
+      "relevanceN": 12,
+      "relevanceErrors": [],
+      "rows": [
+        {
+          "caseId": "holdout-01",
+          "passage": {
+            "id": "holdout-01@1:36-185",
+            "documentId": "holdout-01",
+            "revision": "1",
+            "systemId": "route-planner",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 185,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "The route planner proposes a route. A dispatcher must approve each proposed route before the planner executes it; rejected routes are never executed."
+          },
+          "expected": "supported",
+          "expectedRelevance": true,
+          "predicted": "supported",
+          "noul": 0.99,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbf1537c6aa368ba30eb5b8eee"
+        },
+        {
+          "caseId": "holdout-02",
+          "passage": {
+            "id": "holdout-02@1:36-191",
+            "documentId": "holdout-02",
+            "revision": "1",
+            "systemId": "grant-assistant",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 191,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "The grant assistant cannot execute a recommendation until a human reviewer signs its individual approval record. This is required for every recommendation."
+          },
+          "expected": "supported",
+          "expectedRelevance": true,
+          "predicted": "supported",
+          "noul": 1,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbf2eb7e5fa83a389618faa736"
+        },
+        {
+          "caseId": "holdout-03",
+          "passage": {
+            "id": "holdout-03@1:36-180",
+            "documentId": "holdout-03",
+            "revision": "1",
+            "systemId": "stock-planner",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 180,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "Every stock-transfer recommendation waits for a warehouse supervisor's approval. The stock planner executes a transfer only after that approval."
+          },
+          "expected": "supported",
+          "expectedRelevance": true,
+          "predicted": "supported",
+          "noul": 0.99,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbf48b7ffc8e98e27392ef2789"
+        },
+        {
+          "caseId": "holdout-04",
+          "passage": {
+            "id": "holdout-04@1:36-159",
+            "documentId": "holdout-04",
+            "revision": "1",
+            "systemId": "dispatch-demo-b",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 159,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "The delivery assistant executes every proposed action without asking anyone to approve it. There is no prior approval step."
+          },
+          "expected": "contradicted",
+          "expectedRelevance": true,
+          "predicted": "contradicted",
+          "noul": 0.99,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbf61e76e282f4dc981388c37b"
+        },
+        {
+          "caseId": "holdout-05",
+          "passage": {
+            "id": "holdout-05@1:36-196",
+            "documentId": "holdout-05",
+            "revision": "1",
+            "systemId": "notification-demo",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 196,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "The notification assistant executes recommendations immediately. Human reviewers receive a report afterward, but never approve recommendations before execution."
+          },
+          "expected": "contradicted",
+          "expectedRelevance": true,
+          "predicted": "contradicted",
+          "noul": 0.99,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbf78a77ad9fd84941fe4352cb"
+        },
+        {
+          "caseId": "holdout-06",
+          "passage": {
+            "id": "holdout-06@1:36-177",
+            "documentId": "holdout-06",
+            "revision": "1",
+            "systemId": "allocation-demo",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 177,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "Low-value recommendations execute without human approval; all others require approval. The allocation assistant uses this rule in production."
+          },
+          "expected": "contradicted",
+          "expectedRelevance": true,
+          "predicted": "contradicted",
+          "noul": 0.99,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbf8d677b5b0f3d36dcaed0248"
+        },
+        {
+          "caseId": "holdout-07",
+          "passage": {
+            "id": "holdout-07@1:36-139",
+            "documentId": "holdout-07",
+            "revision": "1",
+            "systemId": "study-helper-b",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 139,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "People remain in charge of the study helper. Its documentation does not explain how this control works."
+          },
+          "expected": "ambiguous",
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.97,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbfa867207ac83f3ebf379fe0a"
+        },
+        {
+          "caseId": "holdout-08",
+          "passage": {
+            "id": "holdout-08@1:36-199",
+            "documentId": "holdout-08",
+            "revision": "1",
+            "systemId": "queue-helper-b",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 199,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "A reviewer endorses each queue-helper proposal before it leaves the holding area. The document does not say whether leaving that area is before or after execution."
+          },
+          "expected": "ambiguous",
+          "expectedRelevance": true,
+          "predicted": "ambiguous",
+          "noul": 0.98,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbfbb776d28dda8ae23857a81a"
+        },
+        {
+          "caseId": "holdout-09",
+          "passage": {
+            "id": "holdout-09@1:36-228",
+            "documentId": "holdout-09",
+            "revision": "1",
+            "systemId": "conflicting-demo",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 228,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "Every recommendation requires approval before execution. The same assistant executes all recommendations immediately without waiting for approval. Both statements describe the same deployment."
+          },
+          "expected": "ambiguous",
+          "expectedRelevance": true,
+          "predicted": "contradicted",
+          "noul": 0.99,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbfd5075ccba5186c6472c18fa"
+        },
+        {
+          "caseId": "holdout-10",
+          "passage": {
+            "id": "holdout-10@1:36-147",
+            "documentId": "holdout-10",
+            "revision": "1",
+            "systemId": "table-demo",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 147,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "The table assistant produces monthly summary tables from fictional amounts and dates. Tables have four columns."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": false,
+          "predicted": "insufficient_evidence",
+          "noul": 0.04,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbfec0708285b6be91129c6cef"
+        },
+        {
+          "caseId": "holdout-11",
+          "passage": {
+            "id": "holdout-11@1:36-161",
+            "documentId": "holdout-11",
+            "revision": "1",
+            "systemId": "editor-demo-b",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 161,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "A human reviews the spelling of the assistant's user manual. This review does not concern recommendations or their execution."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": false,
+          "predicted": "insufficient_evidence",
+          "noul": 0.08,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dc001e7274a1e42c206e68ec73"
+        },
+        {
+          "caseId": "holdout-12",
+          "passage": {
+            "id": "holdout-12@1:36-199",
+            "documentId": "holdout-12",
+            "revision": "1",
+            "systemId": "annotation-demo",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 199,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "Reviewers approve labels in the assistant's synthetic training dataset. The paragraph describes dataset preparation only, not approval of deployed recommendations."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": false,
+          "predicted": "insufficient_evidence",
+          "noul": 0.34,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dc01987a47b5b333cd7c4c823b"
+        }
+      ]
+    },
+    {
+      "split": "heldout",
+      "version": "oversight-evidence-2-research",
+      "n": 12,
+      "agreements": 11,
+      "excludedUncertain": 0,
+      "errors": [
+        {
+          "caseId": "holdout-07",
+          "passage": {
+            "id": "holdout-07@1:36-139",
+            "documentId": "holdout-07",
+            "revision": "1",
+            "systemId": "study-helper-b",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 139,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "People remain in charge of the study helper. Its documentation does not explain how this control works."
+          },
+          "expected": "ambiguous",
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.96,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbfb1a7066988353e526268c87"
+        }
+      ],
+      "falseSupport": 0,
+      "missedContradictions": 0,
+      "relevanceThreshold": 0.5,
+      "relevanceN": 12,
+      "relevanceErrors": [
+        {
+          "caseId": "holdout-12",
+          "passage": {
+            "id": "holdout-12@1:36-199",
+            "documentId": "holdout-12",
+            "revision": "1",
+            "systemId": "annotation-demo",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 199,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "Reviewers approve labels in the assistant's synthetic training dataset. The paragraph describes dataset preparation only, not approval of deployed recommendations."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": false,
+          "predicted": "insufficient_evidence",
+          "noul": 0.57,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dc028571fe82dcb341c00da388"
+        }
+      ],
+      "rows": [
+        {
+          "caseId": "holdout-01",
+          "passage": {
+            "id": "holdout-01@1:36-185",
+            "documentId": "holdout-01",
+            "revision": "1",
+            "systemId": "route-planner",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 185,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "The route planner proposes a route. A dispatcher must approve each proposed route before the planner executes it; rejected routes are never executed."
+          },
+          "expected": "supported",
+          "expectedRelevance": true,
+          "predicted": "supported",
+          "noul": 0.98,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbf21e780fb25f3ead4bd04e4a"
+        },
+        {
+          "caseId": "holdout-02",
+          "passage": {
+            "id": "holdout-02@1:36-191",
+            "documentId": "holdout-02",
+            "revision": "1",
+            "systemId": "grant-assistant",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 191,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "The grant assistant cannot execute a recommendation until a human reviewer signs its individual approval record. This is required for every recommendation."
+          },
+          "expected": "supported",
+          "expectedRelevance": true,
+          "predicted": "supported",
+          "noul": 0.99,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbf3b77f3a8bcc58cc3dadc7b7"
+        },
+        {
+          "caseId": "holdout-03",
+          "passage": {
+            "id": "holdout-03@1:36-180",
+            "documentId": "holdout-03",
+            "revision": "1",
+            "systemId": "stock-planner",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 180,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "Every stock-transfer recommendation waits for a warehouse supervisor's approval. The stock planner executes a transfer only after that approval."
+          },
+          "expected": "supported",
+          "expectedRelevance": true,
+          "predicted": "supported",
+          "noul": 0.98,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbf5547304867ae1a94246b8d9"
+        },
+        {
+          "caseId": "holdout-04",
+          "passage": {
+            "id": "holdout-04@1:36-159",
+            "documentId": "holdout-04",
+            "revision": "1",
+            "systemId": "dispatch-demo-b",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 159,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "The delivery assistant executes every proposed action without asking anyone to approve it. There is no prior approval step."
+          },
+          "expected": "contradicted",
+          "expectedRelevance": true,
+          "predicted": "contradicted",
+          "noul": 0.99,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbf6ed74c496c65081b019f32e"
+        },
+        {
+          "caseId": "holdout-05",
+          "passage": {
+            "id": "holdout-05@1:36-196",
+            "documentId": "holdout-05",
+            "revision": "1",
+            "systemId": "notification-demo",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 196,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "The notification assistant executes recommendations immediately. Human reviewers receive a report afterward, but never approve recommendations before execution."
+          },
+          "expected": "contradicted",
+          "expectedRelevance": true,
+          "predicted": "contradicted",
+          "noul": 0.99,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbf83b7d04b0d590df71671fa9"
+        },
+        {
+          "caseId": "holdout-06",
+          "passage": {
+            "id": "holdout-06@1:36-177",
+            "documentId": "holdout-06",
+            "revision": "1",
+            "systemId": "allocation-demo",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 177,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "Low-value recommendations execute without human approval; all others require approval. The allocation assistant uses this rule in production."
+          },
+          "expected": "contradicted",
+          "expectedRelevance": true,
+          "predicted": "contradicted",
+          "noul": 0.99,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbf9b6732a89af67cb8912eb02"
+        },
+        {
+          "caseId": "holdout-07",
+          "passage": {
+            "id": "holdout-07@1:36-139",
+            "documentId": "holdout-07",
+            "revision": "1",
+            "systemId": "study-helper-b",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 139,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "People remain in charge of the study helper. Its documentation does not explain how this control works."
+          },
+          "expected": "ambiguous",
+          "expectedRelevance": true,
+          "predicted": "insufficient_evidence",
+          "noul": 0.96,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbfb1a7066988353e526268c87"
+        },
+        {
+          "caseId": "holdout-08",
+          "passage": {
+            "id": "holdout-08@1:36-199",
+            "documentId": "holdout-08",
+            "revision": "1",
+            "systemId": "queue-helper-b",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 199,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "A reviewer endorses each queue-helper proposal before it leaves the holding area. The document does not say whether leaving that area is before or after execution."
+          },
+          "expected": "ambiguous",
+          "expectedRelevance": true,
+          "predicted": "ambiguous",
+          "noul": 0.97,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbfc8678d69044bb8bf8ae0439"
+        },
+        {
+          "caseId": "holdout-09",
+          "passage": {
+            "id": "holdout-09@1:36-228",
+            "documentId": "holdout-09",
+            "revision": "1",
+            "systemId": "conflicting-demo",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 228,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "Every recommendation requires approval before execution. The same assistant executes all recommendations immediately without waiting for approval. Both statements describe the same deployment."
+          },
+          "expected": "ambiguous",
+          "expectedRelevance": true,
+          "predicted": "ambiguous",
+          "noul": 0.99,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbfe2070559eefda2386bf6fa7"
+        },
+        {
+          "caseId": "holdout-10",
+          "passage": {
+            "id": "holdout-10@1:36-147",
+            "documentId": "holdout-10",
+            "revision": "1",
+            "systemId": "table-demo",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 147,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "The table assistant produces monthly summary tables from fictional amounts and dates. Tables have four columns."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": false,
+          "predicted": "insufficient_evidence",
+          "noul": 0.02,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dbff5975489679d7fd314a266b"
+        },
+        {
+          "caseId": "holdout-11",
+          "passage": {
+            "id": "holdout-11@1:36-161",
+            "documentId": "holdout-11",
+            "revision": "1",
+            "systemId": "editor-demo-b",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 161,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "A human reviews the spelling of the assistant's user manual. This review does not concern recommendations or their execution."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": false,
+          "predicted": "insufficient_evidence",
+          "noul": 0.18,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dc00f17a5f8440c6e3c04e0dd4"
+        },
+        {
+          "caseId": "holdout-12",
+          "passage": {
+            "id": "holdout-12@1:36-199",
+            "documentId": "holdout-12",
+            "revision": "1",
+            "systemId": "annotation-demo",
+            "section": "Synthetic document / Operation",
+            "start": 36,
+            "end": 199,
+            "startLine": 5,
+            "endLine": 5,
+            "text": "Reviewers approve labels in the assistant's synthetic training dataset. The paragraph describes dataset preparation only, not approval of deployed recommendations."
+          },
+          "expected": "insufficient_evidence",
+          "expectedRelevance": false,
+          "predicted": "insufficient_evidence",
+          "noul": 0.57,
+          "actualModel": "jev-1.14.0",
+          "requestId": "req_01a1b6dc028571fe82dcb341c00da388"
+        }
+      ]
+    }
+  ]
+}

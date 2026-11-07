@@ -1,0 +1,965 @@
+{
+  "schemaVersion": 1,
+  "id": "exploratory-ai-judgments-1",
+  "experimentHash": "sha256:d9b0061da1b716cf4d356d844320d86ae5f3572f984cbaf2ed347d9ae85872ec",
+  "status": "Non-blinded AI-authored exploratory labels. NOT independent human ground truth.",
+  "independentReview": false,
+  "confirmed": false,
+  "normalization": "Compact categorical transcription of both AI draft packets from the supplied ZIP; original source passages are resolved from the unchanged frozen manifest. No human confirmation is inferred.",
+  "judgments": [
+    {
+      "caseId": "retrieval-001",
+      "passageId": "dispatch-editorial@1:186-243",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-001",
+      "passageId": "dispatch-editorial@1:44-168",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-001",
+      "passageId": "dispatch-gates@2:224-348",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-001",
+      "passageId": "dispatch-gates@2:370-688",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-001",
+      "passageId": "dispatch-gates@2:46-208",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-001",
+      "passageId": "dispatch-gates@2:709-820",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-001",
+      "passageId": "dispatch-policy@1:199-271",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-001",
+      "passageId": "dispatch-policy@1:47-186",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-001",
+      "passageId": "dispatch-runbook@1:181-255",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-001",
+      "passageId": "dispatch-runbook@1:34-169",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-001",
+      "passageId": "dispatch-signoff@1:119-198",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-001",
+      "passageId": "dispatch-signoff@1:34-107",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-002",
+      "passageId": "dispatch-editorial@1:186-243",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-002",
+      "passageId": "dispatch-editorial@1:44-168",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-002",
+      "passageId": "dispatch-gates@2:224-348",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-002",
+      "passageId": "dispatch-gates@2:370-688",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-002",
+      "passageId": "dispatch-gates@2:46-208",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-002",
+      "passageId": "dispatch-gates@2:709-820",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-002",
+      "passageId": "dispatch-policy@1:199-271",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-002",
+      "passageId": "dispatch-policy@1:47-186",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-002",
+      "passageId": "dispatch-runbook@1:181-255",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-002",
+      "passageId": "dispatch-runbook@1:34-169",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-002",
+      "passageId": "dispatch-signoff@1:119-198",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-002",
+      "passageId": "dispatch-signoff@1:34-107",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-003",
+      "passageId": "dispatch-editorial@1:186-243",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-003",
+      "passageId": "dispatch-editorial@1:44-168",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-003",
+      "passageId": "dispatch-gates@2:224-348",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-003",
+      "passageId": "dispatch-gates@2:370-688",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-003",
+      "passageId": "dispatch-gates@2:46-208",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-003",
+      "passageId": "dispatch-gates@2:709-820",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-003",
+      "passageId": "dispatch-policy@1:199-271",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-003",
+      "passageId": "dispatch-policy@1:47-186",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-003",
+      "passageId": "dispatch-runbook@1:181-255",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-003",
+      "passageId": "dispatch-runbook@1:34-169",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-003",
+      "passageId": "dispatch-signoff@1:119-198",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-003",
+      "passageId": "dispatch-signoff@1:34-107",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-004",
+      "passageId": "dispatch-editorial@1:186-243",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-004",
+      "passageId": "dispatch-editorial@1:44-168",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-004",
+      "passageId": "dispatch-gates@2:224-348",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-004",
+      "passageId": "dispatch-gates@2:370-688",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-004",
+      "passageId": "dispatch-gates@2:46-208",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-004",
+      "passageId": "dispatch-gates@2:709-820",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-004",
+      "passageId": "dispatch-policy@1:199-271",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-004",
+      "passageId": "dispatch-policy@1:47-186",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-004",
+      "passageId": "dispatch-runbook@1:181-255",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-004",
+      "passageId": "dispatch-runbook@1:34-169",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-004",
+      "passageId": "dispatch-signoff@1:119-198",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-004",
+      "passageId": "dispatch-signoff@1:34-107",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-005",
+      "passageId": "dispatch-editorial@1:186-243",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-005",
+      "passageId": "dispatch-editorial@1:44-168",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-005",
+      "passageId": "dispatch-gates@2:224-348",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-005",
+      "passageId": "dispatch-gates@2:370-688",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-005",
+      "passageId": "dispatch-gates@2:46-208",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-005",
+      "passageId": "dispatch-gates@2:709-820",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-005",
+      "passageId": "dispatch-policy@1:199-271",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-005",
+      "passageId": "dispatch-policy@1:47-186",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-005",
+      "passageId": "dispatch-runbook@1:181-255",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-005",
+      "passageId": "dispatch-runbook@1:34-169",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-005",
+      "passageId": "dispatch-signoff@1:119-198",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-005",
+      "passageId": "dispatch-signoff@1:34-107",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-006",
+      "passageId": "dispatch-editorial@1:186-243",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-006",
+      "passageId": "dispatch-editorial@1:44-168",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-006",
+      "passageId": "dispatch-gates@2:224-348",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-006",
+      "passageId": "dispatch-gates@2:370-688",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-006",
+      "passageId": "dispatch-gates@2:46-208",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-006",
+      "passageId": "dispatch-gates@2:709-820",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-006",
+      "passageId": "dispatch-policy@1:199-271",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-006",
+      "passageId": "dispatch-policy@1:47-186",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-006",
+      "passageId": "dispatch-runbook@1:181-255",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-006",
+      "passageId": "dispatch-runbook@1:34-169",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-006",
+      "passageId": "dispatch-signoff@1:119-198",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-006",
+      "passageId": "dispatch-signoff@1:34-107",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-007",
+      "passageId": "dispatch-editorial@1:186-243",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-007",
+      "passageId": "dispatch-editorial@1:44-168",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-007",
+      "passageId": "dispatch-gates@2:224-348",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-007",
+      "passageId": "dispatch-gates@2:370-688",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-007",
+      "passageId": "dispatch-gates@2:46-208",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-007",
+      "passageId": "dispatch-gates@2:709-820",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-007",
+      "passageId": "dispatch-policy@1:199-271",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-007",
+      "passageId": "dispatch-policy@1:47-186",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-007",
+      "passageId": "dispatch-runbook@1:181-255",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-007",
+      "passageId": "dispatch-runbook@1:34-169",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-007",
+      "passageId": "dispatch-signoff@1:119-198",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-007",
+      "passageId": "dispatch-signoff@1:34-107",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-008",
+      "passageId": "dispatch-editorial@1:186-243",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-008",
+      "passageId": "dispatch-editorial@1:44-168",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-008",
+      "passageId": "dispatch-gates@2:224-348",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-008",
+      "passageId": "dispatch-gates@2:370-688",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-008",
+      "passageId": "dispatch-gates@2:46-208",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-008",
+      "passageId": "dispatch-gates@2:709-820",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-008",
+      "passageId": "dispatch-policy@1:199-271",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-008",
+      "passageId": "dispatch-policy@1:47-186",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-008",
+      "passageId": "dispatch-runbook@1:181-255",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-008",
+      "passageId": "dispatch-runbook@1:34-169",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-008",
+      "passageId": "dispatch-signoff@1:119-198",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-008",
+      "passageId": "dispatch-signoff@1:34-107",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-009",
+      "passageId": "dispatch-editorial@1:186-243",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-009",
+      "passageId": "dispatch-editorial@1:44-168",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-009",
+      "passageId": "dispatch-gates@1:40-157",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-009",
+      "passageId": "dispatch-gates@2:224-348",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-009",
+      "passageId": "dispatch-gates@2:370-688",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-009",
+      "passageId": "dispatch-gates@2:46-208",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-009",
+      "passageId": "dispatch-gates@2:709-820",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-009",
+      "passageId": "dispatch-policy@1:199-271",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-009",
+      "passageId": "dispatch-policy@1:47-186",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-009",
+      "passageId": "dispatch-runbook@1:181-255",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-009",
+      "passageId": "dispatch-runbook@1:34-169",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-009",
+      "passageId": "dispatch-signoff@1:119-198",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-009",
+      "passageId": "dispatch-signoff@1:34-107",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-010",
+      "passageId": "dispatch-editorial@1:186-243",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-010",
+      "passageId": "dispatch-editorial@1:44-168",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-010",
+      "passageId": "dispatch-gates@1:40-157",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-010",
+      "passageId": "dispatch-gates@2:224-348",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-010",
+      "passageId": "dispatch-gates@2:370-688",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-010",
+      "passageId": "dispatch-gates@2:46-208",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-010",
+      "passageId": "dispatch-gates@2:709-820",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-010",
+      "passageId": "dispatch-policy@1:199-271",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-010",
+      "passageId": "dispatch-policy@1:47-186",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-010",
+      "passageId": "dispatch-runbook@1:181-255",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-010",
+      "passageId": "dispatch-runbook@1:34-169",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-010",
+      "passageId": "dispatch-signoff@1:119-198",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-010",
+      "passageId": "dispatch-signoff@1:34-107",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-011",
+      "passageId": "dispatch-editorial@1:186-243",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-011",
+      "passageId": "dispatch-editorial@1:44-168",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-011",
+      "passageId": "dispatch-gates@2:224-348",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-011",
+      "passageId": "dispatch-gates@2:370-688",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-011",
+      "passageId": "dispatch-gates@2:46-208",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-011",
+      "passageId": "dispatch-gates@2:709-820",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-011",
+      "passageId": "dispatch-policy@1:199-271",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-011",
+      "passageId": "dispatch-policy@1:47-186",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-011",
+      "passageId": "dispatch-runbook@1:181-255",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-011",
+      "passageId": "dispatch-runbook@1:34-169",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-011",
+      "passageId": "dispatch-signoff@1:119-198",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-011",
+      "passageId": "dispatch-signoff@1:34-107",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-012",
+      "passageId": "dispatch-editorial@1:186-243",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-012",
+      "passageId": "dispatch-editorial@1:44-168",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-012",
+      "passageId": "dispatch-gates@1:40-157",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-012",
+      "passageId": "dispatch-gates@2:224-348",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-012",
+      "passageId": "dispatch-gates@2:370-688",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-012",
+      "passageId": "dispatch-gates@2:46-208",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-012",
+      "passageId": "dispatch-gates@2:709-820",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-012",
+      "passageId": "dispatch-policy@1:199-271",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-012",
+      "passageId": "dispatch-policy@1:47-186",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-012",
+      "passageId": "dispatch-runbook@1:181-255",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-012",
+      "passageId": "dispatch-runbook@1:34-169",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-012",
+      "passageId": "dispatch-signoff@1:119-198",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-012",
+      "passageId": "dispatch-signoff@1:34-107",
+      "broad": "relevant",
+      "strict": "relevant"
+    },
+    {
+      "caseId": "retrieval-013",
+      "passageId": "tutor-overview@1:122-192",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-013",
+      "passageId": "tutor-overview@1:34-108",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-014",
+      "passageId": "tutor-overview@1:122-192",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-014",
+      "passageId": "tutor-overview@1:34-108",
+      "broad": "relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-015",
+      "passageId": "tutor-overview@1:122-192",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-015",
+      "passageId": "tutor-overview@1:34-108",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-016",
+      "passageId": "ledger-overview@1:115-210",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-016",
+      "passageId": "ledger-overview@1:33-101",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-017",
+      "passageId": "ledger-overview@1:115-210",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-017",
+      "passageId": "ledger-overview@1:33-101",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-018",
+      "passageId": "ledger-overview@1:115-210",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    },
+    {
+      "caseId": "retrieval-018",
+      "passageId": "ledger-overview@1:33-101",
+      "broad": "not_relevant",
+      "strict": "not_relevant"
+    }
+  ]
+}

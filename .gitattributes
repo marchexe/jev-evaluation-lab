@@ -1,0 +1,3 @@
+examples/evidence/jev-study/** text eol=lf
+examples/evidence/retrieval-eval/** text eol=lf
+test/fixtures/** text eol=lf

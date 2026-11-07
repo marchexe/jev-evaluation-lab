@@ -1,0 +1,11 @@
+{
+  "id": "oversight-evidence-cases-1",
+  "cases": [
+    { "id": "approval-gate", "documentId": "dispatch-policy", "revision": "1", "section": "Dispatch policy / Recommendation approval", "controlId": "human-oversight" },
+    { "id": "automatic-execution", "documentId": "dispatch-runbook", "revision": "1", "section": "Dispatch runbook / Execution", "controlId": "human-oversight" },
+    { "id": "vague-control", "documentId": "tutor-overview", "revision": "1", "section": "Study tutor / Responsibility", "controlId": "human-oversight" },
+    { "id": "missing-oversight", "documentId": "ledger-overview", "revision": "1", "section": "Ledger summarizer / Purpose", "controlId": "human-oversight" },
+    { "id": "editorial-distractor", "documentId": "dispatch-editorial", "revision": "1", "section": "Editorial procedure / Editorial checks", "controlId": "human-oversight" },
+    { "id": "retrieval-miss", "documentId": "dispatch-signoff", "revision": "1", "section": "Queue procedure / Final gate", "controlId": "human-oversight" }
+  ]
+}

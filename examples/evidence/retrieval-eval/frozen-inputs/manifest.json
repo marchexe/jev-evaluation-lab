@@ -1,0 +1,1085 @@
+{
+  "schemaVersion": 1,
+  "payload": {
+    "documents": [
+      {
+        "id": "dispatch-policy",
+        "revision": "1",
+        "systemId": "dispatch",
+        "title": "Dispatch assistant policy",
+        "content": "# Dispatch policy\n\n## Recommendation approval\n\nA human supervisor must approve every recommendation before the Dispatch assistant executes it. The supervisor may reject a recommendation.\n\n## Inputs\n\nThe assistant proposes delivery sequences from synthetic parcel records."
+      },
+      {
+        "id": "dispatch-runbook",
+        "revision": "1",
+        "systemId": "dispatch",
+        "title": "Dispatch assistant runbook",
+        "content": "# Dispatch runbook\n\n## Execution\n\nThe Dispatch assistant executes every recommendation automatically without human approval. Operators cannot stop or override execution.\n\n## Scope\n\nThis runbook describes the same deployment covered by the Dispatch policy."
+      },
+      {
+        "id": "tutor-overview",
+        "revision": "1",
+        "systemId": "tutor",
+        "title": "Study tutor overview",
+        "content": "# Study tutor\n\n## Responsibility\n\nHumans remain in control of the Study tutor. Responsible use is important.\n\n## Outputs\n\nThe tutor suggests practice exercises from fictional learning records."
+      },
+      {
+        "id": "ledger-overview",
+        "revision": "1",
+        "systemId": "ledger",
+        "title": "Ledger summarizer overview",
+        "content": "# Ledger summarizer\n\n## Purpose\n\nThe system converts fictional ledger entries into monthly summaries.\n\n## Outputs\n\nSummary tables are stored in a training workspace. The input schema contains amounts and dates."
+      },
+      {
+        "id": "dispatch-editorial",
+        "revision": "1",
+        "systemId": "dispatch",
+        "title": "Dispatch release notes procedure",
+        "content": "# Editorial procedure\n\n## Editorial checks\n\nA human editor reviews the spelling of release notes. This process does not review the Dispatch assistant's recommendations.\n\n## Publication\n\nThe notes describe changes to the demonstration software."
+      },
+      {
+        "id": "dispatch-signoff",
+        "revision": "1",
+        "systemId": "dispatch",
+        "title": "Dispatch queue procedure",
+        "content": "# Queue procedure\n\n## Final gate\n\nA staff member must countersign each proposal before it leaves the queue.\n\n## Scope\n\nThis procedure applies to the Dispatch assistant's proposed delivery sequences."
+      },
+      {
+        "id": "dispatch-gates",
+        "revision": "1",
+        "systemId": "dispatch",
+        "title": "Dispatch gate register",
+        "content": "# Dispatch gate register\n\n## Gate rule\n\nA designated staff member must countersign each proposed delivery sequence before the Dispatch assistant executes it."
+      },
+      {
+        "id": "dispatch-gates",
+        "revision": "2",
+        "systemId": "dispatch",
+        "title": "Dispatch gate register",
+        "content": "# Dispatch gate register\n\n## Control mapping\n\nThis register calls Human Oversight the Two-person Gate control for the Dispatch assistant. The Gate rule and Related sources sections specify this local control.\n\n## Gate rule\n\nThe Dispatch assistant executes proposed delivery sequences without a countersignature. Staff authorization is not required.\n\n## Related sources\n\nSee [Queue gate](evidence:dispatch-signoff@1#Queue%20procedure%20%2F%20Final%20gate), [Execution](evidence:dispatch-runbook@1#Dispatch%20runbook%20%2F%20Execution), [Historical gate](evidence:dispatch-gates@1#Dispatch%20gate%20register%20%2F%20Gate%20rule), and [Unpublished annex](evidence:unpublished-annex@1#Annex).\n\n## Revision notes\n\nRevision 2 supersedes revision 1 of this register. It does not revise the queue procedure or resolve its scope."
+      }
+    ],
+    "controls": [
+      {
+        "id": "human-oversight",
+        "title": "Human Oversight",
+        "statement": "A human must approve every recommendation before the system executes it.",
+        "assessmentField": "human_oversight_evidence",
+        "terms": [
+          "human",
+          "humans",
+          "approval",
+          "approve",
+          "review",
+          "reviews",
+          "supervisor",
+          "operator",
+          "operators",
+          "override",
+          "automatically"
+        ]
+      },
+      {
+        "id": "two-person-gate",
+        "title": "Two-person Gate",
+        "statement": "A human must approve every recommendation before the system executes it.",
+        "assessmentField": "human_oversight_evidence",
+        "terms": [
+          "countersign",
+          "countersignature",
+          "authorization"
+        ]
+      }
+    ],
+    "graphConfiguration": {
+      "version": "oversight-links-1",
+      "currentRevisions": {
+        "dispatch-gates": "2"
+      },
+      "controls": [
+        {
+          "id": "two-person-gate",
+          "title": "Two-person Gate",
+          "statement": "A human must approve every recommendation before the system executes it.",
+          "assessmentField": "human_oversight_evidence",
+          "terms": [
+            "countersign",
+            "countersignature",
+            "authorization"
+          ]
+        }
+      ],
+      "relationships": [
+        {
+          "id": "register-control-alias",
+          "kind": "related_control",
+          "fromControl": "human-oversight",
+          "toControl": "two-person-gate",
+          "source": {
+            "documentId": "dispatch-gates",
+            "revision": "2",
+            "section": "Dispatch gate register / Control mapping",
+            "quote": "This register calls Human Oversight the Two-person Gate control for the Dispatch assistant."
+          }
+        },
+        {
+          "id": "register-rule-scope",
+          "kind": "control_section",
+          "fromControl": "two-person-gate",
+          "target": {
+            "documentId": "dispatch-gates",
+            "revision": "2",
+            "section": "Dispatch gate register / Gate rule"
+          },
+          "source": {
+            "documentId": "dispatch-gates",
+            "revision": "2",
+            "section": "Dispatch gate register / Control mapping",
+            "quote": "The Gate rule and Related sources sections specify this local control."
+          }
+        },
+        {
+          "id": "register-sources-scope",
+          "kind": "control_section",
+          "fromControl": "two-person-gate",
+          "target": {
+            "documentId": "dispatch-gates",
+            "revision": "2",
+            "section": "Dispatch gate register / Related sources"
+          },
+          "source": {
+            "documentId": "dispatch-gates",
+            "revision": "2",
+            "section": "Dispatch gate register / Control mapping",
+            "quote": "The Gate rule and Related sources sections specify this local control."
+          }
+        },
+        {
+          "id": "register-supersedes",
+          "kind": "supersedes",
+          "documentId": "dispatch-gates",
+          "revision": "2",
+          "previousRevision": "1",
+          "source": {
+            "documentId": "dispatch-gates",
+            "revision": "2",
+            "section": "Dispatch gate register / Revision notes",
+            "quote": "Revision 2 supersedes revision 1 of this register."
+          }
+        }
+      ]
+    },
+    "passages": [
+      {
+        "id": "dispatch-policy@1:47-186",
+        "documentId": "dispatch-policy",
+        "revision": "1",
+        "systemId": "dispatch",
+        "section": "Dispatch policy / Recommendation approval",
+        "start": 47,
+        "end": 186,
+        "startLine": 5,
+        "endLine": 5,
+        "text": "A human supervisor must approve every recommendation before the Dispatch assistant executes it. The supervisor may reject a recommendation."
+      },
+      {
+        "id": "dispatch-policy@1:199-271",
+        "documentId": "dispatch-policy",
+        "revision": "1",
+        "systemId": "dispatch",
+        "section": "Dispatch policy / Inputs",
+        "start": 199,
+        "end": 271,
+        "startLine": 9,
+        "endLine": 9,
+        "text": "The assistant proposes delivery sequences from synthetic parcel records."
+      },
+      {
+        "id": "dispatch-runbook@1:34-169",
+        "documentId": "dispatch-runbook",
+        "revision": "1",
+        "systemId": "dispatch",
+        "section": "Dispatch runbook / Execution",
+        "start": 34,
+        "end": 169,
+        "startLine": 5,
+        "endLine": 5,
+        "text": "The Dispatch assistant executes every recommendation automatically without human approval. Operators cannot stop or override execution."
+      },
+      {
+        "id": "dispatch-runbook@1:181-255",
+        "documentId": "dispatch-runbook",
+        "revision": "1",
+        "systemId": "dispatch",
+        "section": "Dispatch runbook / Scope",
+        "start": 181,
+        "end": 255,
+        "startLine": 9,
+        "endLine": 9,
+        "text": "This runbook describes the same deployment covered by the Dispatch policy."
+      },
+      {
+        "id": "tutor-overview@1:34-108",
+        "documentId": "tutor-overview",
+        "revision": "1",
+        "systemId": "tutor",
+        "section": "Study tutor / Responsibility",
+        "start": 34,
+        "end": 108,
+        "startLine": 5,
+        "endLine": 5,
+        "text": "Humans remain in control of the Study tutor. Responsible use is important."
+      },
+      {
+        "id": "tutor-overview@1:122-192",
+        "documentId": "tutor-overview",
+        "revision": "1",
+        "systemId": "tutor",
+        "section": "Study tutor / Outputs",
+        "start": 122,
+        "end": 192,
+        "startLine": 9,
+        "endLine": 9,
+        "text": "The tutor suggests practice exercises from fictional learning records."
+      },
+      {
+        "id": "ledger-overview@1:33-101",
+        "documentId": "ledger-overview",
+        "revision": "1",
+        "systemId": "ledger",
+        "section": "Ledger summarizer / Purpose",
+        "start": 33,
+        "end": 101,
+        "startLine": 5,
+        "endLine": 5,
+        "text": "The system converts fictional ledger entries into monthly summaries."
+      },
+      {
+        "id": "ledger-overview@1:115-210",
+        "documentId": "ledger-overview",
+        "revision": "1",
+        "systemId": "ledger",
+        "section": "Ledger summarizer / Outputs",
+        "start": 115,
+        "end": 210,
+        "startLine": 9,
+        "endLine": 9,
+        "text": "Summary tables are stored in a training workspace. The input schema contains amounts and dates."
+      },
+      {
+        "id": "dispatch-editorial@1:44-168",
+        "documentId": "dispatch-editorial",
+        "revision": "1",
+        "systemId": "dispatch",
+        "section": "Editorial procedure / Editorial checks",
+        "start": 44,
+        "end": 168,
+        "startLine": 5,
+        "endLine": 5,
+        "text": "A human editor reviews the spelling of release notes. This process does not review the Dispatch assistant's recommendations."
+      },
+      {
+        "id": "dispatch-editorial@1:186-243",
+        "documentId": "dispatch-editorial",
+        "revision": "1",
+        "systemId": "dispatch",
+        "section": "Editorial procedure / Publication",
+        "start": 186,
+        "end": 243,
+        "startLine": 9,
+        "endLine": 9,
+        "text": "The notes describe changes to the demonstration software."
+      },
+      {
+        "id": "dispatch-signoff@1:34-107",
+        "documentId": "dispatch-signoff",
+        "revision": "1",
+        "systemId": "dispatch",
+        "section": "Queue procedure / Final gate",
+        "start": 34,
+        "end": 107,
+        "startLine": 5,
+        "endLine": 5,
+        "text": "A staff member must countersign each proposal before it leaves the queue."
+      },
+      {
+        "id": "dispatch-signoff@1:119-198",
+        "documentId": "dispatch-signoff",
+        "revision": "1",
+        "systemId": "dispatch",
+        "section": "Queue procedure / Scope",
+        "start": 119,
+        "end": 198,
+        "startLine": 9,
+        "endLine": 9,
+        "text": "This procedure applies to the Dispatch assistant's proposed delivery sequences."
+      },
+      {
+        "id": "dispatch-gates@1:40-157",
+        "documentId": "dispatch-gates",
+        "revision": "1",
+        "systemId": "dispatch",
+        "section": "Dispatch gate register / Gate rule",
+        "start": 40,
+        "end": 157,
+        "startLine": 5,
+        "endLine": 5,
+        "text": "A designated staff member must countersign each proposed delivery sequence before the Dispatch assistant executes it."
+      },
+      {
+        "id": "dispatch-gates@2:46-208",
+        "documentId": "dispatch-gates",
+        "revision": "2",
+        "systemId": "dispatch",
+        "section": "Dispatch gate register / Control mapping",
+        "start": 46,
+        "end": 208,
+        "startLine": 5,
+        "endLine": 5,
+        "text": "This register calls Human Oversight the Two-person Gate control for the Dispatch assistant. The Gate rule and Related sources sections specify this local control."
+      },
+      {
+        "id": "dispatch-gates@2:224-348",
+        "documentId": "dispatch-gates",
+        "revision": "2",
+        "systemId": "dispatch",
+        "section": "Dispatch gate register / Gate rule",
+        "start": 224,
+        "end": 348,
+        "startLine": 9,
+        "endLine": 9,
+        "text": "The Dispatch assistant executes proposed delivery sequences without a countersignature. Staff authorization is not required."
+      },
+      {
+        "id": "dispatch-gates@2:370-688",
+        "documentId": "dispatch-gates",
+        "revision": "2",
+        "systemId": "dispatch",
+        "section": "Dispatch gate register / Related sources",
+        "start": 370,
+        "end": 688,
+        "startLine": 13,
+        "endLine": 13,
+        "text": "See [Queue gate](evidence:dispatch-signoff@1#Queue%20procedure%20%2F%20Final%20gate), [Execution](evidence:dispatch-runbook@1#Dispatch%20runbook%20%2F%20Execution), [Historical gate](evidence:dispatch-gates@1#Dispatch%20gate%20register%20%2F%20Gate%20rule), and [Unpublished annex](evidence:unpublished-annex@1#Annex)."
+      },
+      {
+        "id": "dispatch-gates@2:709-820",
+        "documentId": "dispatch-gates",
+        "revision": "2",
+        "systemId": "dispatch",
+        "section": "Dispatch gate register / Revision notes",
+        "start": 709,
+        "end": 820,
+        "startLine": 17,
+        "endLine": 17,
+        "text": "Revision 2 supersedes revision 1 of this register. It does not revise the queue procedure or resolve its scope."
+      }
+    ],
+    "cases": [
+      {
+        "id": "retrieval-001",
+        "systemId": "dispatch",
+        "controlId": "human-oversight",
+        "includeArchived": false,
+        "queryText": "Find documentation of human approval before Dispatch executes recommendations.",
+        "lexicalTerms": [
+          "human",
+          "humans",
+          "approval",
+          "approve",
+          "review",
+          "reviews",
+          "supervisor",
+          "operator",
+          "operators",
+          "override",
+          "automatically"
+        ],
+        "coverage": [
+          "lexical",
+          "cross-document",
+          "five-hop"
+        ],
+        "query": {
+          "maxDepth": 5,
+          "maxVisited": 200,
+          "maxEdges": 1000,
+          "maxResults": 50,
+          "systemId": "dispatch",
+          "controlId": "human-oversight",
+          "includeArchived": false
+        },
+        "eligiblePassageIds": [
+          "dispatch-editorial@1:186-243",
+          "dispatch-editorial@1:44-168",
+          "dispatch-gates@2:224-348",
+          "dispatch-gates@2:370-688",
+          "dispatch-gates@2:46-208",
+          "dispatch-gates@2:709-820",
+          "dispatch-policy@1:199-271",
+          "dispatch-policy@1:47-186",
+          "dispatch-runbook@1:181-255",
+          "dispatch-runbook@1:34-169",
+          "dispatch-signoff@1:119-198",
+          "dispatch-signoff@1:34-107"
+        ]
+      },
+      {
+        "id": "retrieval-002",
+        "systemId": "dispatch",
+        "controlId": "human-oversight",
+        "includeArchived": false,
+        "queryText": "Find documentation of the Dispatch approval arrangement, using approval vocabulary.",
+        "lexicalTerms": [
+          "approval",
+          "approve"
+        ],
+        "coverage": [
+          "lexical",
+          "contradiction"
+        ],
+        "query": {
+          "maxDepth": 5,
+          "maxVisited": 200,
+          "maxEdges": 1000,
+          "maxResults": 50,
+          "systemId": "dispatch",
+          "controlId": "human-oversight",
+          "includeArchived": false
+        },
+        "eligiblePassageIds": [
+          "dispatch-editorial@1:186-243",
+          "dispatch-editorial@1:44-168",
+          "dispatch-gates@2:224-348",
+          "dispatch-gates@2:370-688",
+          "dispatch-gates@2:46-208",
+          "dispatch-gates@2:709-820",
+          "dispatch-policy@1:199-271",
+          "dispatch-policy@1:47-186",
+          "dispatch-runbook@1:181-255",
+          "dispatch-runbook@1:34-169",
+          "dispatch-signoff@1:119-198",
+          "dispatch-signoff@1:34-107"
+        ]
+      },
+      {
+        "id": "retrieval-003",
+        "systemId": "dispatch",
+        "controlId": "human-oversight",
+        "includeArchived": false,
+        "queryText": "Find documentation of the Dispatch human-control arrangement, using operator and override vocabulary.",
+        "lexicalTerms": [
+          "operators",
+          "override"
+        ],
+        "coverage": [
+          "contradiction"
+        ],
+        "query": {
+          "maxDepth": 5,
+          "maxVisited": 200,
+          "maxEdges": 1000,
+          "maxResults": 50,
+          "systemId": "dispatch",
+          "controlId": "human-oversight",
+          "includeArchived": false
+        },
+        "eligiblePassageIds": [
+          "dispatch-editorial@1:186-243",
+          "dispatch-editorial@1:44-168",
+          "dispatch-gates@2:224-348",
+          "dispatch-gates@2:370-688",
+          "dispatch-gates@2:46-208",
+          "dispatch-gates@2:709-820",
+          "dispatch-policy@1:199-271",
+          "dispatch-policy@1:47-186",
+          "dispatch-runbook@1:181-255",
+          "dispatch-runbook@1:34-169",
+          "dispatch-signoff@1:119-198",
+          "dispatch-signoff@1:34-107"
+        ]
+      },
+      {
+        "id": "retrieval-004",
+        "systemId": "dispatch",
+        "controlId": "human-oversight",
+        "includeArchived": false,
+        "queryText": "Find documentation of the Dispatch approval arrangement, using countersignature vocabulary.",
+        "lexicalTerms": [
+          "countersign",
+          "countersignature"
+        ],
+        "coverage": [
+          "terminology",
+          "cross-document"
+        ],
+        "query": {
+          "maxDepth": 5,
+          "maxVisited": 200,
+          "maxEdges": 1000,
+          "maxResults": 50,
+          "systemId": "dispatch",
+          "controlId": "human-oversight",
+          "includeArchived": false
+        },
+        "eligiblePassageIds": [
+          "dispatch-editorial@1:186-243",
+          "dispatch-editorial@1:44-168",
+          "dispatch-gates@2:224-348",
+          "dispatch-gates@2:370-688",
+          "dispatch-gates@2:46-208",
+          "dispatch-gates@2:709-820",
+          "dispatch-policy@1:199-271",
+          "dispatch-policy@1:47-186",
+          "dispatch-runbook@1:181-255",
+          "dispatch-runbook@1:34-169",
+          "dispatch-signoff@1:119-198",
+          "dispatch-signoff@1:34-107"
+        ]
+      },
+      {
+        "id": "retrieval-005",
+        "systemId": "dispatch",
+        "controlId": "human-oversight",
+        "includeArchived": false,
+        "queryText": "Find documentation of the Dispatch approval arrangement, using two-person and authorization vocabulary.",
+        "lexicalTerms": [
+          "two-person",
+          "authorization"
+        ],
+        "coverage": [
+          "terminology",
+          "control-alias"
+        ],
+        "query": {
+          "maxDepth": 5,
+          "maxVisited": 200,
+          "maxEdges": 1000,
+          "maxResults": 50,
+          "systemId": "dispatch",
+          "controlId": "human-oversight",
+          "includeArchived": false
+        },
+        "eligiblePassageIds": [
+          "dispatch-editorial@1:186-243",
+          "dispatch-editorial@1:44-168",
+          "dispatch-gates@2:224-348",
+          "dispatch-gates@2:370-688",
+          "dispatch-gates@2:46-208",
+          "dispatch-gates@2:709-820",
+          "dispatch-policy@1:199-271",
+          "dispatch-policy@1:47-186",
+          "dispatch-runbook@1:181-255",
+          "dispatch-runbook@1:34-169",
+          "dispatch-signoff@1:119-198",
+          "dispatch-signoff@1:34-107"
+        ]
+      },
+      {
+        "id": "retrieval-006",
+        "systemId": "dispatch",
+        "controlId": "human-oversight",
+        "includeArchived": false,
+        "queryText": "Find documentation of human approval before Dispatch execution, using queue and proposal vocabulary.",
+        "lexicalTerms": [
+          "queue",
+          "proposal"
+        ],
+        "coverage": [
+          "cross-document",
+          "terminology"
+        ],
+        "query": {
+          "maxDepth": 5,
+          "maxVisited": 200,
+          "maxEdges": 1000,
+          "maxResults": 50,
+          "systemId": "dispatch",
+          "controlId": "human-oversight",
+          "includeArchived": false
+        },
+        "eligiblePassageIds": [
+          "dispatch-editorial@1:186-243",
+          "dispatch-editorial@1:44-168",
+          "dispatch-gates@2:224-348",
+          "dispatch-gates@2:370-688",
+          "dispatch-gates@2:46-208",
+          "dispatch-gates@2:709-820",
+          "dispatch-policy@1:199-271",
+          "dispatch-policy@1:47-186",
+          "dispatch-runbook@1:181-255",
+          "dispatch-runbook@1:34-169",
+          "dispatch-signoff@1:119-198",
+          "dispatch-signoff@1:34-107"
+        ]
+      },
+      {
+        "id": "retrieval-007",
+        "systemId": "dispatch",
+        "controlId": "human-oversight",
+        "includeArchived": false,
+        "queryText": "Find documentation of the Dispatch approval arrangement, using review vocabulary.",
+        "lexicalTerms": [
+          "review",
+          "reviews"
+        ],
+        "coverage": [
+          "misleading",
+          "irrelevant"
+        ],
+        "query": {
+          "maxDepth": 5,
+          "maxVisited": 200,
+          "maxEdges": 1000,
+          "maxResults": 50,
+          "systemId": "dispatch",
+          "controlId": "human-oversight",
+          "includeArchived": false
+        },
+        "eligiblePassageIds": [
+          "dispatch-editorial@1:186-243",
+          "dispatch-editorial@1:44-168",
+          "dispatch-gates@2:224-348",
+          "dispatch-gates@2:370-688",
+          "dispatch-gates@2:46-208",
+          "dispatch-gates@2:709-820",
+          "dispatch-policy@1:199-271",
+          "dispatch-policy@1:47-186",
+          "dispatch-runbook@1:181-255",
+          "dispatch-runbook@1:34-169",
+          "dispatch-signoff@1:119-198",
+          "dispatch-signoff@1:34-107"
+        ]
+      },
+      {
+        "id": "retrieval-008",
+        "systemId": "dispatch",
+        "controlId": "two-person-gate",
+        "includeArchived": false,
+        "queryText": "Find current documentation of the Two-person Gate approval control for Dispatch.",
+        "lexicalTerms": [
+          "countersign",
+          "countersignature",
+          "authorization"
+        ],
+        "coverage": [
+          "control-alias",
+          "contradiction"
+        ],
+        "query": {
+          "maxDepth": 5,
+          "maxVisited": 200,
+          "maxEdges": 1000,
+          "maxResults": 50,
+          "systemId": "dispatch",
+          "controlId": "two-person-gate",
+          "includeArchived": false
+        },
+        "eligiblePassageIds": [
+          "dispatch-editorial@1:186-243",
+          "dispatch-editorial@1:44-168",
+          "dispatch-gates@2:224-348",
+          "dispatch-gates@2:370-688",
+          "dispatch-gates@2:46-208",
+          "dispatch-gates@2:709-820",
+          "dispatch-policy@1:199-271",
+          "dispatch-policy@1:47-186",
+          "dispatch-runbook@1:181-255",
+          "dispatch-runbook@1:34-169",
+          "dispatch-signoff@1:119-198",
+          "dispatch-signoff@1:34-107"
+        ]
+      },
+      {
+        "id": "retrieval-009",
+        "systemId": "dispatch",
+        "controlId": "human-oversight",
+        "includeArchived": true,
+        "queryText": "Find documentation of human approval before Dispatch execution across all included revisions.",
+        "lexicalTerms": [
+          "human",
+          "humans",
+          "approval",
+          "approve",
+          "review",
+          "reviews",
+          "supervisor",
+          "operator",
+          "operators",
+          "override",
+          "automatically"
+        ],
+        "coverage": [
+          "archived",
+          "contradiction"
+        ],
+        "query": {
+          "maxDepth": 5,
+          "maxVisited": 200,
+          "maxEdges": 1000,
+          "maxResults": 50,
+          "systemId": "dispatch",
+          "controlId": "human-oversight",
+          "includeArchived": true
+        },
+        "eligiblePassageIds": [
+          "dispatch-editorial@1:186-243",
+          "dispatch-editorial@1:44-168",
+          "dispatch-gates@1:40-157",
+          "dispatch-gates@2:224-348",
+          "dispatch-gates@2:370-688",
+          "dispatch-gates@2:46-208",
+          "dispatch-gates@2:709-820",
+          "dispatch-policy@1:199-271",
+          "dispatch-policy@1:47-186",
+          "dispatch-runbook@1:181-255",
+          "dispatch-runbook@1:34-169",
+          "dispatch-signoff@1:119-198",
+          "dispatch-signoff@1:34-107"
+        ]
+      },
+      {
+        "id": "retrieval-010",
+        "systemId": "dispatch",
+        "controlId": "human-oversight",
+        "includeArchived": true,
+        "queryText": "Find the Dispatch approval arrangement across included revisions, using countersignature vocabulary.",
+        "lexicalTerms": [
+          "countersign",
+          "countersignature"
+        ],
+        "coverage": [
+          "archived",
+          "terminology"
+        ],
+        "query": {
+          "maxDepth": 5,
+          "maxVisited": 200,
+          "maxEdges": 1000,
+          "maxResults": 50,
+          "systemId": "dispatch",
+          "controlId": "human-oversight",
+          "includeArchived": true
+        },
+        "eligiblePassageIds": [
+          "dispatch-editorial@1:186-243",
+          "dispatch-editorial@1:44-168",
+          "dispatch-gates@1:40-157",
+          "dispatch-gates@2:224-348",
+          "dispatch-gates@2:370-688",
+          "dispatch-gates@2:46-208",
+          "dispatch-gates@2:709-820",
+          "dispatch-policy@1:199-271",
+          "dispatch-policy@1:47-186",
+          "dispatch-runbook@1:181-255",
+          "dispatch-runbook@1:34-169",
+          "dispatch-signoff@1:119-198",
+          "dispatch-signoff@1:34-107"
+        ]
+      },
+      {
+        "id": "retrieval-011",
+        "systemId": "dispatch",
+        "controlId": "human-oversight",
+        "includeArchived": false,
+        "queryText": "Find documentation of the Dispatch approval arrangement, using annex reference vocabulary.",
+        "lexicalTerms": [
+          "annex"
+        ],
+        "coverage": [
+          "broken-reference",
+          "cross-document"
+        ],
+        "query": {
+          "maxDepth": 5,
+          "maxVisited": 200,
+          "maxEdges": 1000,
+          "maxResults": 50,
+          "systemId": "dispatch",
+          "controlId": "human-oversight",
+          "includeArchived": false
+        },
+        "eligiblePassageIds": [
+          "dispatch-editorial@1:186-243",
+          "dispatch-editorial@1:44-168",
+          "dispatch-gates@2:224-348",
+          "dispatch-gates@2:370-688",
+          "dispatch-gates@2:46-208",
+          "dispatch-gates@2:709-820",
+          "dispatch-policy@1:199-271",
+          "dispatch-policy@1:47-186",
+          "dispatch-runbook@1:181-255",
+          "dispatch-runbook@1:34-169",
+          "dispatch-signoff@1:119-198",
+          "dispatch-signoff@1:34-107"
+        ]
+      },
+      {
+        "id": "retrieval-012",
+        "systemId": "dispatch",
+        "controlId": "two-person-gate",
+        "includeArchived": true,
+        "queryText": "Find documentation of the Two-person Gate approval control across all included Dispatch register revisions.",
+        "lexicalTerms": [
+          "countersign",
+          "countersignature",
+          "authorization"
+        ],
+        "coverage": [
+          "archived",
+          "control-alias",
+          "broken-reference"
+        ],
+        "query": {
+          "maxDepth": 5,
+          "maxVisited": 200,
+          "maxEdges": 1000,
+          "maxResults": 50,
+          "systemId": "dispatch",
+          "controlId": "two-person-gate",
+          "includeArchived": true
+        },
+        "eligiblePassageIds": [
+          "dispatch-editorial@1:186-243",
+          "dispatch-editorial@1:44-168",
+          "dispatch-gates@1:40-157",
+          "dispatch-gates@2:224-348",
+          "dispatch-gates@2:370-688",
+          "dispatch-gates@2:46-208",
+          "dispatch-gates@2:709-820",
+          "dispatch-policy@1:199-271",
+          "dispatch-policy@1:47-186",
+          "dispatch-runbook@1:181-255",
+          "dispatch-runbook@1:34-169",
+          "dispatch-signoff@1:119-198",
+          "dispatch-signoff@1:34-107"
+        ]
+      },
+      {
+        "id": "retrieval-013",
+        "systemId": "tutor",
+        "controlId": "human-oversight",
+        "includeArchived": false,
+        "queryText": "Find documentation of required human approval before the Study tutor executes recommendations.",
+        "lexicalTerms": [
+          "human",
+          "humans",
+          "approval",
+          "approve",
+          "review",
+          "reviews",
+          "supervisor",
+          "operator",
+          "operators",
+          "override",
+          "automatically"
+        ],
+        "coverage": [
+          "vague",
+          "lexical"
+        ],
+        "query": {
+          "maxDepth": 5,
+          "maxVisited": 200,
+          "maxEdges": 1000,
+          "maxResults": 50,
+          "systemId": "tutor",
+          "controlId": "human-oversight",
+          "includeArchived": false
+        },
+        "eligiblePassageIds": [
+          "tutor-overview@1:122-192",
+          "tutor-overview@1:34-108"
+        ]
+      },
+      {
+        "id": "retrieval-014",
+        "systemId": "tutor",
+        "controlId": "human-oversight",
+        "includeArchived": false,
+        "queryText": "Find the Study tutor human-approval arrangement, using control and responsibility vocabulary.",
+        "lexicalTerms": [
+          "control",
+          "responsible"
+        ],
+        "coverage": [
+          "vague",
+          "terminology"
+        ],
+        "query": {
+          "maxDepth": 5,
+          "maxVisited": 200,
+          "maxEdges": 1000,
+          "maxResults": 50,
+          "systemId": "tutor",
+          "controlId": "human-oversight",
+          "includeArchived": false
+        },
+        "eligiblePassageIds": [
+          "tutor-overview@1:122-192",
+          "tutor-overview@1:34-108"
+        ]
+      },
+      {
+        "id": "retrieval-015",
+        "systemId": "tutor",
+        "controlId": "two-person-gate",
+        "includeArchived": false,
+        "queryText": "Find documentation of the Two-person Gate approval statement for the Study tutor.",
+        "lexicalTerms": [
+          "countersign",
+          "countersignature",
+          "authorization"
+        ],
+        "coverage": [
+          "scope",
+          "missing-relation"
+        ],
+        "query": {
+          "maxDepth": 5,
+          "maxVisited": 200,
+          "maxEdges": 1000,
+          "maxResults": 50,
+          "systemId": "tutor",
+          "controlId": "two-person-gate",
+          "includeArchived": false
+        },
+        "eligiblePassageIds": [
+          "tutor-overview@1:122-192",
+          "tutor-overview@1:34-108"
+        ]
+      },
+      {
+        "id": "retrieval-016",
+        "systemId": "ledger",
+        "controlId": "human-oversight",
+        "includeArchived": false,
+        "queryText": "Find documentation of human approval before the Ledger summarizer executes recommendations.",
+        "lexicalTerms": [
+          "human",
+          "humans",
+          "approval",
+          "approve",
+          "review",
+          "reviews",
+          "supervisor",
+          "operator",
+          "operators",
+          "override",
+          "automatically"
+        ],
+        "coverage": [
+          "missing-evidence"
+        ],
+        "query": {
+          "maxDepth": 5,
+          "maxVisited": 200,
+          "maxEdges": 1000,
+          "maxResults": 50,
+          "systemId": "ledger",
+          "controlId": "human-oversight",
+          "includeArchived": false
+        },
+        "eligiblePassageIds": [
+          "ledger-overview@1:115-210",
+          "ledger-overview@1:33-101"
+        ]
+      },
+      {
+        "id": "retrieval-017",
+        "systemId": "ledger",
+        "controlId": "two-person-gate",
+        "includeArchived": false,
+        "queryText": "Find documentation of the Two-person Gate approval statement for the Ledger summarizer.",
+        "lexicalTerms": [
+          "countersign",
+          "countersignature",
+          "authorization"
+        ],
+        "coverage": [
+          "missing-evidence",
+          "scope"
+        ],
+        "query": {
+          "maxDepth": 5,
+          "maxVisited": 200,
+          "maxEdges": 1000,
+          "maxResults": 50,
+          "systemId": "ledger",
+          "controlId": "two-person-gate",
+          "includeArchived": false
+        },
+        "eligiblePassageIds": [
+          "ledger-overview@1:115-210",
+          "ledger-overview@1:33-101"
+        ]
+      },
+      {
+        "id": "retrieval-018",
+        "systemId": "ledger",
+        "controlId": "human-oversight",
+        "includeArchived": false,
+        "queryText": "Find the Ledger summarizer human-approval arrangement, using its summary and amount vocabulary.",
+        "lexicalTerms": [
+          "summary",
+          "summaries",
+          "amounts"
+        ],
+        "coverage": [
+          "misleading",
+          "missing-evidence"
+        ],
+        "query": {
+          "maxDepth": 5,
+          "maxVisited": 200,
+          "maxEdges": 1000,
+          "maxResults": 50,
+          "systemId": "ledger",
+          "controlId": "human-oversight",
+          "includeArchived": false
+        },
+        "eligiblePassageIds": [
+          "ledger-overview@1:115-210",
+          "ledger-overview@1:33-101"
+        ]
+      }
+    ],
+    "id": "oversight-retrieval-1",
+    "corpusVersion": "synthetic-oversight-graph-1",
+    "rules": {
+      "version": "independent-retrieval-review-1",
+      "k": 5,
+      "relevanceDefinition": "Judge whether this exact eligible passage helps establish, dispute, or locate documentation of the selected control statement for the selected system. Explicit absence of approval and vague control arrangements may be relevant. Unrelated editorial review and mere topic overlap are not enough. A source reference may be a useful lead, but never assume the contents of a missing target. Do not infer legal compliance.",
+      "independence": "A human must confirm every query/passage pair using the query, control, exact passage and source references, without retrieval rankings, graph paths or Jev predictions. Coverage tags and illustrative labels elsewhere in the repository are not ground truth. No labels are generated or copied from search results.",
+      "pool": "All paragraphs in the selected system and revision scope, determined before retrieval. No pooling from top-ranked hits; no missing document is invented.",
+      "precision": "For fully binary-reviewed positive-reference queries, Precision@5 = relevant passages among the first five returned / 5. Missing result slots contribute zero, even when the eligible pool has fewer than five passages.",
+      "recall": "For fully binary-reviewed positive-reference queries, Recall@5 = relevant passages among the first five returned / all relevant passages in the entire eligible pool.",
+      "zeroRelevant": "Recall@5 and Precision@5 are null for fully reviewed queries with zero relevant passages. Report these separately: empty-return correctness, returned count, and irrelevant returned IDs. A zero-reference query is never assigned recall 1.",
+      "incomplete": "Null, uncertain, or unconfirmed labels are unresolved. No relevance metric is computed for a query unless its entire eligible pool has confirmed binary labels in a hash-verified frozen human reference. Unknown passages are never treated as irrelevant.",
+      "aggregate": "Paired macro averages use the same fully binary-reviewed positive-reference query IDs for both strategies. Micro denominators and query IDs are explicit. Zero-reference and incomplete queries are reported separately. These related synthetic wording/configuration variants are not independent population samples.",
+      "bounds": "Measure the actual bounded returned lists. Exhausted limits remain visible; do not call results exhaustive. Report missed/irrelevant passages both at five and across the full returned list.",
+      "ranking": "Use the existing deterministic strategy order with no evaluation-time reranking. Lexical terms are explicit query configuration supplied equally to both strategies through the existing configurable control input. Query prose is an annotation aid, not an LLM or free-text parser.",
+      "ablation": "For retrieval-001 compare depth 4 and 5; report full-list and top-five membership separately. Also remove curated manifest relationships while retaining pinned source links, corpus, query terms, revision selections and budgets. This is a bounded counterfactual, not proof of general superiority."
+    },
+    "software": {
+      "nodeMajor": 24,
+      "files": {
+        "src/ui/evidence.ts": "sha256:2ee554dadc545fef9aa754b5b7756569083b9d4930c32f91cd0799179aa1677b",
+        "src/ui/evidence-graph.ts": "sha256:df1563dc3a712e7fecbdfc4217bcc3f13c1494a0eb46afb3b6790283f3f2a124",
+        "src/retrieval-evaluation.ts": "sha256:7f48c38254107bbce0f4353ff80eac78020c50aa44a7f1b22de6a43f62f6500a",
+        "scripts/evaluate-retrieval.ts": "sha256:d9b4b3c1ca5a08645d0fcbfe5a24ee09d12e7dafee5b69d7ed048163491a1d79",
+        "package-lock.json": "sha256:f2ff11b001b5879fdcd0b75e6f01fd881a62afdbe6c5858e3ed09c361bddf9d7"
+      },
+      "graphVersion": "evidence-graph-1",
+      "searchVersion": "bounded-evidence-bfs-1"
+    }
+  },
+  "hashes": {
+    "corpus": "sha256:a0cf03571100e52f92896a0f123a91b94363ed144a2f19afb3d1cdaaa0a227a0",
+    "relations": "sha256:189c7fd5cc08bc45f239600e0283bc5dae1b7a6d69a3674dd1aadd3c2251cd9c",
+    "queries": "sha256:0f1d516dfb2879d2ed38fdf2bc21c576b4ac7830470e9d16fe718feb72db6d49",
+    "rules": "sha256:159327c6bd4817345b448fd85c8cca1746ef37752bbe6183cac4bf5c796eef92",
+    "software": "sha256:985875a51debcd0d2ec302cf7e2a7f0b0e1aaf0069798333db944350a4559a11",
+    "experiment": "sha256:d9b0061da1b716cf4d356d844320d86ae5f3572f984cbaf2ed347d9ae85872ec"
+  }
+}

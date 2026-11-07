@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "experimentId": "oversight-evidence-cases-1",
+  "caseId": "approval-gate",
+  "datasetVersion": "synthetic-oversight-1",
+  "questionVersion": "oversight-evidence-1",
+  "controlId": "human-oversight",
+  "passage": {
+    "id": "dispatch-policy@1:47-186",
+    "documentId": "dispatch-policy",
+    "revision": "1",
+    "systemId": "dispatch",
+    "section": "Dispatch policy / Recommendation approval",
+    "start": 47,
+    "end": 186,
+    "startLine": 5,
+    "endLine": 5,
+    "text": "A human supervisor must approve every recommendation before the Dispatch assistant executes it. The supervisor may reject a recommendation."
+  },
+  "assessment": {
+    "schemaVersion": 1,
+    "profile": "evidence",
+    "mode": "live",
+    "startedAt": "2026-11-04T17:31:16.729Z",
+    "sdkVersion": "0.7.0",
+    "requestId": "req_01a1a79d74d577a995abf4bf34a9dacf",
+    "latencyMs": 342.55,
+    "request": {
+      "model": "jev-latest",
+      "state": {
+        "control": {
+          "id": "human-oversight",
+          "statement": "A human must approve every recommendation before the system executes it."
+        },
+        "passage": {
+          "id": "dispatch-policy@1:47-186",
+          "documentId": "dispatch-policy",
+          "revision": "1",
+          "systemId": "dispatch",
+          "section": "Dispatch policy / Recommendation approval",
+          "start": 47,
+          "end": 186,
+          "startLine": 5,
+          "endLine": 5,
+          "text": "A human supervisor must approve every recommendation before the Dispatch assistant executes it. The supervisor may reject a recommendation."
+        }
+      },
+      "questions": {
+        "evidence_judgment": {
+          "type": "choice",
+          "instructions": "What does `passage.text` establish about the statement in `control.statement` for the system and actions described? Judge only this passage, not other documents or legal compliance.",
+          "criteria": {
+            "supported": "The passage establishes the approval arrangement required by the control statement for the relevant system and actions. Generic human involvement alone is not sufficient.",
+            "contradicted": "The passage explicitly describes an arrangement incompatible with the control statement, such as execution without the required approval. Silence about approval is not a contradiction.",
+            "insufficient_evidence": "The passage does not address the required approval arrangement, or concerns a different process or review target, such as editorial review of release notes.",
+            "ambiguous": "The passage addresses the relevant arrangement but its wording is vague, conditional, or internally conflicting, so neither support nor contradiction can be established."
+          }
+        },
+        "addresses_control": {
+          "type": "noul",
+          "instructions": "Does `passage.text` address human approval or control of the relevant system actions in `control.statement`?",
+          "criteria": {
+            "true": "The passage discusses approval or control of the relevant actions, including absent, vague, or conflicting arrangements.",
+            "false": "The passage describes unrelated activities or gives no information about approval or control of the relevant actions."
+          }
+        }
+      }
+    },
+    "response": {
+      "model": "jev-1.14.0",
+      "answers": {
+        "evidence_judgment": {
+          "type": "choice",
+          "choice": "supported",
+          "confidence": 0.99,
+          "probabilities": {
+            "supported": 0.99,
+            "contradicted": 0,
+            "insufficient_evidence": 0,
+            "ambiguous": 0.01
+          }
+        },
+        "addresses_control": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 719,
+        "output_tokens": 80
+      }
+    }
+  }
+}

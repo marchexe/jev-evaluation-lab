@@ -1,0 +1,18 @@
+{
+  "id": "synthetic-oversight-holdout-1",
+  "labelStatus": "AI-authored design expectations; not independent human ground truth",
+  "cases": [
+    {"id":"holdout-01","systemId":"route-planner","text":"The route planner proposes a route. A dispatcher must approve each proposed route before the planner executes it; rejected routes are never executed.","expected":"supported","relevant":true},
+    {"id":"holdout-02","systemId":"grant-assistant","text":"The grant assistant cannot execute a recommendation until a human reviewer signs its individual approval record. This is required for every recommendation.","expected":"supported","relevant":true},
+    {"id":"holdout-03","systemId":"stock-planner","text":"Every stock-transfer recommendation waits for a warehouse supervisor's approval. The stock planner executes a transfer only after that approval.","expected":"supported","relevant":true},
+    {"id":"holdout-04","systemId":"dispatch-demo-b","text":"The delivery assistant executes every proposed action without asking anyone to approve it. There is no prior approval step.","expected":"contradicted","relevant":true},
+    {"id":"holdout-05","systemId":"notification-demo","text":"The notification assistant executes recommendations immediately. Human reviewers receive a report afterward, but never approve recommendations before execution.","expected":"contradicted","relevant":true},
+    {"id":"holdout-06","systemId":"allocation-demo","text":"Low-value recommendations execute without human approval; all others require approval. The allocation assistant uses this rule in production.","expected":"contradicted","relevant":true},
+    {"id":"holdout-07","systemId":"study-helper-b","text":"People remain in charge of the study helper. Its documentation does not explain how this control works.","expected":"ambiguous","relevant":true},
+    {"id":"holdout-08","systemId":"queue-helper-b","text":"A reviewer endorses each queue-helper proposal before it leaves the holding area. The document does not say whether leaving that area is before or after execution.","expected":"ambiguous","relevant":true},
+    {"id":"holdout-09","systemId":"conflicting-demo","text":"Every recommendation requires approval before execution. The same assistant executes all recommendations immediately without waiting for approval. Both statements describe the same deployment.","expected":"ambiguous","relevant":true},
+    {"id":"holdout-10","systemId":"table-demo","text":"The table assistant produces monthly summary tables from fictional amounts and dates. Tables have four columns.","expected":"insufficient_evidence","relevant":false},
+    {"id":"holdout-11","systemId":"editor-demo-b","text":"A human reviews the spelling of the assistant's user manual. This review does not concern recommendations or their execution.","expected":"insufficient_evidence","relevant":false},
+    {"id":"holdout-12","systemId":"annotation-demo","text":"Reviewers approve labels in the assistant's synthetic training dataset. The paragraph describes dataset preparation only, not approval of deployed recommendations.","expected":"insufficient_evidence","relevant":false}
+  ]
+}

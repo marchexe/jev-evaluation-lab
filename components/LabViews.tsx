@@ -6,6 +6,7 @@ import { compareAssessments, type difference } from '../src/ui/comparison';
 import { evaluateRecords } from '../src/ui/evaluation';
 import { reviewCount } from '../src/ui/reviews';
 import { downloadJson, exportHistory } from '../src/ui/history';
+import { configurationIdentity } from '../src/question-config.js';
 
 function value(value: unknown) { return value == null ? 'Missing' : String(value); }
 function delta(value: number | null) { return value == null ? 'Missing' : value > 0 ? `+${value}` : String(value); }
@@ -70,11 +71,17 @@ export function AssessmentTable({ records, onOpen }: { records: AssessmentRecord
 }
 
 export function EvaluationView({ records, onOpen }: { records: AssessmentRecord[]; onOpen: (record: AssessmentRecord) => void }) {
-  const stats = evaluateRecords(records);
+  const [model, setModel] = useState(''); const [questionKey, setQuestionKey] = useState('');
+  const configurations = [...new Map(records.map((r) => [configurationIdentity(r.assessment.request.questions), r.assessment])).entries()];
+  const selected = records.filter((r) => (!model || r.assessment.response.model === model)
+    && (!questionKey || configurationIdentity(r.assessment.request.questions) === questionKey));
+  const stats = evaluateRecords(selected);
   const fields = [...new Set(records.flatMap((record) => Object.keys(record.assessment.response.answers)))];
   return <section className="lab-view" aria-label="Evaluation"><div className="view-heading"><h2>Evaluation</h2>
     <button disabled={!records.length} onClick={() => downloadJson('jev-evaluation.json', exportHistory(records))}>Export assessments + reviews</button></div>
-    <p className="view-note">Descriptive reviewer agreement and error, not validated accuracy or model calibration. Overall feedback is excluded. Results are pooled across saved cases and model versions.</p>
+    <p className="view-note">Descriptive reviewer agreement and error, not validated accuracy or model calibration. Overall feedback is excluded. Unfiltered summaries pool saved cases, models and question definitions; select filters for narrower comparisons.</p>
+    <div className="comparison-selectors"><label>Assessment actual model<select value={model} onChange={(e) => setModel(e.target.value)}><option value="">All actual models (pooled)</option>{[...new Set(records.map((r) => r.assessment.response.model))].map((m) => <option key={m}>{m}</option>)}</select></label>
+      <label>Assessment question definitions<select value={questionKey} onChange={(e) => setQuestionKey(e.target.value)}><option value="">All definitions (pooled)</option>{configurations.map(([key, assessment], i) => <option key={key} value={key}>{(assessment as AssessmentRecord['assessment'] & { questionConfiguration?: { version: string } }).questionConfiguration?.version ?? 'Original recorded questions'} · definition {i + 1}</option>)}</select></label></div>
     <div className="table-scroll"><table className="lab-table" aria-label="Evaluation statistics"><thead><tr><th>Metric</th><th>Value</th><th>Sample / denominator</th></tr></thead><tbody>
       <tr><th>Reviewed assessments</th><td>{stats.reviewedAssessments} / {stats.savedAssessments}</td><td>At least one saved field review / all saved assessments</td></tr>
       <tr><th>Choice agreement</th><td>{stats.choiceAgreement.n ? `${stats.choiceAgreement.matches} / ${stats.choiceAgreement.n} (${(100 * stats.choiceAgreement.rate!).toFixed(1)}%)` : 'Not available'}</td>
@@ -88,6 +95,6 @@ export function EvaluationView({ records, onOpen }: { records: AssessmentRecord[
     <h3 className="section-title">Review judgments by field</h3><div className="table-scroll"><table className="lab-table" aria-label="Field review counts"><thead><tr><th>Field</th><th>Correct</th><th>Incorrect</th><th>Uncertain</th><th>Reviewed fields (n)</th></tr></thead>
       <tbody>{fields.map((field) => { const count = stats.fields[field] ?? { correct: 0, incorrect: 0, uncertain: 0, total: 0 }; return <tr key={field}><th><code>{field}</code></th><td>{count.correct}</td><td>{count.incorrect}</td><td>{count.uncertain}</td><td>{count.total}</td></tr>; })}</tbody>
     </table></div>
-    <h3 className="section-title">Assessed cases</h3><AssessmentTable records={records} onOpen={onOpen} />
+    <h3 className="section-title">Assessed cases</h3><AssessmentTable records={selected} onOpen={onOpen} />
   </section>;
 }

@@ -14,6 +14,10 @@ import {
 } from '../src/ui/history';
 import { JevAssessmentCard } from './JevAssessmentCard';
 import { AssessmentTable, CompareView, EvaluationView } from './LabViews';
+import { EvidenceExplorer } from './EvidenceExplorer';
+import { QuestionEditor, type QuestionConfiguration } from './QuestionEditor';
+import { defaultConfigurations, configurationIdentity } from '../src/question-config.js';
+import { importAssessmentHistory, parseImport, MAX_IMPORT_BYTES } from '../src/ui/import-export';
 
 const RecordContext = createContext<{
   records: AssessmentRecord[]; rate: (id: string, feedback: Feedback) => void;
@@ -46,17 +50,19 @@ function messagesFor(record: AssessmentRecord): ThreadMessageLike[] {
 }
 
 export default function AssessmentWorkspace({ liveEnabled = false }: { liveEnabled?: boolean }) {
-  const [tab, setTab] = useState<'Assess' | 'Compare' | 'Evaluate' | 'History'>('Assess');
+  const [tab, setTab] = useState<'Assess' | 'Compare' | 'Evaluate' | 'History' | 'Evidence'>('Assess');
   const [records, setRecords] = useState<AssessmentRecord[]>([]);
   const recordsRef = useRef<AssessmentRecord[]>([]);
   const [messages, setMessages] = useState<ThreadMessageLike[]>([]);
   const [isRunning, setIsRunning] = useState(false);
+  const [evidenceRunning, setEvidenceRunning] = useState(false);
   const [ready, setReady] = useState(false);
   const [storageError, setStorageError] = useState('');
   const [notice, setNotice] = useState('');
   const [error, setError] = useState('');
   const [selectedExample, setSelectedExample] = useState('');
   const [activeId, setActiveId] = useState<string | null>(null);
+  const [questionConfiguration, setQuestionConfiguration] = useState<QuestionConfiguration>(defaultConfigurations.governance);
   const controllerRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
@@ -90,7 +96,8 @@ export default function AssessmentWorkspace({ liveEnabled = false }: { liveEnabl
     try {
       const response = await fetch('/api/assess', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ description, live: true }), signal: controller.signal,
+        body: JSON.stringify({ description, live: true,
+          ...(configurationIdentity(questionConfiguration) === configurationIdentity(defaultConfigurations.governance) ? {} : { questionConfiguration }) }), signal: controller.signal,
       });
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || 'Assessment failed.');
@@ -121,14 +128,14 @@ export default function AssessmentWorkspace({ liveEnabled = false }: { liveEnabl
   }), [records]);
 
   function openRecord(record: AssessmentRecord) {
-    if (controllerRef.current) return;
+    if (controllerRef.current || evidenceRunning) return;
     setTab('Assess');
     setMessages(messagesFor(record)); setActiveId(record.id); setError(''); setNotice('');
     runtime.thread.composer.setText('');
   }
 
   function newAssessment() {
-    if (controllerRef.current) return;
+    if (controllerRef.current || evidenceRunning) return;
     setTab('Assess');
     setMessages([]); setActiveId(null); setError(''); setNotice('');
     setSelectedExample('');
@@ -136,7 +143,7 @@ export default function AssessmentWorkspace({ liveEnabled = false }: { liveEnabl
   }
 
   function clearHistory() {
-    if (controllerRef.current || !window.confirm('Delete all assessments and feedback saved in this browser? Export anything you want to keep first.')) return;
+    if (controllerRef.current || evidenceRunning || !window.confirm('Delete all assessments and feedback saved in this browser? Export anything you want to keep first.')) return;
     try {
       localStorage.removeItem(HISTORY_KEY);
       recordsRef.current = []; setRecords([]); setMessages([]); setActiveId(null); setStorageError('');
@@ -147,32 +154,32 @@ export default function AssessmentWorkspace({ liveEnabled = false }: { liveEnabl
     <div className="workspace">
       <aside className="sidebar">
         <a href="/" className="brand">Jev <span>Evaluation Lab</span></a>
-        <button className="new-assessment" onClick={newAssessment} disabled={isRunning}>New assessment</button>
+        <button className="new-assessment" onClick={newAssessment} disabled={isRunning || evidenceRunning}>New assessment</button>
         <div className="history-heading"><h2>Assessment history</h2><span>{records.length}</span></div>
         <nav className="history-list" aria-label="Assessment history">
           {records.length === 0 && <p className="empty-history">No assessments</p>}
-          {records.map((record) => <button key={record.id} disabled={isRunning} onClick={() => openRecord(record)}
+          {records.map((record) => <button key={record.id} disabled={isRunning || evidenceRunning} onClick={() => openRecord(record)}
             className={`history-item ${activeId === record.id ? 'active' : ''}`}>
             <span className="history-title">{record.description}</span>
             <span className="history-date">{new Date(record.timestamp).toLocaleDateString()}<span>{record.feedback.rating === 'positive' ? 'Correct' : record.feedback.rating === 'negative' ? 'Incorrect' : 'Not rated'}</span></span>
           </button>)}
         </nav>
         <div className="sidebar-actions"><button disabled={!records.length} onClick={() => downloadJson('jev-history.json', exportHistory(records))}>Export history</button>
-          <button disabled={isRunning || (!records.length && !storageError)} onClick={clearHistory}>Clear history</button></div>
+          <button disabled={isRunning || evidenceRunning || (!records.length && !storageError)} onClick={clearHistory}>Clear history</button></div>
         <div className="sidebar-footer">Browser storage</div>
       </aside>
 
       <main className="main-panel">
-        <header className="topbar"><h1>Jev assessment <span className="muted">/ Evaluation Lab</span></h1><span className="profile-badge">profile: governance</span></header>
-        <nav className="lab-tabs" aria-label="Evaluation workspace">{(['Assess', 'Compare', 'Evaluate', 'History'] as const).map((name) =>
-          <button key={name} disabled={isRunning} aria-current={tab === name ? 'page' : undefined} onClick={() => setTab(name)}>{name}</button>)}</nav>
+        <header className="topbar"><h1>Jev Evaluation Lab</h1><span className="profile-badge">synthetic research workspace</span></header>
+        <nav className="lab-tabs" aria-label="Evaluation workspace">{(['Assess', 'Compare', 'Evaluate', 'History', 'Evidence'] as const).map((name) =>
+          <button key={name} disabled={isRunning || evidenceRunning} aria-current={tab === name ? 'page' : undefined} onClick={() => setTab(name)}>{name}</button>)}</nav>
         <ThreadPrimitive.Root className="assessment-thread">
           {tab === 'Assess' && <>
           <div className="composer-wrap"><ComposerPrimitive.Root className="composer">
             <div className="input-toolbar">
               <label htmlFor="description" className="composer-label">AI system description</label>
               <div className="example-picker"><label htmlFor="example">Synthetic example</label>
-                <select id="example" disabled={isRunning} value={selectedExample} onChange={(event) => {
+                <select id="example" disabled={isRunning || evidenceRunning} value={selectedExample} onChange={(event) => {
                   setSelectedExample(event.target.value);
                   const entry = cases.find((item) => item.id === event.target.value);
                   if (entry) runtime.thread.composer.setText(entry.description);
@@ -189,6 +196,7 @@ export default function AssessmentWorkspace({ liveEnabled = false }: { liveEnabl
               {isRunning ? <ComposerPrimitive.Cancel className="analyze-button cancel">Cancel request</ComposerPrimitive.Cancel>
                 : <ComposerPrimitive.Send className="analyze-button" disabled={!ready || !!storageError || !liveEnabled}>Analyze with Jev</ComposerPrimitive.Send>}</div>
           </ComposerPrimitive.Root><p className="composer-note">Analyze sends the description to TypeSafe and incurs API usage. No legal determination.</p></div>
+          <div className="question-editor-wrap"><QuestionEditor kind="governance" disabled={isRunning} onApply={setQuestionConfiguration} /></div>
           <ThreadPrimitive.Viewport className="thread-viewport">
             <div className="thread-content">
               {!liveEnabled && <p className="notice" role="status">Live inference is disabled on this server. Saved assessments, comparison, evaluation, and reviews remain available.</p>}
@@ -205,8 +213,17 @@ export default function AssessmentWorkspace({ liveEnabled = false }: { liveEnabl
           {tab !== 'Assess' && <div className="lab-panel">
             {tab === 'Compare' && <CompareView records={records} />}
             {tab === 'Evaluate' && <EvaluationView records={records} onOpen={openRecord} />}
+            {(tab === 'Evidence' || tab === 'Evaluate') && <EvidenceExplorer summaryOnly={tab === 'Evaluate'} liveEnabled={liveEnabled} isJudging={evidenceRunning} onRunningChange={setEvidenceRunning} />}
             {tab === 'History' && <section className="lab-view" aria-label="Saved assessment history"><div className="view-heading"><h2>History</h2><button disabled={!records.length} onClick={() => downloadJson('jev-history.json', exportHistory(records))}>Export assessments + reviews</button></div>
-              <p className="view-note">Local to this browser. Opening a saved assessment never runs inference. Overall feedback is preserved.</p><AssessmentTable records={records} onOpen={openRecord} /></section>}
+              <p className="view-note">Local to this browser. Opening or importing saved assessments never runs inference. Conflicting IDs are rejected.</p>
+              <label>Import history JSON<input type="file" accept="application/json,.json" disabled={!ready || !!storageError || isRunning} onChange={async (event) => {
+                const file = event.target.files?.[0]; event.target.value = ''; if (!file) return;
+                try { if (file.size > MAX_IMPORT_BYTES) throw new Error('File exceeds 2 MB.');
+                  const next = importAssessmentHistory(parseImport(await file.text()), recordsRef.current); commit(next); setNotice('History imported; no inference started.');
+                } catch (failure) { setNotice(failure instanceof Error ? failure.message : 'Import failed; saved history was not replaced.'); }
+              }} /></label>
+              {notice && <p role="status" className="view-note">{notice}</p>}{storageError && <p role="alert">{storageError}</p>}
+              <AssessmentTable records={records} onOpen={openRecord} /></section>}
           </div>}
         </ThreadPrimitive.Root>
       </main>

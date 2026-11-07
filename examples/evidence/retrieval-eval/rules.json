@@ -1,0 +1,15 @@
+{
+  "version": "independent-retrieval-review-1",
+  "k": 5,
+  "relevanceDefinition": "Judge whether this exact eligible passage helps establish, dispute, or locate documentation of the selected control statement for the selected system. Explicit absence of approval and vague control arrangements may be relevant. Unrelated editorial review and mere topic overlap are not enough. A source reference may be a useful lead, but never assume the contents of a missing target. Do not infer legal compliance.",
+  "independence": "A human must confirm every query/passage pair using the query, control, exact passage and source references, without retrieval rankings, graph paths or Jev predictions. Coverage tags and illustrative labels elsewhere in the repository are not ground truth. No labels are generated or copied from search results.",
+  "pool": "All paragraphs in the selected system and revision scope, determined before retrieval. No pooling from top-ranked hits; no missing document is invented.",
+  "precision": "For fully binary-reviewed positive-reference queries, Precision@5 = relevant passages among the first five returned / 5. Missing result slots contribute zero, even when the eligible pool has fewer than five passages.",
+  "recall": "For fully binary-reviewed positive-reference queries, Recall@5 = relevant passages among the first five returned / all relevant passages in the entire eligible pool.",
+  "zeroRelevant": "Recall@5 and Precision@5 are null for fully reviewed queries with zero relevant passages. Report these separately: empty-return correctness, returned count, and irrelevant returned IDs. A zero-reference query is never assigned recall 1.",
+  "incomplete": "Null, uncertain, or unconfirmed labels are unresolved. No relevance metric is computed for a query unless its entire eligible pool has confirmed binary labels in a hash-verified frozen human reference. Unknown passages are never treated as irrelevant.",
+  "aggregate": "Paired macro averages use the same fully binary-reviewed positive-reference query IDs for both strategies. Micro denominators and query IDs are explicit. Zero-reference and incomplete queries are reported separately. These related synthetic wording/configuration variants are not independent population samples.",
+  "bounds": "Measure the actual bounded returned lists. Exhausted limits remain visible; do not call results exhaustive. Report missed/irrelevant passages both at five and across the full returned list.",
+  "ranking": "Use the existing deterministic strategy order with no evaluation-time reranking. Lexical terms are explicit query configuration supplied equally to both strategies through the existing configurable control input. Query prose is an annotation aid, not an LLM or free-text parser.",
+  "ablation": "For retrieval-001 compare depth 4 and 5; report full-list and top-five membership separately. Also remove curated manifest relationships while retaining pinned source links, corpus, query terms, revision selections and budgets. This is a bounded counterfactual, not proof of general superiority."
+}

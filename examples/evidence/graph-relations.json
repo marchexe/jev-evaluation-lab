@@ -1,0 +1,13 @@
+{
+  "version": "oversight-links-1",
+  "currentRevisions": { "dispatch-gates": "2" },
+  "controls": [
+    { "id": "two-person-gate", "title": "Two-person Gate", "statement": "A human must approve every recommendation before the system executes it.", "assessmentField": "human_oversight_evidence", "terms": ["countersign", "countersignature", "authorization"] }
+  ],
+  "relationships": [
+    { "id": "register-control-alias", "kind": "related_control", "fromControl": "human-oversight", "toControl": "two-person-gate", "source": { "documentId": "dispatch-gates", "revision": "2", "section": "Dispatch gate register / Control mapping", "quote": "This register calls Human Oversight the Two-person Gate control for the Dispatch assistant." } },
+    { "id": "register-rule-scope", "kind": "control_section", "fromControl": "two-person-gate", "target": { "documentId": "dispatch-gates", "revision": "2", "section": "Dispatch gate register / Gate rule" }, "source": { "documentId": "dispatch-gates", "revision": "2", "section": "Dispatch gate register / Control mapping", "quote": "The Gate rule and Related sources sections specify this local control." } },
+    { "id": "register-sources-scope", "kind": "control_section", "fromControl": "two-person-gate", "target": { "documentId": "dispatch-gates", "revision": "2", "section": "Dispatch gate register / Related sources" }, "source": { "documentId": "dispatch-gates", "revision": "2", "section": "Dispatch gate register / Control mapping", "quote": "The Gate rule and Related sources sections specify this local control." } },
+    { "id": "register-supersedes", "kind": "supersedes", "documentId": "dispatch-gates", "revision": "2", "previousRevision": "1", "source": { "documentId": "dispatch-gates", "revision": "2", "section": "Dispatch gate register / Revision notes", "quote": "Revision 2 supersedes revision 1 of this register." } }
+  ]
+}

@@ -97,9 +97,9 @@ test('server-disabled inference preserves saved reviews and all offline views', 
   await seedSavedRecords(page); await page.goto('http://127.0.0.1:3198');
   await expect(page.getByRole('button', { name: 'Analyze with Jev' })).toBeDisabled();
   await expect(page.getByText('Live inference is disabled on this server.', { exact: false })).toBeVisible();
-  for (const name of ['Compare', 'Evaluate', 'History']) {
+  for (const [name, region] of [['Compare', 'Compare assessments'], ['Evaluate', 'Evaluation'], ['Evidence', 'Governance Evidence Explorer'], ['History', 'Saved assessment history']]) {
     await page.getByRole('button', { name, exact: true }).click();
-    await expect(page.locator('.lab-view')).toBeVisible();
+    await expect(page.getByRole('region', { name: region, exact: true })).toBeVisible();
   }
   await page.getByRole('button', { name: 'Open assessment recorded-a', exact: true }).click();
   await expect(page.getByRole('article', { name: 'Jev assessment' })).toBeVisible();

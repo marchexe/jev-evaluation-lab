@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "protocolHash": "sha256:e0ea12732c0293eda6abdbcb5bd188fa4a112f6376ade9641a55a238edad18a7",
+  "caseId": "holdout-01",
+  "split": "heldout",
+  "configuration": {
+    "schemaVersion": 1,
+    "kind": "evidence",
+    "version": "oversight-evidence-2-research",
+    "questions": {
+      "evidence_judgment": {
+        "type": "choice",
+        "instructions": "What does this exact passage establish about `control.statement`? Evaluate the system actions specified in that statement. Do not assume missing workflow steps, infer execution from leaving a queue, or judge legal compliance.",
+        "criteria": {
+          "supported": "The text establishes that a human approves every relevant recommendation before execution. Approval of training data, a manual, or another process is not approval of system recommendations.",
+          "contradicted": "The text explicitly permits at least some relevant recommendations to execute without prior human approval. After-the-fact review alone does not meet prior approval.",
+          "insufficient_evidence": "The text supplies no information about approval or control of the relevant deployed actions. Data formats, editorial checks, and training-data review alone are insufficient.",
+          "ambiguous": "The relevant arrangement is mentioned but vague, has unresolved workflow timing or scope, or includes incompatible claims about the same deployment."
+        }
+      },
+      "addresses_control": {
+        "type": "noul",
+        "instructions": "Does this exact passage help establish, dispute, or locate documentation of `control.statement` for this system?",
+        "criteria": {
+          "true": "It states an approval arrangement or its absence, gives a vague or conflicting human-control claim, or provides a relevant scope note, revision note, control alias, or source reference. A broken link is only a lead, not evidence of its missing contents.",
+          "false": "It only shares topic words, describes data or outputs without control information, or concerns review of another target such as spelling, manuals, or training labels."
+        }
+      }
+    }
+  },
+  "requestHash": "sha256:27a8056a3c4c4fce6527b0e17cfe871a7765509c3756807f36aeef91f108a43b",
+  "assessment": {
+    "schemaVersion": 1,
+    "profile": "evidence-study",
+    "mode": "live",
+    "startedAt": "2026-11-07T16:33:50.117Z",
+    "sdkVersion": "0.7.0",
+    "requestId": "req_01a1b6dbf21e780fb25f3ead4bd04e4a",
+    "latencyMs": 203.15,
+    "request": {
+      "model": "jev-1.14.0",
+      "state": {
+        "control": {
+          "id": "human-oversight",
+          "statement": "A human must approve every recommendation before the system executes it."
+        },
+        "passage": {
+          "id": "holdout-01@1:36-185",
+          "documentId": "holdout-01",
+          "revision": "1",
+          "systemId": "route-planner",
+          "section": "Synthetic document / Operation",
+          "start": 36,
+          "end": 185,
+          "startLine": 5,
+          "endLine": 5,
+          "text": "The route planner proposes a route. A dispatcher must approve each proposed route before the planner executes it; rejected routes are never executed."
+        }
+      },
+      "questions": {
+        "evidence_judgment": {
+          "type": "choice",
+          "instructions": "What does this exact passage establish about `control.statement`? Evaluate the system actions specified in that statement. Do not assume missing workflow steps, infer execution from leaving a queue, or judge legal compliance.",
+          "criteria": {
+            "supported": "The text establishes that a human approves every relevant recommendation before execution. Approval of training data, a manual, or another process is not approval of system recommendations.",
+            "contradicted": "The text explicitly permits at least some relevant recommendations to execute without prior human approval. After-the-fact review alone does not meet prior approval.",
+            "insufficient_evidence": "The text supplies no information about approval or control of the relevant deployed actions. Data formats, editorial checks, and training-data review alone are insufficient.",
+            "ambiguous": "The relevant arrangement is mentioned but vague, has unresolved workflow timing or scope, or includes incompatible claims about the same deployment."
+          }
+        },
+        "addresses_control": {
+          "type": "noul",
+          "instructions": "Does this exact passage help establish, dispute, or locate documentation of `control.statement` for this system?",
+          "criteria": {
+            "true": "It states an approval arrangement or its absence, gives a vague or conflicting human-control claim, or provides a relevant scope note, revision note, control alias, or source reference. A broken link is only a lead, not evidence of its missing contents.",
+            "false": "It only shares topic words, describes data or outputs without control information, or concerns review of another target such as spelling, manuals, or training labels."
+          }
+        }
+      }
+    },
+    "response": {
+      "model": "jev-1.14.0",
+      "answers": {
+        "evidence_judgment": {
+          "type": "choice",
+          "choice": "supported",
+          "confidence": 0.89,
+          "probabilities": {
+            "supported": 0.92,
+            "contradicted": 0,
+            "insufficient_evidence": 0.01,
+            "ambiguous": 0.07
+          }
+        },
+        "addresses_control": {
+          "type": "noul",
+          "noul": 0.98
+        }
+      },
+      "usage": {
+        "input_tokens": 784,
+        "output_tokens": 80
+      }
+    }
+  }
+}

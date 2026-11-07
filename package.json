@@ -9,7 +9,11 @@
     "typecheck": "next typegen && tsc --noEmit",
     "classify": "node scripts/classify.js",
     "test": "node --import tsx --import ./test-support/offline.js --test test/*.test.js test/*.test.tsx",
-    "test:browser": "playwright test"
+    "test:browser": "playwright test",
+    "eval:retrieval": "node --import tsx --import ./test-support/offline.js scripts/evaluate-retrieval.ts",
+    "lab": "node --import tsx scripts/lab.ts",
+    "experiment:evidence": "node --import tsx scripts/evidence-study.ts",
+    "audit:retrieval": "node --import tsx --import ./test-support/offline.js scripts/replay-exploratory-audit.ts"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "protocolHash": "sha256:e0ea12732c0293eda6abdbcb5bd188fa4a112f6376ade9641a55a238edad18a7",
+  "caseId": "dispatch-signoff@1:34-107",
+  "split": "development",
+  "configuration": {
+    "schemaVersion": 1,
+    "kind": "evidence",
+    "version": "oversight-evidence-1",
+    "questions": {
+      "evidence_judgment": {
+        "type": "choice",
+        "instructions": "What does `passage.text` establish about the statement in `control.statement` for the system and actions described? Judge only this passage, not other documents or legal compliance.",
+        "criteria": {
+          "supported": "The passage establishes the approval arrangement required by the control statement for the relevant system and actions. Generic human involvement alone is not sufficient.",
+          "contradicted": "The passage explicitly describes an arrangement incompatible with the control statement, such as execution without the required approval. Silence about approval is not a contradiction.",
+          "insufficient_evidence": "The passage does not address the required approval arrangement, or concerns a different process or review target, such as editorial review of release notes.",
+          "ambiguous": "The passage addresses the relevant arrangement but its wording is vague, conditional, or internally conflicting, so neither support nor contradiction can be established."
+        }
+      },
+      "addresses_control": {
+        "type": "noul",
+        "instructions": "Does `passage.text` address human approval or control of the relevant system actions in `control.statement`?",
+        "criteria": {
+          "true": "The passage discusses approval or control of the relevant actions, including absent, vague, or conflicting arrangements.",
+          "false": "The passage describes unrelated activities or gives no information about approval or control of the relevant actions."
+        }
+      }
+    }
+  },
+  "requestHash": "sha256:414f633b9dc52a2bb4d7e3e0ba3e5e36973cbc1fc558040e3801345be4cd2e4c",
+  "assessment": {
+    "schemaVersion": 1,
+    "profile": "evidence-study",
+    "mode": "live",
+    "startedAt": "2026-11-07T16:33:47.048Z",
+    "sdkVersion": "0.7.0",
+    "requestId": "req_01a1b6dbe6217da3a0377419216813e7",
+    "latencyMs": 165.5,
+    "request": {
+      "model": "jev-1.14.0",
+      "state": {
+        "control": {
+          "id": "human-oversight",
+          "statement": "A human must approve every recommendation before the system executes it."
+        },
+        "passage": {
+          "id": "dispatch-signoff@1:34-107",
+          "documentId": "dispatch-signoff",
+          "revision": "1",
+          "systemId": "dispatch",
+          "section": "Queue procedure / Final gate",
+          "start": 34,
+          "end": 107,
+          "startLine": 5,
+          "endLine": 5,
+          "text": "A staff member must countersign each proposal before it leaves the queue."
+        }
+      },
+      "questions": {
+        "evidence_judgment": {
+          "type": "choice",
+          "instructions": "What does `passage.text` establish about the statement in `control.statement` for the system and actions described? Judge only this passage, not other documents or legal compliance.",
+          "criteria": {
+            "supported": "The passage establishes the approval arrangement required by the control statement for the relevant system and actions. Generic human involvement alone is not sufficient.",
+            "contradicted": "The passage explicitly describes an arrangement incompatible with the control statement, such as execution without the required approval. Silence about approval is not a contradiction.",
+            "insufficient_evidence": "The passage does not address the required approval arrangement, or concerns a different process or review target, such as editorial review of release notes.",
+            "ambiguous": "The passage addresses the relevant arrangement but its wording is vague, conditional, or internally conflicting, so neither support nor contradiction can be established."
+          }
+        },
+        "addresses_control": {
+          "type": "noul",
+          "instructions": "Does `passage.text` address human approval or control of the relevant system actions in `control.statement`?",
+          "criteria": {
+            "true": "The passage discusses approval or control of the relevant actions, including absent, vague, or conflicting arrangements.",
+            "false": "The passage describes unrelated activities or gives no information about approval or control of the relevant actions."
+          }
+        }
+      }
+    },
+    "response": {
+      "model": "jev-1.14.0",
+      "answers": {
+        "evidence_judgment": {
+          "type": "choice",
+          "choice": "supported",
+          "confidence": 0.53,
+          "probabilities": {
+            "supported": 0.65,
+            "contradicted": 0.01,
+            "insufficient_evidence": 0.2,
+            "ambiguous": 0.14
+          }
+        },
+        "addresses_control": {
+          "type": "noul",
+          "noul": 0.97
+        }
+      },
+      "usage": {
+        "input_tokens": 717,
+        "output_tokens": 80
+      }
+    }
+  }
+}

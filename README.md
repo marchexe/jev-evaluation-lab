@@ -1,18 +1,11 @@
-# Jev Evaluation Lab
+﻿# Jev Evaluation Lab
 
 **Live demo:** https://jev-evaluation-lab-lovat.vercel.app/
 
-Jev Evaluation Lab is an experimental workspace for exploring structured outputs
-from [TypeSafe Jev](https://docs.typesafe.ai/sdk/javascript). It assesses AI system
-descriptions, asking about intended use, personal data, oversight, and completeness.
-
-I built the interface to look beyond a predicted label. Choice, Noul, and Score
-give me categories, statement probabilities, and rubric-based scores to inspect.
-I want to compare descriptions, record disagreements, and revisit saved judgments.
-
-The app runs a defined set of questions rather than generating conversational
-replies. Its focus is making model decisions inspectable, comparable, and
-reviewable, with human judgments kept separate from the model's original answers.
+An independent research workspace for TypeSafe Jev assessments, evidence search,
+and evaluation. It helps inspect what AI-system documentation says, compare model
+outputs, and record human reviews. It makes no legal compliance or high-risk decisions
+and is not an official TypeSafe product.
 
 ## What I want to explore
 
@@ -29,102 +22,125 @@ more reliable AI workflows? These are open questions, not established results.
 The governance assessment is a starting point for exploring evaluation methods
 that could eventually apply to other structured AI tasks.
 
-## Explore the web app
+## What works
 
-### Assess
+- **Assess:** classify a system description with five governance questions using
+  native Choice, Noul and Score. Choose from 15 synthetic examples or enter text.
+  Inspect full probabilities, the actual model, token usage and latency.
+- **Compare:** compare two saved assessments offline, including every available
+  probability, missing values, question-definition changes and performance metadata.
+- **Evaluate:** record field reviews and expected Choice/Score labels; inspect
+  descriptive agreement/error with explicit denominators and model/question filters.
+  Noul review remains qualitative. Overall feedback is preserved separately.
+- **History:** browser-local saved assessments, feedback, validated JSON import and
+  export. Import rejects conflicts and preserves original numeric precision.
+- **Evidence:** inspect synthetic Human Oversight documents with deterministic
+  Text Search or bounded Graph Search. See exact passages, immutable revisions,
+  source references and traversal paths; record separate relevance/evidence reviews.
+  An explicit action can ask Jev about one of six fixed passages.
+- **Question experiments:** edit instructions, Choice criteria, Noul criteria and
+  four-level Score rubrics. Apply/reset explicitly, import/export versioned JSON,
+  and preserve the exact executed wording with saved runs. Browsing or editing
+  never starts inference.
 
-Choose one of 15 synthetic examples across HR, finance, education, customer
-support, and ambiguity, or enter a description. Then select **Analyze with Jev**.
+There is one Next.js application, using React and assistant-ui. The TypeSafe SDK
+runs on the server. No graph database, LLM, embeddings, chat agent or Graph RAG
+layer is involved. Data and reviews stay in browser storage until exported.
 
-**Choice** selects a category with a probability for every option. **Noul** reports
-a statement's probability without an automatic yes/no threshold. **Score** gives a
-fractional position on an ordered rubric, with probabilities for every level.
+## Run locally
 
-| Assessment field | What to inspect |
-| --- | --- |
-| Intended use case — Choice | The main use selected from the available categories. |
-| Use case coverage — Noul | Whether the description supports a use within those categories. |
-| Personal data evidence — Choice | Documented processing, explicit exclusion, missing information, unclear claims, or conflicting claims. |
-| Human oversight evidence — Choice | A documented mechanism, explicit absence, missing information, unclear claims, or conflicting claims. |
-| Description completeness — Score | How fully the text explains purpose, people, inputs, outputs, and oversight on a 0–3 rubric. |
-
-Inspect the full distributions, criteria, and rubric alongside each prediction.
-Choice always selects an option, so read intended use together with coverage.
-Confidence summarizes distribution concentration; it is not verified correctness.
-Expandable technical details expose the request, response, model, usage, and latency.
-
-### Compare
-
-Select two saved assessments to compare descriptions, predictions, every option
-probability, Noul and Score values, actual model IDs, request metadata, latency,
-and token usage. Differences are B minus A; changed, unchanged, and missing values
-are distinguished.
-
-Try small wording changes while keeping the underlying system the same to spot
-decisions worth investigating. Comparison works offline without new Jev requests.
-
-### Evaluate
-
-Open a saved case from Evaluate, then expand **Field review** for each result you
-want to assess. Mark it **Correct**, **Incorrect**, or **Uncertain**, add a reviewer
-comment, and optionally supply an expected Choice category or Score level from
-0–3. Noul reviews use qualitative evidence judgments instead of numeric targets.
-Reviews can be edited or cleared without changing the original model answers.
-
-Evaluate aggregates judgment counts, Choice agreement where expected labels exist,
-and Score absolute error where expected levels exist. Reported latency and tokens
-are summarized for field-reviewed cases. Sample sizes and exclusions are explicit;
-these are descriptive review statistics, not validated accuracy or calibration.
-
-### History
-
-Reopen assessments, revisit feedback, and export individual results or collections
-with reviews as JSON, without further inference. History stays in this browser;
-it does not sync across browsers or domains. Export anything you want to keep.
-
-## A concrete experiment
-
-Compare `hr-recruitment-reviewed`, which describes ranking real job applicants,
-with `hr-synthetic-training`, which describes ranking fictional resumes in a
-recruiter training tool. Both examples are synthetic descriptions, not real
-applicant records. Ask whether the intended-use prediction stays the same, how
-the personal-data assessment differs, and where probabilities shift. Review
-ambiguous predictions and record your reasoning; no model results are assumed here.
-
-## How it works
-
-Description → Jev structured assessment → UI visualization → Human review → Comparison / evaluation.
-
-Next.js serves the app and server-side endpoint. The TypeSafe SDK calls Jev, and
-assistant-ui connects submissions and results. Saved data powers comparison and evaluation.
-
-## Getting started
-
-Try the [live demo](https://jev-evaluation-lab-lovat.vercel.app/) first, or use
-Node.js 24.x to run locally. In PowerShell:
+Use **Node.js 24.x** and the committed lockfile. In PowerShell:
 
 ```powershell
 npm.cmd ci
 if (!(Test-Path .env)) { Copy-Item .env.example .env }
+npm.cmd run dev
 ```
 
-To enable live assessments, set these in `.env`:
+Open **http://127.0.0.1:3000** (localhost also works). On other systems use `npm`
+in place of `npm.cmd`. Offline browsing, comparisons, reviews, recorded experiments
+and exports require no API key. Live web inference is disabled by default.
+
+For intentional paid inference, set the ignored `.env` or server environment:
 
 ```dotenv
-TYPESAFE_API_KEY=your_private_key
+TYPESAFE_API_KEY=your-server-key
+TYPESAFE_DEFAULT_MODEL=jev-latest
 JEV_LIVE_INFERENCE_ENABLED=true
 ```
 
-Run `npm.cmd run dev` and open http://127.0.0.1:3000. The key stays server-side;
-Analyze incurs API usage. Leave inference disabled to work with saved assessments.
+Restart after changing settings. **Analyze with Jev** and **Judge selected passage
+with Jev** each make one request; retries are disabled. Cancellation may still incur
+usage. Never expose the key through `NEXT_PUBLIC_*`. Protect hosted access and set
+provider budgets before enabling inference. CLI `--live` is a separate explicit opt-in.
 
-## Limitations and future direction
+## Why Graph Search?
 
-This is an experimental project, not a production compliance system. It evaluates
-descriptions, not real-world compliance. Human reviews can be wrong, and the small
-example set is not a validated benchmark. Browser-local history is not a backup.
+The Dispatch queue procedure says a staff member must countersign each proposal
+before it leaves the queue. The Human Oversight keyword list does not match that
+paragraph. Graph Search follows a quoted control alias and a pinned cross-document
+reference to retrieve the exact source through five hops.
 
-I want more systematic human-reviewed datasets, error analysis, and question-set
-iteration. I am also interested in entity alignment and possible applications to
-knowledge graphs; these are future investigations. This is an independent project,
-not an official TypeSafe product.
+That demonstrates candidate discovery, not proven relevance or compliance. The
+source currently ranks seventh, outside the top five. Graph also misses an
+unlinked approval policy under many query configurations and retains lexical
+false matches. See the [graph model and source-path example](examples/evidence/GRAPH_SEARCH.md).
+
+## Experiments and current evidence
+
+The [frozen retrieval experiment](examples/evidence/retrieval-eval/README.md) contains
+18 related configurations and 159 blank relevance judgments. The separate AI-assisted
+analysis is explicitly provisional; no independent human reference exists.
+
+A [recorded live Jev study](examples/evidence/jev-study/README.md) compares two fixed
+question configurations on 17 development and 12 held-out synthetic passages. All
+58 raw responses are available for offline replay. The alternative improves some
+classification boundaries but still promotes a known editorial distractor in its
+relevance Noul. **Production retrieval remains deterministic**; no model filter or
+reranker was adopted. These results use AI design expectations, not human validation.
+
+```powershell
+# Preview the original CLI without inference:
+npm.cmd run classify -- --profile governance --case hr-recruitment-reviewed
+# Preview an evidence request:
+npm.cmd run lab -- evidence --case approval-gate
+# Reproduce the explicitly provisional retrieval audit offline:
+npm.cmd run audit:retrieval
+# Preview the separately versioned live-study protocol:
+npm.cmd run experiment:evidence -- preview
+```
+
+The original technical CLI remains the default `npm.cmd run classify` profile.
+[Experiment instructions](docs/experiments.md) explain frozen replay, independent
+review and intentional paid repetitions. Builds and tests never automatically bill Jev.
+
+## Documentation
+
+- [Architecture and data flow](docs/architecture.md)
+- [Jev integration and editable configurations](docs/jev-integration.md)
+- [Graph Search, provenance and a verifiable example](examples/evidence/GRAPH_SEARCH.md)
+- [Experimental methodology and reproducibility](docs/experiments.md)
+- [API/CLI and validated JSON interchange](docs/api-cli.md)
+- [Limitations and future research](docs/limitations.md)
+- [Publication, security and manual Vercel deployment](docs/publication.md)
+- [Research preparation findings and verification](docs/research-review.md)
+
+## Verification
+
+```powershell
+npm.cmd test
+npm.cmd run typecheck
+npm.cmd run build
+# Install Chromium once if necessary: npx.cmd playwright install chromium
+npm.cmd run test:browser
+```
+
+Offline tests disable fetch; production browser tests block provider transport and
+replay labeled real recordings. Arithmetic examples are not invented model responses.
+Browser storage is origin-specific, bounded and not a backup. Export before clearing
+or moving domains. Reviews and descriptions can be sensitive; keep personal data out
+of public exports. Hosting authentication remains outside the application.
+
+Project metadata is `UNLICENSED` and `private: true`; no open-source license is granted.
+Third-party license notices and existing authorship remain intact. Integration and
+architectural references identify dependencies and inspirations, not endorsements.
