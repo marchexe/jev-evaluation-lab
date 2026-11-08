@@ -1,4 +1,8 @@
 'use client';
+import { useLanguage, LanguageSelector } from './LanguageProvider';
+import { TranslatedText } from './TranslatedText';
+import { translationFor } from './translations';
+
 
 import React, { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import {
@@ -14,6 +18,8 @@ import {
 } from '../src/ui/history';
 import { JevAssessmentCard } from './JevAssessmentCard';
 import { AssessmentTable, CompareView, EvaluationView } from './LabViews';
+import { DocumentLibrary, type DocumentSelection, type EvidenceSelection } from './DocumentLibrary';
+import type { Passage } from '../src/ui/evidence';
 import { EvidenceExplorer } from './EvidenceExplorer';
 import { QuestionEditor, type QuestionConfiguration } from './QuestionEditor';
 import { defaultConfigurations, configurationIdentity } from '../src/question-config.js';
@@ -25,6 +31,7 @@ const RecordContext = createContext<{
 }>({ records: [], rate: () => {}, review: () => {} });
 
 function ResultMessage() {
+
   const { records, rate, review } = useContext(RecordContext);
   return <MessagePrimitive.Root className="assistant-message">
     <MessagePrimitive.Parts>{({ part }) => {
@@ -38,7 +45,8 @@ function ResultMessage() {
 }
 
 function UserMessage() {
-  return <MessagePrimitive.Root className="user-message"><details><summary>Submitted description</summary><MessagePrimitive.Parts /></details></MessagePrimitive.Root>;
+  const { t } = useLanguage();
+  return <MessagePrimitive.Root className="user-message"><details><summary>{t("Beschreibung")}</summary><MessagePrimitive.Parts>{({ part }) => part.type === 'text' ? <TranslatedText text={part.text} /> : null}</MessagePrimitive.Parts></details></MessagePrimitive.Root>;
 }
 
 function messagesFor(record: AssessmentRecord): ThreadMessageLike[] {
@@ -50,7 +58,12 @@ function messagesFor(record: AssessmentRecord): ThreadMessageLike[] {
 }
 
 export default function AssessmentWorkspace({ liveEnabled = false }: { liveEnabled?: boolean }) {
-  const [tab, setTab] = useState<'Assess' | 'Compare' | 'Evaluate' | 'History' | 'Evidence'>('Assess');
+  const { t, language, displayLabel } = useLanguage();
+  const [tab, setTab] = useState<'Assess' | 'Vergleich' | 'Evaluate' | 'Verlauf' | 'Evidence' | 'Documents'>('Assess');
+  const [documentSelection, setDocumentSelection] = useState<DocumentSelection>();
+  const [evidenceSelection, setEvidenceSelection] = useState<EvidenceSelection>();
+  const [evaluationScope, setEvaluationScope] = useState<'systems' | 'evidence'>('systems');
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [records, setRecords] = useState<AssessmentRecord[]>([]);
   const recordsRef = useRef<AssessmentRecord[]>([]);
   const [messages, setMessages] = useState<ThreadMessageLike[]>([]);
@@ -66,11 +79,28 @@ export default function AssessmentWorkspace({ liveEnabled = false }: { liveEnabl
   const controllerRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
+    let preferred: 'light' | 'dark' = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    try {
+      const saved = localStorage.getItem('jev.ui.theme');
+      if (saved === 'light' || saved === 'dark') preferred = saved;
+    } catch { /* Theme selection remains available when browser storage is blocked. */ }
+    setTheme(preferred);
+    document.documentElement.dataset.theme = preferred;
+  }, []);
+
+  function toggleTheme() {
+    const next = theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem('jev.ui.theme', next); } catch { /* Keep the session preference. */ }
+  }
+
+  useEffect(() => {
     try {
       const saved = readHistory(localStorage);
       recordsRef.current = saved;
       setRecords(saved);
-    } catch { setStorageError('Browser history could not be read. Export stored data or clear history before analyzing.'); }
+    } catch { setStorageError('Verlauf nicht lesbar. Bitte exportieren oder leeren.'); }
     setReady(true);
     return () => controllerRef.current?.abort();
   }, []);
@@ -79,18 +109,27 @@ export default function AssessmentWorkspace({ liveEnabled = false }: { liveEnabl
     recordsRef.current = next;
     setRecords(next);
     try { writeHistory(localStorage, next); setStorageError(''); }
-    catch { setStorageError('History could not be saved in this browser. Your results are still available here; export them before leaving.'); }
+    catch { setStorageError('Speichern fehlgeschlagen. Ergebnisse vor dem Verlassen exportieren.'); }
+  }
+
+  function focusResults() {
+    requestAnimationFrame(() => {
+      const results = document.getElementById('analysis-results');
+      results?.focus({ preventScroll: true });
+    });
   }
 
   const onNew = async (message: AppendMessage) => {
     if (controllerRef.current || !ready || storageError || !liveEnabled) return;
-    const description = message.content.filter((part) => part.type === 'text').map((part) => part.text).join('\n').trim();
-    if (!description || description.length > 12_000) { setError('Enter a description of 1–12,000 characters.'); return; }
-    if (recordsRef.current.length >= MAX_HISTORY_RECORDS) { setError('History is full. Export and clear it before analyzing again.'); return; }
+    const draftDescription = message.content.filter((part) => part.type === 'text').map((part) => part.text).join('\n').trim();
+    const example = cases.find(entry => entry.id === selectedExample);
+    const description = example && draftDescription === translationFor(example.description) ? example.description : draftDescription;
+    if (!description || description.length > 12_000) { setError('Bitte 1–12.000 Zeichen eingeben.'); return; }
+    if (recordsRef.current.length >= MAX_HISTORY_RECORDS) { setError('Verlauf voll. Bitte exportieren und leeren.'); return; }
     const controller = new AbortController();
     controllerRef.current = controller;
     const id = crypto.randomUUID();
-    setMessages((previous) => [...previous, { id: `${id}-user`, role: 'user', content: [{ type: 'text', text: description }] }]);
+    setMessages([{ id: `${id}-user`, role: 'user', content: [{ type: 'text', text: description }] }]);
     setActiveId(null);
     setError(''); setNotice(''); setIsRunning(true);
     try {
@@ -100,15 +139,17 @@ export default function AssessmentWorkspace({ liveEnabled = false }: { liveEnabl
           ...(configurationIdentity(questionConfiguration) === configurationIdentity(defaultConfigurations.governance) ? {} : { questionConfiguration }) }), signal: controller.signal,
       });
       const result = await response.json();
-      if (!response.ok) throw new Error(result.error || 'Assessment failed.');
+      if (!response.ok) throw new Error(result.error || 'Analyse fehlgeschlagen.');
       if (controller.signal.aborted) return;
       const record = createRecord(result as Assessment, id);
       commit([record, ...recordsRef.current]);
       setActiveId(id);
       setMessages((previous) => [...previous, messagesFor(record)[1]]);
+      setNotice('Analyse gespeichert.');
+      focusResults();
     } catch (failure) {
-      if (controller.signal.aborted) setNotice('Request cancelled. Jev may already have processed it; no retry was made.');
-      else setError(failure instanceof Error ? failure.message : 'Assessment failed. No retry was made.');
+      if (controller.signal.aborted) setNotice('Abgebrochen. Kosten können bereits entstanden sein.');
+      else setError(failure instanceof Error ? failure.message : 'Analyse fehlgeschlagen. Keine Wiederholung.');
     } finally {
       controllerRef.current = null;
       setIsRunning(false);
@@ -121,6 +162,16 @@ export default function AssessmentWorkspace({ liveEnabled = false }: { liveEnabl
     onCancel: async () => { controllerRef.current?.abort(); },
   });
 
+  useEffect(() => {
+    const example = cases.find(entry => entry.id === selectedExample);
+    if (!example) return;
+    const current = runtime.thread.composer.getState().text;
+    const german = translationFor(example.description) ?? example.description;
+    if (current === german || current === example.description) {
+      runtime.thread.composer.setText(language === 'de' ? german : example.description);
+    }
+  }, [language, selectedExample, runtime]);
+
   const context = useMemo(() => ({
     records,
     rate: (id: string, feedback: Feedback) => commit(updateFeedback(recordsRef.current, id, feedback)),
@@ -132,6 +183,7 @@ export default function AssessmentWorkspace({ liveEnabled = false }: { liveEnabl
     setTab('Assess');
     setMessages(messagesFor(record)); setActiveId(record.id); setError(''); setNotice('');
     runtime.thread.composer.setText('');
+    focusResults();
   }
 
   function newAssessment() {
@@ -143,84 +195,114 @@ export default function AssessmentWorkspace({ liveEnabled = false }: { liveEnabl
   }
 
   function clearHistory() {
-    if (controllerRef.current || evidenceRunning || !window.confirm('Delete all assessments and feedback saved in this browser? Export anything you want to keep first.')) return;
+    if (controllerRef.current || evidenceRunning || !window.confirm('Alle lokalen Analysen und Bewertungen löschen? Vorher exportieren.')) return;
     try {
       localStorage.removeItem(HISTORY_KEY);
       recordsRef.current = []; setRecords([]); setMessages([]); setActiveId(null); setStorageError('');
-    } catch { setStorageError('Browser storage is unavailable.'); }
+    } catch { setStorageError('Browserspeicher nicht verfügbar.'); }
+  }
+
+  const workflow = tab === 'Documents' ? 'documents' : tab === 'Evidence' ? 'evidence' : tab === 'Evaluate' ? 'evaluate' : 'analyze';
+  function openDocument(passage: Passage, controlId: string) {
+    if (isRunning || evidenceRunning) return;
+    setDocumentSelection({documentId:passage.documentId,revision:passage.revision,passageId:passage.id,section:passage.section,controlId});setTab('Documents');
+  }
+  function openEvidence(passage: Passage, controlId?: string) {
+    if (isRunning || evidenceRunning) return;
+    setEvidenceSelection({passageId:passage.id,controlId});setTab('Evidence');
+  }
+  function chooseExample(id: string) {
+    const entry = cases.find((item) => item.id === id);
+    if (!entry) return;
+    setSelectedExample(id); runtime.thread.composer.setText(language === 'de' ? translationFor(entry.description) ?? entry.description : entry.description);
+    document.getElementById('description')?.focus();
   }
 
   return <AssistantRuntimeProvider runtime={runtime}><RecordContext.Provider value={context}>
+    <a className="skip-link" href="#workspace-content">{t("Zum Arbeitsbereich")}</a>
     <div className="workspace">
       <aside className="sidebar">
-        <a href="/" className="brand">Jev <span>Evaluation Lab</span></a>
-        <button className="new-assessment" onClick={newAssessment} disabled={isRunning || evidenceRunning}>New assessment</button>
-        <div className="history-heading"><h2>Assessment history</h2><span>{records.length}</span></div>
-        <nav className="history-list" aria-label="Assessment history">
-          {records.length === 0 && <p className="empty-history">No assessments</p>}
-          {records.map((record) => <button key={record.id} disabled={isRunning || evidenceRunning} onClick={() => openRecord(record)}
-            className={`history-item ${activeId === record.id ? 'active' : ''}`}>
-            <span className="history-title">{record.description}</span>
-            <span className="history-date">{new Date(record.timestamp).toLocaleDateString()}<span>{record.feedback.rating === 'positive' ? 'Correct' : record.feedback.rating === 'negative' ? 'Incorrect' : 'Not rated'}</span></span>
+        <div className="brand-row">
+          <a href="/" className="brand">Jev <span>Evaluation Lab</span></a>
+          <button className="theme-toggle" aria-label={t("Dunkles Design")} aria-pressed={theme === 'dark'}
+            title={theme === 'dark' ? t("Helles Design") : t("Dunkles Design")} onClick={toggleTheme}>
+            <span aria-hidden="true">{theme === 'dark' ? "☀" : "◐"}</span>
+          </button>
+        </div>
+        <nav className="workflow-nav" aria-label={t("Arbeitsbereiche")}>
+          {([['analyze', 'Analyse'], ['evidence', 'Belege'], ['documents', 'Dokumente'], ['evaluate', 'Auswertung']] as const).map(([id, title]) =>
+            <button key={id} aria-label={t(title)} disabled={isRunning || evidenceRunning} aria-current={workflow === id ? 'page' : undefined} onClick={() => setTab(id === 'analyze' ? 'Assess' : id === 'evidence' ? "Evidence" : id === 'documents' ? "Documents" : "Evaluate")}>
+              <span>{t(title)}</span>
+            </button>)}
+        </nav>
+        <div className="history-heading"><h2>{t("Letzte Analysen")}</h2><span>{records.length}</span></div>
+        <nav className="history-list" aria-label={t("Assessment history")}>
+          {records.length === 0 && <p className="empty-history">{t("Noch keine Analysen.")}</p>}
+          {records.slice(0, 5).map((record) => <button key={record.id} disabled={isRunning || evidenceRunning} onClick={() => openRecord(record)}
+            className={`history-item ${activeId === record.id ? "active" : ''}`}>
+            <span className="history-title">{language === 'de' ? translationFor(record.description) ?? t('Originalbeschreibung') : record.description}</span>
+            <span className="history-date">{new Date(record.timestamp).toLocaleDateString()}<span>{record.feedback.rating === 'positive' ? t("Richtig") : record.feedback.rating === 'negative' ? t("Falsch") : t("Nicht bewertet")}</span></span>
           </button>)}
         </nav>
-        <div className="sidebar-actions"><button disabled={!records.length} onClick={() => downloadJson('jev-history.json', exportHistory(records))}>Export history</button>
-          <button disabled={isRunning || evidenceRunning || (!records.length && !storageError)} onClick={clearHistory}>Clear history</button></div>
-        <div className="sidebar-footer">Browser storage</div>
+        <div className="sidebar-footer"><span className={`connection-dot ${liveEnabled ? "enabled" : ''}`} />{liveEnabled ? t("Jev verfügbar") : t("Offline")}<small>{t("Lokal gespeichert")}</small></div>
       </aside>
 
-      <main className="main-panel">
-        <header className="topbar"><h1>Jev Evaluation Lab</h1><span className="profile-badge">synthetic research workspace</span></header>
-        <nav className="lab-tabs" aria-label="Evaluation workspace">{(['Assess', 'Compare', 'Evaluate', 'History', 'Evidence'] as const).map((name) =>
-          <button key={name} disabled={isRunning || evidenceRunning} aria-current={tab === name ? 'page' : undefined} onClick={() => setTab(name)}>{name}</button>)}</nav>
+      <main className="main-panel" id="workspace-content" tabIndex={-1}>
+        <header className="topbar"><h1>{tab === 'Verlauf' ? t("Verlauf") : tab === 'Vergleich' ? t("Vergleich") : workflow === 'analyze' ? t("Analyse") : workflow === 'evidence' ? t("Belege") : workflow === 'documents' ? t("Dokumente") : t("Auswertung")}</h1><div className="header-tools"><LanguageSelector /><button aria-label={t("Verlauf")} disabled={isRunning || evidenceRunning} onClick={() => setTab('Verlauf')}>{t("Verlauf")} <span className="count">{records.length}</span></button></div></header>
+        {workflow === 'analyze' && <nav className="workspace-actions" aria-label={t("Analysis tools")}><button onClick={newAssessment} disabled={isRunning || evidenceRunning}>{t("Neue Analyse")}</button>
+          <button disabled={isRunning || evidenceRunning} aria-current={tab === 'Vergleich' ? 'page' : undefined} onClick={() => setTab('Vergleich')}>{t("Vergleich")}</button></nav>}
+        {tab === 'Evaluate' && <nav className="workspace-actions" aria-label={t("Evaluation scope")}><button aria-current={evaluationScope === 'systems' ? 'page' : undefined} onClick={() => setEvaluationScope('systems')}>{t("Systemanalysen")}</button><button aria-current={evaluationScope === 'evidence' ? 'page' : undefined} onClick={() => setEvaluationScope('evidence')}>{t("Belegexperimente")}</button></nav>}
         <ThreadPrimitive.Root className="assessment-thread">
-          {tab === 'Assess' && <>
-          <div className="composer-wrap"><ComposerPrimitive.Root className="composer">
+          {tab === 'Assess' && <div className={`analysis-layout ${activeId ? "has-result" : ''} ${messages.length || error || storageError || isRunning ? 'has-activity' : ''}`}>
+          <div className="analysis-input"><div className="composer-wrap"><ComposerPrimitive.Root className="composer">
             <div className="input-toolbar">
-              <label htmlFor="description" className="composer-label">AI system description</label>
-              <div className="example-picker"><label htmlFor="example">Synthetic example</label>
+              <label htmlFor="description" className="composer-label">{t("Systembeschreibung")}</label>
+              <div className="example-picker"><label htmlFor="example">{t("Beispiel")}</label>
                 <select id="example" disabled={isRunning || evidenceRunning} value={selectedExample} onChange={(event) => {
                   setSelectedExample(event.target.value);
                   const entry = cases.find((item) => item.id === event.target.value);
-                  if (entry) runtime.thread.composer.setText(entry.description);
-                }}><option value="">Select example…</option>
-                  {['hr', 'finance', 'education', 'customer_support', 'ambiguous'].map((domain) => <optgroup key={domain} label={domain.replaceAll('_', ' ')}>
-                    {cases.filter((entry) => entry.domain === domain).map((entry) => <option key={entry.id} value={entry.id}>{entry.id}</option>)}
+                  if (entry) chooseExample(entry.id);
+                }}><option value="">{t("Beispiel wählen…")}</option>
+                  {['hr', 'finance', 'education', 'customer_support', 'ambiguous'].map((domain) => <optgroup key={domain} label={displayLabel(domain)}>
+                    {cases.filter((entry) => entry.domain === domain).map((entry) => <option key={entry.id} value={entry.id}>{displayLabel(entry.id)}</option>)}
                   </optgroup>)}
                 </select>
               </div>
             </div>
-            <ComposerPrimitive.Input id="description" placeholder="Describe purpose, data inputs, outputs, and human oversight."
-              rows={3} maxRows={8} maxLength={12_000} disabled={!ready || !!storageError || isRunning || !liveEnabled} submitMode="none" addAttachmentOnPaste={false} />
-            <div className="composer-bottom"><span>12,000 character limit · independent assessment</span>
-              {isRunning ? <ComposerPrimitive.Cancel className="analyze-button cancel">Cancel request</ComposerPrimitive.Cancel>
-                : <ComposerPrimitive.Send className="analyze-button" disabled={!ready || !!storageError || !liveEnabled}>Analyze with Jev</ComposerPrimitive.Send>}</div>
-          </ComposerPrimitive.Root><p className="composer-note">Analyze sends the description to TypeSafe and incurs API usage. No legal determination.</p></div>
-          <div className="question-editor-wrap"><QuestionEditor kind="governance" disabled={isRunning} onApply={setQuestionConfiguration} /></div>
-          <ThreadPrimitive.Viewport className="thread-viewport">
+            <ComposerPrimitive.Input id="description" placeholder={t("Zweck, Daten, Ausgaben und menschliche Aufsicht beschreiben.")}
+              rows={7} maxRows={12} maxLength={12_000} disabled={!ready || !!storageError || isRunning} submitMode="none" addAttachmentOnPaste={false} />
+            <div className="composer-bottom"><span>{t("Max. 12.000 Zeichen")}</span>
+              {isRunning ? <ComposerPrimitive.Cancel className="analyze-button cancel">{t("Abbrechen")}</ComposerPrimitive.Cancel>
+                : <ComposerPrimitive.Send className="analyze-button" disabled={!ready || !!storageError || !liveEnabled}>{t("Mit Jev analysieren")}</ComposerPrimitive.Send>}</div>
+          </ComposerPrimitive.Root><p className="composer-note">{t("Ein kostenpflichtiger Aufruf. Keine automatischen Wiederholungen.")}</p>
+          {!liveEnabled && <p className="notice" role="status">{t("Jev-Aufrufe deaktiviert. Gespeicherte Daten bleiben verfügbar.")}</p>}
+          </div>
+          <div className="question-editor-wrap"><QuestionEditor kind="governance" disabled={isRunning} onApply={setQuestionConfiguration} /></div></div>
+          <ThreadPrimitive.Viewport className="thread-viewport" id="analysis-results" tabIndex={-1} aria-label={t("Analysis results")}>
             <div className="thread-content">
-              {!liveEnabled && <p className="notice" role="status">Live inference is disabled on this server. Saved assessments, comparison, evaluation, and reviews remain available.</p>}
-              <details className="type-reference"><summary>Question types and uncertainty</summary><p><strong>Choice</strong> selects a category and returns every option probability. Confidence summarizes concentration, not verified correctness. <strong>Noul</strong> is the probability of a statement, with no automatic yes/no verdict. <strong>Score</strong> is a fractional position on the recorded rubric, with a probability for every level. Missing, unclear, and conflicting evidence remain separate states.</p></details>
-              {!messages.length && <p className="empty-results">No assessment selected.</p>}
+
+              {!messages.length && <section className="analysis-empty"><h2>{t("Ergebnis")}</h2><p>{t("Beschreibung eingeben oder Beispiel wählen.")}</p></section>}
               <ThreadPrimitive.Messages>{({ message }) => message.role === 'user' ? <UserMessage /> : <ResultMessage />}</ThreadPrimitive.Messages>
-              {isRunning && <div className="loading-state" role="status"><span className="spinner" /> Assessing with Jev… <span>One request · no automatic retries</span></div>}
-              {error && <div className="notice error" role="alert">{error}</div>}
-              {notice && <div className="notice" role="status">{notice}</div>}
-              {storageError && <div className="notice error" role="alert">{storageError}</div>}
+              {isRunning && <div className="loading-state" role="status"><span className="spinner" /> {t("Jev analysiert…")} <span>{t("Ein Aufruf · keine Wiederholung")}</span></div>}
+              {error && <div className="notice error" role="alert">{t(error)}</div>}
+              {notice && <div className="notice" role="status">{t(notice)}</div>}
+              {storageError && <div className="notice error" role="alert">{t(storageError)}</div>}
             </div>
           </ThreadPrimitive.Viewport>
-          </>}
+          </div>}
           {tab !== 'Assess' && <div className="lab-panel">
-            {tab === 'Compare' && <CompareView records={records} />}
-            {tab === 'Evaluate' && <EvaluationView records={records} onOpen={openRecord} />}
-            {(tab === 'Evidence' || tab === 'Evaluate') && <EvidenceExplorer summaryOnly={tab === 'Evaluate'} liveEnabled={liveEnabled} isJudging={evidenceRunning} onRunningChange={setEvidenceRunning} />}
-            {tab === 'History' && <section className="lab-view" aria-label="Saved assessment history"><div className="view-heading"><h2>History</h2><button disabled={!records.length} onClick={() => downloadJson('jev-history.json', exportHistory(records))}>Export assessments + reviews</button></div>
-              <p className="view-note">Local to this browser. Opening or importing saved assessments never runs inference. Conflicting IDs are rejected.</p>
-              <label>Import history JSON<input type="file" accept="application/json,.json" disabled={!ready || !!storageError || isRunning} onChange={async (event) => {
+            {tab === 'Documents' && <DocumentLibrary selection={documentSelection} onSelect={setDocumentSelection} onInspect={openEvidence} />}
+            {tab === 'Vergleich' && <CompareView records={records} />}
+
+            {tab === 'Evaluate' && evaluationScope === 'systems' && <EvaluationView records={records} onOpen={openRecord} />}
+            {(tab === 'Evidence' || (tab === 'Evaluate' && evaluationScope === 'evidence')) && <EvidenceExplorer initialPassage={tab === 'Evidence' ? evidenceSelection : undefined} onOpenDocument={openDocument} onBrowseDocuments={() => {setDocumentSelection(undefined);setTab('Documents');}} summaryOnly={tab === 'Evaluate'} liveEnabled={liveEnabled} isJudging={evidenceRunning} onRunningChange={setEvidenceRunning} />}
+            {tab === 'Verlauf' && <section className="lab-view" aria-label={t("Gespeicherte Analysen")}><div className="view-heading"><h2>{t("Verlauf")}</h2></div>
+              <div className="history-tools"><button disabled={!records.length} onClick={() => downloadJson('jev-history.json', exportHistory(records))}>{t("Verlauf exportieren")}</button><button disabled={isRunning || evidenceRunning || (!records.length && !storageError)} onClick={clearHistory}>{t("Verlauf leeren")}</button></div>
+              <label>{t("Verlauf importieren (JSON)")}<input type="file" accept="application/json,.json" disabled={!ready || !!storageError || isRunning} onChange={async (event) => {
                 const file = event.target.files?.[0]; event.target.value = ''; if (!file) return;
-                try { if (file.size > MAX_IMPORT_BYTES) throw new Error('File exceeds 2 MB.');
-                  const next = importAssessmentHistory(parseImport(await file.text()), recordsRef.current); commit(next); setNotice('History imported; no inference started.');
-                } catch (failure) { setNotice(failure instanceof Error ? failure.message : 'Import failed; saved history was not replaced.'); }
+                try { if (file.size > MAX_IMPORT_BYTES) throw new Error('Datei größer als 2 MB.');
+                  const next = importAssessmentHistory(parseImport(await file.text()), recordsRef.current); commit(next); setNotice('Verlauf importiert.');
+                } catch (failure) { setNotice(failure instanceof Error ? failure.message : 'Import fehlgeschlagen. Verlauf unverändert.'); }
               }} /></label>
               {notice && <p role="status" className="view-note">{notice}</p>}{storageError && <p role="alert">{storageError}</p>}
               <AssessmentTable records={records} onOpen={openRecord} /></section>}

@@ -15,6 +15,6 @@ export function GraphRankingControl({ value, onChange, disabled, language = 'en'
     <p className="view-note">{value === 'document-diversity-1'
       ? (de ? 'Zuerst ein Abschnitt je Dokumentrevision. Danach weitere Abschnitte. Keine Bewertung der Relevanz.' : 'One passage per document revision first. Then remaining passages. This does not judge relevance.')
       : (de ? 'Mehr Begriffstreffer zuerst, danach kürzere Pfade. Textsuche bleibt unverändert.' : 'More term matches first, then shorter paths. Text Search is unchanged.')}</p>
-    {info && <p className="view-note">{info.changes.length} {de ? 'Positionen geändert;' : 'positions changed;'} {info.documentRevisions} {de ? 'Dokumentrevisionen. Alte und neue Ränge sind im JSON-Export enthalten.' : 'document revisions. Original and new ranks are included in JSON exports.'}</p>}
+    {info && <p className="view-note">{info.changes.length} {de ? 'Positionen geändert;' : 'positions changed;'} {info.documentRevisions} {de ? 'Dokumentversionen. Alte und neue Ränge sind im JSON-Export enthalten.' : 'document versions. Original and new ranks are included in JSON exports.'}</p>}
   </div>;
 }

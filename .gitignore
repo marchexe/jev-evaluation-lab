@@ -20,3 +20,13 @@ jev-history*.json
 jev-evaluation*.json
 jev-evidence*.json
 !test/fixtures/jev-evidence-*.json
+
+# Local credentials and operator configuration
+.aws/
+.codex/
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519

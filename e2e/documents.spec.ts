@@ -1,0 +1,70 @@
+import {test,expect} from '@playwright/test';
+import {openDisclosure} from './workflows';
+import documents from '../examples/evidence/documents.json' with {type:'json'};
+import graphDocuments from '../examples/evidence/graph-documents.json' with {type:'json'};
+const corpus=[...documents,...graphDocuments];
+
+test('library exposes the entire corpus, archived revisions, filters and empty states without inference',async({page})=>{
+  let calls=0;await page.route('**/api/**',async route=>{calls++;await route.abort();});
+  await page.goto('http://127.0.0.1:3198');await page.getByRole('button',{name:'Dokumente',exact:true}).click();
+  const list=page.getByRole('navigation',{name:'Alle Dokumentrevisionen',exact:true});
+  await expect(list.locator('button')).toHaveCount(corpus.length);
+  for(const doc of corpus)await expect(list.locator('button[data-document-id="'+doc.id+'"][data-revision="'+doc.revision+'"]')).toBeVisible();
+  await expect(page.getByLabel('Versionen',{exact:true})).toBeHidden();
+  await openDisclosure(page,'.library-version-details');
+  await page.getByLabel('Versionen',{exact:true}).selectOption('archived');
+  await expect(list.locator('button')).toHaveCount(1);await expect(list).toContainText('Version 1');
+  await page.getByLabel('Versionen',{exact:true}).selectOption('all');
+  await page.getByLabel('System',{exact:true}).selectOption('ledger');
+  await expect(list.locator('button')).toHaveCount(corpus.filter(doc=>doc.systemId==='ledger').length);
+  await page.getByLabel('Dokument suchen',{exact:true}).fill('no-such-document');
+  await expect(list.locator('button')).toHaveCount(0);await expect(page.getByText('Keine Dokumente für diese Filter.')).toHaveCount(2);
+  await page.getByLabel('Dokument suchen',{exact:true}).fill('');await page.getByLabel('System',{exact:true}).selectOption('');
+  await page.getByLabel('Sprache wählen',{exact:true}).selectOption('en');
+  await expect(page.getByRole('heading',{name:'Documents',exact:true})).toBeVisible();
+  await page.emulateMedia({colorScheme:'dark'});await page.setViewportSize({width:1280,height:900});
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  await page.locator('.library-version-details > summary').click();
+  await expect(page.getByLabel('Versions',{exact:true})).toBeHidden();
+  await page.screenshot({path:'results/library-cleanup/library.png',fullPage:false});
+  expect(calls).toBe(0);
+});
+
+test('full revision links resolve locally, retain archives, and report missing targets',async({page})=>{
+  let calls=0;const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
+  await page.route('**/api/**',async route=>{calls++;await route.abort();});
+  await page.goto('http://127.0.0.1:3198');await page.getByRole('button',{name:'Dokumente',exact:true}).click();
+  const register=page.locator('.library-list button[data-document-id="dispatch-gates"][data-revision="2"]');
+  await register.click();await expect(page.locator('.document-references button')).toHaveCount(4);
+  await page.locator('.document-references button').nth(3).click();
+  await expect(page.getByRole('status')).toContainText('Verknüpfte Quelle nicht verfügbar');
+  await expect(page.locator('.library-reader header code')).toHaveText('dispatch-gates@2');
+  await page.locator('.document-references button').nth(0).click();
+  await expect(page.locator('.library-reader header code')).toHaveText('dispatch-signoff@1');
+  await expect(page.locator('.selected-document-passage')).toContainText('muss jeden Vorschlag gegenzeichnen');
+  await register.click();await page.locator('.document-references button').nth(2).click();
+  await expect(page.locator('.library-reader header code')).toHaveText('dispatch-gates@1');
+  await expect(page.locator('.library-reader header')).toContainText('Ältere Version');
+  const original=graphDocuments.find(doc=>doc.revision==='1')!;const text=original.content.split('\n\n').at(-1)!;const start=original.content.indexOf(text);const id=original.id+'@1:'+start+'-'+(start+text.length);
+  await page.locator('.selected-document-passage').getByRole('button',{name:'In Evidence öffnen',exact:true}).click();
+  await expect(page.getByRole('button',{name:'Inspect source result '+id,exact:true})).toHaveAttribute('aria-pressed','true');
+  await page.locator('#passage-inspector').getByRole('button',{name:'Vollständiges Dokument öffnen',exact:true}).click();
+  await expect(page.locator('.library-reader header code')).toHaveText('dispatch-gates@1');
+  expect(calls).toBe(0);expect(errors).toEqual([]);
+});
+
+test('Evidence opens its exact source section and returns to the same passage and control',async({page})=>{
+  let calls=0;await page.route('**/api/**',async route=>{calls++;await route.abort();});
+  await page.goto('http://127.0.0.1:3198');await page.getByRole('button',{name:'Belege',exact:true}).click();
+  const id='dispatch-signoff@1:34-107';
+  await page.getByRole('button',{name:'Inspect source result '+id,exact:true}).click();
+  await page.getByRole('button',{name:'Vollständiges Dokument öffnen',exact:true}).click();
+  await expect(page.locator('.library-reader header code')).toHaveText('dispatch-signoff@1');
+  await expect(page.locator('.selected-document-passage')).toHaveAttribute('data-passage-id',id);
+  await page.locator('.selected-document-passage').getByRole('button',{name:'In Evidence öffnen',exact:true}).click();
+  await expect(page.getByRole('button',{name:'Inspect source result '+id,exact:true})).toHaveAttribute('aria-pressed','true');
+  await expect(page.getByLabel('Kontrolle',{exact:true})).toHaveValue('human-oversight');
+  await page.getByRole('button',{name:'Alle Dokumente',exact:true}).click();
+  await expect(page.locator('.library-list button')).toHaveCount(corpus.length);
+  expect(calls).toBe(0);
+});

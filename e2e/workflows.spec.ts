@@ -1,0 +1,108 @@
+import { readFile } from 'node:fs/promises';
+import { test, expect } from '@playwright/test';
+import { compareSources, inspectCompared, openDisclosure } from './workflows';
+
+const screenshots = 'results/ux-redesign/screenshots';
+const recorded = JSON.parse(await readFile(new URL('../test/fixtures/jev-1.14.0-governance-recorded.json', import.meta.url), 'utf8'));
+
+test('dark theme persists across workflows and reloads without inference', async ({ page }) => {
+  let calls = 0;
+  await page.route('**/api/**', async route => { calls++; await route.abort(); });
+  await page.emulateMedia({ colorScheme: 'light' });
+  await page.goto('http://127.0.0.1:3198');
+  const toggle = page.getByRole('button', { name: 'Dunkles Design', exact: true });
+  await toggle.click();
+  await expect(toggle).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  await page.screenshot({ path: `${screenshots}/analyze-dark-desktop.png`, fullPage: true });
+  await page.getByRole('button', { name: 'Belege', exact: true }).click();
+  await page.screenshot({ path: `${screenshots}/evidence-dark-desktop.png`, fullPage: true });
+  await page.setViewportSize({ width: 1280, height: 900 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({ path: `${screenshots}/evidence-dark-desktop-compact.png`, fullPage: true });
+  await page.reload();
+  await expect(toggle).toHaveAttribute('aria-pressed', 'true');
+  await page.screenshot({ path: `${screenshots}/analyze-dark-desktop-compact.png`, fullPage: true });
+  await toggle.click();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+  expect(await page.evaluate(() => Object.keys(localStorage))).toEqual(['jev.ui.theme']);
+  expect(calls).toBe(0);
+});
+
+test('German desktop workspace loads examples and navigates without inference', async ({ page }) => {
+  let requests = 0; const errors: string[] = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.route('**/api/**', async route => { requests++; await route.abort(); });
+  await page.goto('http://127.0.0.1:3198');
+  await expect(page.getByRole('navigation', { name: 'Arbeitsbereiche' }).getByRole('button')).toHaveCount(4);
+  await expect(page.getByRole('heading', { name: 'Analyse', exact: true })).toBeVisible();
+  await page.keyboard.press('Tab'); await expect(page.getByRole('link', { name: 'Zum Arbeitsbereich' })).toBeFocused();
+  await page.keyboard.press('Enter'); await expect(page.locator('#workspace-content')).toBeFocused();
+  await page.screenshot({ path: `${screenshots}/analyze-desktop.png`, fullPage: true });
+  await expect(page.locator('html')).toHaveAttribute('lang', 'de');
+  await expect(page.locator('.guided-examples')).toHaveCount(0);
+  await page.getByLabel('Beispiel', { exact: true }).selectOption('support-vague-oversight');
+  await expect(page.getByLabel('Systembeschreibung')).toHaveValue(/Menschen behalten die Kontrolle/);
+  await expect(page.getByRole('button', { name: 'Mit Jev analysieren' })).toBeDisabled();
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.screenshot({ path: `${screenshots}/analyze-desktop-compact.png`, fullPage: true });
+  await page.getByRole('button', { name: 'Belege', exact: true }).focus(); await page.keyboard.press('Enter');
+  await expect(page.getByRole('heading', { name: 'Belege', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Auswertung', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Keine Analysen', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Belegexperimente', exact: true }).click();
+  await expect(page.getByRole('table', { name: 'Evidence confusion matrix' })).toBeVisible();
+  await expect(page.getByRole('region', { name: 'Jev-Belegbewertung' })).toContainText('Übereinstimmung: 0 / 0 (nicht verfügbar)');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  expect(requests).toBe(0); expect(errors).toEqual([]);
+});
+
+test('a researcher compares both retrieval methods and inspects an exact source with a five-hop explanation', async ({ page }) => {
+  let calls = 0; await page.route('**/api/**', async route => { calls++; await route.abort(); });
+  await page.goto('http://127.0.0.1:3198'); await page.getByRole('button', { name: 'Belege', exact: true }).click();
+  await openDisclosure(page, '.search-comparison-details');
+  const table = await compareSources(page);
+  await expect(table.locator('tr[data-text-rank]:not([data-text-rank=""])')).toHaveCount(4);
+  await expect(table.locator('tr[data-graph-rank]:not([data-graph-rank=""])')).toHaveCount(7);
+  const queueId='dispatch-signoff@1:34-107';
+  await inspectCompared(page,queueId); const inspector=page.locator('#passage-inspector');
+  await expect(inspector).toBeFocused(); await expect(inspector).toContainText('Eine Mitarbeiterin oder ein Mitarbeiter muss jeden Vorschlag gegenzeichnen, bevor er die Warteschlange verlässt.');
+  await openDisclosure(page, '.source-provenance');
+  await inspector.locator('.type-reference > summary').filter({ hasText: 'Suchpfad' }).click();
+  await expect(inspector).toContainText('Dieses Register bezeichnet die menschliche Aufsicht beim Dispatch-Assistenten als Vier-Augen-Freigabe.');
+  await page.screenshot({ path: `${screenshots}/source-inspector-desktop.png`, fullPage: false });
+  await page.setViewportSize({ width: 1280, height: 900 }); await page.evaluate(() => scrollTo(0, 0));
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({ path: `${screenshots}/evidence-desktop-compact.png`, fullPage: true });
+  expect(calls).toBe(0);
+});
+
+test('an explicit recorded analysis leads to readable results, field review and evaluation', async ({ page }) => {
+  let calls = 0;
+  await page.route('**/api/assess', async route => { calls++; await route.fulfill({ json: recorded }); });
+  await page.goto('/'); await page.getByLabel('Beispiel', { exact: true }).selectOption('hr-recruitment-reviewed');
+  expect(calls).toBe(0); await page.getByRole('button', { name: 'Mit Jev analysieren' }).click();
+  const card = page.getByRole('article', { name: 'Jev assessment' }); await expect(card).toBeVisible();
+  await expect(card.locator('.selected-label').filter({ hasText: 'Personalauswahl' })).toBeVisible();
+  await expect(card.getByText('2.99', { exact: true })).toBeVisible();
+  await page.screenshot({ path: `${screenshots}/results-desktop.png`, fullPage: true });
+  await page.setViewportSize({ width: 1280, height: 900 }); await card.scrollIntoViewIfNeeded();
+  await page.screenshot({ path: `${screenshots}/results-desktop-compact.png`, fullPage: false });
+  const field = page.getByRole('region', { name: 'Einsatzzweck', exact: true });
+  await field.locator('.field-review > summary').click();
+  await field.getByLabel('intended_use_case review judgment').selectOption('correct');
+  await field.getByLabel('intended_use_case expected category').selectOption('hr_recruitment');
+  await field.getByRole('button', { name: 'Bewertung speichern' }).click();
+  await page.getByRole('button', { name: 'Auswertung', exact: true }).click();
+  await openDisclosure(page, '.evaluation-metrics');
+  await expect(page.getByRole('table', { name: 'Evaluation statistics' })).toContainText('1 / 1 (100.0%)');
+  await page.locator('.evaluation-metrics > summary').click();
+  await page.setViewportSize({ width: 1440, height: 1050 }); await page.evaluate(() => scrollTo(0, 0));
+  await page.screenshot({ path: `${screenshots}/evaluate-desktop.png`, fullPage: true });
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.screenshot({ path: `${screenshots}/evaluate-desktop-compact.png`, fullPage: true });
+  await page.getByRole('button', { name: 'Analyse', exact: true }).click();
+  await openDisclosure(page, '.run-metadata');
+  await expect(page.getByRole('article', { name: 'Jev assessment' })).toContainText(recorded.requestId);
+  expect(calls).toBe(1); expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});

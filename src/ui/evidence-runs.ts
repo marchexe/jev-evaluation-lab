@@ -1,6 +1,6 @@
 import manifest from '../../examples/evidence/experiment.json';
-import { DATASET_VERSION, evidencePassages, evidenceControls, evidenceDocuments, exportEvidence, saveEvidenceReview,
-  type EvidenceReview, type Passage } from './evidence';
+import { DATASET_VERSION, SEARCH_DATASET_VERSION, searchPassages, searchControls, searchDocuments, evidencePassages, evidenceControls, evidenceDocuments, exportEvidence, saveEvidenceReview,
+  type EvidenceReview, type Passage, type EvidenceControl } from './evidence';
 import type { Assessment } from './types';
 import type { EvidenceSearchSnapshot } from './evidence-graph';
 import { defaultConfigurations, validateQuestionConfiguration, configurationIdentity } from '../question-config.js';
@@ -10,6 +10,8 @@ export const MAX_EVIDENCE_RUNS = 100;
 export const judgmentCategories = ['supported', 'contradicted', 'insufficient_evidence', 'ambiguous'] as const;
 export type JudgmentCategory = typeof judgmentCategories[number];
 export const experiment = manifest;
+export const CORPUS_EXPERIMENT_ID = 'evidence-explorer-1';
+export type EvidenceSelection = { passageId: string; controlId: string };
 export function resolveEvidenceCase(caseId: string) {
   const entry = manifest.cases.find((value) => value.id === caseId);
   const passages = entry ? evidencePassages.filter((value) => value.documentId === entry.documentId && value.revision === entry.revision && value.section === entry.section) : [];
@@ -17,8 +19,25 @@ export function resolveEvidenceCase(caseId: string) {
   if (!entry || passages.length !== 1 || !control) throw new Error('Unknown or changed experiment case.');
   return { ...entry, passage: passages[0], control };
 }
-export function buildEvidenceRequest(caseId: string, model = 'jev-latest', configuration: unknown = defaultConfigurations.evidence) {
-  const { passage, control } = resolveEvidenceCase(caseId);
+/** Canonical server/client lookup. Never accept source text from the caller. */
+export function resolveEvidenceTarget(target: string | EvidenceSelection): {
+  id: string; controlId: string; passage: Passage; control: EvidenceControl; experimentId: string; datasetVersion: string;
+} {
+  if (typeof target === 'string') return { ...resolveEvidenceCase(target), experimentId: manifest.id, datasetVersion: DATASET_VERSION };
+  if (!target || typeof target.passageId !== 'string' || typeof target.controlId !== 'string'
+    || Object.keys(target).some(key => !['passageId', 'controlId'].includes(key))) throw new Error('Invalid evidence selection.');
+  const matches = searchPassages.filter(passage => passage.id === target.passageId);
+  const control = searchControls.find(entry => entry.id === target.controlId);
+  if (matches.length !== 1 || !control) throw new Error('Unknown or changed evidence passage/control.');
+  const passage = matches[0];
+  const fixed = manifest.cases.find(entry => entry.controlId === control.id && entry.documentId === passage.documentId
+    && entry.revision === passage.revision && entry.section === passage.section);
+  if (fixed) return resolveEvidenceTarget(fixed.id);
+  return { id: `corpus:${encodeURIComponent(control.id)}:${encodeURIComponent(passage.id)}`, controlId: control.id,
+    passage, control, experimentId: CORPUS_EXPERIMENT_ID, datasetVersion: SEARCH_DATASET_VERSION };
+}
+export function buildEvidenceRequest(target: string | EvidenceSelection, model = 'jev-latest', configuration: unknown = defaultConfigurations.evidence) {
+  const { passage, control } = resolveEvidenceTarget(target);
   if (typeof model !== 'string' || !model.trim()) throw new Error('Invalid model.');
   const selected = validateQuestionConfiguration(configuration, 'evidence');
   return { model: model.trim(), state: { control: { id: control.id, statement: control.statement }, passage }, questions: selected.questions };
@@ -26,6 +45,7 @@ export function buildEvidenceRequest(caseId: string, model = 'jev-latest', confi
 export type EvidenceResult = {
   schemaVersion: 1; experimentId: string; caseId: string; datasetVersion: string; questionVersion: string;
   controlId: string; passage: Passage;
+  recordingSource?: { file: string; normalization: string };
   questionConfiguration?: ReturnType<typeof validateQuestionConfiguration>;
   assessment: Pick<Assessment, 'startedAt' | 'sdkVersion' | 'requestId' | 'latencyMs' | 'response'> & {
     schemaVersion: number; profile: string; mode: string; request: ReturnType<typeof buildEvidenceRequest>;
@@ -35,14 +55,18 @@ export type EvidenceRun = { id: string; result: EvidenceResult; humanReviewAtReq
 const equal = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b);
 export function validateEvidenceResult(value: unknown): asserts value is EvidenceResult {
   const result = value as EvidenceResult;
-  const item = resolveEvidenceCase(result?.caseId);
+  const target = result?.experimentId === CORPUS_EXPERIMENT_ID
+    ? { passageId: result?.passage?.id, controlId: result?.controlId } : result?.caseId;
+  const item = resolveEvidenceTarget(target);
   const assessment = result?.assessment;
   const answer = assessment?.response?.answers?.evidence_judgment;
   const coverage = assessment?.response?.answers?.addresses_control;
   const configuration = validateQuestionConfiguration(result.questionConfiguration ?? defaultConfigurations.evidence, 'evidence');
-  if (result.schemaVersion !== 1 || result.experimentId !== manifest.id || result.datasetVersion !== DATASET_VERSION
+  if (result.schemaVersion !== 1 || result.experimentId !== item.experimentId || result.datasetVersion !== item.datasetVersion || result.caseId !== item.id
+    || (result.recordingSource !== undefined && (typeof result.recordingSource?.file !== 'string' || !result.recordingSource.file.trim()
+      || typeof result.recordingSource?.normalization !== 'string' || !result.recordingSource.normalization.trim()))
     || result.questionVersion !== configuration.version || result.controlId !== item.controlId || !equal(result.passage, item.passage)
-    || assessment?.schemaVersion !== 1 || assessment.profile !== 'evidence' || assessment.mode !== 'live' || configurationIdentity(assessment.request) !== configurationIdentity(buildEvidenceRequest(result.caseId, assessment.request?.model, configuration))
+    || assessment?.schemaVersion !== 1 || assessment.profile !== 'evidence' || assessment.mode !== 'live' || configurationIdentity(assessment.request) !== configurationIdentity(buildEvidenceRequest(target, assessment.request?.model, configuration))
     || typeof assessment.response?.model !== 'string' || !assessment.response.model || typeof assessment.sdkVersion !== 'string'
     || !Number.isFinite(Date.parse(assessment.startedAt)) || !Number.isFinite(assessment.latencyMs) || assessment.latencyMs < 0
     || !(assessment.requestId === null || typeof assessment.requestId === 'string')
@@ -93,7 +117,7 @@ export function scoreEvidenceRows(rows: ComparisonRow[]) {
 export function evaluateEvidenceRuns(runs: EvidenceRun[], reviews: EvidenceReview[], model = '', configuration: unknown = defaultConfigurations.evidence) {
   const latest = new Map<string, EvidenceRun>();
   for (const run of runs) if ((!model || run.result.assessment.response.model === model)
-    && configurationIdentity(run.result.questionConfiguration ?? defaultConfigurations.evidence) === configurationIdentity(configuration)) latest.set(run.result.caseId, run);
+    && configurationIdentity(run.result.questionConfiguration ?? defaultConfigurations.evidence) === configurationIdentity(configuration)) latest.set(JSON.stringify([run.result.controlId, run.result.passage.id]), run);
   const rows: ComparisonRow[] = [...latest.values()].map((run) => {
     const review = reviews.find((entry) => entry.controlId === run.result.controlId && equal(entry.passage, run.result.passage));
     const answer = run.result.assessment.response.answers.evidence_judgment;
@@ -101,7 +125,9 @@ export function evaluateEvidenceRuns(runs: EvidenceRun[], reviews: EvidenceRevie
     return { runId: run.id, caseId: run.result.caseId, passage: run.result.passage,
       expected: review?.judgment ?? null, predicted: answer.choice as JudgmentCategory };
   });
-  return { ...scoreEvidenceRows(rows), rows, missingPredictions: manifest.cases.length - rows.length,
+  const fixedPredictions = manifest.cases.filter(entry => latest.has(JSON.stringify([entry.controlId, resolveEvidenceCase(entry.id).passage.id]))).length;
+  return { ...scoreEvidenceRows(rows), rows, missingPredictions: manifest.cases.length - fixedPredictions,
+    fixedCases: manifest.cases.length, additionalPassages: rows.length - fixedPredictions,
     actualModels: [...new Set([...latest.values()].map((run) => run.result.assessment.response.model))] };
 }
 export function exportEvidenceExperiment(runs: EvidenceRun[], reviews: EvidenceReview[], model = '', search?: EvidenceSearchSnapshot, configuration: unknown = defaultConfigurations.evidence) {
@@ -109,7 +135,8 @@ export function exportEvidenceExperiment(runs: EvidenceRun[], reviews: EvidenceR
   return JSON.stringify({ schemaVersion: 1, exportedAt: new Date().toISOString(),
     experiment: manifest, datasetVersion: DATASET_VERSION, questionVersion: selected.version,
     questionConfiguration: selected.questions, selectedConfiguration: selected, corpusAndRetrieval: JSON.parse(exportEvidence(reviews)),
-    documents: evidenceDocuments, runs, humanReviewsAtExport: reviews, modelFilter: model || 'all actual models (pooled)',
-    selectionPolicy: 'Latest appended run per case after actual-model and exact configuration-content/version filters; current saved human reviews; uncertain and unlabeled excluded.',
+    documents: evidenceDocuments, corpus: { version: SEARCH_DATASET_VERSION, documents: searchDocuments, controls: searchControls },
+    runs, humanReviewsAtExport: reviews, modelFilter: model || 'all actual models (pooled)',
+    selectionPolicy: 'Latest appended run per control/passage after actual-model and exact configuration-content/version filters; current saved human reviews; uncertain and unlabeled excluded. Missing predictions refer only to the original six fixed cases.',
     classificationEvaluation: evaluateEvidenceRuns(runs, reviews, model, configuration), ...(search ? { search } : {}) }, null, 2);
 }

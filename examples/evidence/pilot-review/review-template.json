@@ -1,0 +1,493 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "oversight-pilot-review-1",
+  "datasetHash": "sha256:7dc7d3ea472520935c8fceaca46ce918913db4a0733ba78a3495ab5379c06723",
+  "eligiblePoolHash": "sha256:bc1cc181d2149b449954db3cc3c34ad3759bfeec06d27696cf16608b4ecb69ce",
+  "confirmation": {
+    "reviewerAlias": null,
+    "confirmedAt": null,
+    "independentReview": false
+  },
+  "judgments": [
+    {
+      "queryId": "pilot-dev-approval",
+      "controlId": "human-oversight-approval",
+      "passage": {
+        "id": "invoice-policy@1:39-186",
+        "documentId": "invoice-policy",
+        "revision": "1",
+        "systemId": "invoice-assistant",
+        "section": "Invoice approval policy / Release",
+        "start": 39,
+        "end": 186,
+        "startLine": 5,
+        "endLine": 5,
+        "text": "A finance clerk must accept each payment proposal before the Invoice assistant submits it to the payment gateway. Rejected proposals are discarded."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-dev-approval",
+      "controlId": "human-oversight-approval",
+      "passage": {
+        "id": "invoice-policy@1:212-351",
+        "documentId": "invoice-policy",
+        "revision": "1",
+        "systemId": "invoice-assistant",
+        "section": "Invoice approval policy / Operating reference",
+        "start": 212,
+        "end": 351,
+        "startLine": 9,
+        "endLine": 9,
+        "text": "The operating sequence is described in [Gateway execution](evidence:invoice-operations@1#Invoice%20operations%20%2F%20Gateway%20execution)."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-dev-approval",
+      "controlId": "human-oversight-approval",
+      "passage": {
+        "id": "invoice-operations@1:44-189",
+        "documentId": "invoice-operations",
+        "revision": "1",
+        "systemId": "invoice-assistant",
+        "section": "Invoice operations / Gateway execution",
+        "start": 44,
+        "end": 189,
+        "startLine": 5,
+        "endLine": 5,
+        "text": "The Invoice assistant sends every proposal to the payment gateway as soon as it is generated. No clerk acceptance is required in this deployment."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-dev-approval",
+      "controlId": "human-oversight-approval",
+      "passage": {
+        "id": "invoice-operations@1:208-366",
+        "documentId": "invoice-operations",
+        "revision": "1",
+        "systemId": "invoice-assistant",
+        "section": "Invoice operations / Stop control",
+        "start": 208,
+        "end": 366,
+        "startLine": 9,
+        "endLine": 9,
+        "text": "The duty operator can cancel a queued payment before submission. Once submission starts, the console cannot stop it; the operator can only record an incident."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-dev-approval",
+      "controlId": "human-oversight-approval",
+      "passage": {
+        "id": "invoice-copy@1:49-174",
+        "documentId": "invoice-copy",
+        "revision": "1",
+        "systemId": "invoice-assistant",
+        "section": "Invoice communications / Editorial approval",
+        "start": 49,
+        "end": 174,
+        "startLine": 5,
+        "endLine": 5,
+        "text": "A human editor approves the spelling of product newsletters before publication. This review does not cover payment proposals."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-dev-approval",
+      "controlId": "human-oversight-approval",
+      "passage": {
+        "id": "invoice-copy@1:187-354",
+        "documentId": "invoice-copy",
+        "revision": "1",
+        "systemId": "invoice-assistant",
+        "section": "Invoice communications / Output",
+        "start": 187,
+        "end": 354,
+        "startLine": 9,
+        "endLine": 9,
+        "text": "The Invoice assistant groups synthetic invoices by due date and generates payment proposals. This overview does not describe how a proposal is released or interrupted."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-dev-stop",
+      "controlId": "human-oversight-stop",
+      "passage": {
+        "id": "invoice-policy@1:39-186",
+        "documentId": "invoice-policy",
+        "revision": "1",
+        "systemId": "invoice-assistant",
+        "section": "Invoice approval policy / Release",
+        "start": 39,
+        "end": 186,
+        "startLine": 5,
+        "endLine": 5,
+        "text": "A finance clerk must accept each payment proposal before the Invoice assistant submits it to the payment gateway. Rejected proposals are discarded."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-dev-stop",
+      "controlId": "human-oversight-stop",
+      "passage": {
+        "id": "invoice-policy@1:212-351",
+        "documentId": "invoice-policy",
+        "revision": "1",
+        "systemId": "invoice-assistant",
+        "section": "Invoice approval policy / Operating reference",
+        "start": 212,
+        "end": 351,
+        "startLine": 9,
+        "endLine": 9,
+        "text": "The operating sequence is described in [Gateway execution](evidence:invoice-operations@1#Invoice%20operations%20%2F%20Gateway%20execution)."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-dev-stop",
+      "controlId": "human-oversight-stop",
+      "passage": {
+        "id": "invoice-operations@1:44-189",
+        "documentId": "invoice-operations",
+        "revision": "1",
+        "systemId": "invoice-assistant",
+        "section": "Invoice operations / Gateway execution",
+        "start": 44,
+        "end": 189,
+        "startLine": 5,
+        "endLine": 5,
+        "text": "The Invoice assistant sends every proposal to the payment gateway as soon as it is generated. No clerk acceptance is required in this deployment."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-dev-stop",
+      "controlId": "human-oversight-stop",
+      "passage": {
+        "id": "invoice-operations@1:208-366",
+        "documentId": "invoice-operations",
+        "revision": "1",
+        "systemId": "invoice-assistant",
+        "section": "Invoice operations / Stop control",
+        "start": 208,
+        "end": 366,
+        "startLine": 9,
+        "endLine": 9,
+        "text": "The duty operator can cancel a queued payment before submission. Once submission starts, the console cannot stop it; the operator can only record an incident."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-dev-stop",
+      "controlId": "human-oversight-stop",
+      "passage": {
+        "id": "invoice-copy@1:49-174",
+        "documentId": "invoice-copy",
+        "revision": "1",
+        "systemId": "invoice-assistant",
+        "section": "Invoice communications / Editorial approval",
+        "start": 49,
+        "end": 174,
+        "startLine": 5,
+        "endLine": 5,
+        "text": "A human editor approves the spelling of product newsletters before publication. This review does not cover payment proposals."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-dev-stop",
+      "controlId": "human-oversight-stop",
+      "passage": {
+        "id": "invoice-copy@1:187-354",
+        "documentId": "invoice-copy",
+        "revision": "1",
+        "systemId": "invoice-assistant",
+        "section": "Invoice communications / Output",
+        "start": 187,
+        "end": 354,
+        "startLine": 9,
+        "endLine": 9,
+        "text": "The Invoice assistant groups synthetic invoices by due date and generates payment proposals. This overview does not describe how a proposal is released or interrupted."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-heldout-approval",
+      "controlId": "human-oversight-approval",
+      "passage": {
+        "id": "course-policy@1:44-201",
+        "documentId": "course-policy",
+        "revision": "1",
+        "systemId": "course-advisor",
+        "section": "Course assignment procedure / Dispatch",
+        "start": 44,
+        "end": 201,
+        "startLine": 5,
+        "endLine": 5,
+        "text": "Every course-assignment proposal stays in a waiting tray until a tutor countersigns that proposal. Only then does the Course advisor transmit the assignment."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-heldout-approval",
+      "controlId": "human-oversight-approval",
+      "passage": {
+        "id": "course-policy@1:226-339",
+        "documentId": "course-policy",
+        "revision": "1",
+        "systemId": "course-advisor",
+        "section": "Course assignment procedure / Human intervention",
+        "start": 226,
+        "end": 339,
+        "startLine": 9,
+        "endLine": 9,
+        "text": "The assigned tutor has a stop control that halts transmission of an assignment while transmission is in progress."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-heldout-approval",
+      "controlId": "human-oversight-approval",
+      "passage": {
+        "id": "course-operations@1:46-212",
+        "documentId": "course-operations",
+        "revision": "1",
+        "systemId": "course-advisor",
+        "section": "Course advisor operations / Release mode",
+        "start": 46,
+        "end": 212,
+        "startLine": 5,
+        "endLine": 5,
+        "text": "The Course advisor transmits assignments automatically after generation. Tutors inspect a daily sample after transmission; they do not approve assignments beforehand."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-heldout-approval",
+      "controlId": "human-oversight-approval",
+      "passage": {
+        "id": "course-operations@1:237-387",
+        "documentId": "course-operations",
+        "revision": "1",
+        "systemId": "course-advisor",
+        "section": "Course advisor operations / Exception handling",
+        "start": 237,
+        "end": 387,
+        "startLine": 9,
+        "endLine": 9,
+        "text": "Tutors can intervene when necessary. This instruction does not specify whether intervention can stop a transmission or only change a later assignment."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-heldout-approval",
+      "controlId": "human-oversight-approval",
+      "passage": {
+        "id": "course-reporting@1:44-183",
+        "documentId": "course-reporting",
+        "revision": "1",
+        "systemId": "course-advisor",
+        "section": "Course reporting guide / Report review",
+        "start": 44,
+        "end": 183,
+        "startLine": 5,
+        "endLine": 5,
+        "text": "A coordinator approves the layout of a weekly course report. The layout review does not examine or authorize individual course assignments."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-heldout-approval",
+      "controlId": "human-oversight-approval",
+      "passage": {
+        "id": "course-reporting@1:197-361",
+        "documentId": "course-reporting",
+        "revision": "1",
+        "systemId": "course-advisor",
+        "section": "Course reporting guide / Records",
+        "start": 197,
+        "end": 361,
+        "startLine": 9,
+        "endLine": 9,
+        "text": "Assignment identifiers and generated times appear in the synthetic activity log. This section provides no information about prior approval or interruption controls."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-heldout-stop",
+      "controlId": "human-oversight-stop",
+      "passage": {
+        "id": "course-policy@1:44-201",
+        "documentId": "course-policy",
+        "revision": "1",
+        "systemId": "course-advisor",
+        "section": "Course assignment procedure / Dispatch",
+        "start": 44,
+        "end": 201,
+        "startLine": 5,
+        "endLine": 5,
+        "text": "Every course-assignment proposal stays in a waiting tray until a tutor countersigns that proposal. Only then does the Course advisor transmit the assignment."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-heldout-stop",
+      "controlId": "human-oversight-stop",
+      "passage": {
+        "id": "course-policy@1:226-339",
+        "documentId": "course-policy",
+        "revision": "1",
+        "systemId": "course-advisor",
+        "section": "Course assignment procedure / Human intervention",
+        "start": 226,
+        "end": 339,
+        "startLine": 9,
+        "endLine": 9,
+        "text": "The assigned tutor has a stop control that halts transmission of an assignment while transmission is in progress."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-heldout-stop",
+      "controlId": "human-oversight-stop",
+      "passage": {
+        "id": "course-operations@1:46-212",
+        "documentId": "course-operations",
+        "revision": "1",
+        "systemId": "course-advisor",
+        "section": "Course advisor operations / Release mode",
+        "start": 46,
+        "end": 212,
+        "startLine": 5,
+        "endLine": 5,
+        "text": "The Course advisor transmits assignments automatically after generation. Tutors inspect a daily sample after transmission; they do not approve assignments beforehand."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-heldout-stop",
+      "controlId": "human-oversight-stop",
+      "passage": {
+        "id": "course-operations@1:237-387",
+        "documentId": "course-operations",
+        "revision": "1",
+        "systemId": "course-advisor",
+        "section": "Course advisor operations / Exception handling",
+        "start": 237,
+        "end": 387,
+        "startLine": 9,
+        "endLine": 9,
+        "text": "Tutors can intervene when necessary. This instruction does not specify whether intervention can stop a transmission or only change a later assignment."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-heldout-stop",
+      "controlId": "human-oversight-stop",
+      "passage": {
+        "id": "course-reporting@1:44-183",
+        "documentId": "course-reporting",
+        "revision": "1",
+        "systemId": "course-advisor",
+        "section": "Course reporting guide / Report review",
+        "start": 44,
+        "end": 183,
+        "startLine": 5,
+        "endLine": 5,
+        "text": "A coordinator approves the layout of a weekly course report. The layout review does not examine or authorize individual course assignments."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    },
+    {
+      "queryId": "pilot-heldout-stop",
+      "controlId": "human-oversight-stop",
+      "passage": {
+        "id": "course-reporting@1:197-361",
+        "documentId": "course-reporting",
+        "revision": "1",
+        "systemId": "course-advisor",
+        "section": "Course reporting guide / Records",
+        "start": 197,
+        "end": 361,
+        "startLine": 9,
+        "endLine": 9,
+        "text": "Assignment identifiers and generated times appear in the synthetic activity log. This section provides no information about prior approval or interruption controls."
+      },
+      "relevance": null,
+      "evidenceJudgment": null,
+      "confirmed": false,
+      "comment": ""
+    }
+  ]
+}

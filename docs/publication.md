@@ -18,6 +18,15 @@ Set `TYPESAFE_API_KEY` only as a server secret. Keep it out of `NEXT_PUBLIC_*`, 
 
 For an operator-controlled reverse proxy that overwrites forwarded headers, optional `JEV_ALLOWED_ORIGINS` and `JEV_TRUST_PROXY_HEADERS=true` must both be set. Allow exact public origins only; no paths or wildcard hosts. Spoofed forwarded headers alone cannot authorize a request. Localhost/127.0.0.1 retain exact host/port matching despite NextURL loopback normalization.
 
+## Public file boundaries
+
+Keep `.env`, credential files, local operator configuration and all `results/`
+contents out of Git. Results can contain user descriptions, private reviewer
+comments, screenshots, local paths and environment backups. Publish only reviewed
+synthetic examples and response fixtures; request IDs are metadata, not API keys.
+Use explicit paths when staging. Inspect both the staged diff and each new commit
+before a normal push. A pattern scan cannot prove the absence of all secrets.
+
 ## Final checks
 
 ```powershell
@@ -29,5 +38,8 @@ npm.cmd run audit:retrieval
 git diff --check
 git status --short
 ```
+
+Replay the historical retrieval audit only in its pinned checkout; see
+[experiment reproduction](experiments.md). Current-source hash rejection is intentional.
 
 Browser tests use production servers with transport blocked and real recordings; no test or build automatically bills Jev. Live research commands are explicit, separate owner actions. Review [known methodological limits](limitations.md) before describing performance publicly.

@@ -58,7 +58,7 @@ test('comparison distinguishes unchanged fields, missing answers, type and defin
 
 test('known categorical values are not mislabeled as missing numeric data', () => {
   const html = renderToStaticMarkup(<CompareView records={[record('a'), record('b')]} />);
-  assert.match(html, /Categorical values have no numeric delta/);
+  assert.match(html, /Kategorien haben keine numerische Differenz/);
   const a = record('a'); const b = record('b');
   const choice = b.assessment.response.answers.intended_use_case;
   if (choice.type === 'choice') choice.confidence = null;

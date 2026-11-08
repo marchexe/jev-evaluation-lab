@@ -1,0 +1,82 @@
+import { openReview, openDisclosure } from './workflows';
+import { readFile } from 'node:fs/promises';
+import { test, expect } from '@playwright/test';
+import { translationFor } from '../components/translations';
+import cases from '../examples/governance/cases.json' with { type: 'json' };
+
+const recording = JSON.parse(await readFile(new URL('../test/fixtures/jev-1.14.0-governance-recorded.json', import.meta.url), 'utf8'));
+
+test('German passages have no original toggle and export original provenance offline', async ({ page }) => {
+  let calls = 0; await page.route('**/api/**', async route => { calls++; await route.abort(); });
+  await page.goto('http://127.0.0.1:3198'); await page.getByRole('button', { name: 'Belege', exact: true }).click();
+  const inspector = page.locator('#passage-inspector');
+  const quote = inspector.locator('blockquote .translated-text').first();
+  await expect(quote.locator('.translated-copy')).toContainText('Eine menschliche Aufsichtsperson muss jede Empfehlung genehmigen');
+  await expect(quote.getByRole('button')).toHaveCount(0);
+  await expect(quote.locator('.original-copy')).toHaveCount(0);
+  const text = 'A human supervisor must approve every recommendation before the Dispatch assistant executes it. The supervisor may reject a recommendation.';
+  await openReview(inspector);
+  await inspector.getByLabel('Belegaussage').selectOption('supported');
+  await inspector.getByRole('button', { name: 'Bewertung speichern' }).click();
+  if (await page.locator('.evidence-tools').count()) await openDisclosure(page,'.evidence-tools');
+  const download = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Belege und Bewertungen exportieren' }).click();
+  const exported = JSON.parse(await readFile((await (await download).path())!, 'utf8'));
+  expect(exported.reviews[0].passage.text).toBe(text);
+  expect(exported.reviews[0].passage.id).toBe('dispatch-policy@1:47-186');
+  await page.screenshot({ path: 'results/ux-redesign/screenshots/evidence-translated-desktop.png', fullPage: true });
+  expect(calls).toBe(0);
+});
+
+test('translated examples keep original request text until the user edits the description', async ({ page }) => {
+  const requests: string[] = [];
+  await page.route('**/api/assess', async route => { requests.push(route.request().postDataJSON().description); await route.fulfill({ json: recording }); });
+  await page.goto('/'); await page.getByLabel('Beispiel', { exact: true }).selectOption(cases[0].id);
+  await expect(page.getByLabel('Systembeschreibung')).toHaveValue(translationFor(cases[0].description)!);
+  await expect(page.locator('.example-original')).toHaveCount(0);
+  expect(requests).toHaveLength(0);
+  await page.getByRole('button', { name: 'Mit Jev analysieren' }).click();
+  await expect(page.getByRole('article', { name: 'Jev assessment' })).toBeVisible();
+  expect(requests).toEqual([cases[0].description]);
+  await page.getByRole('button', { name: 'Neue Analyse' }).click();
+  await page.getByLabel('Beispiel', { exact: true }).selectOption(cases[0].id);
+  const edited = translationFor(cases[0].description)! + ' Die Freigabe ist optional.';
+  await page.getByLabel('Systembeschreibung').fill(edited);
+  await page.getByRole('button', { name: 'Mit Jev analysieren' }).click();
+  await expect(page.getByRole('article', { name: 'Jev assessment' })).toBeVisible();
+  expect(requests).toEqual([cases[0].description, edited]);
+});
+
+test('rubric, question editor and source documents follow the selected language', async ({ page }) => {
+  await page.route('**/api/assess', async route => route.fulfill({ json: recording }));
+  await page.goto('/');
+  await page.getByLabel('Beispiel', { exact: true }).selectOption(cases[0].id);
+  const editor = page.locator('.question-editor');
+  await expect(editor.locator(':scope > summary')).toHaveText('Fragen bearbeiten');
+  await editor.locator(':scope > summary').click();
+  await expect(editor.getByLabel('Fragenversion', { exact: true })).toBeHidden();
+  await editor.locator('.rubric > summary').filter({ hasText: 'Vollständigkeit' }).click();
+  const level = editor.getByLabel('description_completeness / level 0', { exact: true });
+  await expect(level).toHaveValue(/Die Beschreibung nennt/);
+  await page.getByRole('button', { name: 'Mit Jev analysieren' }).click();
+  const card = page.getByRole('article', { name: 'Jev assessment' });
+  await expect(card).toBeVisible();
+  const rubric = card.locator('.rubric');
+  await rubric.locator('summary').click();
+  await expect(rubric).toContainText('Die Beschreibung nennt einen Namen');
+  await expect(rubric).not.toContainText('The description gives');
+  await expect(page.getByText('Choice / Noul / Score', { exact: true })).toHaveCount(0);
+  await page.getByLabel('Sprache wählen', { exact: true }).selectOption('en');
+  await expect(rubric).toContainText('The description gives a name');
+  await expect(level).toHaveValue(/The description gives/);
+  await page.getByRole('button', { name: 'Evidence', exact: true }).click();
+  await openDisclosure(page,'.evidence-tools');
+  const docs = page.locator('.source-documents');
+  await docs.locator(':scope > summary').click();
+  await docs.locator(':scope > details > summary').first().click();
+  await expect(docs.locator('.source-document').first()).toContainText('A human supervisor must approve');
+  await page.getByLabel('Choose language', { exact: true }).selectOption('de');
+  await expect(docs.locator('.source-document').first()).toContainText('Eine menschliche Aufsichtsperson muss');
+  await expect(docs.locator('.source-document').first()).not.toContainText('A human supervisor');
+  await expect(docs.locator('pre')).toHaveCount(0);
+});

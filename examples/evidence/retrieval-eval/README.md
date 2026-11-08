@@ -1,5 +1,10 @@
 # Reproducible retrieval evaluation
 
+**Historical source required:** use commit `d7b4123` for the commands below.
+The current graph ranking has different implementation hashes. Follow the
+[separate-worktree instructions](../../../docs/experiments.md) first; do not
+regenerate or weaken the original manifest.
+
 The original frozen inputs below are unchanged. A separate, explicitly non-blinded
 AI-label transcription is retained in `exploratory-ai-judgments.json` solely to
 reproduce the preliminary audit with `npm.cmd run audit:retrieval`. It is not a

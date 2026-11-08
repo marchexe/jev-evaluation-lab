@@ -16,10 +16,12 @@ flowchart LR
 
 ## Boundaries
 
-- `components/AssessmentWorkspace.tsx`: Assess, Compare, Evaluate, History and Evidence navigation, assistant-ui runtime, assessment history, explicit submission/cancellation.
+- `components/AssessmentWorkspace.tsx`: Analyze, Evidence, Documents and Evaluate navigation, with secondary Compare and History views, assistant-ui runtime, assessment history, explicit submission/cancellation.
 - `components/QuestionEditor.tsx`: local question drafts, apply/reset and validated question JSON import/export. Applying never sends a request.
-- `components/EvidenceExplorer.tsx`: scoped source inspection, Text/Graph selection, provenance and independent human evidence/relevance reviews.
-- `components/EvidenceJudgments.tsx`: explicit six-case Jev actions, run persistence/import, configuration/model filters and reviewer agreement.
+- `components/EvidenceExplorer.tsx`: scoped source inspection, an aligned Text/Graph comparison, provenance and independent human evidence/relevance reviews.
+- `components/DocumentLibrary.tsx` and `components/SourceDocument.tsx`: the complete read-only corpus, revision-aware local references, section anchors and exact passage navigation.
+- `components/LanguageProvider.tsx` and translation files: offline English/German display; stored originals and request wording remain independent of display language.
+- `components/EvidenceJudgments.tsx`: explicit corpus-passage Jev actions, run persistence/import, configuration/model filters and reviewer agreement. Original six-case IDs and stored runs remain supported.
 - `src/server/assessment-route.js`: shared bounded JSON parser, explicit live opt-in, origin guard, cancellation and sanitized provider errors. `/api/assess` and `/api/evidence` use it.
 - `src/system-one.js`: server transport, server-only environment key, fixed provider endpoint, 30-second timeout, zero retries, SDK version, latency and unmodified parsed response.
 - `src/question-config.js` and `examples/questions/`: shared, browser-safe configuration validation/defaults. `src/server/question-builders.js` creates native SDK Choice/Noul/Score questions. The technical CLI profile is unchanged.
@@ -34,7 +36,7 @@ Assessments and evidence reviews/runs have separate versioned browser storage ke
 
 Imports validate before merging. Identical IDs are idempotent; conflicts are rejected rather than silently replacing reviews. Evidence imports attempt rollback on a storage failure and expose recovery errors. A browser cannot provide a durable multi-key database transaction; export important work. Exported derived statistics are not trusted on import.
 
-Evidence classification summaries select the latest appended run per case after actual-model and exact configuration-content/version filters. Assessment evaluation exposes model/question-definition filters and labels unfiltered pooling. Comparing changed question definitions is descriptive, not equivalent-task evaluation.
+Evidence classification summaries select the latest appended run per control/passage after actual-model and exact configuration-content/version filters. They distinguish missing predictions in the original six-case reference from additional corpus passages. Assessment evaluation exposes model/question-definition filters and labels unfiltered pooling. Comparing changed question definitions is descriptive, not equivalent-task evaluation.
 
 ## Documentation choice
 

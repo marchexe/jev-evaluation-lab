@@ -1,15 +1,19 @@
 import relations from '../../examples/evidence/graph-relations.json';
-import { searchDocuments, searchControls, retrievePassages, segmentDocument, SEARCH_DATASET_VERSION,
-  type EvidenceDocument, type EvidenceControl, type EvidenceReview, type Passage } from './evidence';
+import {
+  searchDocuments, searchControls, retrievePassages, segmentDocument, SEARCH_DATASET_VERSION,
+  type EvidenceDocument, type EvidenceControl, type EvidenceReview, type Passage
+} from './evidence';
 
 import { diversifyGraphHits, type GraphRanking, type GraphRankingInfo } from './graph-ranking';
 
 export const GRAPH_VERSION = 'evidence-graph-1';
 export const GRAPH_SEARCH_VERSION = 'bounded-evidence-bfs-1';
 type Locator = { documentId: string; revision: string; section: string };
-type Annotation = { id: string; kind: 'related_control' | 'control_section' | 'supersedes';
+type Annotation = {
+  id: string; kind: 'related_control' | 'control_section' | 'supersedes';
   fromControl?: string; toControl?: string; target?: Locator; documentId?: string; revision?: string; previousRevision?: string;
-  source: Locator & { quote: string } };
+  source: Locator & { quote: string }
+};
 export type GraphManifest = { version: string; currentRevisions: Record<string, string>; controls: EvidenceControl[]; relationships: Annotation[] };
 export const graphManifest = relations as GraphManifest;
 type NodeData =
@@ -25,11 +29,15 @@ export type EdgeKind = 'system_document' | 'document_revision' | 'revision_secti
 export type GraphProvenance = { kind: 'source'; passage: Passage; quote: string }
   | { kind: 'metadata'; record: string; field: string }
   | { kind: 'review'; review: EvidenceReview };
-export type GraphEdge = { id: string; kind: EdgeKind; from: string; to: string;
-  origin: 'explicit' | 'derived' | 'human_reviewed'; reviewStatus: 'unreviewed' | 'reviewed'; provenance: GraphProvenance };
+export type GraphEdge = {
+  id: string; kind: EdgeKind; from: string; to: string;
+  origin: 'explicit' | 'derived' | 'human_reviewed'; reviewStatus: 'unreviewed' | 'reviewed'; provenance: GraphProvenance
+};
 export type GraphDiagnostic = { id: string; message: string; target: string; source?: Passage };
-export type EvidenceGraph = { version: string; corpusVersion: string; relationVersion: string;
-  configuration: GraphManifest; nodes: GraphNode[]; edges: GraphEdge[]; diagnostics: GraphDiagnostic[] };
+export type EvidenceGraph = {
+  version: string; corpusVersion: string; relationVersion: string;
+  configuration: GraphManifest; nodes: GraphNode[]; edges: GraphEdge[]; diagnostics: GraphDiagnostic[]
+};
 const enc = encodeURIComponent;
 const cmp = (a: string, b: string) => a < b ? -1 : a > b ? 1 : 0;
 export const graphIds = {
@@ -115,20 +123,28 @@ export function buildEvidenceGraph(documents: EvidenceDocument[] = searchDocumen
     if (!source || !nodes.has(graphIds.control(review.controlId))) { diagnostics.push({ id: `review:${review.passage.id}`, target: review.passage.id, message: 'Review source/control is incompatible; no review edge was created.' }); continue; }
     addEdge('human_review', graphIds.control(review.controlId), graphIds.passage(source.id), source.id, 'human_reviewed', { kind: 'review', review: structuredClone(review) });
   }
-  return { version: GRAPH_VERSION, corpusVersion: SEARCH_DATASET_VERSION, relationVersion: manifest.version,
+  return {
+    version: GRAPH_VERSION, corpusVersion: SEARCH_DATASET_VERSION, relationVersion: manifest.version,
     configuration: structuredClone(manifest),
     nodes: [...nodes.values()].sort((a, b) => cmp(a.id, b.id)), edges: [...edges.values()].sort((a, b) => cmp(a.id, b.id)),
-    diagnostics: diagnostics.sort((a, b) => cmp(a.id, b.id)) };
+    diagnostics: diagnostics.sort((a, b) => cmp(a.id, b.id))
+  };
 }
 
-export type GraphQuery = { systemId: string; controlId: string; maxDepth: number; includeArchived: boolean;
-  maxVisited: number; maxEdges: number; maxResults: number };
+export type GraphQuery = {
+  systemId: string; controlId: string; maxDepth: number; includeArchived: boolean;
+  maxVisited: number; maxEdges: number; maxResults: number
+};
 export const DEFAULT_GRAPH_LIMITS = { maxDepth: 5, maxVisited: 200, maxEdges: 1000, maxResults: 50 };
-export type SearchPath = { seed: { kind: 'control' | 'lexical'; nodeId: string; matchedTerms: string[] };
-  nodeIds: string[]; steps: { edgeId: string; direction: 'forward' | 'reverse' }[] };
+export type SearchPath = {
+  seed: { kind: 'control' | 'lexical'; nodeId: string; matchedTerms: string[] };
+  nodeIds: string[]; steps: { edgeId: string; direction: 'forward' | 'reverse' }[]
+};
 export type GraphHit = { passage: Passage; matchedTerms: string[]; path: SearchPath };
-export type GraphSearchResult = { version: string; query: GraphQuery; hits: GraphHit[]; baseline: GraphHit[];
-  visited: number; edgesExamined: number; limitsReached: string[]; excludedReferences: { edgeId: string; reason: string }[]; diagnostics: GraphDiagnostic[] };
+export type GraphSearchResult = {
+  version: string; query: GraphQuery; hits: GraphHit[]; baseline: GraphHit[];
+  visited: number; edgesExamined: number; limitsReached: string[]; excludedReferences: { edgeId: string; reason: string }[]; diagnostics: GraphDiagnostic[]
+};
 
 export function searchEvidenceGraph(graph: EvidenceGraph, query: GraphQuery & { ranking?: GraphRanking }): GraphSearchResult & { ranking?: GraphRankingInfo } {
   if (query.ranking !== undefined && !['lexical-path-1', 'document-diversity-1'].includes(query.ranking)) throw new Error('Invalid graph ranking.');
@@ -193,10 +209,12 @@ export function searchEvidenceGraph(graph: EvidenceGraph, query: GraphQuery & { 
   hits.sort((a, b) => b.matchedTerms.length - a.matchedTerms.length || a.path.steps.length - b.path.steps.length || cmp(a.passage.id, b.passage.id));
   const ranked = query.ranking === 'document-diversity-1' ? diversifyGraphHits(hits) : null;
   if (hits.length > query.maxResults) limits.add('maxResults');
-  return { version: ranked ? 'bounded-evidence-bfs-diversity-1' : GRAPH_SEARCH_VERSION, query, hits: (ranked?.hits ?? hits).slice(0, query.maxResults), baseline, visited: visited.size, edgesExamined,
+  return {
+    version: ranked ? 'bounded-evidence-bfs-diversity-1' : GRAPH_SEARCH_VERSION, query, hits: (ranked?.hits ?? hits).slice(0, query.maxResults), baseline, visited: visited.size, edgesExamined,
     ...(ranked ? { ranking: ranked.ranking } : {}),
     limitsReached: [...limits].sort(), excludedReferences: [...exclusions.values()],
-    diagnostics: graph.diagnostics.filter((entry) => !entry.source || entry.source.systemId === query.systemId) };
+    diagnostics: graph.diagnostics.filter((entry) => !entry.source || entry.source.systemId === query.systemId)
+  };
 }
 
 export function summarizeSearchPool(hits: GraphHit[], graph: EvidenceGraph, query: GraphQuery, reviews: EvidenceReview[]) {
@@ -211,9 +229,13 @@ export function summarizeSearchPool(hits: GraphHit[], graph: EvidenceGraph, quer
   return { relevant: relevant.length, retrievedRelevant: retrieved, missedRelevant: relevant.length - retrieved };
 }
 
-export type EvidenceSearchSnapshot = { schemaVersion: 1; strategy: 'text' | 'graph'; graph: EvidenceGraph; result: GraphSearchResult;
-  reviewedPool: { text: ReturnType<typeof summarizeSearchPool>; graph: ReturnType<typeof summarizeSearchPool> } };
+export type EvidenceSearchSnapshot = {
+  schemaVersion: 1; strategy: 'text' | 'graph'; graph: EvidenceGraph; result: GraphSearchResult;
+  reviewedPool: { text: ReturnType<typeof summarizeSearchPool>; graph: ReturnType<typeof summarizeSearchPool> }
+};
 export function snapshotEvidenceSearch(graph: EvidenceGraph, result: GraphSearchResult, strategy: 'text' | 'graph', reviews: EvidenceReview[]): EvidenceSearchSnapshot {
-  return { schemaVersion: 1, strategy, graph, result,
-    reviewedPool: { text: summarizeSearchPool(result.baseline, graph, result.query, reviews), graph: summarizeSearchPool(result.hits, graph, result.query, reviews) } };
+  return {
+    schemaVersion: 1, strategy, graph, result,
+    reviewedPool: { text: summarizeSearchPool(result.baseline, graph, result.query, reviews), graph: summarizeSearchPool(result.hits, graph, result.query, reviews) }
+  };
 }

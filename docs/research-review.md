@@ -1,5 +1,9 @@
 # Research preparation review
 
+Historical review snapshot (2026-11-07). Test counts, commands and repository state
+below describe that review, not the current working tree. Use the current README
+for setup and checks, and the experiment guide for pinned historical replay.
+
 ## Implemented and preserved
 
 The existing Assess, Compare, Evaluate, History, Evidence Explorer, typed graph, provenance, six-case evidence workflow, reviews and technical CLI remain working. Added capabilities are local editing of Choice/Noul/Score questions, explicit apply/reset, portable versioned question JSON, narrow server validation, exact evidence-configuration grouping, assessment model/definition filters, validated history/evidence imports and browser-free agent CLIs.

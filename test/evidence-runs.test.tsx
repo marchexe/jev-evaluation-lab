@@ -122,7 +122,7 @@ test('evidence API shares origin, body, key and inference protections; one actio
   const keys = ['JEV_LIVE_INFERENCE_ENABLED', 'JEV_ALLOWED_ORIGINS', 'JEV_TRUST_PROXY_HEADERS', 'TYPESAFE_API_KEY'];
   const previous = Object.fromEntries(keys.map((key) => [key, process.env[key]]));
   let calls = 0;
-  const handle = createEvidenceHandler(async (caseId: string, options: { live: boolean; signal: AbortSignal }) => {
+  const handle = createEvidenceHandler(async (caseId: unknown, options: { live: boolean; signal: AbortSignal }) => {
     calls++; assert.equal(caseId, recording.caseId); assert.equal(options.live, true); return recording;
   });
   const request = (body: unknown, origin = 'http://localhost:3000') => new Request('http://localhost:3000/api/evidence', {

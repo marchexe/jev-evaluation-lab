@@ -16,7 +16,7 @@ test('recorded Jev Choice, Noul, and fractional Score render original values and
   assert.match(html, /0\.99/);
   assert.match(html, /2\.99/);
   assert.match(html, /0\.01/);
-  assert.match(html, /no yes\/no threshold applied/);
+  assert.match(html, /Ohne Ja\/Nein-Schwelle/);
   assert.match(html, /<meter/);
   assert.match(html, /<details/);
   for (const answer of Object.values(recording.response.answers)) {

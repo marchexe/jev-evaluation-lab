@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "oversight-pilot-review-1",
+  "synthetic": true,
+  "status": "awaiting-independent-human-review",
+  "controls": [
+    { "id": "human-oversight-approval", "statement": "A human must approve each proposed action before the AI system executes it." },
+    { "id": "human-oversight-stop", "statement": "An assigned human operator can stop an AI-system action before execution completes." }
+  ],
+  "documents": [
+    { "id": "invoice-policy", "revision": "1", "systemId": "invoice-assistant", "split": "development", "title": "Invoice approval policy", "content": "# Invoice approval policy\n\n## Release\n\nA finance clerk must accept each payment proposal before the Invoice assistant submits it to the payment gateway. Rejected proposals are discarded.\n\n## Operating reference\n\nThe operating sequence is described in [Gateway execution](evidence:invoice-operations@1#Invoice%20operations%20%2F%20Gateway%20execution)." },
+    { "id": "invoice-operations", "revision": "1", "systemId": "invoice-assistant", "split": "development", "title": "Invoice operations", "content": "# Invoice operations\n\n## Gateway execution\n\nThe Invoice assistant sends every proposal to the payment gateway as soon as it is generated. No clerk acceptance is required in this deployment.\n\n## Stop control\n\nThe duty operator can cancel a queued payment before submission. Once submission starts, the console cannot stop it; the operator can only record an incident." },
+    { "id": "invoice-copy", "revision": "1", "systemId": "invoice-assistant", "split": "development", "title": "Invoice communications", "content": "# Invoice communications\n\n## Editorial approval\n\nA human editor approves the spelling of product newsletters before publication. This review does not cover payment proposals.\n\n## Output\n\nThe Invoice assistant groups synthetic invoices by due date and generates payment proposals. This overview does not describe how a proposal is released or interrupted." },
+    { "id": "course-policy", "revision": "1", "systemId": "course-advisor", "split": "held-out", "title": "Course assignment procedure", "content": "# Course assignment procedure\n\n## Dispatch\n\nEvery course-assignment proposal stays in a waiting tray until a tutor countersigns that proposal. Only then does the Course advisor transmit the assignment.\n\n## Human intervention\n\nThe assigned tutor has a stop control that halts transmission of an assignment while transmission is in progress." },
+    { "id": "course-operations", "revision": "1", "systemId": "course-advisor", "split": "held-out", "title": "Course advisor operations", "content": "# Course advisor operations\n\n## Release mode\n\nThe Course advisor transmits assignments automatically after generation. Tutors inspect a daily sample after transmission; they do not approve assignments beforehand.\n\n## Exception handling\n\nTutors can intervene when necessary. This instruction does not specify whether intervention can stop a transmission or only change a later assignment." },
+    { "id": "course-reporting", "revision": "1", "systemId": "course-advisor", "split": "held-out", "title": "Course reporting guide", "content": "# Course reporting guide\n\n## Report review\n\nA coordinator approves the layout of a weekly course report. The layout review does not examine or authorize individual course assignments.\n\n## Records\n\nAssignment identifiers and generated times appear in the synthetic activity log. This section provides no information about prior approval or interruption controls." }
+  ],
+  "queries": [
+    { "id": "pilot-dev-approval", "split": "development", "systemId": "invoice-assistant", "controlId": "human-oversight-approval", "queryText": "Find passages needed to assess prior human approval of Invoice assistant actions, including contrary or unclear descriptions." },
+    { "id": "pilot-dev-stop", "split": "development", "systemId": "invoice-assistant", "controlId": "human-oversight-stop", "queryText": "Find passages needed to assess whether an operator can stop an Invoice assistant action before it completes." },
+    { "id": "pilot-heldout-approval", "split": "held-out", "systemId": "course-advisor", "controlId": "human-oversight-approval", "queryText": "Find passages needed to assess prior human approval of Course advisor actions, including contrary or unclear descriptions." },
+    { "id": "pilot-heldout-stop", "split": "held-out", "systemId": "course-advisor", "controlId": "human-oversight-stop", "queryText": "Find passages needed to assess whether an assigned tutor can stop a Course advisor action before it completes." }
+  ],
+  "reviewRules": {
+    "relevance": "Label whether the passage is useful for investigating the selected control. Contrary, conditional or unclear evidence may be relevant. A matching word or a document link alone does not establish relevance.",
+    "classification": "Separately label what this passage establishes: supported, contradicted, insufficient_evidence, ambiguous, or uncertain. Judge the source passage, not legal compliance. Use uncertain when you cannot reliably decide.",
+    "independence": "Read the control, query and entire eligible passage pool before viewing retrieval rankings, graph paths or model predictions. Do not copy labels between controls.",
+    "heldOut": "Do not use the held-out bundle to tune search or questions. This is a procedural split, not access protection or an independent real-world sample."
+  }
+}

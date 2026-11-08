@@ -32,6 +32,7 @@
     "scripts/evaluate-retrieval.ts",
     "scripts/evidence-study.ts",
     "scripts/lab.ts",
+    "scripts/prepare-evidence-demo.ts",
     "scripts/replay-exploratory-audit.ts",
     "test/**/*.tsx",
     "e2e/**/*",

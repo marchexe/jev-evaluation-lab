@@ -12,6 +12,21 @@ Do not substitute one for another. No task establishes legal compliance.
 
 ## Original frozen retrieval experiment
 
+The original retrieval manifest pins source files from commit
+`d7b4123`. Current ranking changes intentionally fail those hashes. Run the
+original commands below in a separate historical worktree, leaving your current
+work untouched:
+
+```powershell
+git worktree add --detach ../jev-retrieval-replay d7b4123
+Set-Location ../jev-retrieval-replay
+npm.cmd ci
+```
+
+Do not copy your API key to that worktree. Return to the main project for current
+application checks. New retrieval experiments need a new manifest; never replace
+the original frozen inputs.
+
 The [protocol and review instructions](../examples/evidence/retrieval-eval/README.md) specify 18 related configurations, 17 distinct passages and 159 eligible query/passage judgments. All original labels remain null/unconfirmed. The original corpus, relationships, software hashes, rules and eligible pools are unchanged.
 
 ```powershell

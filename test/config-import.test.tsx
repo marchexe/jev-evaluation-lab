@@ -77,6 +77,8 @@ test('evidence imports restore real runs and independent reviews, ignore derived
   packet.classificationEvaluation.agreementRate = 1; // Imported derived claims never become statistics.
   assert.deepEqual(importEvidenceExperiment(packet), { runs: [run], reviews: [review] });
   assert.deepEqual(importEvidenceExperiment(packet, [run], [review]), { runs: [run], reviews: [review] });
+  const legacy = structuredClone(packet); delete legacy.corpus;
+  assert.deepEqual(importEvidenceExperiment(legacy), { runs: [run], reviews: [review] });
   assert.equal(evaluateEvidenceRuns([run], [review], '', alternative.questionConfiguration).n, 0);
   assert.throws(() => importEvidenceExperiment(packet, [], [{ ...review, comment: 'Conflicting label.' }]), /Conflicting review/);
   const bad = structuredClone(packet); bad.runs[0].result.passage.text = 'forged'; assert.throws(() => importEvidenceExperiment(bad));
@@ -89,7 +91,7 @@ test('custom-question API validation precedes inference, preserves origin contro
   try {
     process.env.TYPESAFE_API_KEY = 'offline-test-key'; process.env.JEV_LIVE_INFERENCE_ENABLED = 'true';
     const handlers = [createAssessmentHandler(async (_: string, opts: any) => { calls++; assert.deepEqual(opts.questionConfiguration, defaultConfigurations.governance); return governance; }),
-      createEvidenceHandler(async (_: string, opts: any) => { calls++; assert.deepEqual(opts.questionConfiguration, alternative.questionConfiguration); return alternative; })];
+      createEvidenceHandler(async (_: unknown, opts: any) => { calls++; assert.deepEqual(opts.questionConfiguration, alternative.questionConfiguration); return alternative; })];
     const packets = [{ description: 'Synthetic description.', live: true, questionConfiguration: defaultConfigurations.governance },
       { caseId: 'approval-gate', live: true, questionConfiguration: alternative.questionConfiguration }];
     for (let i = 0; i < 2; i++) {

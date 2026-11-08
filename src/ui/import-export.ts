@@ -2,7 +2,7 @@ import type { Assessment, AssessmentRecord } from './types';
 import { readHistory, MAX_HISTORY_RECORDS } from './history';
 import { validateQuestionConfiguration, configurationIdentity } from '../question-config.js';
 import { experiment, readEvidenceRuns, MAX_EVIDENCE_RUNS, type EvidenceRun } from './evidence-runs';
-import { evidenceDocuments, DATASET_VERSION, saveEvidenceReview, type EvidenceReview } from './evidence';
+import { evidenceDocuments, DATASET_VERSION, SEARCH_DATASET_VERSION, searchDocuments, searchControls, saveEvidenceReview, type EvidenceReview } from './evidence';
 
 export const MAX_IMPORT_BYTES = 2_000_000;
 const object = (v: any) => v && typeof v === 'object' && !Array.isArray(v);
@@ -61,6 +61,9 @@ export function importEvidenceExperiment(value: any, currentRuns: EvidenceRun[] 
   if (value?.schemaVersion !== 1 || !same(value.experiment, experiment) || value.datasetVersion !== DATASET_VERSION
     || !same(value.documents, evidenceDocuments) || !Array.isArray(value.humanReviewsAtExport)) throw new Error('Foreign or changed evidence experiment.');
   const imported = readEvidenceRuns({ getItem: () => JSON.stringify({ schemaVersion: 1, runs: value.runs }) });
+  const corpus = { version: SEARCH_DATASET_VERSION, documents: searchDocuments, controls: searchControls };
+  if ((value.corpus !== undefined && !same(value.corpus, corpus))
+    || (imported.some(run => run.result.experimentId !== experiment.id) && value.corpus === undefined)) throw new Error('Missing or changed evidence corpus.');
   const runs = [...currentRuns], reviews = [...currentReviews], ids = new Set();
   for (const run of imported) {
     validateAssessment(run.result.assessment);

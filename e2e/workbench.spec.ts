@@ -1,0 +1,63 @@
+import { openReview, openDisclosure } from './workflows';
+import { readFile } from 'node:fs/promises';
+import { test, expect } from '@playwright/test';
+
+const recorded = JSON.parse(await readFile(new URL('../test/fixtures/jev-1.14.0-governance-recorded.json', import.meta.url),'utf8'));
+
+test('evidence has one source list, optional review and a separate research comparison', async ({page}) => {
+  let calls=0; await page.route('**/api/**',async route=>{calls++;await route.abort();});
+  await page.goto('http://127.0.0.1:3198'); await page.getByRole('button',{name:'Belege',exact:true}).click();
+  const lists=page.locator('.evidence-search-pane'), inspector=page.locator('#passage-inspector');
+  await expect(page.getByRole('button',{name:'Quellen finden',exact:true})).toBeVisible();
+  await expect(page.locator('.search-comparison')).toBeHidden();
+  await expect(page.locator('.evidence-steps')).toHaveCount(0);
+  await expect(page.getByRole('region',{name:'Warum gefunden?',exact:true})).toContainText('Enthält Suchbegriffe');
+  await expect(page.locator('.evidence-tools')).not.toHaveAttribute('open','');
+  await expect(inspector.getByLabel('Belegaussage')).toBeHidden();
+  await expect(page.locator('.machine-review > section')).toBeHidden();
+  await expect(lists.locator('.source-results').getByRole('button')).toHaveCount(7);
+  expect((await lists.boundingBox())!.x+(await lists.boundingBox())!.width).toBeLessThan((await inspector.boundingBox())!.x);
+  await page.screenshot({path:'results/evidence-workflow/overview.png',fullPage:false});
+  const before=await page.evaluate(()=>scrollY);
+  await page.getByRole('button',{name:'Inspect source result dispatch-signoff@1:34-107',exact:true}).click();
+  await expect(inspector).toBeFocused();
+  await expect(inspector).toContainText('bevor er die Warteschlange verlässt');
+  expect(await page.evaluate(()=>scrollY)).toBe(before);
+  await openReview(inspector);
+  const save=inspector.getByRole('button',{name:'Bewertung speichern',exact:true});
+  await expect(save).toBeInViewport({ratio:1});
+  await page.setViewportSize({width:1280,height:900});
+  await page.evaluate(()=>scrollTo(0,0));
+  await expect(save).toBeInViewport({ratio:1});
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  await page.screenshot({path:'results/evidence-workflow/review-compact.png',fullPage:false});
+  await page.getByRole('button',{name:'Inspect source result dispatch-policy@1:47-186',exact:true}).click();
+  await expect.poll(() => page.locator('.evidence-review-pane').evaluate(element => element.scrollTop)).toBe(0);
+  await openDisclosure(page,'.search-comparison-details');
+  await page.getByLabel('Nur Unterschiede',{exact:true}).uncheck();
+  const row=page.locator('tr[data-passage-id="dispatch-policy@1:47-186"]');
+  await expect(row).toHaveAttribute('data-text-rank','3'); await expect(row).toHaveAttribute('data-graph-rank','3');
+  expect(calls).toBe(0);
+});
+
+test('analysis changes from a centered form to results and evaluation leads with cases and explicit sample sizes', async ({page}) => {
+  let calls=0; await page.route('**/api/assess',async route=>{calls++;await route.fulfill({json:recorded});});
+  await page.goto('/');
+  const input=page.getByLabel('Systembeschreibung',{exact:true});
+  expect((await input.boundingBox())!.width).toBeGreaterThan(600);
+  await expect(page.locator('#analysis-results')).toBeHidden();
+  await page.screenshot({path:'results/ux-redesign/screenshots/analysis-start.png',fullPage:false});
+  await page.getByLabel('Beispiel',{exact:true}).selectOption('hr-recruitment-reviewed');
+  await page.getByRole('button',{name:'Mit Jev analysieren',exact:true}).click();
+  const card=page.getByRole('article',{name:'Jev assessment'}); await expect(card).toBeVisible();
+  expect((await card.boundingBox())!.width).toBeGreaterThan((await page.locator('.analysis-input').boundingBox())!.width);
+  await page.screenshot({path:'results/ux-redesign/screenshots/analysis-focused-results.png',fullPage:false});
+  await page.getByRole('button',{name:'Auswertung',exact:true}).click();
+  await expect(page.getByRole('region',{name:'Auswertung'}).locator('.evaluation-overview')).toContainText('0 / 1');
+  await expect(page.locator('.case-table')).toBeVisible();
+  await expect(page.getByRole('table',{name:'Evaluation statistics'})).toHaveCount(0);
+  await page.screenshot({path:'results/ux-redesign/screenshots/evaluation-overview.png',fullPage:false});
+  await page.locator('.evaluation-metrics > summary').click();
+  await expect(page.getByRole('table',{name:'Evaluation statistics'})).toBeVisible();
+  expect(calls).toBe(1);
+});

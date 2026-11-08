@@ -14,7 +14,13 @@ Send to `/api/assess`. Description length is 1–12,000 characters. The profile 
 {"caseId":"approval-gate","live":true}
 ```
 
-Send to `/api/evidence`. Case IDs come from `examples/evidence/experiment.json`; arbitrary passage text cannot be injected into this endpoint. Optional `questionConfiguration` must be an evidence envelope. Added graph-register sources remain human-reviewable; the web Jev action still covers the original six cases.
+Send to `/api/evidence`. The original case IDs from `examples/evidence/experiment.json` remain supported. Alternatively, select any exact passage and control in the bundled corpus:
+
+```json
+{"passageId":"dispatch-gates@2:224-348","controlId":"human-oversight","live":true}
+```
+
+The server resolves both IDs. Clients cannot supply source text or combine the two selector formats. A selection matching an original case retains its original identity. Additional pairs use `experimentId: evidence-explorer-1` and the search corpus version; their case IDs are derived from control and passage IDs. Optional `questionConfiguration` must be an evidence envelope. Archived sources retain their exact revision and are never replaced with current text.
 
 Unknown fields, malformed configurations and incompatible cases return 400 before inference. Cross-origin requests return 403; wrong media type 415; oversized bodies 413; disabled inference/missing key 503; provider/network failures are sanitized. Cancellation and timeouts are errors, never predictions. Originless JSON clients are supported: origin protection is not authentication. A hosted deployment must protect both API routes as well as the UI.
 
@@ -44,6 +50,7 @@ For intentional paid CLI execution, append `--live --output results/NEW_FILE.jso
 - Single assessment: the original backend envelope, with optional custom configuration metadata outside the SDK response. Export preserves every original number.
 - History: `schemaVersion: 2`, `assessments` with IDs, description, timestamp, original assessment, overall feedback and optional field reviews. **History → Import history JSON** validates and merges this wrapper. Single raw assessment files are not history imports; agents can use the exported wrapper.
 - Evidence experiment: `schemaVersion: 1`, fixed experiment/corpus identity, raw `runs`, `humanReviewsAtExport`, request-time reviewer snapshots, selected configuration/model filter and descriptive summaries. **Evidence → Import evidence experiment JSON** validates sources, requests, configurations and reviews before merging. Imported derived statistics are ignored and recomputed. The research study's batch-record format is a distinct CLI protocol, not this UI interchange format.
+- New evidence exports also include `corpus` with the complete search documents, controls and corpus version. Imports require an exact match. Older exports without this field remain valid for the original fixed-case runs. Additional corpus runs require the field. Classification selects the latest run per control/passage; missing predictions refer only to the original six cases, so extra sources cannot reduce that count.
 - Research run: protocol hash, case/split identity, exact configuration, request hash, complete SDK envelope. `experiment:evidence report` replays saved runs; the frozen protocol includes corpus passages, revisions, configuration wording and model ID.
 
 Browser imports and `lab validate` are capped at 2 MB. Unknown/changed sources, duplicate imported IDs and conflicting existing records/reviews are rejected. Importing never issues a model request, silently migrates incompatible sources or asserts independent review. Raw-storage recovery exports remain available when stored evidence is invalid. Keep browser exports private unless every description and comment has been reviewed for disclosure.
