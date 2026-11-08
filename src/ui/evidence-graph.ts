@@ -2,6 +2,8 @@ import relations from '../../examples/evidence/graph-relations.json';
 import { searchDocuments, searchControls, retrievePassages, segmentDocument, SEARCH_DATASET_VERSION,
   type EvidenceDocument, type EvidenceControl, type EvidenceReview, type Passage } from './evidence';
 
+import { diversifyGraphHits, type GraphRanking, type GraphRankingInfo } from './graph-ranking';
+
 export const GRAPH_VERSION = 'evidence-graph-1';
 export const GRAPH_SEARCH_VERSION = 'bounded-evidence-bfs-1';
 type Locator = { documentId: string; revision: string; section: string };
@@ -128,7 +130,8 @@ export type GraphHit = { passage: Passage; matchedTerms: string[]; path: SearchP
 export type GraphSearchResult = { version: string; query: GraphQuery; hits: GraphHit[]; baseline: GraphHit[];
   visited: number; edgesExamined: number; limitsReached: string[]; excludedReferences: { edgeId: string; reason: string }[]; diagnostics: GraphDiagnostic[] };
 
-export function searchEvidenceGraph(graph: EvidenceGraph, query: GraphQuery): GraphSearchResult {
+export function searchEvidenceGraph(graph: EvidenceGraph, query: GraphQuery & { ranking?: GraphRanking }): GraphSearchResult & { ranking?: GraphRankingInfo } {
+  if (query.ranking !== undefined && !['lexical-path-1', 'document-diversity-1'].includes(query.ranking)) throw new Error('Invalid graph ranking.');
   for (const [name, value, upper] of [['maxDepth', query.maxDepth, 8], ['maxVisited', query.maxVisited, 1000], ['maxEdges', query.maxEdges, 20000], ['maxResults', query.maxResults, 100]] as const) {
     if (!Number.isInteger(value) || value < (name === 'maxDepth' ? 0 : 1) || value > upper) throw new Error(`Invalid graph search limit: ${name}`);
   }
@@ -188,8 +191,10 @@ export function searchEvidenceGraph(graph: EvidenceGraph, query: GraphQuery): Gr
     }
   }
   hits.sort((a, b) => b.matchedTerms.length - a.matchedTerms.length || a.path.steps.length - b.path.steps.length || cmp(a.passage.id, b.passage.id));
+  const ranked = query.ranking === 'document-diversity-1' ? diversifyGraphHits(hits) : null;
   if (hits.length > query.maxResults) limits.add('maxResults');
-  return { version: GRAPH_SEARCH_VERSION, query, hits: hits.slice(0, query.maxResults), baseline, visited: visited.size, edgesExamined,
+  return { version: ranked ? 'bounded-evidence-bfs-diversity-1' : GRAPH_SEARCH_VERSION, query, hits: (ranked?.hits ?? hits).slice(0, query.maxResults), baseline, visited: visited.size, edgesExamined,
+    ...(ranked ? { ranking: ranked.ranking } : {}),
     limitsReached: [...limits].sort(), excludedReferences: [...exclusions.values()],
     diagnostics: graph.diagnostics.filter((entry) => !entry.source || entry.source.systemId === query.systemId) };
 }

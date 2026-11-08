@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useEffect, useMemo, useState } from 'react';
+import { GraphRankingControl } from './GraphRankingControl';
+import type { GraphRanking } from '../src/ui/graph-ranking';
 import { downloadJson } from '../src/ui/history';
 import { EVIDENCE_RUNS_KEY, writeEvidenceRuns, type EvidenceRun } from '../src/ui/evidence-runs';
 import { EvidenceJudgments } from './EvidenceJudgments';
@@ -53,11 +55,12 @@ export function EvidenceExplorer({ summaryOnly = false, liveEnabled = false, isJ
   const [controlId, setControlId] = useState(searchControls[0].id);
   const [systemId, setSystemId] = useState('dispatch'); const [showAll, setShowAll] = useState(false);
   const [strategy, setStrategy] = useState<'text' | 'graph'>('text');
+  const [ranking, setRanking] = useState<GraphRanking>('document-diversity-1');
   const [maxDepth, setMaxDepth] = useState(DEFAULT_GRAPH_LIMITS.maxDepth); const [includeArchived, setIncludeArchived] = useState(false);
   useEffect(() => { try { setReviews(readEvidenceReviews(localStorage)); } catch { setError('Evidence reviews could not be loaded. Export stored data before clearing or repairing browser storage.'); } setReady(true); }, []);
   const control = searchControls.find((entry) => entry.id === controlId)!;
   const graph = useMemo(() => buildEvidenceGraph(undefined, undefined, undefined, reviews), [reviews]);
-  const search = useMemo(() => searchEvidenceGraph(graph, { ...DEFAULT_GRAPH_LIMITS, maxDepth, includeArchived, controlId, systemId }), [graph, maxDepth, includeArchived, controlId, systemId]);
+  const search = useMemo(() => searchEvidenceGraph(graph, { ...DEFAULT_GRAPH_LIMITS, maxDepth, includeArchived, controlId, systemId, ranking }), [graph, maxDepth, includeArchived, controlId, systemId, ranking]);
   const snapshot = snapshotEvidenceSearch(graph, search, strategy, reviews);
   const sources = searchDocuments.filter((document) => {
     const revision = graph.nodes.find((node) => node.id === graphIds.revision(document.id, document.revision));
@@ -101,9 +104,10 @@ export function EvidenceExplorer({ summaryOnly = false, liveEnabled = false, isJ
         <label>Documented system<select disabled={isJudging} value={systemId} onChange={(event) => setSystemId(event.target.value)}>{[...new Set(searchDocuments.map((entry) => entry.systemId))].map((id) => <option key={id}>{id}</option>)}</select></label></div>
       <div className="comparison-selectors"><label>Search strategy<select disabled={isJudging} value={strategy} onChange={(event) => setStrategy(event.target.value as typeof strategy)}><option value="text">Text Search</option><option value="graph">Graph Search</option></select></label>
         {strategy === 'graph' && <label>Traversal depth<select disabled={isJudging} value={maxDepth} onChange={(event) => setMaxDepth(Number(event.target.value))}>{[0, 1, 2, 3, 4, 5, 6, 7, 8].map((depth) => <option key={depth}>{depth}</option>)}</select></label>}</div>
+      <GraphRankingControl value={ranking} onChange={setRanking} disabled={isJudging} info={search.ranking} />
       <label><input type="checkbox" disabled={isJudging} checked={includeArchived} onChange={(event) => setIncludeArchived(event.target.checked)} /> Include archived revisions (pinned references are never upgraded)</label>
       <p><strong>Control statement:</strong> {control.statement}</p>
-      <p className="view-note">{candidates.length} candidate passages / {passages.length} paragraphs from {sources.length} document revisions. Rank: distinct lexical matches descending, then graph hops ascending, then stable passage ID. This is not a probability or a finding.</p>
+      <p className="view-note">{candidates.length} candidate passages / {passages.length} paragraphs from {sources.length} document revisions. Graph order follows the selected ranking. This is not a probability or a finding.</p>
       <label><input type="checkbox" disabled={isJudging} checked={showAll} onChange={(event) => setShowAll(event.target.checked)} /> Inspect all source passages, including retrieval misses</label>
     </>}
     <p className="view-note" aria-live="polite">Search comparison for {systemId} / {control.title}, {includeArchived ? 'all pinned revisions' : 'current revisions'}: Text Search {search.baseline.length}; Graph Search {search.hits.length}. Reviewed relevant pool: text {snapshot.reviewedPool.text.retrievedRelevant}/{snapshot.reviewedPool.text.relevant}; graph {snapshot.reviewedPool.graph.retrievedRelevant}/{snapshot.reviewedPool.graph.relevant}. Human review edges are excluded from traversal.</p>

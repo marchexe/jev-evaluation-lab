@@ -82,7 +82,10 @@ paragraph. Graph Search follows a quoted control alias and a pinned cross-docume
 reference to retrieve the exact source through five hops.
 
 That demonstrates candidate discovery, not proven relevance or compliance. The
-source currently ranks seventh, outside the top five. Graph also misses an
+source ranks seventh with the original ranking. The workspace's experimental
+document-diversity ranking moves it to fifth, while moving another register
+paragraph to sixth. [Ranking rules and limitations](docs/graph-ranking.md) explain
+the tradeoff. This is not a human-validated relevance gain. Graph also misses an
 unlinked approval policy under many query configurations and retains lexical
 false matches. See the [graph model and source-path example](examples/evidence/GRAPH_SEARCH.md).
 
