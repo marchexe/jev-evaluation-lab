@@ -38,7 +38,11 @@
     "e2e/**/*",
     "playwright.config.ts",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
+    ".next/dev/types/**/*.ts",
+    "scripts/evaluate-regulatory.ts",
+    "scripts/regulatory-snapshot.ts",
+    "src/experiments/**/*",
+    "scripts/obligation-experiment.ts"
   ],
   "exclude": [
     "node_modules"

@@ -34,7 +34,7 @@ test('German desktop workspace loads examples and navigates without inference', 
   page.on('pageerror', error => errors.push(error.message));
   await page.route('**/api/**', async route => { requests++; await route.abort(); });
   await page.goto('http://127.0.0.1:3198');
-  await expect(page.getByRole('navigation', { name: 'Arbeitsbereiche' }).getByRole('button')).toHaveCount(4);
+  await expect(page.getByRole('navigation', { name: 'Arbeitsbereiche' }).getByRole('button')).toHaveCount(5);
   await expect(page.getByRole('heading', { name: 'Analyse', exact: true })).toBeVisible();
   await page.keyboard.press('Tab'); await expect(page.getByRole('link', { name: 'Zum Arbeitsbereich' })).toBeFocused();
   await page.keyboard.press('Enter'); await expect(page.locator('#workspace-content')).toBeFocused();

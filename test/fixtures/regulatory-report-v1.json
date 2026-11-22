@@ -1,0 +1,957 @@
+{
+  "schemaVersion": 1,
+  "kind": "claude-code-assessment",
+  "rules": "claude-adoption-checks-1",
+  "questionConfiguration": {
+    "schemaVersion": 1,
+    "kind": "evidence",
+    "version": "regulatory-evidence-1",
+    "questions": {
+      "evidence_judgment": {
+        "type": "choice",
+        "instructions": "What does `passage.text` document about `control.statement`? Judge the company passage only. The legalReferences supply a limited historical reference, not evidence of company practice. Do not determine legal compliance.",
+        "criteria": {
+          "supported": "The company passage explicitly documents the arrangement stated in the control. A legal rule alone cannot establish company implementation.",
+          "contradicted": "The company passage explicitly states an incompatible arrangement or expressly says the required documentation is absent. Missing information alone is not a contradiction.",
+          "insufficient_evidence": "The company passage gives no evidence about the arrangement, is unrelated, or only repeats a legal requirement.",
+          "ambiguous": "The company passage addresses the arrangement but is vague, conditional or internally conflicting."
+        }
+      },
+      "addresses_control": {
+        "type": "noul",
+        "instructions": "Does `passage.text` address the company arrangement in `control.statement`?",
+        "criteria": {
+          "true": "The passage addresses the arrangement, including explicit absence, uncertainty or conflict.",
+          "false": "The passage concerns another process or contains only general legal text without company-specific evidence."
+        }
+      }
+    }
+  },
+  "corpusFingerprint": "2a9e14e0c1ec5898c28222bafca77cf88fc366ae3a1bd3a525ddf2163df2ce4e",
+  "scope": "Synthetic German-company Claude Code adoption; documented checklist outcomes, no legal approval.",
+  "limitations": [
+    "Historical sources require current-law review.",
+    "AI Act, works council rights, sector rules and vendor contract contents require separate review.",
+    "No live vendor settings or company practice verified."
+  ],
+  "draft": {
+    "schemaVersion": 1,
+    "scenarioId": "claude-documented",
+    "plan": "commercial",
+    "facts": {
+      "personalData": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "purpose": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "legalBasis": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "processor": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "dpa": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "transfer": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "transferBasis": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "security": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-2@1:18-356"
+        ],
+        "note": ""
+      },
+      "screening": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "highRisk": {
+        "value": "no",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "dpia": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      },
+      "employeeData": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "employeeBasis": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "confidential": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "secrecy": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-2@1:18-356"
+        ],
+        "note": ""
+      }
+    },
+    "reviews": {},
+    "runs": []
+  },
+  "scenario": {
+    "id": "claude-documented",
+    "title": "Dokumentierter Musterfall",
+    "titleEn": "Documented example",
+    "plan": "commercial",
+    "purpose": "Synthetisches deutsches Softwareunternehmen, 20 Entwickler. Claude Code soll bei Codeänderungen und Tests helfen. Keine echten Unternehmensdaten.",
+    "documents": [
+      {
+        "id": "claude-documented-document-1",
+        "revision": "1",
+        "systemId": "claude-documented",
+        "title": "Synthetischer Einführungsplan",
+        "content": "# Einführungsplan\n\nSYNTHETISCH; keine Tatsachenbehauptung über Anthropic. Ein deutsches Unternehmen dokumentiert Zweck, Datenkategorien, Minimierung, Entwicklerkonten und Logdaten für den Claude-Code-Piloten. Datenschutzverantwortliche haben die Rechtsgrundlage einschließlich der Erforderlichkeit für Beschäftigtendaten im fiktiven Prüfvermerk freigegeben. Der kommerzielle Vertrag und die Rolle als Auftragsverarbeiter sind dokumentiert; ein auf diese Konfiguration bezogener AV-Vertrag ist geprüft. Drittlandzugriffe, Unterauftragnehmer und ein einschlägiger Mechanismus nach Kapitel V wurden im Szenario fachlich geprüft und dokumentiert. Die dokumentierte DSFA-Vorprüfung kommt begründet zu keinem voraussichtlich hohen Datenschutzrisiko. Das ist keine Aussage über ein reales Vertragsprodukt."
+      },
+      {
+        "id": "claude-documented-document-2",
+        "revision": "1",
+        "systemId": "claude-documented",
+        "title": "Synthetischer IT-Prüfvermerk",
+        "content": "# IT-Prüfvermerk\n\nSYNTHETISCH. Die risikobezogenen Sicherheitsmaßnahmen wurden fachlich geprüft: Zugriff auf ausgewählte Repositories, Secret-Filter, eingeschränkte Tool-Rechte, menschliche Freigabe und protokollierte Tests. Potenziell geheimer Quellcode wird klassifiziert; Zugriffsbegrenzungen und passende Geheimhaltungsvereinbarungen sind dokumentiert."
+      }
+    ],
+    "facts": {
+      "personalData": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "purpose": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "legalBasis": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "processor": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "dpa": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "transfer": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "transferBasis": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "security": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-2@1:18-356"
+        ],
+        "note": ""
+      },
+      "screening": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "highRisk": {
+        "value": "no",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "dpia": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      },
+      "employeeData": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "employeeBasis": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "confidential": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "secrecy": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-2@1:18-356"
+        ],
+        "note": ""
+      }
+    }
+  },
+  "corpus": {
+    "schemaVersion": 1,
+    "version": "claude-regulatory-corpus-1",
+    "extraction": "pypdf 7.1.0; text extraction, not OCR; offsets UTF-16 zero-based end-exclusive",
+    "extractedOn": "2026-11-17",
+    "sources": [
+      {
+        "id": "gdpr",
+        "title": "DSGVO",
+        "kind": "binding_law",
+        "issuer": "EU, Amtsblatt L 119, 4.5.2016",
+        "revision": "2016-05-04",
+        "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj/deu",
+        "filename": "EU_DSGVO.pdf",
+        "sha256": "27b720c812be1bdf1462ff468ad6410fe94da80b48f6d10fa7e2269b9e5a1597",
+        "pageCount": 88,
+        "currentness": "Historical supplied snapshot; current consolidated law not verified",
+        "use": "selected excerpts"
+      },
+      {
+        "id": "bdsg",
+        "title": "BDSG (Verkündungsfassung)",
+        "kind": "binding_law",
+        "issuer": "Bundesgesetzblatt I, 5.7.2017",
+        "revision": "2017-07-05",
+        "url": "https://www.gesetze-im-internet.de/bdsg_2018/__26.html",
+        "filename": "BDSG nF.pdf",
+        "sha256": "beafc08da9cf02b3381363f88439ff2e2b07a1df605b151e150b08ade42a85ed",
+        "pageCount": 36,
+        "currentness": "Historical supplied snapshot; current consolidated law not verified",
+        "use": "selected excerpts"
+      },
+      {
+        "id": "geschgehg",
+        "title": "GeschGehG",
+        "kind": "binding_law",
+        "issuer": "Bundesministerium der Justiz / Bundesamt für Justiz",
+        "revision": "2019-04-18",
+        "url": "https://www.gesetze-im-internet.de/geschgehg/__2.html",
+        "filename": "GeschGehG.pdf",
+        "sha256": "4757327842c6c244c5e4b2d9d9c9361152bbb239d3dad95ee033c2bfb58454fb",
+        "pageCount": 9,
+        "currentness": "Historical supplied snapshot; current consolidated law not verified",
+        "use": "selected excerpts"
+      },
+      {
+        "id": "uwg",
+        "title": "UWG",
+        "kind": "binding_law",
+        "issuer": "Bundesministerium der Justiz / Bundesamt für Justiz",
+        "revision": "2020-11-26",
+        "url": "https://www.gesetze-im-internet.de/uwg_2004/",
+        "filename": "UWG.pdf",
+        "sha256": "235b01583139ef2c46d022f27d3fcbe617dbb967680134dfb621517e538d9a1c",
+        "pageCount": 14,
+        "currentness": "Historical supplied snapshot; current consolidated law not verified",
+        "use": "inventory only; no automatic obligation inferred"
+      },
+      {
+        "id": "bfdi-info1",
+        "title": "BfDI Info 1: Texte und Erläuterungen",
+        "kind": "guidance",
+        "issuer": "BfDI",
+        "revision": "2019 (PDF metadata; edition not verified)",
+        "url": "https://www.bfdi.bund.de/",
+        "filename": "Erläuterungen DSGVO.pdf",
+        "sha256": "eaeea9c56772a7480f60ec271eb1602b504e9b3cff293e7aea8c9f5ea755f453",
+        "pageCount": 316,
+        "currentness": "Historical supplied snapshot; current consolidated law not verified",
+        "use": "inventory only; no automatic obligation inferred"
+      },
+      {
+        "id": "bsi-200-1",
+        "title": "BSI-Standard 200-1",
+        "kind": "technical_standard",
+        "issuer": "BSI",
+        "revision": "2017-10, Version 1.0",
+        "url": "https://www.bsi.bund.de/grundschutz",
+        "filename": "standard_200_1.pdf",
+        "sha256": "7d27c71c9937c66e8e9ab544f418446528d75f75417e1d5efb959c5a32797203",
+        "pageCount": 48,
+        "currentness": "Historical supplied snapshot; current consolidated law not verified",
+        "use": "inventory only; no automatic obligation inferred"
+      },
+      {
+        "id": "bsi-200-2",
+        "title": "BSI-Standard 200-2",
+        "kind": "technical_standard",
+        "issuer": "BSI",
+        "revision": "2017-10, Version 1.0",
+        "url": "https://www.bsi.bund.de/grundschutz",
+        "filename": "standard_200_2.pdf",
+        "sha256": "af0962c5b3f6763f8aa7927ee5da749ee0fed1fcadbf26b22c0ab26f6b9f6a1a",
+        "pageCount": 180,
+        "currentness": "Historical supplied snapshot; current consolidated law not verified",
+        "use": "inventory only; no automatic obligation inferred"
+      },
+      {
+        "id": "bsi-200-3",
+        "title": "BSI-Standard 200-3",
+        "kind": "technical_standard",
+        "issuer": "BSI",
+        "revision": "2017-10, Version 1.0",
+        "url": "https://www.bsi.bund.de/grundschutz",
+        "filename": "standard_200_3.pdf",
+        "sha256": "639a089dd74b9f7c6ec70a9b37443c97bd15cdf65a707d769bc1ff1ec017c86a",
+        "pageCount": 54,
+        "currentness": "Historical supplied snapshot; current consolidated law not verified",
+        "use": "inventory only; no automatic obligation inferred"
+      }
+    ],
+    "pages": [
+      {
+        "id": "gdpr:p35",
+        "sourceId": "gdpr",
+        "page": 35,
+        "text": "22. „betroffene Aufsichtsbehörde“ eine Aufsichtsbehörde, die von der Verarbeitung personenbezogener Daten betroffen \nist, weil \na)  der Verantwortliche oder der Auftragsverarbeiter im Hoheitsgebiet des Mitgliedstaats dieser Aufsichtsbehörde \nniedergelassen ist, \nb)  diese Verarbeitung erhebliche Auswirkungen auf betroffene Personen mit Wohnsitz im Mitgliedstaat dieser \nAufsichtsbehörde hat oder haben kann oder \nc)  eine Beschwerde bei dieser Aufsichtsbehörde eingereicht wurde;  \n23. „grenzüberschreitende Verarbeitung“ entweder \na)  eine Verarbeitung personenbezogener Daten, die im Rahmen der Tätigkeiten von Niederlassungen eines \nVerantwortlichen oder eines Auftragsverarbeiters in der Union in mehr als einem Mitgliedstaat erfolgt, wenn der \nVerantwortliche oder Auftragsverarbeiter in mehr als einem Mitgliedstaat niedergelassen ist, oder \nb)  eine Verarbeitung personenbezogener Daten, die im Rahmen der Tätigkeiten einer einzelnen Niederlassung eines \nVerantwortlichen oder eines Auftragsverarbeiters in der Union erfolgt, die jedoch erhebliche Auswirkungen auf \nbetroffene Personen in mehr als einem Mitgliedstaat hat oder haben kann;  \n24. „maßgeblicher und begründeter Einspruch“ einen Einspruch gegen einen Beschlussentwurf im Hinblick darauf, ob \nein Verstoß gegen diese Verordnung vorliegt oder ob beabsichtigte Maßnahmen gegen den Verantwortlichen oder \nden Auftragsverarbeiter im Einklang mit dieser Verordnung steht, wobei aus diesem Einspruch die Tragweite der \nRisiken klar hervorgeht, die von dem Beschlussentwurf in Bezug auf die Grundrechte und Grundfreiheiten der \nbetroffenen Personen und gegebenenfalls den freien Verkehr personenbezogener Daten in der Union ausgehen;  \n25. „Dienst der Informationsgesellschaft“ eine Dienstleistung im Sinne des Artikels 1 Nummer 1 Buchstabe b der \nRichtlinie (EU) 2015/1535 des Europäischen Parlaments und des Rates (1);  \n26. „internationale Organisation“ eine völkerrechtliche Organisation und ihre nachgeordneten Stellen oder jede sonstige \nEinrichtung, die durch eine zwischen zwei oder mehr Ländern geschlossene Übereinkunft oder auf der Grundlage \neiner solchen Übereinkunft geschaffen wurde. \nKAPITEL II \nGrundsätze \nArtikel 5 \nGrundsätze für die Verarbeitung personenbezogener Daten \n(1) Personenbezogene Daten müssen \na)  auf rechtmäßige Weise, nach Treu und Glauben und in einer für die betroffene Person nachvollziehbaren Weise \nverarbeitet werden („Rechtmäßigkeit, Verarbeitung nach Treu und Glauben, Transparenz“); \nb)  für festgelegte, eindeutige und legitime Zwecke erhoben werden und dürfen nicht in einer mit diesen Zwecken nicht \nzu vereinbarenden Weise weiterverarbeitet werden; eine Weiterverarbeitung für im öffentlichen Interesse liegende \nArchivzwecke, für wissenschaftliche oder historische Forschungszwecke oder für statistische Zwecke gilt gemäß \nArtikel 89 Absatz 1 nicht als unvereinbar mit den ursprünglichen Zwecken („Zweckbindung“); \nc)  dem Zweck angemessen und erheblich sowie auf das für die Zwecke der Verarbeitung notwendige Maß beschränkt \nsein („Datenminimierung“); \nd)  sachlich richtig und erforderlichenfalls auf dem neuesten Stand sein; es sind alle angemessenen Maßnahmen zu \ntreffen, damit personenbezogene Daten, die im Hinblick auf die Zwecke ihrer Verarbeitung unrichtig sind, \nunverzüglich gelöscht oder berichtigt werden („Richtigkeit“); \n4.5.2016 L 119/35 Amtsblatt der Europäischen Union DE     \n(1) Richtlinie (EU) 2015/1535 des Europäischen Parlaments und des Rates vom 9. September 2015 über ein Informationsverfahren auf dem \nGebiet der technischen Vorschriften und der Vorschriften für die Dienste der Informationsgesellschaft (ABl. L 241 vom 17.9.2015, S. 1). ",
+        "sha256": "edce00faf003004cfe727b49c786193e0a35ea87bfd37807f546882bb094b307"
+      },
+      {
+        "id": "gdpr:p36",
+        "sourceId": "gdpr",
+        "page": 36,
+        "text": "e)  in einer Form gespeichert werden, die die Identifizierung der betroffenen Personen nur so lange ermöglicht, wie es \nfür die Zwecke, für die sie verarbeitet werden, erforderlich ist; personenbezogene Daten dürfen länger gespeichert \nwerden, soweit die personenbezogenen Daten vorbehaltlich der Durchführung geeigneter technischer und organisa­\ntorischer Maßnahmen, die von dieser Verordnung zum Schutz der Rechte und Freiheiten der betroffenen Person \ngefordert werden, ausschließlich für im öffentlichen Interesse liegende Archivzwecke oder für wissenschaftliche und \nhistorische Forschungszwecke oder für statistische Zwecke gemäß Artikel 89 Absatz 1 verarbeitet werden („Speicher­\nbegrenzung“); \nf)  in einer Weise verarbeitet werden, die eine angemessene Sicherheit der personenbezogenen Daten gewährleistet, \neinschließlich Schutz vor unbefugter oder unrechtmäßiger Verarbeitung und vor unbeabsichtigtem Verlust, \nunbeabsichtigter Zerstörung oder unbeabsichtigter Schädigung durch geeignete technische und organisatorische \nMaßnahmen („Integrität und Vertraulichkeit“); \n(2) Der Verantwortliche ist für die Einhaltung des Absatzes 1 verantwortlich und muss dessen Einhaltung nachweisen \nkönnen („Rechenschaftspflicht“). \nArtikel 6 \nRechtmäßigkeit der Verarbeitung \n(1) Die Verarbeitung ist nur rechtmäßig, wenn mindestens eine der nachstehenden Bedingungen erfüllt ist: \na)  Die betroffene Person hat ihre Einwilligung zu der Verarbeitung der sie betreffenden personenbezogenen Daten für \neinen oder mehrere bestimmte Zwecke gegeben; \nb)  die Verarbeitung ist für die Erfüllung eines Vertrags, dessen Vertragspartei die betroffene Person ist, oder zur \nDurchführung vorvertraglicher Maßnahmen erforderlich, die auf Anfrage der betroffenen Person erfolgen; \nc)  die Verarbeitung ist zur Erfüllung einer rechtlichen Verpflichtung erforderlich, der der Verantwortliche unterliegt; \nd)  die Verarbeitung ist erforderlich, um lebenswichtige Interessen der betroffenen Person oder einer anderen natürlichen \nPerson zu schützen; \ne)  die Verarbeitung ist für die Wahrnehmung einer Aufgabe erforderlich, die im öffentlichen Interesse liegt oder in \nAusübung öffentlicher Gewalt erfolgt, die dem Verantwortlichen übertragen wurde; \nf)  die Verarbeitung ist zur Wahrung der berechtigten Interessen des Verantwortlichen oder eines Dritten erforderlich, \nsofern nicht die Interessen oder Grundrechte und Grundfreiheiten der betroffenen Person, die den Schutz personen­\nbezogener Daten erfordern, überwiegen, insbesondere dann, wenn es sich bei der betroffenen Person um ein Kind \nhandelt. \nUnterabsatz 1 Buchstabe f gilt nicht für die von Behörden in Erfüllung ihrer Aufgaben vorgenommene Verarbeitung. \n(2) Die Mitgliedstaaten können spezifischere Bestimmungen zur Anpassung der Anwendung der Vorschriften dieser \nVerordnung in Bezug auf die Verarbeitung zur Erfüllung von Absatz 1 Buchstaben c und e beibehalten oder einführen, \nindem sie spezifische Anforderungen für die Verarbeitung sowie sonstige Maßnahmen präziser bestimmen, um eine \nrechtmäßig und nach Treu und Glauben erfolgende Verarbeitung zu gewährleisten, einschließlich für andere besondere \nVerarbeitungssituationen gemäß Kapitel IX. \n(3) Die Rechtsgrundlage für die Verarbeitungen gemäß Absatz 1 Buchstaben c und e wird festgelegt durch \na)  Unionsrecht oder \nb)  das Recht der Mitgliedstaaten, dem der Verantwortliche unterliegt. \nDer Zweck der Verarbeitung muss in dieser Rechtsgrundlage festgelegt oder hinsichtlich der Verarbeitung gemäß \nAbsatz 1 Buchstabe e für die Erfüllung einer Aufgabe erforderlich sein, die im öffentlichen Interesse liegt oder in \nAusübung öffentlicher Gewalt erfolgt, die dem Verantwortlichen übertragen wurde. Diese Rechtsgrundlage kann \nspezifische Bestimmungen zur Anpassung der Anwendung der Vorschriften dieser Verordnung enthalten, unter anderem \nBestimmungen darüber, welche allgemeinen Bedingungen für die Regelung der Rechtmäßigkeit der Verarbeitung durch \nden Verantwortlichen gelten, welche Arten von Daten verarbeitet werden, welche Personen betroffen sind, an welche \nEinrichtungen und für welche Zwecke die personenbezogenen Daten offengelegt werden dürfen, welcher Zweckbindung \nsie unterliegen, wie lange sie gespeichert werden dürfen und welche Verarbeitungsvorgänge und -verfahren angewandt \nwerden dürfen, einschließlich Maßnahmen zur Gewährleistung einer rechtmäßig und nach Treu und Glauben \n4.5.2016 L 119/36 Amtsblatt der Europäischen Union DE     ",
+        "sha256": "4bc546b17a3e9a6c56268a2636247e1b88bde04faebd2f6986c753a46fe03d41"
+      },
+      {
+        "id": "gdpr:p49",
+        "sourceId": "gdpr",
+        "page": 49,
+        "text": "(3) Der Vertreter muss in einem der Mitgliedstaaten niedergelassen sein, in denen die betroffenen Personen, deren \npersonenbezogene Daten im Zusammenhang mit den ihnen angebotenen Waren oder Dienstleistungen verarbeitet \nwerden oder deren Verhalten beobachtet wird, sich befinden. \n(4) Der Vertreter wird durch den Verantwortlichen oder den Auftragsverarbeiter beauftragt, zusätzlich zu diesem oder \nan seiner Stelle insbesondere für Aufsichtsbehörden und betroffene Personen bei sämtlichen Fragen im Zusammenhang \nmit der Verarbeitung zur Gewährleistung der Einhaltung dieser Verordnung als Anlaufstelle zu dienen. \n(5) Die Benennung eines Vertreters durch den Verantwortlichen oder den Auftragsverarbeiter erfolgt unbeschadet \netwaiger rechtlicher Schritte gegen den Verantwortlichen oder den Auftragsverarbeiter selbst. \nArtikel 28 \nAuftragsverarbeiter \n(1) Erfolgt eine Verarbeitung im Auftrag eines Verantwortlichen, so arbeitet dieser nur mit Auftragsverarbeitern, die \nhinreichend Garantien dafür bieten, dass geeignete technische und organisatorische Maßnahmen so durchgeführt werden, \ndass die Verarbeitung im Einklang mit den Anforderungen dieser Verordnung erfolgt und den Schutz der Rechte der \nbetroffenen Person gewährleistet. \n(2) Der Auftragsverarbeiter nimmt keinen weiteren Auftragsverarbeiter ohne vorherige gesonderte oder allgemeine \nschriftliche Genehmigung des Verantwortlichen in Anspruch. Im Fall einer allgemeinen schriftlichen Genehmigung \ninformiert der Auftragsverarbeiter den Verantwortlichen immer über jede beabsichtigte Änderung in Bezug auf die \nHinzuziehung oder die Ersetzung anderer Auftragsverarbeiter, wodurch der Verantwortliche die Möglichkeit erhält, gegen \nderartige Änderungen Einspruch zu erheben. \n(3) Die Verarbeitung durch einen Auftragsverarbeiter erfolgt auf der Grundlage eines Vertrags oder eines anderen \nRechtsinstruments nach dem Unionsrecht oder dem Recht der Mitgliedstaaten, der bzw. das den Auftragsverarbeiter in \nBezug auf den Verantwortlichen bindet und in dem Gegenstand und Dauer der Verarbeitung, Art und Zweck der \nVerarbeitung, die Art der personenbezogenen Daten, die Kategorien betroffener Personen und die Pflichten und Rechte \ndes Verantwortlichen festgelegt sind. Dieser Vertrag bzw. dieses andere Rechtsinstrument sieht insbesondere vor, dass der \nAuftragsverarbeiter \na)  die personenbezogenen Daten nur auf dokumentierte Weisung des Verantwortlichen — auch in Bezug auf die \nÜbermittlung personenbezogener Daten an ein Drittland oder eine internationale Organisation — verarbeitet, sofern \ner nicht durch das Recht der Union oder der Mitgliedstaaten, dem der Auftragsverarbeiter unterliegt, hierzu \nverpflichtet ist; in einem solchen Fall teilt der Auftragsverarbeiter dem Verantwortlichen diese rechtlichen \nAnforderungen vor der Verarbeitung mit, sofern das betreffende Recht eine solche Mitteilung nicht wegen eines \nwichtigen öffentlichen Interesses verbietet; \nb)  gewährleistet, dass sich die zur Verarbeitung der personenbezogenen Daten befugten Personen zur Vertraulichkeit \nverpflichtet haben oder einer angemessenen gesetzlichen Verschwiegenheitspflicht unterliegen; \nc)  alle gemäß Artikel 32 erforderlichen Maßnahmen ergreift; \nd) die in den Absätzen 2 und 4 genannten Bedingungen für die Inanspruchnahme der Dienste eines weiteren Auftrags­\nverarbeiters einhält; \ne) angesichts der Art der Verarbeitung den Verantwortlichen nach Möglichkeit mit geeigneten technischen und organisa­\ntorischen Maßnahmen dabei unterstützt, seiner Pflicht zur Beantwortung von Anträgen auf Wahrnehmung der in \nKapitel III genannten Rechte der betroffenen Person nachzukommen; \nf)  unter Berücksichtigung der Art der Verarbeitung und der ihm zur Verfügung stehenden Informationen den \nVerantwortlichen bei der Einhaltung der in den Artikeln 32 bis 36 genannten Pflichten unterstützt; \ng)  nach Abschluss der Erbringung der Verarbeitungsleistungen alle personenbezogenen Daten nach Wahl des \nVerantwortlichen entweder löscht oder zurückgibt, sofern nicht nach dem Unionsrecht oder dem Recht der \nMitgliedstaaten eine Verpflichtung zur Speicherung der personenbezogenen Daten besteht; \nh)  dem Verantwortlichen alle erforderlichen Informationen zum Nachweis der Einhaltung der in diesem Artikel \nniedergelegten Pflichten zur Verfügung stellt und Überprüfungen — einschließlich Inspektionen –, die vom \nVerantwortlichen oder einem anderen von diesem beauftragten Prüfer durchgeführt werden, ermöglicht und dazu \nbeiträgt. \n4.5.2016 L 119/49 Amtsblatt der Europäischen Union DE     ",
+        "sha256": "38498a64fd548d69bb995ae43e1ddf8f3871844f368cd439de498ca24809f7c1"
+      },
+      {
+        "id": "gdpr:p51",
+        "sourceId": "gdpr",
+        "page": 51,
+        "text": "d)  die Kategorien von Empfängern, gegenüber denen die personenbezogenen Daten offengelegt worden sind oder noch \noffengelegt werden, einschließlich Empfänger in Drittländern oder internationalen Organisationen; \ne)  gegebenenfalls Übermittlungen von personenbezogenen Daten an ein Drittland oder an eine internationale \nOrganisation, einschließlich der Angabe des betreffenden Drittlands oder der betreffenden internationalen \nOrganisation, sowie bei den in Artikel 49 Absatz 1 Unterabsatz 2 genannten Datenübermittlungen die \nDokumentierung geeigneter Garantien; \nf)  wenn möglich, die vorgesehenen Fristen für die Löschung der verschiedenen Datenkategorien; \ng)  wenn möglich, eine allgemeine Beschreibung der technischen und organisatorischen Maßnahmen gemäß Artikel 32 \nAbsatz 1. \n(2) Jeder Auftragsverarbeiter und gegebenenfalls sein Vertreter führen ein Verzeichnis zu allen Kategorien von im \nAuftrag eines Verantwortlichen durchgeführten Tätigkeiten der Verarbeitung, die Folgendes enthält: \na)  den Namen und die Kontaktdaten des Auftragsverarbeiters oder der Auftragsverarbeiter und jedes Verantwortlichen, \nin dessen Auftrag der Auftragsverarbeiter tätig ist, sowie gegebenenfalls des Vertreters des Verantwortlichen oder des \nAuftragsverarbeiters und eines etwaigen Datenschutzbeauftragten; \nb)  die Kategorien von Verarbeitungen, die im Auftrag jedes Verantwortlichen durchgeführt werden; \nc)  gegebenenfalls Übermittlungen von personenbezogenen Daten an ein Drittland oder an eine internationale \nOrganisation, einschließlich der Angabe des betreffenden Drittlands oder der betreffenden internationalen \nOrganisation, sowie bei den in Artikel 49 Absatz 1 Unterabsatz 2 genannten Datenübermittlungen die \nDokumentierung geeigneter Garantien; \nd)  wenn möglich, eine allgemeine Beschreibung der technischen und organisatorischen Maßnahmen gemäß Artikel 32 \nAbsatz 1. \n(3) Das in den Absätzen 1 und 2 genannte Verzeichnis ist schriftlich zu führen, was auch in einem elektronischen \nFormat erfolgen kann. \n(4) Der Verantwortliche oder der Auftragsverarbeiter sowie gegebenenfalls der Vertreter des Verantwortlichen oder des \nAuftragsverarbeiters stellen der Aufsichtsbehörde das Verzeichnis auf Anfrage zur Verfügung. \n(5) Die in den Absätzen 1 und 2 genannten Pflichten gelten nicht für Unternehmen oder Einrichtungen, die weniger \nals 250 Mitarbeiter beschäftigen, sofern die von ihnen vorgenommene Verarbeitung nicht ein Risiko für die Rechte und \nFreiheiten der betroffenen Personen birgt, die Verarbeitung nicht nur gelegentlich erfolgt oder nicht die Verarbeitung \nbesonderer Datenkategorien gemäß Artikel 9 Absatz 1 bzw. die Verarbeitung von personenbezogenen Daten über \nstrafrechtliche Verurteilungen und Straftaten im Sinne des Artikels 10 einschließt. \nArtikel 31 \nZusammenarbeit mit der Aufsichtsbehörde \nDer Verantwortliche und der Auftragsverarbeiter und gegebenenfalls deren Vertreter arbeiten auf Anfrage mit der \nAufsichtsbehörde bei der Erfüllung ihrer Aufgaben zusammen. \nAbschnitt 2 \nSicherheit personenbezogener Daten \nArtikel 32 \nSicherheit der Verarbeitung \n(1) Unter Berücksichtigung des Stands der Technik, der Implementierungskosten und der Art, des Umfangs, der \nUmstände und der Zwecke der Verarbeitung sowie der unterschiedlichen Eintrittswahrscheinlichkeit und Schwere des \nRisikos für die Rechte und Freiheiten natürlicher Personen treffen der Verantwortliche und der Auftragsverarbeiter \ngeeignete technische und organisatorische Maßnahmen, um ein dem Risiko angemessenes Schutzniveau zu \ngewährleisten; diese Maßnahmen schließen unter anderem Folgendes ein: \na)  die Pseudonymisierung und Verschlüsselung personenbezogener Daten; \n4.5.2016 L 119/51 Amtsblatt der Europäischen Union DE     ",
+        "sha256": "f426ea1bdff30a2b6e6159b59529f6f66f01a95058b229d62c6c0dea6542ccb3"
+      },
+      {
+        "id": "gdpr:p53",
+        "sourceId": "gdpr",
+        "page": 53,
+        "text": "(2) Die in Absatz 1 genannte Benachrichtigung der betroffenen Person beschreibt in klarer und einfacher Sprache die \nArt der Verletzung des Schutzes personenbezogener Daten und enthält zumindest die in Artikel 33 Absatz 3 \nBuchstaben b, c und d genannten Informationen und Maßnahmen. \n(3) Die Benachrichtigung der betroffenen Person gemäß Absatz 1 ist nicht erforderlich, wenn eine der folgenden \nBedingungen erfüllt ist: \na)  der Verantwortliche geeignete technische und organisatorische Sicherheitsvorkehrungen getroffen hat und diese \nVorkehrungen auf die von der Verletzung betroffenen personenbezogenen Daten angewandt wurden, insbesondere \nsolche, durch die die personenbezogenen Daten für alle Personen, die nicht zum Zugang zu den personenbezogenen \nDaten befugt sind, unzugänglich gemacht werden, etwa durch Verschlüsselung; \nb)  der Verantwortliche durch nachfolgende Maßnahmen sichergestellt hat, dass das hohe Risiko für die Rechte und \nFreiheiten der betroffenen Personen gemäß Absatz 1 aller Wahrscheinlichkeit nach nicht mehr besteht; \nc)  dies mit einem unverhältnismäßigen Aufwand verbunden wäre. In diesem Fall hat stattdessen eine öffentliche \nBekanntmachung oder eine ähnliche Maßnahme zu erfolgen, durch die die betroffenen Personen vergleichbar \nwirksam informiert werden. \n(4) Wenn der Verantwortliche die betroffene Person nicht bereits über die Verletzung des Schutzes personenbezogener \nDaten benachrichtigt hat, kann die Aufsichtsbehörde unter Berücksichtigung der Wahrscheinlichkeit, mit der die \nVerletzung des Schutzes personenbezogener Daten zu einem hohen Risiko führt, von dem Verantwortlichen verlangen, \ndies nachzuholen, oder sie kann mit einem Beschluss feststellen, dass bestimmte der in Absatz 3 genannten \nVoraussetzungen erfüllt sind. \nAbschnitt 3 \nDatenschutz-Folgenabschätzung und vorherige Konsultation \nArtikel 35 \nDatenschutz-Folgenabschätzung \n(1) Hat eine Form der Verarbeitung, insbesondere bei Verwendung neuer Technologien, aufgrund der Art, des \nUmfangs, der Umstände und der Zwecke der Verarbeitung voraussichtlich ein hohes Risiko für die Rechte und Freiheiten \nnatürlicher Personen zur Folge, so führt der Verantwortliche vorab eine Abschätzung der Folgen der vorgesehenen \nVerarbeitungsvorgänge für den Schutz personenbezogener Daten durch. Für die Untersuchung mehrerer ähnlicher \nVerarbeitungsvorgänge mit ähnlich hohen Risiken kann eine einzige Abschätzung vorgenommen werden. \n(2) Der Verantwortliche holt bei der Durchführung einer Datenschutz-Folgenabschätzung den Rat des Datenschutz­\nbeauftragten, sofern ein solcher benannt wurde, ein. \n(3) Eine Datenschutz-Folgenabschätzung gemäß Absatz 1 ist insbesondere in folgenden Fällen erforderlich: \na)  systematische und umfassende Bewertung persönlicher Aspekte natürlicher Personen, die sich auf automatisierte \nVerarbeitung einschließlich Profiling gründet und die ihrerseits als Grundlage für Entscheidungen dient, die \nRechtswirkung gegenüber natürlichen Personen entfalten oder diese in ähnlich erheblicher Weise beeinträchtigen; \nb)  umfangreiche Verarbeitung besonderer Kategorien von personenbezogenen Daten gemäß Artikel 9 Absatz 1 oder von \npersonenbezogenen Daten über strafrechtliche Verurteilungen und Straftaten gemäß Artikel 10 oder \nc)  systematische umfangreiche Überwachung öffentlich zugänglicher Bereiche. \n(4) Die Aufsichtsbehörde erstellt eine Liste der Verarbeitungsvorgänge, für die gemäß Absatz 1 eine Datenschutz- \nFolgenabschätzung durchzuführen ist, und veröffentlicht diese. Die Aufsichtsbehörde übermittelt diese Listen dem in \nArtikel 68 genannten Ausschuss. \n(5) Die Aufsichtsbehörde kann des Weiteren eine Liste der Arten von Verarbeitungsvorgängen erstellen und \nveröffentlichen, für die keine Datenschutz-Folgenabschätzung erforderlich ist. Die Aufsichtsbehörde übermittelt diese \nListen dem Ausschuss. \n(6) Vor Festlegung der in den Absätzen 4 und 5 genannten Listen wendet die zuständige Aufsichtsbehörde das \nKohärenzverfahren gemäß Artikel 63 an, wenn solche Listen Verarbeitungstätigkeiten umfassen, die mit dem Angebot \nvon Waren oder Dienstleistungen für betroffene Personen oder der Beobachtung des Verhaltens dieser Personen in \nmehreren Mitgliedstaaten im Zusammenhang stehen oder die den freien Verkehr personenbezogener Daten innerhalb der \nUnion erheblich beeinträchtigen könnten. \n4.5.2016 L 119/53 Amtsblatt der Europäischen Union DE     ",
+        "sha256": "c74c0b83219a9b06c47a6b8b515d1cd4218f213a68495ae5ac9ea3ff1069f051"
+      },
+      {
+        "id": "gdpr:p60",
+        "sourceId": "gdpr",
+        "page": 60,
+        "text": "b)  sich verpflichtet haben, die Kriterien nach Artikel 42 Absatz 5, die von der gemäß Artikel 55 oder 56 zuständigen \nAufsichtsbehörde oder — gemäß Artikel 63 — von dem Ausschuss genehmigt wurden, einzuhalten; \nc)  Verfahren für die Erteilung, die regelmäßige Überprüfung und den Widerruf der Datenschutzzertifizierung sowie der \nDatenschutzsiegel und -prüfzeichen festgelegt haben; \nd)  Verfahren und Strukturen festgelegt haben, mit denen sie Beschwerden über Verletzungen der Zertifizierung oder die \nArt und Weise, in der die Zertifizierung von dem Verantwortlichen oder dem Auftragsverarbeiter umgesetzt wird \noder wurde, nachgehen und diese Verfahren und Strukturen für betroffene Personen und die Öffentlichkeit \ntransparent machen, und \ne)  zur Zufriedenheit der zuständigen Aufsichtsbehörde nachgewiesen haben, dass ihre Aufgaben und Pflichten nicht zu \neinem Interessenkonflikt führen. \n(3) Die Akkreditierung von Zertifizierungsstellen nach den Absätzen 1 und 2 erfolgt anhand der Kriterien, die von \nder gemäß Artikel 55 oder 56 zuständigen Aufsichtsbehörde oder — gemäß Artikel 63 — von dem Ausschuss \ngenehmigt wurden. Im Fall einer Akkreditierung nach Absatz 1 Buchstabe b des vorliegenden Artikels ergänzen diese \nAnforderungen diejenigen, die in der Verordnung (EG) Nr. 765/2008 und in den technischen Vorschriften, in denen die \nMethoden und Verfahren der Zertifizierungsstellen beschrieben werden, vorgesehen sind. \n(4) Die Zertifizierungsstellen nach Absatz 1 sind unbeschadet der Verantwortung, die der Verantwortliche oder der \nAuftragsverarbeiter für die Einhaltung dieser Verordnung hat, für die angemessene Bewertung, die der Zertifizierung \noder dem Widerruf einer Zertifizierung zugrunde liegt, verantwortlich. Die Akkreditierung wird für eine Höchstdauer \nvon fünf Jahren erteilt und kann unter denselben Bedingungen verlängert werden, sofern die Zertifizierungsstelle die \nAnforderungen dieses Artikels erfüllt. \n(5) Die Zertifizierungsstellen nach Absatz 1 teilen den zuständigen Aufsichtsbehörden die Gründe für die Erteilung \noder den Widerruf der beantragten Zertifizierung mit. \n(6) Die Anforderungen nach Absatz 3 des vorliegenden Artikels und die Kriterien nach Artikel 42 Absatz 5 werden \nvon der Aufsichtsbehörde in leicht zugänglicher Form veröffentlicht. Die Aufsichtsbehörden übermitteln diese \nAnforderungen und Kriterien auch dem Ausschuss. Der Ausschuss nimmt alle Zertifizierungsverfahren und \nDatenschutzsiegel in ein Register auf und veröffentlicht sie in geeigneter Weise. \n(7) Unbeschadet des Kapitels VIII widerruft die zuständige Aufsichtsbehörde oder die nationale Akkreditierungsstelle \ndie Akkreditierung einer Zertifizierungsstelle nach Absatz 1, wenn die Voraussetzungen für die Akkreditierung nicht \noder nicht mehr erfüllt sind oder wenn eine Zertifizierungsstelle Maßnahmen ergreift, die nicht mit dieser Verordnung \nvereinbar sind. \n(8) Der Kommission wird die Befugnis übertragen, gemäß Artikel 92 delegierte Rechtsakte zu erlassen, um die \nAnforderungen festzulegen, die für die in Artikel 42 Absatz 1 genannten datenschutzspezifischen Zertifizierungs­\nverfahren zu berücksichtigen sind. \n(9) Die Kommission kann Durchführungsrechtsakte erlassen, mit denen technische Standards für Zertifizierungs­\nverfahren und Datenschutzsiegel und -prüfzeichen sowie Mechanismen zur Förderung und Anerkennung dieser \nZertifizierungsverfahren und Datenschutzsiegel und -prüfzeichen festgelegt werden. Diese Durchführungsrechtsakte \nwerden gemäß dem in Artikel 93 Absatz 2 genannten Prüfverfahren erlassen. \nKAPITEL V \nÜbermittlungen personenbezogener Daten an Drittländer oder an internationale Organisationen \nArtikel 44 \nAllgemeine Grundsätze der Datenübermittlung \nJedwede Übermittlung personenbezogener Daten, die bereits verarbeitet werden oder nach ihrer Übermittlung an ein \nDrittland oder eine internationale Organisation verarbeitet werden sollen, ist nur zulässig, wenn der Verantwortliche und \nder Auftragsverarbeiter die in diesem Kapitel niedergelegten Bedingungen einhalten und auch die sonstigen \nBestimmungen dieser Verordnung eingehalten werden; dies gilt auch für die etwaige Weiterübermittlung personen­\nbezogener Daten durch das betreffende Drittland oder die betreffende internationale Organisation an ein anderes \nDrittland oder eine andere internationale Organisation. Alle Bestimmungen dieses Kapitels sind anzuwenden, um \nsicherzustellen, dass das durch diese Verordnung gewährleistete Schutzniveau für natürliche Personen nicht untergraben \nwird. \n4.5.2016 L 119/60 Amtsblatt der Europäischen Union DE     ",
+        "sha256": "551d09a7f5316529049766d14581565a6b2be4887252171c25f62554fe486caa"
+      },
+      {
+        "id": "bdsg:p12",
+        "sourceId": "bdsg",
+        "page": 12,
+        "text": "§24\nVerarbeitung zu\nanderen Zwecken durch nichtöffentliche Stellen\n(1) Die Verarbeitung personenbezogener Daten zu\neinem anderen Zweck als zu demjenigen, zu dem die\nDaten erhoben wurden, durch nichtöffentliche Stellen\nist zulässig, wenn\n1. sie zur Abwehr von Gefahren für die staatliche oder\nöffentliche Sicherheit oder zur Verfolgung von Straf-\ntaten erforderlich ist oder\n2. sie zur Geltendmachung, Ausübung oder Verteidi-\ngung zivilrechtlicher Ansprüche erforderlich ist,\nsofern nicht die Interessen der betroffenen Person an\ndem Ausschluss der Verarbeitung überwiegen.\n(2) Die Verarbeitung besonderer Kategorien perso-\nnenbezogener Daten im Sinne des Artikels 9 Absatz 1\nder Verordnung (EU) 2016/679 zu einem anderen\nZweck als zu demjenigen, zu dem die Daten erhoben\nwurden, ist zulässig, wenn die Voraussetzungen des\nAbsatzes 1 und ein Ausnahmetatbestand nach Artikel 9\nAbsatz 2 der Verordnung (EU) 2016/679 oder nach § 22\nvorliegen.\n§25\nDatenübermittlungen durch öffentliche Stellen\n(1) Die Übermittlung personenbezogener Daten\ndurch öffentliche Stellen an öffentliche Stellen ist zu-\nlässig, wenn sie zur Erfüllung der in der Zuständigkeit\nder übermittelnden Stelle oder des Dritten, an den die\nDaten übermittelt werden, liegenden Aufgaben erfor-\nderlich ist und die Voraussetzungen vorliegen, die eine\nVerarbeitung nach § 23 zulassen würden. Der Dritte, an\nden die Daten übermittelt werden, darf diese nur für\nden Zweck verarbeiten, zu dessen Erfüllung sie ihm\nübermittelt werden. Eine Verarbeitung für andere Zwe-\ncke ist unter den Voraussetzungen des § 23 zulässig.\n(2) Die Übermittlung personenbezogener Daten\ndurch öffentliche Stellen an nichtöffentliche Stellen ist\nzulässig, wenn\n1. sie zur Erfüllung der in der Zuständigkeit der über-\nmittelnden Stelle liegenden Aufgaben erforderlich ist\nund die Voraussetzungen vorliegen, die eine Verar-\nbeitung nach § 23 zulassen würden,\n2. der Dritte, an den die Daten übermittelt werden, ein\nberechtigtes Interesse an der Kenntnis der zu über-\nmittelnden Daten glaubhaft darlegt und die betrof-\nfene Person kein schutzwürdiges Interesse an dem\nAusschluss der Übermittlung hat oder\n3. es zur Geltendmachung, Ausübung oder Verteidi-\ngung rechtlicher Ansprüche erforderlich ist\nund der Dritte sich gegenüber der übermittelnden\nöffentlichen Stelle verpflichtet hat, die Daten nur für\nden Zweck zu verarbeiten, zu dessen Erfüllung sie ihm\nübermittelt werden. Eine Verarbeitung für andere Zwe-\ncke ist zulässig, wenn eine Übermittlung nach Satz 1\nzulässig wäre und die übermittelnde Stelle zugestimmt\nhat.\n(3) Die Übermittlung besonderer Kategorien perso-\nnenbezogener Daten im Sinne des Artikels 9 Absatz 1\nder Verordnung (EU) 2016/679 ist zulässig, wenn die\nVoraussetzungen des Absatzes 1 oder 2 und ein Aus-\nnahmetatbestand nach Artikel 9 Absatz 2 der Verord-\nnung (EU) 2016/679 oder nach § 22 vorliegen.\nAbschnitt 2\nBesondere Verarbeitungssituationen\n§26\nDatenverarbeitung für\nZwecke des Beschäftigungsverhältnisses\n(1) Personenbezogene Daten von Beschäftigten dür-\nfen für Zwecke des Beschäftigungsverhältnisses verar-\nbeitet werden, wenn dies für die Entscheidung über die\nBegründung eines Beschäftigungsverhältnisses oder\nnach Begründung des Beschäftigungsverhältnisses für\ndessen Durchführung oder Beendigung oder zur Aus-\nübung oder Erfüllung der sich aus einem Gesetz oder\neinem Tarifvertrag, einer Betriebs- oder Dienstvereinba-\nrung (Kollektivvereinbarung) ergebenden Rechte und\nPflichten der Interessenvertretung der Beschäftigten er-\nforderlich ist. Zur Aufdeckung von Straftaten dürfen\npersonenbezogene Daten von Beschäftigten nur dann\nverarbeitet werden, wenn zu dokumentierende tatsäch-\nliche Anhaltspunkte den Verdacht begründen, dass die\nbetroffene Person im Beschäftigungsverhältnis eine\nStraftat begangen hat, die Verarbeitung zur Aufdeckung\nerforderlich ist und das schutzwürdige Interesse der\noder des Beschäftigten an dem Ausschluss der Verar-\nbeitung nicht überwiegt, insbesondere Art und Ausmaß\nim Hinblick auf den Anlass nicht unverhältnismäßig\nsind.\n(2) Erfolgt die Verarbeitung personenbezogener Da-\nten von Beschäftigten auf der Grundlage einer Einwil-\nligung, so sind für die Beurteilung der Freiwilligkeit\nder Einwilligung insbesondere die im Beschäftigungs-\nverhältnis bestehende Abhängigkeit der beschäftigten\nPerson sowie die Umstände, unter denen die Einwilli-\ngung erteilt worden ist, zu berücksichtigen. Freiwillig-\nkeit kann insbesondere vorliegen, wenn für die be-\nschäftigte Person ein rechtlicher oder wirtschaftlicher\nVorteil erreicht wird oder Arbeitgeber und beschäftigte\nPerson gleichgelagerte Interessen verfolgen. Die Ein-\nwilligung bedarf der Schriftform, soweit nicht wegen\nbesonderer Umstände eine andere Form angemessen\nist. Der Arbeitgeber hat die beschäftigte Person über\nden Zweck der Datenverarbeitung und über ihr Wider-\nrufsrecht nach Artikel 7 Absatz 3 der Verordnung (EU)\n2016/679 in Textform aufzuklären.\n(3) Abweichend von Artikel 9 Absatz 1 der Verord-\nnung (EU) 2016/679 ist die Verarbeitung besonderer\nKategorien personenbezogener Daten im Sinne des\nArtikels 9 Absatz 1 der Verordnung (EU) 2016/679 für\nZwecke des Beschäftigungsverhältnisses zulässig,\nwenn sie zur Ausübung von Rechten oder zur Erfüllung\nrechtlicher Pflichten aus dem Arbeitsrecht, dem Recht\nder sozialen Sicherheit und des Sozialschutzes erfor-\nderlich ist und kein Grund zu der Annahme besteht,\ndass das schutzwürdige Interesse der betroffenen\nPerson an dem Ausschluss der Verarbeitung überwiegt.\nAbsatz 2 gilt auch für die Einwilligung in die Verar-\nbeitung besonderer Kategorien personenbezogener\nDaten; die Einwilligung muss sich dabei ausdrücklich\nauf diese Daten beziehen. § 22 Absatz 2 gilt entspre-\nchend.\n2108 Bundesgesetzblatt Jahrgang 2017 Teil I Nr. 44, ausgegeben zu Bonn am 5. Juli 20172108 Bundesgesetzblatt Jahrgang 2017 Teil I Nr. 44, ausgegeben zu Bonn am 5. Juli 20172108 Bundesgesetzblatt Jahrgang 2017 Teil I Nr. 44, ausgegeben zu Bonn am 5. Juli 20172108 Bundesgesetzblatt Jahrgang 2017 Teil I Nr. 44, ausgegeben zu Bonn am 5. Juli 2017\nDas Bundesgesetzblatt im Internet: www.bundesgesetzblatt.de | Ein Service des Bundesanzeiger Verlag www.bundesanzeiger-verlag.de",
+        "sha256": "f0f7d193d67bc04f6ba0cbe69dbe88ded748dc21003489ac5fc68a2c97ebb65b"
+      },
+      {
+        "id": "geschgehg:p3",
+        "sourceId": "geschgehg",
+        "page": 3,
+        "text": "Ein Service des Bundesministeriums der Justiz sowie des Bundesamts für\nJustiz ‒ www.gesetze-im-internet.de\n- Seite 3 von 9 -\na)   die weder insgesamt noch in der genauen Anordnung und Zusammensetzung ihrer Bestandteile den\nPersonen in den Kreisen, die üblicherweise mit dieser Art von Informationen umgehen, allgemein\nbekannt oder ohne Weiteres zugänglich ist und daher von wirtschaftlichem Wert ist und\n \nb)   die Gegenstand von den Umständen nach angemessenen Geheimhaltungsmaßnahmen durch ihren\nrechtmäßigen Inhaber ist und\n \nc)   bei der ein berechtigtes Interesse an der Geheimhaltung besteht;\n \n \n2.   Inhaber eines Geschäftsgeheimnisses\n \njede natürliche oder juristische Person, die die rechtmäßige Kontrolle über ein Geschäftsgeheimnis hat;\n \n3.   Rechtsverletzer\n \njede natürliche oder juristische Person, die entgegen § 4 ein Geschäftsgeheimnis rechtswidrig erlangt, nutzt\noder offenlegt; Rechtsverletzer ist nicht, wer sich auf eine Ausnahme nach § 5 berufen kann;\n \n4.   rechtsverletzendes Produkt\n \nein Produkt, dessen Konzeption, Merkmale, Funktionsweise, Herstellungsprozess oder Marketing in\nerheblichem Umfang auf einem rechtswidrig erlangten, genutzten oder offengelegten Geschäftsgeheimnis\nberuht.\n \n§ 3 Erlaubte Handlungen\n(1) Ein Geschäftsgeheimnis darf insbesondere erlangt werden durch\n1.   eine eigenständige Entdeckung oder Schöpfung;\n \n2.   ein Beobachten, Untersuchen, Rückbauen oder Testen eines Produkts oder Gegenstands, das oder der\na)   öffentlich verfügbar gemacht wurde oder\n \nb)   sich im rechtmäßigen Besitz des Beobachtenden, Untersuchenden, Rückbauenden oder Testenden\nbefindet und dieser keiner Pflicht zur Beschränkung der Erlangung des Geschäftsgeheimnisses\nunterliegt;\n \n \n3.   ein Ausüben von Informations- und Anhörungsrechten der Arbeitnehmer oder Mitwirkungs- und\nMitbestimmungsrechte der Arbeitnehmervertretung.\n \n(2) Ein Geschäftsgeheimnis darf erlangt, genutzt oder offengelegt werden, wenn dies durch Gesetz, aufgrund\neines Gesetzes oder durch Rechtsgeschäft gestattet ist.\n§ 4 Handlungsverbote\n(1) Ein Geschäftsgeheimnis darf nicht erlangt werden durch\n1.   unbefugten Zugang zu, unbefugte Aneignung oder unbefugtes Kopieren von Dokumenten, Gegenständen,\nMaterialien, Stoffen oder elektronischen Dateien, die der rechtmäßigen Kontrolle des Inhabers des\nGeschäftsgeheimnisses unterliegen und die das Geschäftsgeheimnis enthalten oder aus denen sich das\nGeschäftsgeheimnis ableiten lässt, oder\n \n2.   jedes sonstige Verhalten, das unter den jeweiligen Umständen nicht dem Grundsatz von Treu und Glauben\nunter Berücksichtigung der anständigen Marktgepflogenheit entspricht.\n \n(2) Ein Geschäftsgeheimnis darf nicht nutzen oder offenlegen, wer\n1.   das Geschäftsgeheimnis durch eine eigene Handlung nach Absatz 1\na)   Nummer 1 oder\n \nb)   Nummer 2\n \nerlangt hat,\n \n2.   gegen eine Verpflichtung zur Beschränkung der Nutzung des Geschäftsgeheimnisses verstößt oder\n \n3.   gegen eine Verpflichtung verstößt, das Geschäftsgeheimnis nicht offenzulegen.\n ",
+        "sha256": "350d14c7e3e598fcad2375f07c132740f5ed50cd7339e9c5d3c7325677769eba"
+      }
+    ],
+    "citations": [
+      {
+        "id": "gdpr-5-1bc",
+        "sourceId": "gdpr",
+        "pageId": "gdpr:p35",
+        "pdfPage": 35,
+        "pinpoint": "DSGVO Art. 5 Abs. 1 Buchst. b–c",
+        "start": 2493,
+        "end": 3067,
+        "quote": "b)  für festgelegte, eindeutige und legitime Zwecke erhoben werden und dürfen nicht in einer mit diesen Zwecken nicht \nzu vereinbarenden Weise weiterverarbeitet werden; eine Weiterverarbeitung für im öffentlichen Interesse liegende \nArchivzwecke, für wissenschaftliche oder historische Forschungszwecke oder für statistische Zwecke gilt gemäß \nArtikel 89 Absatz 1 nicht als unvereinbar mit den ursprünglichen Zwecken („Zweckbindung“); \nc)  dem Zweck angemessen und erheblich sowie auf das für die Zwecke der Verarbeitung notwendige Maß beschränkt \nsein („Datenminimierung“);"
+      },
+      {
+        "id": "gdpr-6-1",
+        "sourceId": "gdpr",
+        "pageId": "gdpr:p36",
+        "pdfPage": 36,
+        "pinpoint": "DSGVO Art. 6 Abs. 1",
+        "start": 1273,
+        "end": 2584,
+        "quote": "(1) Die Verarbeitung ist nur rechtmäßig, wenn mindestens eine der nachstehenden Bedingungen erfüllt ist: \na)  Die betroffene Person hat ihre Einwilligung zu der Verarbeitung der sie betreffenden personenbezogenen Daten für \neinen oder mehrere bestimmte Zwecke gegeben; \nb)  die Verarbeitung ist für die Erfüllung eines Vertrags, dessen Vertragspartei die betroffene Person ist, oder zur \nDurchführung vorvertraglicher Maßnahmen erforderlich, die auf Anfrage der betroffenen Person erfolgen; \nc)  die Verarbeitung ist zur Erfüllung einer rechtlichen Verpflichtung erforderlich, der der Verantwortliche unterliegt; \nd)  die Verarbeitung ist erforderlich, um lebenswichtige Interessen der betroffenen Person oder einer anderen natürlichen \nPerson zu schützen; \ne)  die Verarbeitung ist für die Wahrnehmung einer Aufgabe erforderlich, die im öffentlichen Interesse liegt oder in \nAusübung öffentlicher Gewalt erfolgt, die dem Verantwortlichen übertragen wurde; \nf)  die Verarbeitung ist zur Wahrung der berechtigten Interessen des Verantwortlichen oder eines Dritten erforderlich, \nsofern nicht die Interessen oder Grundrechte und Grundfreiheiten der betroffenen Person, die den Schutz personen­\nbezogener Daten erfordern, überwiegen, insbesondere dann, wenn es sich bei der betroffenen Person um ein Kind \nhandelt."
+      },
+      {
+        "id": "gdpr-28-3",
+        "sourceId": "gdpr",
+        "pageId": "gdpr:p49",
+        "pdfPage": 49,
+        "pinpoint": "DSGVO Art. 28 Abs. 3 (Auszug)",
+        "start": 1744,
+        "end": 2235,
+        "quote": "(3) Die Verarbeitung durch einen Auftragsverarbeiter erfolgt auf der Grundlage eines Vertrags oder eines anderen \nRechtsinstruments nach dem Unionsrecht oder dem Recht der Mitgliedstaaten, der bzw. das den Auftragsverarbeiter in \nBezug auf den Verantwortlichen bindet und in dem Gegenstand und Dauer der Verarbeitung, Art und Zweck der \nVerarbeitung, die Art der personenbezogenen Daten, die Kategorien betroffener Personen und die Pflichten und Rechte \ndes Verantwortlichen festgelegt sind."
+      },
+      {
+        "id": "gdpr-32-1",
+        "sourceId": "gdpr",
+        "pageId": "gdpr:p51",
+        "pdfPage": 51,
+        "pinpoint": "DSGVO Art. 32 Abs. 1 (Einleitung)",
+        "start": 3093,
+        "end": 3602,
+        "quote": "(1) Unter Berücksichtigung des Stands der Technik, der Implementierungskosten und der Art, des Umfangs, der \nUmstände und der Zwecke der Verarbeitung sowie der unterschiedlichen Eintrittswahrscheinlichkeit und Schwere des \nRisikos für die Rechte und Freiheiten natürlicher Personen treffen der Verantwortliche und der Auftragsverarbeiter \ngeeignete technische und organisatorische Maßnahmen, um ein dem Risiko angemessenes Schutzniveau zu \ngewährleisten; diese Maßnahmen schließen unter anderem Folgendes ein:"
+      },
+      {
+        "id": "gdpr-35-1",
+        "sourceId": "gdpr",
+        "pageId": "gdpr:p53",
+        "pdfPage": 53,
+        "pinpoint": "DSGVO Art. 35 Abs. 1",
+        "start": 1891,
+        "end": 2435,
+        "quote": "(1) Hat eine Form der Verarbeitung, insbesondere bei Verwendung neuer Technologien, aufgrund der Art, des \nUmfangs, der Umstände und der Zwecke der Verarbeitung voraussichtlich ein hohes Risiko für die Rechte und Freiheiten \nnatürlicher Personen zur Folge, so führt der Verantwortliche vorab eine Abschätzung der Folgen der vorgesehenen \nVerarbeitungsvorgänge für den Schutz personenbezogener Daten durch. Für die Untersuchung mehrerer ähnlicher \nVerarbeitungsvorgänge mit ähnlich hohen Risiken kann eine einzige Abschätzung vorgenommen werden."
+      },
+      {
+        "id": "gdpr-44",
+        "sourceId": "gdpr",
+        "pageId": "gdpr:p60",
+        "pdfPage": 60,
+        "pinpoint": "DSGVO Art. 44",
+        "start": 3717,
+        "end": 4521,
+        "quote": "Jedwede Übermittlung personenbezogener Daten, die bereits verarbeitet werden oder nach ihrer Übermittlung an ein \nDrittland oder eine internationale Organisation verarbeitet werden sollen, ist nur zulässig, wenn der Verantwortliche und \nder Auftragsverarbeiter die in diesem Kapitel niedergelegten Bedingungen einhalten und auch die sonstigen \nBestimmungen dieser Verordnung eingehalten werden; dies gilt auch für die etwaige Weiterübermittlung personen­\nbezogener Daten durch das betreffende Drittland oder die betreffende internationale Organisation an ein anderes \nDrittland oder eine andere internationale Organisation. Alle Bestimmungen dieses Kapitels sind anzuwenden, um \nsicherzustellen, dass das durch diese Verordnung gewährleistete Schutzniveau für natürliche Personen nicht untergraben \nwird."
+      },
+      {
+        "id": "bdsg-26-1",
+        "sourceId": "bdsg",
+        "pageId": "bdsg:p12",
+        "pdfPage": 12,
+        "pinpoint": "BDSG § 26 Abs. 1 (Verkündungsfassung 2017)",
+        "start": 2968,
+        "end": 4025,
+        "quote": "(1) Personenbezogene Daten von Beschäftigten dür-\nfen für Zwecke des Beschäftigungsverhältnisses verar-\nbeitet werden, wenn dies für die Entscheidung über die\nBegründung eines Beschäftigungsverhältnisses oder\nnach Begründung des Beschäftigungsverhältnisses für\ndessen Durchführung oder Beendigung oder zur Aus-\nübung oder Erfüllung der sich aus einem Gesetz oder\neinem Tarifvertrag, einer Betriebs- oder Dienstvereinba-\nrung (Kollektivvereinbarung) ergebenden Rechte und\nPflichten der Interessenvertretung der Beschäftigten er-\nforderlich ist. Zur Aufdeckung von Straftaten dürfen\npersonenbezogene Daten von Beschäftigten nur dann\nverarbeitet werden, wenn zu dokumentierende tatsäch-\nliche Anhaltspunkte den Verdacht begründen, dass die\nbetroffene Person im Beschäftigungsverhältnis eine\nStraftat begangen hat, die Verarbeitung zur Aufdeckung\nerforderlich ist und das schutzwürdige Interesse der\noder des Beschäftigten an dem Ausschluss der Verar-\nbeitung nicht überwiegt, insbesondere Art und Ausmaß\nim Hinblick auf den Anlass nicht unverhältnismäßig\nsind."
+      },
+      {
+        "id": "geschgehg-2-1b",
+        "sourceId": "geschgehg",
+        "pageId": "geschgehg:p3",
+        "pdfPage": 3,
+        "pinpoint": "GeschGehG § 2 Nr. 1 Buchst. b",
+        "start": 406,
+        "end": 526,
+        "quote": "b)   die Gegenstand von den Umständen nach angemessenen Geheimhaltungsmaßnahmen durch ihren\nrechtmäßigen Inhaber ist und"
+      }
+    ],
+    "fingerprint": "2a9e14e0c1ec5898c28222bafca77cf88fc366ae3a1bd3a525ddf2163df2ce4e"
+  },
+  "findings": [
+    {
+      "checkId": "purpose-basis",
+      "outcome": "satisfied",
+      "activeInputs": [
+        "personalData",
+        "purpose",
+        "legalBasis"
+      ],
+      "missing": [],
+      "contradictions": [],
+      "citationErrors": [],
+      "evidenceIds": [
+        "claude-documented-document-1@1:19-798"
+      ],
+      "facts": {
+        "personalData": {
+          "value": "yes",
+          "evidenceIds": [
+            "claude-documented-document-1@1:19-798"
+          ],
+          "note": ""
+        },
+        "purpose": {
+          "value": "yes",
+          "evidenceIds": [
+            "claude-documented-document-1@1:19-798"
+          ],
+          "note": ""
+        },
+        "legalBasis": {
+          "value": "yes",
+          "evidenceIds": [
+            "claude-documented-document-1@1:19-798"
+          ],
+          "note": ""
+        }
+      },
+      "citations": [
+        {
+          "id": "gdpr-5-1bc",
+          "sourceId": "gdpr",
+          "pageId": "gdpr:p35",
+          "pdfPage": 35,
+          "pinpoint": "DSGVO Art. 5 Abs. 1 Buchst. b–c",
+          "start": 2493,
+          "end": 3067,
+          "quote": "b)  für festgelegte, eindeutige und legitime Zwecke erhoben werden und dürfen nicht in einer mit diesen Zwecken nicht \nzu vereinbarenden Weise weiterverarbeitet werden; eine Weiterverarbeitung für im öffentlichen Interesse liegende \nArchivzwecke, für wissenschaftliche oder historische Forschungszwecke oder für statistische Zwecke gilt gemäß \nArtikel 89 Absatz 1 nicht als unvereinbar mit den ursprünglichen Zwecken („Zweckbindung“); \nc)  dem Zweck angemessen und erheblich sowie auf das für die Zwecke der Verarbeitung notwendige Maß beschränkt \nsein („Datenminimierung“);"
+        },
+        {
+          "id": "gdpr-6-1",
+          "sourceId": "gdpr",
+          "pageId": "gdpr:p36",
+          "pdfPage": 36,
+          "pinpoint": "DSGVO Art. 6 Abs. 1",
+          "start": 1273,
+          "end": 2584,
+          "quote": "(1) Die Verarbeitung ist nur rechtmäßig, wenn mindestens eine der nachstehenden Bedingungen erfüllt ist: \na)  Die betroffene Person hat ihre Einwilligung zu der Verarbeitung der sie betreffenden personenbezogenen Daten für \neinen oder mehrere bestimmte Zwecke gegeben; \nb)  die Verarbeitung ist für die Erfüllung eines Vertrags, dessen Vertragspartei die betroffene Person ist, oder zur \nDurchführung vorvertraglicher Maßnahmen erforderlich, die auf Anfrage der betroffenen Person erfolgen; \nc)  die Verarbeitung ist zur Erfüllung einer rechtlichen Verpflichtung erforderlich, der der Verantwortliche unterliegt; \nd)  die Verarbeitung ist erforderlich, um lebenswichtige Interessen der betroffenen Person oder einer anderen natürlichen \nPerson zu schützen; \ne)  die Verarbeitung ist für die Wahrnehmung einer Aufgabe erforderlich, die im öffentlichen Interesse liegt oder in \nAusübung öffentlicher Gewalt erfolgt, die dem Verantwortlichen übertragen wurde; \nf)  die Verarbeitung ist zur Wahrung der berechtigten Interessen des Verantwortlichen oder eines Dritten erforderlich, \nsofern nicht die Interessen oder Grundrechte und Grundfreiheiten der betroffenen Person, die den Schutz personen­\nbezogener Daten erfordern, überwiegen, insbesondere dann, wenn es sich bei der betroffenen Person um ein Kind \nhandelt."
+        }
+      ],
+      "action": "Datenkategorien, Zweck, Minimierung und Rechtsgrundlage mit Datenschutzverantwortlichen klären.",
+      "actionEn": "Document data categories, purpose, minimisation and legal basis with the privacy owner."
+    },
+    {
+      "checkId": "processor-contract",
+      "outcome": "satisfied",
+      "activeInputs": [
+        "personalData",
+        "processor",
+        "dpa"
+      ],
+      "missing": [],
+      "contradictions": [],
+      "citationErrors": [],
+      "evidenceIds": [
+        "claude-documented-document-1@1:19-798"
+      ],
+      "facts": {
+        "personalData": {
+          "value": "yes",
+          "evidenceIds": [
+            "claude-documented-document-1@1:19-798"
+          ],
+          "note": ""
+        },
+        "processor": {
+          "value": "yes",
+          "evidenceIds": [
+            "claude-documented-document-1@1:19-798"
+          ],
+          "note": ""
+        },
+        "dpa": {
+          "value": "yes",
+          "evidenceIds": [
+            "claude-documented-document-1@1:19-798"
+          ],
+          "note": ""
+        }
+      },
+      "citations": [
+        {
+          "id": "gdpr-28-3",
+          "sourceId": "gdpr",
+          "pageId": "gdpr:p49",
+          "pdfPage": 49,
+          "pinpoint": "DSGVO Art. 28 Abs. 3 (Auszug)",
+          "start": 1744,
+          "end": 2235,
+          "quote": "(3) Die Verarbeitung durch einen Auftragsverarbeiter erfolgt auf der Grundlage eines Vertrags oder eines anderen \nRechtsinstruments nach dem Unionsrecht oder dem Recht der Mitgliedstaaten, der bzw. das den Auftragsverarbeiter in \nBezug auf den Verantwortlichen bindet und in dem Gegenstand und Dauer der Verarbeitung, Art und Zweck der \nVerarbeitung, die Art der personenbezogenen Daten, die Kategorien betroffener Personen und die Pflichten und Rechte \ndes Verantwortlichen festgelegt sind."
+        }
+      ],
+      "action": "Rollen und Vertragsprodukt klären; gegebenenfalls passenden AV-Vertrag prüfen.",
+      "actionEn": "Clarify roles and contracted product; review the applicable processing agreement where required."
+    },
+    {
+      "checkId": "international-transfer",
+      "outcome": "satisfied",
+      "activeInputs": [
+        "personalData",
+        "transfer",
+        "transferBasis"
+      ],
+      "missing": [],
+      "contradictions": [],
+      "citationErrors": [],
+      "evidenceIds": [
+        "claude-documented-document-1@1:19-798"
+      ],
+      "facts": {
+        "personalData": {
+          "value": "yes",
+          "evidenceIds": [
+            "claude-documented-document-1@1:19-798"
+          ],
+          "note": ""
+        },
+        "transfer": {
+          "value": "yes",
+          "evidenceIds": [
+            "claude-documented-document-1@1:19-798"
+          ],
+          "note": ""
+        },
+        "transferBasis": {
+          "value": "yes",
+          "evidenceIds": [
+            "claude-documented-document-1@1:19-798"
+          ],
+          "note": ""
+        }
+      },
+      "citations": [
+        {
+          "id": "gdpr-44",
+          "sourceId": "gdpr",
+          "pageId": "gdpr:p60",
+          "pdfPage": 60,
+          "pinpoint": "DSGVO Art. 44",
+          "start": 3717,
+          "end": 4521,
+          "quote": "Jedwede Übermittlung personenbezogener Daten, die bereits verarbeitet werden oder nach ihrer Übermittlung an ein \nDrittland oder eine internationale Organisation verarbeitet werden sollen, ist nur zulässig, wenn der Verantwortliche und \nder Auftragsverarbeiter die in diesem Kapitel niedergelegten Bedingungen einhalten und auch die sonstigen \nBestimmungen dieser Verordnung eingehalten werden; dies gilt auch für die etwaige Weiterübermittlung personen­\nbezogener Daten durch das betreffende Drittland oder die betreffende internationale Organisation an ein anderes \nDrittland oder eine andere internationale Organisation. Alle Bestimmungen dieses Kapitels sind anzuwenden, um \nsicherzustellen, dass das durch diese Verordnung gewährleistete Schutzniveau für natürliche Personen nicht untergraben \nwird."
+        }
+      ],
+      "action": "Verarbeitungsorte, Fernzugriffe und Unterauftragnehmer prüfen; Grundlage nach Kapitel V dokumentieren.",
+      "actionEn": "Review processing locations, remote access and subprocessors; document the Chapter V basis."
+    },
+    {
+      "checkId": "security-measures",
+      "outcome": "satisfied",
+      "activeInputs": [
+        "personalData",
+        "security"
+      ],
+      "missing": [],
+      "contradictions": [],
+      "citationErrors": [],
+      "evidenceIds": [
+        "claude-documented-document-1@1:19-798",
+        "claude-documented-document-2@1:18-356"
+      ],
+      "facts": {
+        "personalData": {
+          "value": "yes",
+          "evidenceIds": [
+            "claude-documented-document-1@1:19-798"
+          ],
+          "note": ""
+        },
+        "security": {
+          "value": "yes",
+          "evidenceIds": [
+            "claude-documented-document-2@1:18-356"
+          ],
+          "note": ""
+        }
+      },
+      "citations": [
+        {
+          "id": "gdpr-32-1",
+          "sourceId": "gdpr",
+          "pageId": "gdpr:p51",
+          "pdfPage": 51,
+          "pinpoint": "DSGVO Art. 32 Abs. 1 (Einleitung)",
+          "start": 3093,
+          "end": 3602,
+          "quote": "(1) Unter Berücksichtigung des Stands der Technik, der Implementierungskosten und der Art, des Umfangs, der \nUmstände und der Zwecke der Verarbeitung sowie der unterschiedlichen Eintrittswahrscheinlichkeit und Schwere des \nRisikos für die Rechte und Freiheiten natürlicher Personen treffen der Verantwortliche und der Auftragsverarbeiter \ngeeignete technische und organisatorische Maßnahmen, um ein dem Risiko angemessenes Schutzniveau zu \ngewährleisten; diese Maßnahmen schließen unter anderem Folgendes ein:"
+        }
+      ],
+      "action": "Risiken und Maßnahmen für Zugriffe, Berechtigungen, Geheimnisse und Ausführung fachlich prüfen.",
+      "actionEn": "Review risks and measures for access, permissions, secrets and execution."
+    },
+    {
+      "checkId": "privacy-risk",
+      "outcome": "not_applicable",
+      "activeInputs": [
+        "personalData",
+        "screening",
+        "highRisk"
+      ],
+      "missing": [],
+      "contradictions": [],
+      "citationErrors": [],
+      "evidenceIds": [
+        "claude-documented-document-1@1:19-798"
+      ],
+      "facts": {
+        "personalData": {
+          "value": "yes",
+          "evidenceIds": [
+            "claude-documented-document-1@1:19-798"
+          ],
+          "note": ""
+        },
+        "screening": {
+          "value": "yes",
+          "evidenceIds": [
+            "claude-documented-document-1@1:19-798"
+          ],
+          "note": ""
+        },
+        "highRisk": {
+          "value": "no",
+          "evidenceIds": [
+            "claude-documented-document-1@1:19-798"
+          ],
+          "note": ""
+        }
+      },
+      "citations": [
+        {
+          "id": "gdpr-35-1",
+          "sourceId": "gdpr",
+          "pageId": "gdpr:p53",
+          "pdfPage": 53,
+          "pinpoint": "DSGVO Art. 35 Abs. 1",
+          "start": 1891,
+          "end": 2435,
+          "quote": "(1) Hat eine Form der Verarbeitung, insbesondere bei Verwendung neuer Technologien, aufgrund der Art, des \nUmfangs, der Umstände und der Zwecke der Verarbeitung voraussichtlich ein hohes Risiko für die Rechte und Freiheiten \nnatürlicher Personen zur Folge, so führt der Verantwortliche vorab eine Abschätzung der Folgen der vorgesehenen \nVerarbeitungsvorgänge für den Schutz personenbezogener Daten durch. Für die Untersuchung mehrerer ähnlicher \nVerarbeitungsvorgänge mit ähnlich hohen Risiken kann eine einzige Abschätzung vorgenommen werden."
+        }
+      ],
+      "action": "Hohes Risiko fachlich prüfen; falls erforderlich DSFA vor dem Einsatz durchführen.",
+      "actionEn": "Review likely high risk; complete a DPIA before use where required."
+    },
+    {
+      "checkId": "employee-data",
+      "outcome": "satisfied",
+      "activeInputs": [
+        "personalData",
+        "employeeData",
+        "employeeBasis"
+      ],
+      "missing": [],
+      "contradictions": [],
+      "citationErrors": [],
+      "evidenceIds": [
+        "claude-documented-document-1@1:19-798"
+      ],
+      "facts": {
+        "personalData": {
+          "value": "yes",
+          "evidenceIds": [
+            "claude-documented-document-1@1:19-798"
+          ],
+          "note": ""
+        },
+        "employeeData": {
+          "value": "yes",
+          "evidenceIds": [
+            "claude-documented-document-1@1:19-798"
+          ],
+          "note": ""
+        },
+        "employeeBasis": {
+          "value": "yes",
+          "evidenceIds": [
+            "claude-documented-document-1@1:19-798"
+          ],
+          "note": ""
+        }
+      },
+      "citations": [
+        {
+          "id": "bdsg-26-1",
+          "sourceId": "bdsg",
+          "pageId": "bdsg:p12",
+          "pdfPage": 12,
+          "pinpoint": "BDSG § 26 Abs. 1 (Verkündungsfassung 2017)",
+          "start": 2968,
+          "end": 4025,
+          "quote": "(1) Personenbezogene Daten von Beschäftigten dür-\nfen für Zwecke des Beschäftigungsverhältnisses verar-\nbeitet werden, wenn dies für die Entscheidung über die\nBegründung eines Beschäftigungsverhältnisses oder\nnach Begründung des Beschäftigungsverhältnisses für\ndessen Durchführung oder Beendigung oder zur Aus-\nübung oder Erfüllung der sich aus einem Gesetz oder\neinem Tarifvertrag, einer Betriebs- oder Dienstvereinba-\nrung (Kollektivvereinbarung) ergebenden Rechte und\nPflichten der Interessenvertretung der Beschäftigten er-\nforderlich ist. Zur Aufdeckung von Straftaten dürfen\npersonenbezogene Daten von Beschäftigten nur dann\nverarbeitet werden, wenn zu dokumentierende tatsäch-\nliche Anhaltspunkte den Verdacht begründen, dass die\nbetroffene Person im Beschäftigungsverhältnis eine\nStraftat begangen hat, die Verarbeitung zur Aufdeckung\nerforderlich ist und das schutzwürdige Interesse der\noder des Beschäftigten an dem Ausschluss der Verar-\nbeitung nicht überwiegt, insbesondere Art und Ausmaß\nim Hinblick auf den Anlass nicht unverhältnismäßig\nsind."
+        }
+      ],
+      "action": "Erforderlichkeit und aktuelle Rechtsgrundlage fachlich prüfen; Mitbestimmung gesondert klären.",
+      "actionEn": "Review necessity and current legal basis; assess worker participation separately."
+    },
+    {
+      "checkId": "business-secrets",
+      "outcome": "satisfied",
+      "activeInputs": [
+        "confidential",
+        "secrecy"
+      ],
+      "missing": [],
+      "contradictions": [],
+      "citationErrors": [],
+      "evidenceIds": [
+        "claude-documented-document-1@1:19-798",
+        "claude-documented-document-2@1:18-356"
+      ],
+      "facts": {
+        "confidential": {
+          "value": "yes",
+          "evidenceIds": [
+            "claude-documented-document-1@1:19-798"
+          ],
+          "note": ""
+        },
+        "secrecy": {
+          "value": "yes",
+          "evidenceIds": [
+            "claude-documented-document-2@1:18-356"
+          ],
+          "note": ""
+        }
+      },
+      "citations": [
+        {
+          "id": "geschgehg-2-1b",
+          "sourceId": "geschgehg",
+          "pageId": "geschgehg:p3",
+          "pdfPage": 3,
+          "pinpoint": "GeschGehG § 2 Nr. 1 Buchst. b",
+          "start": 406,
+          "end": 526,
+          "quote": "b)   die Gegenstand von den Umständen nach angemessenen Geheimhaltungsmaßnahmen durch ihren\nrechtmäßigen Inhaber ist und"
+        }
+      ],
+      "action": "Informationen klassifizieren und angemessene Geheimhaltungsmaßnahmen festlegen.",
+      "actionEn": "Classify information and define appropriate secrecy measures."
+    }
+  ],
+  "classificationEvaluation": {
+    "n": 0,
+    "agreements": 0,
+    "disagreements": 0,
+    "agreementRate": null,
+    "excludedUnlabeled": 0,
+    "excludedUncertain": 0,
+    "matrix": {
+      "supported": {
+        "supported": 0,
+        "contradicted": 0,
+        "insufficient_evidence": 0,
+        "ambiguous": 0
+      },
+      "contradicted": {
+        "supported": 0,
+        "contradicted": 0,
+        "insufficient_evidence": 0,
+        "ambiguous": 0
+      },
+      "insufficient_evidence": {
+        "supported": 0,
+        "contradicted": 0,
+        "insufficient_evidence": 0,
+        "ambiguous": 0
+      },
+      "ambiguous": {
+        "supported": 0,
+        "contradicted": 0,
+        "insufficient_evidence": 0,
+        "ambiguous": 0
+      }
+    },
+    "errors": [],
+    "falseSupport": 0,
+    "missedContradictions": 0,
+    "perCategory": [
+      {
+        "category": "supported",
+        "expectedCount": 0,
+        "falsePositives": 0,
+        "falseNegatives": 0
+      },
+      {
+        "category": "contradicted",
+        "expectedCount": 0,
+        "falsePositives": 0,
+        "falseNegatives": 0
+      },
+      {
+        "category": "insufficient_evidence",
+        "expectedCount": 0,
+        "falsePositives": 0,
+        "falseNegatives": 0
+      },
+      {
+        "category": "ambiguous",
+        "expectedCount": 0,
+        "falsePositives": 0,
+        "falseNegatives": 0
+      }
+    ],
+    "rows": [],
+    "policy": "Latest run per check/passage/actual model; uncertain and unlabeled excluded. Models shown per row."
+  }
+}

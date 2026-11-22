@@ -1,0 +1,8 @@
+{
+  "unitId": "internal-policy",
+  "useCaseId": "claude-adoption",
+  "attempt": 8,
+  "startedAt": "2026-11-17T19:21:13.269Z",
+  "retries": 0,
+  "protocolHash": "e8d1b709ba9f4e05744fa4c95a86a01505846787c511dee6dff63cb0a621e8c8"
+}

@@ -1,3 +1,11 @@
 examples/evidence/jev-study/** text eol=lf
 examples/evidence/retrieval-eval/** text eol=lf
 test/fixtures/** text eol=lf
+
+examples/regulatory/** text eol=lf
+
+# Frozen experiment inputs/recordings use exact byte checksums, including captured line endings.
+examples/regulatory/obligation-experiment/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Exact extracted quotations retain original end-of-line spaces in the frozen review packet.
+examples/regulatory/obligation-experiment/review-packet.md whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

@@ -1,0 +1,4 @@
+# Optional offline PDF ingestion only. Not required by Next.js or the demo.
+pypdf==7.1.0
+cryptography==50.0.2
+fonttools==4.68.0

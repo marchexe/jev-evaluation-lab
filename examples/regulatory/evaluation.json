@@ -1,0 +1,56 @@
+{
+  "id": "claude-regulatory-rules-eval-1",
+  "referenceType": "AI-authored engineering expectations for deterministic rules; not human-confirmed legal ground truth",
+  "humanConfirmed": false,
+  "cases": [
+    {
+      "id": "pilot-missing-contract",
+      "scenarioId": "claude-pilot",
+      "expected": {
+        "purpose-basis": "unknown",
+        "processor-contract": "gap",
+        "international-transfer": "unknown",
+        "security-measures": "satisfied",
+        "privacy-risk": "gap",
+        "employee-data": "unknown",
+        "business-secrets": "unknown"
+      }
+    },
+    {
+      "id": "documented-scope",
+      "scenarioId": "claude-documented",
+      "expected": {
+        "purpose-basis": "satisfied",
+        "processor-contract": "satisfied",
+        "international-transfer": "satisfied",
+        "security-measures": "satisfied",
+        "privacy-risk": "not_applicable",
+        "employee-data": "satisfied",
+        "business-secrets": "satisfied"
+      }
+    },
+    {
+      "id": "conflicting-scope",
+      "scenarioId": "claude-conflict",
+      "expected": {
+        "purpose-basis": "unknown",
+        "processor-contract": "unknown",
+        "international-transfer": "unknown",
+        "security-measures": "unknown",
+        "privacy-risk": "unknown",
+        "employee-data": "unknown",
+        "business-secrets": "unknown"
+      }
+    },
+    {
+      "id": "internal-assistant-scope",
+      "scenarioId": "internal-assistant-pilot",
+      "expected": {
+        "purpose-basis": "satisfied",
+        "security-measures": "gap",
+        "privacy-risk": "not_applicable",
+        "employee-data": "unknown"
+      }
+    }
+  ]
+}

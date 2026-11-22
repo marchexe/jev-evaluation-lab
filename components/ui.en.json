@@ -505,5 +505,6 @@
   "Archivierte Versionen einbeziehen": "Include archived versions (pinned references are never upgraded)",
   "alle referenzierten Versionen": "all pinned versions",
   "aktuelle Versionen": "current versions",
-  "Versionsabschnitt": "Version section"
+  "Versionsabschnitt": "Version section",
+  "Prüfungen": "Assessments"
 }

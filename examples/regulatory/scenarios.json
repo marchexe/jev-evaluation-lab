@@ -1,0 +1,438 @@
+[
+  {
+    "id": "claude-pilot",
+    "title": "Unvollständiger Pilot",
+    "titleEn": "Incomplete pilot",
+    "purpose": "Synthetisches deutsches Softwareunternehmen, 20 Entwickler. Claude Code soll bei Codeänderungen und Tests helfen. Keine echten Unternehmensdaten.",
+    "documents": [
+      {
+        "id": "claude-pilot-document-1",
+        "revision": "1",
+        "systemId": "claude-pilot",
+        "title": "Synthetischer Einführungsplan",
+        "content": "# Einführungsplan\n\nSYNTHETISCH. Ein deutsches Unternehmen plant Claude Code unter einem kommerziellen Vertrag. Zweck sind Codeänderungen und Tests in freigegebenen Repositories. Personenbezogene Daten einschließlich Entwicklerkonten und Logdaten werden verarbeitet. Daten sollen auf erforderliche Ausschnitte beschränkt werden. Der Anbieter wird im Szenario als Auftragsverarbeiter eingeordnet. Ein passender AV-Vertrag fehlt ausdrücklich. Eine dokumentierte DSFA-Vorprüfung fehlt. Rechtsgrundlage und Drittlandzugriffe sind noch ungeklärt. Vertraulicher Quellcode und Beschäftigtendaten sind betroffen."
+      },
+      {
+        "id": "claude-pilot-document-2",
+        "revision": "1",
+        "systemId": "claude-pilot",
+        "title": "Synthetischer IT-Prüfvermerk",
+        "content": "# IT-Prüfvermerk\n\nSYNTHETISCH. Der IT-Prüfvermerk dokumentiert eingeschränkte Repository-Zugriffe, Secret-Filter, manuelle Freigabe vor Ausführung und einen Testplan für Berechtigungen. Eine fachliche Prüfung der Angemessenheit ist im Szenario protokolliert. Welche Geheimhaltungsvereinbarungen greifen, ist noch unbekannt."
+      }
+    ],
+    "facts": {
+      "personalData": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-pilot-document-1@1:19-603"
+        ],
+        "note": ""
+      },
+      "purpose": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-pilot-document-1@1:19-603"
+        ],
+        "note": ""
+      },
+      "legalBasis": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      },
+      "processor": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-pilot-document-1@1:19-603"
+        ],
+        "note": ""
+      },
+      "dpa": {
+        "value": "no",
+        "evidenceIds": [
+          "claude-pilot-document-1@1:19-603"
+        ],
+        "note": ""
+      },
+      "transfer": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      },
+      "transferBasis": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      },
+      "security": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-pilot-document-2@1:18-323"
+        ],
+        "note": ""
+      },
+      "screening": {
+        "value": "no",
+        "evidenceIds": [
+          "claude-pilot-document-1@1:19-603"
+        ],
+        "note": ""
+      },
+      "highRisk": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      },
+      "dpia": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      },
+      "employeeData": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-pilot-document-1@1:19-603"
+        ],
+        "note": ""
+      },
+      "employeeBasis": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      },
+      "confidential": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-pilot-document-1@1:19-603"
+        ],
+        "note": ""
+      },
+      "secrecy": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      }
+    },
+    "useCaseId": "claude-code",
+    "version": "1",
+    "context": {
+      "accessRoute": "commercial"
+    }
+  },
+  {
+    "id": "claude-documented",
+    "title": "Dokumentierter Musterfall",
+    "titleEn": "Documented example",
+    "purpose": "Synthetisches deutsches Softwareunternehmen, 20 Entwickler. Claude Code soll bei Codeänderungen und Tests helfen. Keine echten Unternehmensdaten.",
+    "documents": [
+      {
+        "id": "claude-documented-document-1",
+        "revision": "1",
+        "systemId": "claude-documented",
+        "title": "Synthetischer Einführungsplan",
+        "content": "# Einführungsplan\n\nSYNTHETISCH; keine Tatsachenbehauptung über Anthropic. Ein deutsches Unternehmen dokumentiert Zweck, Datenkategorien, Minimierung, Entwicklerkonten und Logdaten für den Claude-Code-Piloten. Datenschutzverantwortliche haben die Rechtsgrundlage einschließlich der Erforderlichkeit für Beschäftigtendaten im fiktiven Prüfvermerk freigegeben. Der kommerzielle Vertrag und die Rolle als Auftragsverarbeiter sind dokumentiert; ein auf diese Konfiguration bezogener AV-Vertrag ist geprüft. Drittlandzugriffe, Unterauftragnehmer und ein einschlägiger Mechanismus nach Kapitel V wurden im Szenario fachlich geprüft und dokumentiert. Die dokumentierte DSFA-Vorprüfung kommt begründet zu keinem voraussichtlich hohen Datenschutzrisiko. Das ist keine Aussage über ein reales Vertragsprodukt."
+      },
+      {
+        "id": "claude-documented-document-2",
+        "revision": "1",
+        "systemId": "claude-documented",
+        "title": "Synthetischer IT-Prüfvermerk",
+        "content": "# IT-Prüfvermerk\n\nSYNTHETISCH. Die risikobezogenen Sicherheitsmaßnahmen wurden fachlich geprüft: Zugriff auf ausgewählte Repositories, Secret-Filter, eingeschränkte Tool-Rechte, menschliche Freigabe und protokollierte Tests. Potenziell geheimer Quellcode wird klassifiziert; Zugriffsbegrenzungen und passende Geheimhaltungsvereinbarungen sind dokumentiert."
+      }
+    ],
+    "facts": {
+      "personalData": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "purpose": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "legalBasis": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "processor": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "dpa": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "transfer": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "transferBasis": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "security": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-2@1:18-356"
+        ],
+        "note": ""
+      },
+      "screening": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "highRisk": {
+        "value": "no",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "dpia": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      },
+      "employeeData": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "employeeBasis": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "confidential": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-1@1:19-798"
+        ],
+        "note": ""
+      },
+      "secrecy": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-documented-document-2@1:18-356"
+        ],
+        "note": ""
+      }
+    },
+    "useCaseId": "claude-code",
+    "version": "1",
+    "context": {
+      "accessRoute": "commercial"
+    }
+  },
+  {
+    "id": "claude-conflict",
+    "title": "Widersprüchliche Angaben",
+    "titleEn": "Conflicting declarations",
+    "purpose": "Synthetisches deutsches Softwareunternehmen, 20 Entwickler. Claude Code soll bei Codeänderungen und Tests helfen. Keine echten Unternehmensdaten.",
+    "documents": [
+      {
+        "id": "claude-conflict-document-1",
+        "revision": "1",
+        "systemId": "claude-conflict",
+        "title": "Synthetischer Einführungsplan",
+        "content": "# Einführungsplan\n\nSYNTHETISCH. Der Einführungsplan behauptet ausdrücklich, dass im gesamten Claude-Code-Einsatz keine personenbezogenen Daten verarbeitet werden."
+      },
+      {
+        "id": "claude-conflict-document-2",
+        "revision": "1",
+        "systemId": "claude-conflict",
+        "title": "Synthetischer IT-Prüfvermerk",
+        "content": "# IT-Prüfvermerk\n\nSYNTHETISCH. Der IT-Prüfvermerk beschreibt namentliche Entwicklerkonten, Nutzungsprotokolle und Auswertungen je Beschäftigtem. Diese Daten sind Bestandteil desselben geplanten Einsatzes. Die beiden Dokumente sind nicht abgestimmt."
+      }
+    ],
+    "facts": {
+      "personalData": {
+        "value": "no",
+        "evidenceIds": [
+          "claude-conflict-document-1@1:19-162"
+        ],
+        "note": ""
+      },
+      "purpose": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-conflict-document-1@1:19-162"
+        ],
+        "note": ""
+      },
+      "legalBasis": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      },
+      "processor": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      },
+      "dpa": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      },
+      "transfer": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      },
+      "transferBasis": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      },
+      "security": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      },
+      "screening": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      },
+      "highRisk": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      },
+      "dpia": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      },
+      "employeeData": {
+        "value": "yes",
+        "evidenceIds": [
+          "claude-conflict-document-1@1:19-162"
+        ],
+        "note": ""
+      },
+      "employeeBasis": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      },
+      "confidential": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      },
+      "secrecy": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      }
+    },
+    "useCaseId": "claude-code",
+    "version": "1",
+    "context": {
+      "accessRoute": "commercial"
+    }
+  },
+  {
+    "id": "internal-assistant-pilot",
+    "version": "1",
+    "useCaseId": "internal-assistant",
+    "title": "Interner Wissensassistent – Pilot",
+    "titleEn": "Internal knowledge assistant – pilot",
+    "purpose": "Synthetischer interner Wissensassistent für ein deutsches Unternehmen. Keine echten Unternehmensdaten.",
+    "context": {},
+    "documents": [
+      {
+        "id": "internal-assistant-policy",
+        "revision": "1",
+        "systemId": "internal-assistant-pilot",
+        "title": "Synthetischer Plan für einen internen KI-Assistenten",
+        "content": "# Interner KI-Assistent\n\nSYNTHETISCH. Ein deutsches Unternehmen plant einen internen Assistenten für freigegebene Wissensdokumente. Zweck, Datenminimierung und geprüfte Rechtsgrundlage sind dokumentiert. Namentliche Beschäftigtenkonten und Nutzungsprotokolle werden verarbeitet. Ein passendes Zugriffs- und Sicherheitskonzept fehlt ausdrücklich. Ein begründetes Datenschutz-Screening dokumentiert kein voraussichtlich hohes Risiko. Die Erforderlichkeit der Verarbeitung von Beschäftigtendaten ist noch ungeklärt."
+      }
+    ],
+    "facts": {
+      "personalData": {
+        "value": "yes",
+        "evidenceIds": [
+          "internal-assistant-policy@1:25-512"
+        ],
+        "note": ""
+      },
+      "purpose": {
+        "value": "yes",
+        "evidenceIds": [
+          "internal-assistant-policy@1:25-512"
+        ],
+        "note": ""
+      },
+      "legalBasis": {
+        "value": "yes",
+        "evidenceIds": [
+          "internal-assistant-policy@1:25-512"
+        ],
+        "note": ""
+      },
+      "security": {
+        "value": "no",
+        "evidenceIds": [
+          "internal-assistant-policy@1:25-512"
+        ],
+        "note": ""
+      },
+      "screening": {
+        "value": "yes",
+        "evidenceIds": [
+          "internal-assistant-policy@1:25-512"
+        ],
+        "note": ""
+      },
+      "highRisk": {
+        "value": "no",
+        "evidenceIds": [
+          "internal-assistant-policy@1:25-512"
+        ],
+        "note": ""
+      },
+      "employeeData": {
+        "value": "yes",
+        "evidenceIds": [
+          "internal-assistant-policy@1:25-512"
+        ],
+        "note": ""
+      },
+      "employeeBasis": {
+        "value": "unknown",
+        "evidenceIds": [],
+        "note": ""
+      }
+    }
+  }
+]

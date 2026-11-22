@@ -1,0 +1,55 @@
+{
+  "protocolHash": "e8d1b709ba9f4e05744fa4c95a86a01505846787c511dee6dff63cb0a621e8c8",
+  "resultsHash": "67a4aeaee097ec21545c26e8188372674061ff3986c56294a0ad4aad4c7938ba",
+  "recordHashes": [
+    {
+      "id": "claude-adoption::gdpr-28-1",
+      "hash": "5fbf6cfcb2e62abdd9e429a570407e72536726770982a63119efb098f032fbe9"
+    },
+    {
+      "id": "claude-adoption::gdpr-28-2",
+      "hash": "ebd5e8f40df31370eca228c30d78a638f7fa7be0aa44788b62d7d8c46e34eaec"
+    },
+    {
+      "id": "claude-adoption::gdpr-30-5",
+      "hash": "dc933d2f0f20487710c6c150e31d41c993c9cee03e191fc83a6feb92a4397cc5"
+    },
+    {
+      "id": "claude-adoption::gdpr-31",
+      "hash": "67846fd12dc07bc348647990c1c6219fe26b1ba5d236abc6c382676cdb96275c"
+    },
+    {
+      "id": "claude-adoption::gdpr-35-1",
+      "hash": "97c8b2787131a0695468bf6896e28fc496e6879e3240b628f34446abb8e9395f"
+    },
+    {
+      "id": "claude-adoption::geschgehg-definition",
+      "hash": "b303dbf0a88afc60f413d7fb3f98390731df3b10e69e67924957153ce5b27562"
+    },
+    {
+      "id": "claude-adoption::bsi-recommendation",
+      "hash": "c361ac0ad35f1d6b87a4c8dd851962644b9ae8d918009dbe197d0c9128347c9d"
+    },
+    {
+      "id": "claude-adoption::internal-policy",
+      "hash": "58e691a863d35379eb8dabee445c61a5b80a48d648eaebf068994eab72bed807"
+    }
+  ],
+  "fieldReviewsHash": null,
+  "sourceHashes": {
+    "designExpectations": "40a93f9be4faa303082d521dc1139591f325e3c4e11e113fb79a25e07c0978f1",
+    "src/experiments/obligation-discovery.ts": "163c64dd7cecc7b0c0c2e238136aa9b46e1781041cae1f9f475d9a18a6405bcf",
+    "src/experiments/obligation-report.ts": "7b6c4c6621fe2439a5379cfe1655ff7409a2a18d19f1eb64465fada4a4658c79",
+    "scripts/obligation-experiment.ts": "67d9336dbd8c5f498af7cf5e8e3648568c7aeb2ca560e9559558231e8e680a4f",
+    "src/system-one.js": "c3ebe374ac39b6df3bbc71e350a092b56aa9bbdf5083bd4b4d1b11bf027add6d",
+    "src/ui/evidence.ts": "2ee554dadc545fef9aa754b5b7756569083b9d4930c32f91cd0799179aa1677b",
+    "src/ui/evidence-graph.ts": "51d1c10b375f8e0e9990f228ccdcca141773361412b7d75c9ffe33f9329326b6",
+    "src/ui/graph-ranking.ts": "8d572047a7582b045ae3478541bf7b599e26137b98274a0761930d6e7b7409ee",
+    "src/question-config.js": "73dd212c20040dbb127de2cabbbdc6c12568b34341d689943a425302526b39ce",
+    "src/ui/reviews.ts": "23a1b2b2da9d4a10b4ea75711b2b603bb6ac6c08c756a86628cd410d9f343263",
+    "examples/regulatory/corpus.json": "781ceedfe48d9090f543a6357e55fc4776502bac41060f0065f9b6255bd3e96c",
+    "examples/regulatory/obligation-experiment/human-review-template.json": "169d9095dfc697605ece8bea6304ac72a2fe2a8f0f03e5c063f190251221f794",
+    "package-lock.json": "3fd0bf61a3b755b498b9de9b46f209ddf0de8311c4b728a0284d44a1b9abfd1d"
+  },
+  "independentHumanGroundTruth": false
+}

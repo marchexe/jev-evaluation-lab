@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "version": "1",
+  "defaultUseCaseId": "claude-code",
+  "useCases": [
+    {
+      "id": "claude-code",
+      "version": "1",
+      "label": {
+        "de": "Claude Code",
+        "en": "Claude Code"
+      },
+      "heading": {
+        "de": "Claude Code im Unternehmen",
+        "en": "Claude Code adoption"
+      },
+      "defaultScenarioId": "claude-pilot",
+      "scopeQuestions": [
+        "personalData",
+        "processor",
+        "transfer",
+        "employeeData",
+        "confidential"
+      ],
+      "requirementIds": [
+        "purpose-basis",
+        "processor-contract",
+        "international-transfer",
+        "security-measures",
+        "privacy-risk",
+        "employee-data",
+        "business-secrets"
+      ],
+      "constraintIds": [
+        "personal-scope-consistency",
+        "access-route-consistency"
+      ],
+      "contextFields": [
+        {
+          "id": "accessRoute",
+          "label": {
+            "de": "Vertrags-/Zugangsvariante",
+            "en": "Contract / access variant"
+          },
+          "options": [
+            {
+              "value": "unknown",
+              "label": {
+                "de": "Unbekannt",
+                "en": "Unknown"
+              }
+            },
+            {
+              "value": "commercial",
+              "label": {
+                "de": "Kommerzieller Vertrag / API",
+                "en": "Commercial contract / API"
+              }
+            },
+            {
+              "value": "consumer",
+              "label": {
+                "de": "Persönliches Abonnement",
+                "en": "Personal subscription"
+              }
+            },
+            {
+              "value": "third-party",
+              "label": {
+                "de": "Drittanbieterplattform",
+                "en": "Third-party platform"
+              }
+            }
+          ]
+        }
+      ],
+      "reportKind": "claude-code-assessment",
+      "reportFilename": "claude-code-report",
+      "scope": "Synthetic German-company Claude Code adoption; documented checklist outcomes, no legal approval.",
+      "scopeNote": {
+        "de": "Konten, Logs, Telemetrie, Plugins und Unterauftragnehmer einbeziehen. Aus dem Produktnamen werden keine Vertrags-, Trainings- oder Aufbewahrungszusagen abgeleitet.",
+        "en": "Include accounts, logs, telemetry, plugins and subprocessors. The product name establishes no contract, training or retention guarantees."
+      },
+      "limitations": [
+        {
+          "de": "Historische Quellen müssen auf die aktuelle Rechtslage geprüft werden.",
+          "en": "Historical sources require current-law review."
+        },
+        {
+          "de": "AI Act, Mitbestimmung, Branchenregeln und Anbieterbedingungen müssen gesondert geprüft werden.",
+          "en": "AI Act, works council rights, sector rules and vendor contract contents require separate review."
+        },
+        {
+          "de": "Tatsächliche Anbietereinstellungen und Unternehmenspraxis wurden nicht geprüft.",
+          "en": "No live vendor settings or company practice verified."
+        }
+      ],
+      "legacy": {
+        "rules": "claude-adoption-checks-1",
+        "reportKind": "claude-code-assessment",
+        "contextField": "accessRoute",
+        "contextProperty": "plan"
+      }
+    },
+    {
+      "id": "internal-assistant",
+      "version": "1",
+      "label": {
+        "de": "Interner KI-Assistent",
+        "en": "Internal AI assistant"
+      },
+      "heading": {
+        "de": "Internen KI-Assistenten einführen",
+        "en": "Introduce an internal AI assistant"
+      },
+      "defaultScenarioId": "internal-assistant-pilot",
+      "scopeQuestions": [
+        "personalData",
+        "employeeData"
+      ],
+      "requirementIds": [
+        "purpose-basis",
+        "security-measures",
+        "privacy-risk",
+        "employee-data"
+      ],
+      "constraintIds": [
+        "personal-scope-consistency"
+      ],
+      "contextFields": [],
+      "reportKind": "internal-assistant-assessment",
+      "reportFilename": "internal-assistant-report",
+      "scope": "Synthetic internal knowledge-assistant pilot; documented checklist outcomes, no legal approval.",
+      "scopeNote": {
+        "de": "Interne Dokumente, Zugriffsrechte, Beschäftigtendaten und Nutzungsprotokolle einbeziehen. „Intern“ schließt personenbezogene Daten nicht aus.",
+        "en": "Include internal documents, access rights, employee data and usage logs. Internal use does not exclude personal data."
+      },
+      "limitations": [
+        {
+          "de": "Historische Quellen müssen auf die aktuelle Rechtslage geprüft werden.",
+          "en": "Historical sources require current-law review."
+        },
+        {
+          "de": "Anbieterverträge, Übermittlungen, AI Act, Mitbestimmung und Branchenregeln müssen gesondert abgegrenzt werden.",
+          "en": "Provider contracts, transfers, AI Act, worker participation and sector rules need separate scoping."
+        },
+        {
+          "de": "Das synthetische Beispiel bestätigt keinen tatsächlichen Einsatz.",
+          "en": "The synthetic example does not verify a real deployment."
+        }
+      ]
+    }
+  ]
+}

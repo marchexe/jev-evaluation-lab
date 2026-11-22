@@ -1,0 +1,403 @@
+{
+  "schemaVersion": 1,
+  "humanConfirmed": false,
+  "labelOrigin": "AI-authored exploratory design expectations; not ground truth",
+  "rows": [
+    {
+      "id": "claude-adoption::gdpr-28-1",
+      "unitId": "gdpr-28-1",
+      "useCaseId": "claude-adoption",
+      "kind": "binding_obligation",
+      "relation": "potentially_relevant",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "offline-kiosk::gdpr-28-1",
+      "unitId": "gdpr-28-1",
+      "useCaseId": "offline-kiosk",
+      "kind": "binding_obligation",
+      "relation": "not_relevant",
+      "retrievalRelevant": false,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "authority-request::gdpr-28-1",
+      "unitId": "gdpr-28-1",
+      "useCaseId": "authority-request",
+      "kind": "binding_obligation",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "internal-assistant::gdpr-28-1",
+      "unitId": "gdpr-28-1",
+      "useCaseId": "internal-assistant",
+      "kind": "binding_obligation",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "claude-adoption::gdpr-28-2",
+      "unitId": "gdpr-28-2",
+      "useCaseId": "claude-adoption",
+      "kind": "binding_obligation",
+      "relation": "potentially_relevant",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "offline-kiosk::gdpr-28-2",
+      "unitId": "gdpr-28-2",
+      "useCaseId": "offline-kiosk",
+      "kind": "binding_obligation",
+      "relation": "not_relevant",
+      "retrievalRelevant": false,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "authority-request::gdpr-28-2",
+      "unitId": "gdpr-28-2",
+      "useCaseId": "authority-request",
+      "kind": "binding_obligation",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "internal-assistant::gdpr-28-2",
+      "unitId": "gdpr-28-2",
+      "useCaseId": "internal-assistant",
+      "kind": "binding_obligation",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "claude-adoption::gdpr-30-5",
+      "unitId": "gdpr-30-5",
+      "useCaseId": "claude-adoption",
+      "kind": "exception",
+      "relation": "potentially_relevant",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "offline-kiosk::gdpr-30-5",
+      "unitId": "gdpr-30-5",
+      "useCaseId": "offline-kiosk",
+      "kind": "exception",
+      "relation": "not_relevant",
+      "retrievalRelevant": false,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "authority-request::gdpr-30-5",
+      "unitId": "gdpr-30-5",
+      "useCaseId": "authority-request",
+      "kind": "exception",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "internal-assistant::gdpr-30-5",
+      "unitId": "gdpr-30-5",
+      "useCaseId": "internal-assistant",
+      "kind": "exception",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "claude-adoption::gdpr-31",
+      "unitId": "gdpr-31",
+      "useCaseId": "claude-adoption",
+      "kind": "binding_obligation",
+      "relation": "not_relevant",
+      "retrievalRelevant": false,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "offline-kiosk::gdpr-31",
+      "unitId": "gdpr-31",
+      "useCaseId": "offline-kiosk",
+      "kind": "binding_obligation",
+      "relation": "not_relevant",
+      "retrievalRelevant": false,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "authority-request::gdpr-31",
+      "unitId": "gdpr-31",
+      "useCaseId": "authority-request",
+      "kind": "binding_obligation",
+      "relation": "potentially_relevant",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "internal-assistant::gdpr-31",
+      "unitId": "gdpr-31",
+      "useCaseId": "internal-assistant",
+      "kind": "binding_obligation",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "claude-adoption::gdpr-35-1",
+      "unitId": "gdpr-35-1",
+      "useCaseId": "claude-adoption",
+      "kind": "binding_obligation",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "offline-kiosk::gdpr-35-1",
+      "unitId": "gdpr-35-1",
+      "useCaseId": "offline-kiosk",
+      "kind": "binding_obligation",
+      "relation": "not_relevant",
+      "retrievalRelevant": false,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "authority-request::gdpr-35-1",
+      "unitId": "gdpr-35-1",
+      "useCaseId": "authority-request",
+      "kind": "binding_obligation",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "internal-assistant::gdpr-35-1",
+      "unitId": "gdpr-35-1",
+      "useCaseId": "internal-assistant",
+      "kind": "binding_obligation",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "claude-adoption::gdpr-35-2",
+      "unitId": "gdpr-35-2",
+      "useCaseId": "claude-adoption",
+      "kind": "binding_obligation",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "offline-kiosk::gdpr-35-2",
+      "unitId": "gdpr-35-2",
+      "useCaseId": "offline-kiosk",
+      "kind": "binding_obligation",
+      "relation": "not_relevant",
+      "retrievalRelevant": false,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "authority-request::gdpr-35-2",
+      "unitId": "gdpr-35-2",
+      "useCaseId": "authority-request",
+      "kind": "binding_obligation",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "internal-assistant::gdpr-35-2",
+      "unitId": "gdpr-35-2",
+      "useCaseId": "internal-assistant",
+      "kind": "binding_obligation",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "claude-adoption::geschgehg-definition",
+      "unitId": "geschgehg-definition",
+      "useCaseId": "claude-adoption",
+      "kind": "definition",
+      "relation": "potentially_relevant",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "offline-kiosk::geschgehg-definition",
+      "unitId": "geschgehg-definition",
+      "useCaseId": "offline-kiosk",
+      "kind": "definition",
+      "relation": "not_relevant",
+      "retrievalRelevant": false,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "authority-request::geschgehg-definition",
+      "unitId": "geschgehg-definition",
+      "useCaseId": "authority-request",
+      "kind": "definition",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "internal-assistant::geschgehg-definition",
+      "unitId": "geschgehg-definition",
+      "useCaseId": "internal-assistant",
+      "kind": "definition",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "claude-adoption::gdpr-6-1f",
+      "unitId": "gdpr-6-1f",
+      "useCaseId": "claude-adoption",
+      "kind": "permission",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "offline-kiosk::gdpr-6-1f",
+      "unitId": "gdpr-6-1f",
+      "useCaseId": "offline-kiosk",
+      "kind": "permission",
+      "relation": "not_relevant",
+      "retrievalRelevant": false,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "authority-request::gdpr-6-1f",
+      "unitId": "gdpr-6-1f",
+      "useCaseId": "authority-request",
+      "kind": "permission",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "internal-assistant::gdpr-6-1f",
+      "unitId": "gdpr-6-1f",
+      "useCaseId": "internal-assistant",
+      "kind": "permission",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "claude-adoption::bsi-recommendation",
+      "unitId": "bsi-recommendation",
+      "useCaseId": "claude-adoption",
+      "kind": "recommendation",
+      "relation": "potentially_relevant",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "offline-kiosk::bsi-recommendation",
+      "unitId": "bsi-recommendation",
+      "useCaseId": "offline-kiosk",
+      "kind": "recommendation",
+      "relation": "not_relevant",
+      "retrievalRelevant": false,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "authority-request::bsi-recommendation",
+      "unitId": "bsi-recommendation",
+      "useCaseId": "authority-request",
+      "kind": "recommendation",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "internal-assistant::bsi-recommendation",
+      "unitId": "bsi-recommendation",
+      "useCaseId": "internal-assistant",
+      "kind": "recommendation",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "claude-adoption::company-practice",
+      "unitId": "company-practice",
+      "useCaseId": "claude-adoption",
+      "kind": "descriptive_fact",
+      "relation": "not_relevant",
+      "retrievalRelevant": false,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "offline-kiosk::company-practice",
+      "unitId": "company-practice",
+      "useCaseId": "offline-kiosk",
+      "kind": "descriptive_fact",
+      "relation": "not_relevant",
+      "retrievalRelevant": false,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "authority-request::company-practice",
+      "unitId": "company-practice",
+      "useCaseId": "authority-request",
+      "kind": "descriptive_fact",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "internal-assistant::company-practice",
+      "unitId": "company-practice",
+      "useCaseId": "internal-assistant",
+      "kind": "descriptive_fact",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "claude-adoption::internal-policy",
+      "unitId": "internal-policy",
+      "useCaseId": "claude-adoption",
+      "kind": "internal_control",
+      "relation": "not_relevant",
+      "retrievalRelevant": false,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "offline-kiosk::internal-policy",
+      "unitId": "internal-policy",
+      "useCaseId": "offline-kiosk",
+      "kind": "internal_control",
+      "relation": "not_relevant",
+      "retrievalRelevant": false,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "authority-request::internal-policy",
+      "unitId": "internal-policy",
+      "useCaseId": "authority-request",
+      "kind": "internal_control",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    {
+      "id": "internal-assistant::internal-policy",
+      "unitId": "internal-policy",
+      "useCaseId": "internal-assistant",
+      "kind": "internal_control",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    }
+  ]
+}

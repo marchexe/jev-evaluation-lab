@@ -1,0 +1,1161 @@
+[
+  {
+    "id": "claude-adoption::gdpr-28-1",
+    "provision": {
+      "id": "gdpr-28-1",
+      "sourceId": "gdpr",
+      "pageId": "gdpr:p49",
+      "pdfPage": 49,
+      "pinpoint": "DSGVO Art. 28 Abs. 1",
+      "start": 857,
+      "end": 1240,
+      "quote": "(1) Erfolgt eine Verarbeitung im Auftrag eines Verantwortlichen, so arbeitet dieser nur mit Auftragsverarbeitern, die \nhinreichend Garantien dafür bieten, dass geeignete technische und organisatorische Maßnahmen so durchgeführt werden, \ndass die Verarbeitung im Einklang mit den Anforderungen dieser Verordnung erfolgt und den Schutz der Rechte der \nbetroffenen Person gewährleistet."
+    },
+    "originalPdfPageOffset": 0,
+    "expectedUnconfirmed": {
+      "id": "claude-adoption::gdpr-28-1",
+      "unitId": "gdpr-28-1",
+      "useCaseId": "claude-adoption",
+      "kind": "binding_obligation",
+      "relation": "potentially_relevant",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    "jev": {
+      "sourceFunction": "binding_obligation",
+      "applicability": "potentially_relevant",
+      "fields": {
+        "entity": {
+          "span": {
+            "id": "span_so_arbeitet_dieser_nur_mit_auftragsver_2",
+            "start": 922,
+            "end": 970,
+            "quote": "so arbeitet dieser nur mit Auftragsverarbeitern,"
+          },
+          "presence": 0.86,
+          "selectedChoice": "span_so_arbeitet_dieser_nur_mit_auftragsver_2",
+          "status": "selected"
+        },
+        "action": {
+          "span": {
+            "id": "span__1_erfolgt_eine_verarbeitung_im_auftra_0",
+            "start": 857,
+            "end": 1240,
+            "quote": "(1) Erfolgt eine Verarbeitung im Auftrag eines Verantwortlichen, so arbeitet dieser nur mit Auftragsverarbeitern, die \nhinreichend Garantien dafür bieten, dass geeignete technische und organisatorische Maßnahmen so durchgeführt werden, \ndass die Verarbeitung im Einklang mit den Anforderungen dieser Verordnung erfolgt und den Schutz der Rechte der \nbetroffenen Person gewährleistet."
+          },
+          "presence": 0.98,
+          "selectedChoice": "span__1_erfolgt_eine_verarbeitung_im_auftra_0",
+          "status": "selected"
+        },
+        "conditions": {
+          "span": {
+            "id": "span__1_erfolgt_eine_verarbeitung_im_auftra_1",
+            "start": 857,
+            "end": 921,
+            "quote": "(1) Erfolgt eine Verarbeitung im Auftrag eines Verantwortlichen,"
+          },
+          "presence": 0.99,
+          "selectedChoice": "span__1_erfolgt_eine_verarbeitung_im_auftra_1",
+          "status": "selected"
+        },
+        "exceptions": {
+          "span": null,
+          "presence": 0.05,
+          "selectedChoice": "not_stated",
+          "status": "not_stated"
+        }
+      },
+      "uncertainty": [
+        "action: whole-provision span; boundary quality needs review.",
+        "exceptions: not_stated",
+        "Historical source; context, cross-references and legal interpretation need human review. One candidate per provision can conflate multiple obligations."
+      ]
+    },
+    "baseline": {
+      "id": "claude-adoption::gdpr-28-1",
+      "unitId": "gdpr-28-1",
+      "useCaseId": "claude-adoption",
+      "method": "deontic-marker-baseline",
+      "verification": "unverified",
+      "productionEligible": false,
+      "sourceFunction": "unclear",
+      "statutoryObligationCandidate": false,
+      "relationship": {
+        "label": "needs_information",
+        "reason": "Lexical baseline cannot establish legal applicability."
+      },
+      "fields": {
+        "entity": {
+          "span": {
+            "id": "span__1_erfolgt_eine_verarbeitung_im_auftra_1",
+            "start": 857,
+            "end": 921,
+            "quote": "(1) Erfolgt eine Verarbeitung im Auftrag eines Verantwortlichen,"
+          }
+        },
+        "action": {
+          "span": {
+            "id": "span__1_erfolgt_eine_verarbeitung_im_auftra_0",
+            "start": 857,
+            "end": 1240,
+            "quote": "(1) Erfolgt eine Verarbeitung im Auftrag eines Verantwortlichen, so arbeitet dieser nur mit Auftragsverarbeitern, die \nhinreichend Garantien dafür bieten, dass geeignete technische und organisatorische Maßnahmen so durchgeführt werden, \ndass die Verarbeitung im Einklang mit den Anforderungen dieser Verordnung erfolgt und den Schutz der Rechte der \nbetroffenen Person gewährleistet."
+          }
+        },
+        "conditions": {
+          "span": null
+        },
+        "exceptions": {
+          "span": null
+        }
+      },
+      "citation": {
+        "id": "gdpr-28-1",
+        "sourceId": "gdpr",
+        "pageId": "gdpr:p49",
+        "pdfPage": 49,
+        "pinpoint": "DSGVO Art. 28 Abs. 1",
+        "start": 857,
+        "end": 1240,
+        "quote": "(1) Erfolgt eine Verarbeitung im Auftrag eines Verantwortlichen, so arbeitet dieser nur mit Auftragsverarbeitern, die \nhinreichend Garantien dafür bieten, dass geeignete technische und organisatorische Maßnahmen so durchgeführt werden, \ndass die Verarbeitung im Einklang mit den Anforderungen dieser Verordnung erfolgt und den Schutz der Rechte der \nbetroffenen Person gewährleistet."
+      },
+      "source": {
+        "id": "gdpr",
+        "title": "DSGVO",
+        "kind": "binding_law",
+        "issuer": "EU, Amtsblatt L 119, 4.5.2016",
+        "revision": "2016-05-04",
+        "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj/deu",
+        "filename": "EU_DSGVO.pdf",
+        "sha256": "27b720c812be1bdf1462ff468ad6410fe94da80b48f6d10fa7e2269b9e5a1597",
+        "pageCount": 88,
+        "currentness": "Historical supplied snapshot; current consolidated law not verified",
+        "use": "selected excerpts"
+      },
+      "uncertainty": [
+        "Weak marker baseline; not a semantic obligation parser. Action covers whole provision."
+      ]
+    },
+    "citationValidation": {
+      "valid": true,
+      "reason": "Exact source slices; semantic support is not established by citation validity."
+    },
+    "exploratoryDifferences": {
+      "sourceFunction": false,
+      "applicability": false
+    },
+    "requiresHumanReview": true
+  },
+  {
+    "id": "claude-adoption::gdpr-28-2",
+    "provision": {
+      "id": "gdpr-28-2",
+      "sourceId": "gdpr",
+      "pageId": "gdpr:p49",
+      "pdfPage": 49,
+      "pinpoint": "DSGVO Art. 28 Abs. 2",
+      "start": 1242,
+      "end": 1742,
+      "quote": "(2) Der Auftragsverarbeiter nimmt keinen weiteren Auftragsverarbeiter ohne vorherige gesonderte oder allgemeine \nschriftliche Genehmigung des Verantwortlichen in Anspruch. Im Fall einer allgemeinen schriftlichen Genehmigung \ninformiert der Auftragsverarbeiter den Verantwortlichen immer über jede beabsichtigte Änderung in Bezug auf die \nHinzuziehung oder die Ersetzung anderer Auftragsverarbeiter, wodurch der Verantwortliche die Möglichkeit erhält, gegen \nderartige Änderungen Einspruch zu erheben."
+    },
+    "originalPdfPageOffset": 0,
+    "expectedUnconfirmed": {
+      "id": "claude-adoption::gdpr-28-2",
+      "unitId": "gdpr-28-2",
+      "useCaseId": "claude-adoption",
+      "kind": "binding_obligation",
+      "relation": "potentially_relevant",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    "jev": {
+      "sourceFunction": "binding_obligation",
+      "applicability": "potentially_relevant",
+      "fields": {
+        "entity": {
+          "span": {
+            "id": "span__2_der_auftragsverarbeiter_nimmt_keine_0",
+            "start": 1242,
+            "end": 1742,
+            "quote": "(2) Der Auftragsverarbeiter nimmt keinen weiteren Auftragsverarbeiter ohne vorherige gesonderte oder allgemeine \nschriftliche Genehmigung des Verantwortlichen in Anspruch. Im Fall einer allgemeinen schriftlichen Genehmigung \ninformiert der Auftragsverarbeiter den Verantwortlichen immer über jede beabsichtigte Änderung in Bezug auf die \nHinzuziehung oder die Ersetzung anderer Auftragsverarbeiter, wodurch der Verantwortliche die Möglichkeit erhält, gegen \nderartige Änderungen Einspruch zu erheben."
+          },
+          "presence": 0.96,
+          "selectedChoice": "span__2_der_auftragsverarbeiter_nimmt_keine_0",
+          "status": "selected"
+        },
+        "action": {
+          "span": {
+            "id": "span__2_der_auftragsverarbeiter_nimmt_keine_1",
+            "start": 1242,
+            "end": 1413,
+            "quote": "(2) Der Auftragsverarbeiter nimmt keinen weiteren Auftragsverarbeiter ohne vorherige gesonderte oder allgemeine \nschriftliche Genehmigung des Verantwortlichen in Anspruch."
+          },
+          "presence": 0.99,
+          "selectedChoice": "span__2_der_auftragsverarbeiter_nimmt_keine_1",
+          "status": "selected"
+        },
+        "conditions": {
+          "span": {
+            "id": "span_im_fall_einer_allgemeinen_schriftliche_2",
+            "start": 1414,
+            "end": 1640,
+            "quote": "Im Fall einer allgemeinen schriftlichen Genehmigung \ninformiert der Auftragsverarbeiter den Verantwortlichen immer über jede beabsichtigte Änderung in Bezug auf die \nHinzuziehung oder die Ersetzung anderer Auftragsverarbeiter,"
+          },
+          "presence": 0.75,
+          "selectedChoice": "span_im_fall_einer_allgemeinen_schriftliche_2",
+          "status": "selected"
+        },
+        "exceptions": {
+          "span": {
+            "id": "span_im_fall_einer_allgemeinen_schriftliche_2",
+            "start": 1414,
+            "end": 1640,
+            "quote": "Im Fall einer allgemeinen schriftlichen Genehmigung \ninformiert der Auftragsverarbeiter den Verantwortlichen immer über jede beabsichtigte Änderung in Bezug auf die \nHinzuziehung oder die Ersetzung anderer Auftragsverarbeiter,"
+          },
+          "presence": 0.9,
+          "selectedChoice": "span_im_fall_einer_allgemeinen_schriftliche_2",
+          "status": "selected"
+        }
+      },
+      "uncertainty": [
+        "entity: whole-provision span; boundary quality needs review.",
+        "Historical source; context, cross-references and legal interpretation need human review. One candidate per provision can conflate multiple obligations."
+      ]
+    },
+    "baseline": {
+      "id": "claude-adoption::gdpr-28-2",
+      "unitId": "gdpr-28-2",
+      "useCaseId": "claude-adoption",
+      "method": "deontic-marker-baseline",
+      "verification": "unverified",
+      "productionEligible": false,
+      "sourceFunction": "unclear",
+      "statutoryObligationCandidate": false,
+      "relationship": {
+        "label": "needs_information",
+        "reason": "Lexical baseline cannot establish legal applicability."
+      },
+      "fields": {
+        "entity": {
+          "span": {
+            "id": "span__2_der_auftragsverarbeiter_nimmt_keine_1",
+            "start": 1242,
+            "end": 1413,
+            "quote": "(2) Der Auftragsverarbeiter nimmt keinen weiteren Auftragsverarbeiter ohne vorherige gesonderte oder allgemeine \nschriftliche Genehmigung des Verantwortlichen in Anspruch."
+          }
+        },
+        "action": {
+          "span": {
+            "id": "span__2_der_auftragsverarbeiter_nimmt_keine_0",
+            "start": 1242,
+            "end": 1742,
+            "quote": "(2) Der Auftragsverarbeiter nimmt keinen weiteren Auftragsverarbeiter ohne vorherige gesonderte oder allgemeine \nschriftliche Genehmigung des Verantwortlichen in Anspruch. Im Fall einer allgemeinen schriftlichen Genehmigung \ninformiert der Auftragsverarbeiter den Verantwortlichen immer über jede beabsichtigte Änderung in Bezug auf die \nHinzuziehung oder die Ersetzung anderer Auftragsverarbeiter, wodurch der Verantwortliche die Möglichkeit erhält, gegen \nderartige Änderungen Einspruch zu erheben."
+          }
+        },
+        "conditions": {
+          "span": null
+        },
+        "exceptions": {
+          "span": null
+        }
+      },
+      "citation": {
+        "id": "gdpr-28-2",
+        "sourceId": "gdpr",
+        "pageId": "gdpr:p49",
+        "pdfPage": 49,
+        "pinpoint": "DSGVO Art. 28 Abs. 2",
+        "start": 1242,
+        "end": 1742,
+        "quote": "(2) Der Auftragsverarbeiter nimmt keinen weiteren Auftragsverarbeiter ohne vorherige gesonderte oder allgemeine \nschriftliche Genehmigung des Verantwortlichen in Anspruch. Im Fall einer allgemeinen schriftlichen Genehmigung \ninformiert der Auftragsverarbeiter den Verantwortlichen immer über jede beabsichtigte Änderung in Bezug auf die \nHinzuziehung oder die Ersetzung anderer Auftragsverarbeiter, wodurch der Verantwortliche die Möglichkeit erhält, gegen \nderartige Änderungen Einspruch zu erheben."
+      },
+      "source": {
+        "id": "gdpr",
+        "title": "DSGVO",
+        "kind": "binding_law",
+        "issuer": "EU, Amtsblatt L 119, 4.5.2016",
+        "revision": "2016-05-04",
+        "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj/deu",
+        "filename": "EU_DSGVO.pdf",
+        "sha256": "27b720c812be1bdf1462ff468ad6410fe94da80b48f6d10fa7e2269b9e5a1597",
+        "pageCount": 88,
+        "currentness": "Historical supplied snapshot; current consolidated law not verified",
+        "use": "selected excerpts"
+      },
+      "uncertainty": [
+        "Weak marker baseline; not a semantic obligation parser. Action covers whole provision."
+      ]
+    },
+    "citationValidation": {
+      "valid": true,
+      "reason": "Exact source slices; semantic support is not established by citation validity."
+    },
+    "exploratoryDifferences": {
+      "sourceFunction": false,
+      "applicability": false
+    },
+    "requiresHumanReview": true
+  },
+  {
+    "id": "claude-adoption::gdpr-30-5",
+    "provision": {
+      "id": "gdpr-30-5",
+      "sourceId": "gdpr",
+      "pageId": "gdpr:p51",
+      "pdfPage": 51,
+      "pinpoint": "DSGVO Art. 30 Abs. 5",
+      "start": 2231,
+      "end": 2774,
+      "quote": "(5) Die in den Absätzen 1 und 2 genannten Pflichten gelten nicht für Unternehmen oder Einrichtungen, die weniger \nals 250 Mitarbeiter beschäftigen, sofern die von ihnen vorgenommene Verarbeitung nicht ein Risiko für die Rechte und \nFreiheiten der betroffenen Personen birgt, die Verarbeitung nicht nur gelegentlich erfolgt oder nicht die Verarbeitung \nbesonderer Datenkategorien gemäß Artikel 9 Absatz 1 bzw. die Verarbeitung von personenbezogenen Daten über \nstrafrechtliche Verurteilungen und Straftaten im Sinne des Artikels 10 einschließt."
+    },
+    "originalPdfPageOffset": 0,
+    "expectedUnconfirmed": {
+      "id": "claude-adoption::gdpr-30-5",
+      "unitId": "gdpr-30-5",
+      "useCaseId": "claude-adoption",
+      "kind": "exception",
+      "relation": "potentially_relevant",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    "jev": {
+      "sourceFunction": "exception",
+      "applicability": "potentially_relevant",
+      "fields": {
+        "entity": {
+          "span": {
+            "id": "span__5_die_in_den_absätzen_1_und_2_genannt_1",
+            "start": 2231,
+            "end": 2331,
+            "quote": "(5) Die in den Absätzen 1 und 2 genannten Pflichten gelten nicht für Unternehmen oder Einrichtungen,"
+          },
+          "presence": 0.71,
+          "selectedChoice": "span__5_die_in_den_absätzen_1_und_2_genannt_1",
+          "status": "selected"
+        },
+        "action": {
+          "span": {
+            "id": "span__5_die_in_den_absätzen_1_und_2_genannt_0",
+            "start": 2231,
+            "end": 2774,
+            "quote": "(5) Die in den Absätzen 1 und 2 genannten Pflichten gelten nicht für Unternehmen oder Einrichtungen, die weniger \nals 250 Mitarbeiter beschäftigen, sofern die von ihnen vorgenommene Verarbeitung nicht ein Risiko für die Rechte und \nFreiheiten der betroffenen Personen birgt, die Verarbeitung nicht nur gelegentlich erfolgt oder nicht die Verarbeitung \nbesonderer Datenkategorien gemäß Artikel 9 Absatz 1 bzw. die Verarbeitung von personenbezogenen Daten über \nstrafrechtliche Verurteilungen und Straftaten im Sinne des Artikels 10 einschließt."
+          },
+          "presence": 0.94,
+          "selectedChoice": "span__5_die_in_den_absätzen_1_und_2_genannt_0",
+          "status": "selected"
+        },
+        "conditions": {
+          "span": {
+            "id": "span__5_die_in_den_absätzen_1_und_2_genannt_0",
+            "start": 2231,
+            "end": 2774,
+            "quote": "(5) Die in den Absätzen 1 und 2 genannten Pflichten gelten nicht für Unternehmen oder Einrichtungen, die weniger \nals 250 Mitarbeiter beschäftigen, sofern die von ihnen vorgenommene Verarbeitung nicht ein Risiko für die Rechte und \nFreiheiten der betroffenen Personen birgt, die Verarbeitung nicht nur gelegentlich erfolgt oder nicht die Verarbeitung \nbesonderer Datenkategorien gemäß Artikel 9 Absatz 1 bzw. die Verarbeitung von personenbezogenen Daten über \nstrafrechtliche Verurteilungen und Straftaten im Sinne des Artikels 10 einschließt."
+          },
+          "presence": 0.99,
+          "selectedChoice": "span__5_die_in_den_absätzen_1_und_2_genannt_0",
+          "status": "selected"
+        },
+        "exceptions": {
+          "span": {
+            "id": "span__5_die_in_den_absätzen_1_und_2_genannt_0",
+            "start": 2231,
+            "end": 2774,
+            "quote": "(5) Die in den Absätzen 1 und 2 genannten Pflichten gelten nicht für Unternehmen oder Einrichtungen, die weniger \nals 250 Mitarbeiter beschäftigen, sofern die von ihnen vorgenommene Verarbeitung nicht ein Risiko für die Rechte und \nFreiheiten der betroffenen Personen birgt, die Verarbeitung nicht nur gelegentlich erfolgt oder nicht die Verarbeitung \nbesonderer Datenkategorien gemäß Artikel 9 Absatz 1 bzw. die Verarbeitung von personenbezogenen Daten über \nstrafrechtliche Verurteilungen und Straftaten im Sinne des Artikels 10 einschließt."
+          },
+          "presence": 0.99,
+          "selectedChoice": "span__5_die_in_den_absätzen_1_und_2_genannt_0",
+          "status": "selected"
+        }
+      },
+      "uncertainty": [
+        "action: whole-provision span; boundary quality needs review.",
+        "conditions: whole-provision span; boundary quality needs review.",
+        "exceptions: whole-provision span; boundary quality needs review.",
+        "Historical source; context, cross-references and legal interpretation need human review. One candidate per provision can conflate multiple obligations."
+      ]
+    },
+    "baseline": {
+      "id": "claude-adoption::gdpr-30-5",
+      "unitId": "gdpr-30-5",
+      "useCaseId": "claude-adoption",
+      "method": "deontic-marker-baseline",
+      "verification": "unverified",
+      "productionEligible": false,
+      "sourceFunction": "unclear",
+      "statutoryObligationCandidate": false,
+      "relationship": {
+        "label": "needs_information",
+        "reason": "Lexical baseline cannot establish legal applicability."
+      },
+      "fields": {
+        "entity": {
+          "span": {
+            "id": "span__5_die_in_den_absätzen_1_und_2_genannt_1",
+            "start": 2231,
+            "end": 2331,
+            "quote": "(5) Die in den Absätzen 1 und 2 genannten Pflichten gelten nicht für Unternehmen oder Einrichtungen,"
+          }
+        },
+        "action": {
+          "span": {
+            "id": "span__5_die_in_den_absätzen_1_und_2_genannt_0",
+            "start": 2231,
+            "end": 2774,
+            "quote": "(5) Die in den Absätzen 1 und 2 genannten Pflichten gelten nicht für Unternehmen oder Einrichtungen, die weniger \nals 250 Mitarbeiter beschäftigen, sofern die von ihnen vorgenommene Verarbeitung nicht ein Risiko für die Rechte und \nFreiheiten der betroffenen Personen birgt, die Verarbeitung nicht nur gelegentlich erfolgt oder nicht die Verarbeitung \nbesonderer Datenkategorien gemäß Artikel 9 Absatz 1 bzw. die Verarbeitung von personenbezogenen Daten über \nstrafrechtliche Verurteilungen und Straftaten im Sinne des Artikels 10 einschließt."
+          }
+        },
+        "conditions": {
+          "span": {
+            "id": "span_sofern_die_von_ihnen_vorgenommene_vera_3",
+            "start": 2379,
+            "end": 2505,
+            "quote": "sofern die von ihnen vorgenommene Verarbeitung nicht ein Risiko für die Rechte und \nFreiheiten der betroffenen Personen birgt,"
+          }
+        },
+        "exceptions": {
+          "span": {
+            "id": "span_sofern_die_von_ihnen_vorgenommene_vera_3",
+            "start": 2379,
+            "end": 2505,
+            "quote": "sofern die von ihnen vorgenommene Verarbeitung nicht ein Risiko für die Rechte und \nFreiheiten der betroffenen Personen birgt,"
+          }
+        }
+      },
+      "citation": {
+        "id": "gdpr-30-5",
+        "sourceId": "gdpr",
+        "pageId": "gdpr:p51",
+        "pdfPage": 51,
+        "pinpoint": "DSGVO Art. 30 Abs. 5",
+        "start": 2231,
+        "end": 2774,
+        "quote": "(5) Die in den Absätzen 1 und 2 genannten Pflichten gelten nicht für Unternehmen oder Einrichtungen, die weniger \nals 250 Mitarbeiter beschäftigen, sofern die von ihnen vorgenommene Verarbeitung nicht ein Risiko für die Rechte und \nFreiheiten der betroffenen Personen birgt, die Verarbeitung nicht nur gelegentlich erfolgt oder nicht die Verarbeitung \nbesonderer Datenkategorien gemäß Artikel 9 Absatz 1 bzw. die Verarbeitung von personenbezogenen Daten über \nstrafrechtliche Verurteilungen und Straftaten im Sinne des Artikels 10 einschließt."
+      },
+      "source": {
+        "id": "gdpr",
+        "title": "DSGVO",
+        "kind": "binding_law",
+        "issuer": "EU, Amtsblatt L 119, 4.5.2016",
+        "revision": "2016-05-04",
+        "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj/deu",
+        "filename": "EU_DSGVO.pdf",
+        "sha256": "27b720c812be1bdf1462ff468ad6410fe94da80b48f6d10fa7e2269b9e5a1597",
+        "pageCount": 88,
+        "currentness": "Historical supplied snapshot; current consolidated law not verified",
+        "use": "selected excerpts"
+      },
+      "uncertainty": [
+        "Weak marker baseline; not a semantic obligation parser. Action covers whole provision."
+      ]
+    },
+    "citationValidation": {
+      "valid": true,
+      "reason": "Exact source slices; semantic support is not established by citation validity."
+    },
+    "exploratoryDifferences": {
+      "sourceFunction": false,
+      "applicability": false
+    },
+    "requiresHumanReview": true
+  },
+  {
+    "id": "claude-adoption::gdpr-31",
+    "provision": {
+      "id": "gdpr-31",
+      "sourceId": "gdpr",
+      "pageId": "gdpr:p51",
+      "pdfPage": 51,
+      "pinpoint": "DSGVO Art. 31",
+      "start": 2829,
+      "end": 3001,
+      "quote": "Der Verantwortliche und der Auftragsverarbeiter und gegebenenfalls deren Vertreter arbeiten auf Anfrage mit der \nAufsichtsbehörde bei der Erfüllung ihrer Aufgaben zusammen."
+    },
+    "originalPdfPageOffset": 0,
+    "expectedUnconfirmed": {
+      "id": "claude-adoption::gdpr-31",
+      "unitId": "gdpr-31",
+      "useCaseId": "claude-adoption",
+      "kind": "binding_obligation",
+      "relation": "not_relevant",
+      "retrievalRelevant": false,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    "jev": {
+      "sourceFunction": "binding_obligation",
+      "applicability": "potentially_relevant",
+      "fields": {
+        "entity": {
+          "span": {
+            "id": "span_der_verantwortliche_und_der_auftragsve_0",
+            "start": 2829,
+            "end": 3001,
+            "quote": "Der Verantwortliche und der Auftragsverarbeiter und gegebenenfalls deren Vertreter arbeiten auf Anfrage mit der \nAufsichtsbehörde bei der Erfüllung ihrer Aufgaben zusammen."
+          },
+          "presence": 0.92,
+          "selectedChoice": "span_der_verantwortliche_und_der_auftragsve_0",
+          "status": "selected"
+        },
+        "action": {
+          "span": {
+            "id": "span_der_verantwortliche_und_der_auftragsve_0",
+            "start": 2829,
+            "end": 3001,
+            "quote": "Der Verantwortliche und der Auftragsverarbeiter und gegebenenfalls deren Vertreter arbeiten auf Anfrage mit der \nAufsichtsbehörde bei der Erfüllung ihrer Aufgaben zusammen."
+          },
+          "presence": 0.98,
+          "selectedChoice": "span_der_verantwortliche_und_der_auftragsve_0",
+          "status": "selected"
+        },
+        "conditions": {
+          "span": {
+            "id": "span_der_verantwortliche_und_der_auftragsve_0",
+            "start": 2829,
+            "end": 3001,
+            "quote": "Der Verantwortliche und der Auftragsverarbeiter und gegebenenfalls deren Vertreter arbeiten auf Anfrage mit der \nAufsichtsbehörde bei der Erfüllung ihrer Aufgaben zusammen."
+          },
+          "presence": 0.98,
+          "selectedChoice": "span_der_verantwortliche_und_der_auftragsve_0",
+          "status": "selected"
+        },
+        "exceptions": {
+          "span": null,
+          "presence": 0.27,
+          "selectedChoice": "not_stated",
+          "status": "not_stated"
+        }
+      },
+      "uncertainty": [
+        "entity: whole-provision span; boundary quality needs review.",
+        "action: whole-provision span; boundary quality needs review.",
+        "conditions: whole-provision span; boundary quality needs review.",
+        "exceptions: not_stated",
+        "Historical source; context, cross-references and legal interpretation need human review. One candidate per provision can conflate multiple obligations."
+      ]
+    },
+    "baseline": {
+      "id": "claude-adoption::gdpr-31",
+      "unitId": "gdpr-31",
+      "useCaseId": "claude-adoption",
+      "method": "deontic-marker-baseline",
+      "verification": "unverified",
+      "productionEligible": false,
+      "sourceFunction": "unclear",
+      "statutoryObligationCandidate": false,
+      "relationship": {
+        "label": "needs_information",
+        "reason": "Lexical baseline cannot establish legal applicability."
+      },
+      "fields": {
+        "entity": {
+          "span": null
+        },
+        "action": {
+          "span": {
+            "id": "span_der_verantwortliche_und_der_auftragsve_0",
+            "start": 2829,
+            "end": 3001,
+            "quote": "Der Verantwortliche und der Auftragsverarbeiter und gegebenenfalls deren Vertreter arbeiten auf Anfrage mit der \nAufsichtsbehörde bei der Erfüllung ihrer Aufgaben zusammen."
+          }
+        },
+        "conditions": {
+          "span": null
+        },
+        "exceptions": {
+          "span": null
+        }
+      },
+      "citation": {
+        "id": "gdpr-31",
+        "sourceId": "gdpr",
+        "pageId": "gdpr:p51",
+        "pdfPage": 51,
+        "pinpoint": "DSGVO Art. 31",
+        "start": 2829,
+        "end": 3001,
+        "quote": "Der Verantwortliche und der Auftragsverarbeiter und gegebenenfalls deren Vertreter arbeiten auf Anfrage mit der \nAufsichtsbehörde bei der Erfüllung ihrer Aufgaben zusammen."
+      },
+      "source": {
+        "id": "gdpr",
+        "title": "DSGVO",
+        "kind": "binding_law",
+        "issuer": "EU, Amtsblatt L 119, 4.5.2016",
+        "revision": "2016-05-04",
+        "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj/deu",
+        "filename": "EU_DSGVO.pdf",
+        "sha256": "27b720c812be1bdf1462ff468ad6410fe94da80b48f6d10fa7e2269b9e5a1597",
+        "pageCount": 88,
+        "currentness": "Historical supplied snapshot; current consolidated law not verified",
+        "use": "selected excerpts"
+      },
+      "uncertainty": [
+        "Weak marker baseline; not a semantic obligation parser. Action covers whole provision."
+      ]
+    },
+    "citationValidation": {
+      "valid": true,
+      "reason": "Exact source slices; semantic support is not established by citation validity."
+    },
+    "exploratoryDifferences": {
+      "sourceFunction": false,
+      "applicability": true
+    },
+    "requiresHumanReview": true
+  },
+  {
+    "id": "claude-adoption::gdpr-35-1",
+    "provision": {
+      "id": "gdpr-35-1",
+      "sourceId": "gdpr",
+      "pageId": "gdpr:p53",
+      "pdfPage": 53,
+      "pinpoint": "DSGVO Art. 35 Abs. 1",
+      "start": 1891,
+      "end": 2435,
+      "quote": "(1) Hat eine Form der Verarbeitung, insbesondere bei Verwendung neuer Technologien, aufgrund der Art, des \nUmfangs, der Umstände und der Zwecke der Verarbeitung voraussichtlich ein hohes Risiko für die Rechte und Freiheiten \nnatürlicher Personen zur Folge, so führt der Verantwortliche vorab eine Abschätzung der Folgen der vorgesehenen \nVerarbeitungsvorgänge für den Schutz personenbezogener Daten durch. Für die Untersuchung mehrerer ähnlicher \nVerarbeitungsvorgänge mit ähnlich hohen Risiken kann eine einzige Abschätzung vorgenommen werden."
+    },
+    "originalPdfPageOffset": 0,
+    "expectedUnconfirmed": {
+      "id": "claude-adoption::gdpr-35-1",
+      "unitId": "gdpr-35-1",
+      "useCaseId": "claude-adoption",
+      "kind": "binding_obligation",
+      "relation": "needs_information",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    "jev": {
+      "sourceFunction": "binding_obligation",
+      "applicability": "potentially_relevant",
+      "fields": {
+        "entity": {
+          "span": {
+            "id": "span_so_führt_der_verantwortliche_vorab_ein_6",
+            "start": 2148,
+            "end": 2296,
+            "quote": "so führt der Verantwortliche vorab eine Abschätzung der Folgen der vorgesehenen \nVerarbeitungsvorgänge für den Schutz personenbezogener Daten durch."
+          },
+          "presence": 0.96,
+          "selectedChoice": "span_so_führt_der_verantwortliche_vorab_ein_6",
+          "status": "selected"
+        },
+        "action": {
+          "span": {
+            "id": "span_so_führt_der_verantwortliche_vorab_ein_6",
+            "start": 2148,
+            "end": 2296,
+            "quote": "so führt der Verantwortliche vorab eine Abschätzung der Folgen der vorgesehenen \nVerarbeitungsvorgänge für den Schutz personenbezogener Daten durch."
+          },
+          "presence": 0.99,
+          "selectedChoice": "span_so_führt_der_verantwortliche_vorab_ein_6",
+          "status": "selected"
+        },
+        "conditions": {
+          "span": {
+            "id": "span_der_umstände_und_der_zwecke_der_verarb_5",
+            "start": 2007,
+            "end": 2147,
+            "quote": "der Umstände und der Zwecke der Verarbeitung voraussichtlich ein hohes Risiko für die Rechte und Freiheiten \nnatürlicher Personen zur Folge,"
+          },
+          "presence": 0.99,
+          "selectedChoice": "span_der_umstände_und_der_zwecke_der_verarb_5",
+          "status": "selected"
+        },
+        "exceptions": {
+          "span": {
+            "id": "span_für_die_untersuchung_mehrerer_ähnliche_7",
+            "start": 2297,
+            "end": 2435,
+            "quote": "Für die Untersuchung mehrerer ähnlicher \nVerarbeitungsvorgänge mit ähnlich hohen Risiken kann eine einzige Abschätzung vorgenommen werden."
+          },
+          "presence": 0.93,
+          "selectedChoice": "span_für_die_untersuchung_mehrerer_ähnliche_7",
+          "status": "selected"
+        }
+      },
+      "uncertainty": [
+        "Historical source; context, cross-references and legal interpretation need human review. One candidate per provision can conflate multiple obligations."
+      ]
+    },
+    "baseline": {
+      "id": "claude-adoption::gdpr-35-1",
+      "unitId": "gdpr-35-1",
+      "useCaseId": "claude-adoption",
+      "method": "deontic-marker-baseline",
+      "verification": "unverified",
+      "productionEligible": false,
+      "sourceFunction": "unclear",
+      "statutoryObligationCandidate": false,
+      "relationship": {
+        "label": "needs_information",
+        "reason": "Lexical baseline cannot establish legal applicability."
+      },
+      "fields": {
+        "entity": {
+          "span": {
+            "id": "span_so_führt_der_verantwortliche_vorab_ein_6",
+            "start": 2148,
+            "end": 2296,
+            "quote": "so führt der Verantwortliche vorab eine Abschätzung der Folgen der vorgesehenen \nVerarbeitungsvorgänge für den Schutz personenbezogener Daten durch."
+          }
+        },
+        "action": {
+          "span": {
+            "id": "span__1_hat_eine_form_der_verarbeitung_insb_0",
+            "start": 1891,
+            "end": 2435,
+            "quote": "(1) Hat eine Form der Verarbeitung, insbesondere bei Verwendung neuer Technologien, aufgrund der Art, des \nUmfangs, der Umstände und der Zwecke der Verarbeitung voraussichtlich ein hohes Risiko für die Rechte und Freiheiten \nnatürlicher Personen zur Folge, so führt der Verantwortliche vorab eine Abschätzung der Folgen der vorgesehenen \nVerarbeitungsvorgänge für den Schutz personenbezogener Daten durch. Für die Untersuchung mehrerer ähnlicher \nVerarbeitungsvorgänge mit ähnlich hohen Risiken kann eine einzige Abschätzung vorgenommen werden."
+          }
+        },
+        "conditions": {
+          "span": {
+            "id": "span_insbesondere_bei_verwendung_neuer_tech_2",
+            "start": 1927,
+            "end": 1974,
+            "quote": "insbesondere bei Verwendung neuer Technologien,"
+          }
+        },
+        "exceptions": {
+          "span": null
+        }
+      },
+      "citation": {
+        "id": "gdpr-35-1",
+        "sourceId": "gdpr",
+        "pageId": "gdpr:p53",
+        "pdfPage": 53,
+        "pinpoint": "DSGVO Art. 35 Abs. 1",
+        "start": 1891,
+        "end": 2435,
+        "quote": "(1) Hat eine Form der Verarbeitung, insbesondere bei Verwendung neuer Technologien, aufgrund der Art, des \nUmfangs, der Umstände und der Zwecke der Verarbeitung voraussichtlich ein hohes Risiko für die Rechte und Freiheiten \nnatürlicher Personen zur Folge, so führt der Verantwortliche vorab eine Abschätzung der Folgen der vorgesehenen \nVerarbeitungsvorgänge für den Schutz personenbezogener Daten durch. Für die Untersuchung mehrerer ähnlicher \nVerarbeitungsvorgänge mit ähnlich hohen Risiken kann eine einzige Abschätzung vorgenommen werden."
+      },
+      "source": {
+        "id": "gdpr",
+        "title": "DSGVO",
+        "kind": "binding_law",
+        "issuer": "EU, Amtsblatt L 119, 4.5.2016",
+        "revision": "2016-05-04",
+        "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj/deu",
+        "filename": "EU_DSGVO.pdf",
+        "sha256": "27b720c812be1bdf1462ff468ad6410fe94da80b48f6d10fa7e2269b9e5a1597",
+        "pageCount": 88,
+        "currentness": "Historical supplied snapshot; current consolidated law not verified",
+        "use": "selected excerpts"
+      },
+      "uncertainty": [
+        "Weak marker baseline; not a semantic obligation parser. Action covers whole provision."
+      ]
+    },
+    "citationValidation": {
+      "valid": true,
+      "reason": "Exact source slices; semantic support is not established by citation validity."
+    },
+    "exploratoryDifferences": {
+      "sourceFunction": false,
+      "applicability": true
+    },
+    "requiresHumanReview": true
+  },
+  {
+    "id": "claude-adoption::geschgehg-definition",
+    "provision": {
+      "id": "geschgehg-definition",
+      "sourceId": "geschgehg",
+      "pageId": "geschgehg:p3",
+      "pdfPage": 3,
+      "pinpoint": "GeschGehG § 2 Nr. 1 Buchst. b (definition fragment)",
+      "start": 406,
+      "end": 526,
+      "quote": "b)   die Gegenstand von den Umständen nach angemessenen Geheimhaltungsmaßnahmen durch ihren\nrechtmäßigen Inhaber ist und"
+    },
+    "originalPdfPageOffset": 0,
+    "expectedUnconfirmed": {
+      "id": "claude-adoption::geschgehg-definition",
+      "unitId": "geschgehg-definition",
+      "useCaseId": "claude-adoption",
+      "kind": "definition",
+      "relation": "potentially_relevant",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    "jev": {
+      "sourceFunction": "definition",
+      "applicability": "potentially_relevant",
+      "fields": {
+        "entity": {
+          "span": null,
+          "presence": 0.43,
+          "selectedChoice": "span_b_die_gegenstand_von_den_umständen_nac_0",
+          "status": "uncertain"
+        },
+        "action": {
+          "span": null,
+          "presence": 0.21,
+          "selectedChoice": "not_stated",
+          "status": "not_stated"
+        },
+        "conditions": {
+          "span": null,
+          "presence": 0.69,
+          "selectedChoice": "span_b_die_gegenstand_von_den_umständen_nac_0",
+          "status": "uncertain"
+        },
+        "exceptions": {
+          "span": null,
+          "presence": 0.04,
+          "selectedChoice": "not_stated",
+          "status": "not_stated"
+        }
+      },
+      "uncertainty": [
+        "entity: uncertain",
+        "action: not_stated",
+        "conditions: uncertain",
+        "exceptions: not_stated",
+        "Historical source; context, cross-references and legal interpretation need human review. One candidate per provision can conflate multiple obligations."
+      ]
+    },
+    "baseline": {
+      "id": "claude-adoption::geschgehg-definition",
+      "unitId": "geschgehg-definition",
+      "useCaseId": "claude-adoption",
+      "method": "deontic-marker-baseline",
+      "verification": "unverified",
+      "productionEligible": false,
+      "sourceFunction": "unclear",
+      "statutoryObligationCandidate": false,
+      "relationship": {
+        "label": "needs_information",
+        "reason": "Lexical baseline cannot establish legal applicability."
+      },
+      "fields": {
+        "entity": {
+          "span": null
+        },
+        "action": {
+          "span": {
+            "id": "span_b_die_gegenstand_von_den_umständen_nac_0",
+            "start": 406,
+            "end": 526,
+            "quote": "b)   die Gegenstand von den Umständen nach angemessenen Geheimhaltungsmaßnahmen durch ihren\nrechtmäßigen Inhaber ist und"
+          }
+        },
+        "conditions": {
+          "span": null
+        },
+        "exceptions": {
+          "span": null
+        }
+      },
+      "citation": {
+        "id": "geschgehg-definition",
+        "sourceId": "geschgehg",
+        "pageId": "geschgehg:p3",
+        "pdfPage": 3,
+        "pinpoint": "GeschGehG § 2 Nr. 1 Buchst. b (definition fragment)",
+        "start": 406,
+        "end": 526,
+        "quote": "b)   die Gegenstand von den Umständen nach angemessenen Geheimhaltungsmaßnahmen durch ihren\nrechtmäßigen Inhaber ist und"
+      },
+      "source": {
+        "id": "geschgehg",
+        "title": "GeschGehG",
+        "kind": "binding_law",
+        "issuer": "Bundesministerium der Justiz / Bundesamt für Justiz",
+        "revision": "2019-04-18",
+        "url": "https://www.gesetze-im-internet.de/geschgehg/__2.html",
+        "filename": "GeschGehG.pdf",
+        "sha256": "4757327842c6c244c5e4b2d9d9c9361152bbb239d3dad95ee033c2bfb58454fb",
+        "pageCount": 9,
+        "currentness": "Historical supplied snapshot; current consolidated law not verified",
+        "use": "selected excerpts"
+      },
+      "uncertainty": [
+        "Weak marker baseline; not a semantic obligation parser. Action covers whole provision."
+      ]
+    },
+    "citationValidation": {
+      "valid": true,
+      "reason": "Exact source slices; semantic support is not established by citation validity."
+    },
+    "exploratoryDifferences": {
+      "sourceFunction": false,
+      "applicability": false
+    },
+    "requiresHumanReview": true
+  },
+  {
+    "id": "claude-adoption::bsi-recommendation",
+    "provision": {
+      "id": "bsi-recommendation",
+      "sourceId": "bsi-200-1",
+      "pageId": "bsi-control-excerpt",
+      "pdfPage": 23,
+      "pinpoint": "BSI 200-1, PDF p.23, employee participation recommendation",
+      "start": 0,
+      "end": 165,
+      "quote": "Mitarbeiter sollten außerdem in die Umsetzungspla­\nnung von Maßnahmen einbezogen werden, um eigene Ideen einbringen und die Praxistauglichkeit \nbeurteilen zu können."
+    },
+    "originalPdfPageOffset": 165,
+    "expectedUnconfirmed": {
+      "id": "claude-adoption::bsi-recommendation",
+      "unitId": "bsi-recommendation",
+      "useCaseId": "claude-adoption",
+      "kind": "recommendation",
+      "relation": "potentially_relevant",
+      "retrievalRelevant": true,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    "jev": {
+      "sourceFunction": "recommendation",
+      "applicability": "potentially_relevant",
+      "fields": {
+        "entity": {
+          "span": null,
+          "presence": 0.55,
+          "selectedChoice": "span_mitarbeiter_sollten_außerdem_in_die_um_0",
+          "status": "uncertain"
+        },
+        "action": {
+          "span": {
+            "id": "span_mitarbeiter_sollten_außerdem_in_die_um_0",
+            "start": 0,
+            "end": 165,
+            "quote": "Mitarbeiter sollten außerdem in die Umsetzungspla­\nnung von Maßnahmen einbezogen werden, um eigene Ideen einbringen und die Praxistauglichkeit \nbeurteilen zu können."
+          },
+          "presence": 0.98,
+          "selectedChoice": "span_mitarbeiter_sollten_außerdem_in_die_um_0",
+          "status": "selected"
+        },
+        "conditions": {
+          "span": null,
+          "presence": 0.05,
+          "selectedChoice": "not_stated",
+          "status": "not_stated"
+        },
+        "exceptions": {
+          "span": null,
+          "presence": 0.03,
+          "selectedChoice": "not_stated",
+          "status": "not_stated"
+        }
+      },
+      "uncertainty": [
+        "entity: uncertain",
+        "action: whole-provision span; boundary quality needs review.",
+        "conditions: not_stated",
+        "exceptions: not_stated",
+        "Historical source; context, cross-references and legal interpretation need human review. One candidate per provision can conflate multiple obligations."
+      ]
+    },
+    "baseline": {
+      "id": "claude-adoption::bsi-recommendation",
+      "unitId": "bsi-recommendation",
+      "useCaseId": "claude-adoption",
+      "method": "deontic-marker-baseline",
+      "verification": "unverified",
+      "productionEligible": false,
+      "sourceFunction": "recommendation",
+      "statutoryObligationCandidate": false,
+      "relationship": {
+        "label": "needs_information",
+        "reason": "Lexical baseline cannot establish legal applicability."
+      },
+      "fields": {
+        "entity": {
+          "span": {
+            "id": "span_mitarbeiter_sollten_außerdem_in_die_um_1",
+            "start": 0,
+            "end": 88,
+            "quote": "Mitarbeiter sollten außerdem in die Umsetzungspla­\nnung von Maßnahmen einbezogen werden,"
+          }
+        },
+        "action": {
+          "span": {
+            "id": "span_mitarbeiter_sollten_außerdem_in_die_um_0",
+            "start": 0,
+            "end": 165,
+            "quote": "Mitarbeiter sollten außerdem in die Umsetzungspla­\nnung von Maßnahmen einbezogen werden, um eigene Ideen einbringen und die Praxistauglichkeit \nbeurteilen zu können."
+          }
+        },
+        "conditions": {
+          "span": null
+        },
+        "exceptions": {
+          "span": null
+        }
+      },
+      "citation": {
+        "id": "bsi-recommendation",
+        "sourceId": "bsi-200-1",
+        "pageId": "bsi-control-excerpt",
+        "pdfPage": 23,
+        "pinpoint": "BSI 200-1, PDF p.23, employee participation recommendation",
+        "start": 0,
+        "end": 165,
+        "quote": "Mitarbeiter sollten außerdem in die Umsetzungspla­\nnung von Maßnahmen einbezogen werden, um eigene Ideen einbringen und die Praxistauglichkeit \nbeurteilen zu können."
+      },
+      "source": {
+        "id": "bsi-200-1",
+        "title": "BSI-Standard 200-1",
+        "kind": "technical_standard",
+        "issuer": "BSI",
+        "revision": "2017-10, Version 1.0",
+        "url": "https://www.bsi.bund.de/grundschutz",
+        "filename": "standard_200_1.pdf",
+        "sha256": "7d27c71c9937c66e8e9ab544f418446528d75f75417e1d5efb959c5a32797203",
+        "pageCount": 48,
+        "currentness": "Historical supplied snapshot; current consolidated law not verified",
+        "use": "inventory only; no automatic obligation inferred"
+      },
+      "uncertainty": [
+        "Weak marker baseline; not a semantic obligation parser. Action covers whole provision."
+      ]
+    },
+    "citationValidation": {
+      "valid": true,
+      "reason": "Exact source slices; semantic support is not established by citation validity."
+    },
+    "exploratoryDifferences": {
+      "sourceFunction": false,
+      "applicability": false
+    },
+    "requiresHumanReview": true
+  },
+  {
+    "id": "claude-adoption::internal-policy",
+    "provision": {
+      "id": "internal-policy",
+      "sourceId": "synthetic-dispatch-control",
+      "pageId": "synthetic-dispatch-policy",
+      "pdfPage": 1,
+      "pinpoint": "Synthetic Dispatch approval rule; not legislation and not the Claude deployment",
+      "start": 47,
+      "end": 186,
+      "quote": "A human supervisor must approve every recommendation before the Dispatch assistant executes it. The supervisor may reject a recommendation."
+    },
+    "originalPdfPageOffset": 0,
+    "expectedUnconfirmed": {
+      "id": "claude-adoption::internal-policy",
+      "unitId": "internal-policy",
+      "useCaseId": "claude-adoption",
+      "kind": "internal_control",
+      "relation": "not_relevant",
+      "retrievalRelevant": false,
+      "rationale": "AI-authored provisional engineering expectation, requires independent legal review."
+    },
+    "jev": {
+      "sourceFunction": "internal_control",
+      "applicability": "not_relevant",
+      "fields": {
+        "entity": {
+          "span": {
+            "id": "span_a_human_supervisor_must_approve_every__0",
+            "start": 47,
+            "end": 186,
+            "quote": "A human supervisor must approve every recommendation before the Dispatch assistant executes it. The supervisor may reject a recommendation."
+          },
+          "presence": 0.9,
+          "selectedChoice": "span_a_human_supervisor_must_approve_every__0",
+          "status": "selected"
+        },
+        "action": {
+          "span": {
+            "id": "span_a_human_supervisor_must_approve_every__0",
+            "start": 47,
+            "end": 186,
+            "quote": "A human supervisor must approve every recommendation before the Dispatch assistant executes it. The supervisor may reject a recommendation."
+          },
+          "presence": 1,
+          "selectedChoice": "span_a_human_supervisor_must_approve_every__0",
+          "status": "selected"
+        },
+        "conditions": {
+          "span": null,
+          "presence": 0.64,
+          "selectedChoice": "span_a_human_supervisor_must_approve_every__1",
+          "status": "uncertain"
+        },
+        "exceptions": {
+          "span": null,
+          "presence": 0.23,
+          "selectedChoice": "not_stated",
+          "status": "not_stated"
+        }
+      },
+      "uncertainty": [
+        "entity: whole-provision span; boundary quality needs review.",
+        "action: whole-provision span; boundary quality needs review.",
+        "conditions: uncertain",
+        "exceptions: not_stated",
+        "Historical source; context, cross-references and legal interpretation need human review. One candidate per provision can conflate multiple obligations."
+      ]
+    },
+    "baseline": {
+      "id": "claude-adoption::internal-policy",
+      "unitId": "internal-policy",
+      "useCaseId": "claude-adoption",
+      "method": "deontic-marker-baseline",
+      "verification": "unverified",
+      "productionEligible": false,
+      "sourceFunction": "internal_control",
+      "statutoryObligationCandidate": false,
+      "relationship": {
+        "label": "needs_information",
+        "reason": "Lexical baseline cannot establish legal applicability."
+      },
+      "fields": {
+        "entity": {
+          "span": null
+        },
+        "action": {
+          "span": {
+            "id": "span_a_human_supervisor_must_approve_every__0",
+            "start": 47,
+            "end": 186,
+            "quote": "A human supervisor must approve every recommendation before the Dispatch assistant executes it. The supervisor may reject a recommendation."
+          }
+        },
+        "conditions": {
+          "span": null
+        },
+        "exceptions": {
+          "span": null
+        }
+      },
+      "citation": {
+        "id": "internal-policy",
+        "sourceId": "synthetic-dispatch-control",
+        "pageId": "synthetic-dispatch-policy",
+        "pdfPage": 1,
+        "pinpoint": "Synthetic Dispatch approval rule; not legislation and not the Claude deployment",
+        "start": 47,
+        "end": 186,
+        "quote": "A human supervisor must approve every recommendation before the Dispatch assistant executes it. The supervisor may reject a recommendation."
+      },
+      "source": {
+        "id": "synthetic-dispatch-control",
+        "title": "Dispatch assistant policy",
+        "kind": "internal_control",
+        "issuer": "Synthetic company; no real company information",
+        "revision": "1",
+        "url": "synthetic:document/dispatch-policy",
+        "filename": "dispatch-policy",
+        "sha256": "0837a11cf7f3394567c54a46146014b66172fe5f42208d39b96f8a88339282b4",
+        "pageCount": 1,
+        "currentness": "Synthetic engineering control, not legislation",
+        "use": "experimental negative control"
+      },
+      "uncertainty": [
+        "Weak marker baseline; not a semantic obligation parser. Action covers whole provision."
+      ]
+    },
+    "citationValidation": {
+      "valid": true,
+      "reason": "Exact source slices; semantic support is not established by citation validity."
+    },
+    "exploratoryDifferences": {
+      "sourceFunction": false,
+      "applicability": false
+    },
+    "requiresHumanReview": true
+  }
+]

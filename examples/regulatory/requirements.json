@@ -1,0 +1,469 @@
+{
+  "schemaVersion": 1,
+  "id": "documentary-controls",
+  "version": "2",
+  "questions": [
+    {
+      "id": "personalData",
+      "label": {
+        "de": "Werden personenbezogene Daten verarbeitet (auch Konten, Logs und Telemetrie)?",
+        "en": "Are personal data processed (including accounts, logs and telemetry)?"
+      }
+    },
+    {
+      "id": "purpose",
+      "label": {
+        "de": "Sind Zweck und Datenminimierung dokumentiert?",
+        "en": "Are purpose and data minimisation documented?"
+      }
+    },
+    {
+      "id": "legalBasis",
+      "label": {
+        "de": "Ist die Rechtsgrundlage fachlich geprüft und dokumentiert?",
+        "en": "Is the legal basis reviewed and documented?"
+      }
+    },
+    {
+      "id": "processor",
+      "label": {
+        "de": "Verarbeitet ein Anbieter personenbezogene Daten im Auftrag?",
+        "en": "Does a provider process personal data on your behalf?"
+      }
+    },
+    {
+      "id": "dpa",
+      "label": {
+        "de": "Ist der passende Auftragsverarbeitungsvertrag dokumentiert?",
+        "en": "Is the applicable processing agreement documented?"
+      }
+    },
+    {
+      "id": "transfer",
+      "label": {
+        "de": "Gibt es Drittlandübermittlungen oder entsprechende Fernzugriffe?",
+        "en": "Are there third-country transfers or remote access?"
+      }
+    },
+    {
+      "id": "transferBasis",
+      "label": {
+        "de": "Ist die Grundlage nach Kapitel V geprüft und dokumentiert?",
+        "en": "Is the Chapter V transfer basis reviewed and documented?"
+      }
+    },
+    {
+      "id": "security",
+      "label": {
+        "de": "Sind risikobezogene Schutzmaßnahmen dokumentiert?",
+        "en": "Are risk-based security measures documented?"
+      }
+    },
+    {
+      "id": "screening",
+      "label": {
+        "de": "Ist die Prüfung eines möglichen hohen Datenschutzrisikos dokumentiert?",
+        "en": "Is screening for possible high privacy risk documented?"
+      }
+    },
+    {
+      "id": "highRisk",
+      "label": {
+        "de": "Ergibt diese Prüfung voraussichtlich ein hohes Datenschutzrisiko?",
+        "en": "Does that screening indicate likely high privacy risk?"
+      }
+    },
+    {
+      "id": "dpia",
+      "label": {
+        "de": "Ist die erforderliche DSFA vor dem Einsatz dokumentiert?",
+        "en": "Is the required DPIA documented before use?"
+      }
+    },
+    {
+      "id": "employeeData",
+      "label": {
+        "de": "Werden Beschäftigtendaten verarbeitet?",
+        "en": "Are employee data processed?"
+      }
+    },
+    {
+      "id": "employeeBasis",
+      "label": {
+        "de": "Ist die Erforderlichkeit/Rechtsgrundlage für Beschäftigtendaten geprüft?",
+        "en": "Is necessity/legal basis for employee data reviewed?"
+      }
+    },
+    {
+      "id": "confidential",
+      "label": {
+        "de": "Werden potenziell geheime geschäftliche Informationen verarbeitet?",
+        "en": "Are potentially secret business information processed?"
+      }
+    },
+    {
+      "id": "secrecy",
+      "label": {
+        "de": "Sind angemessene Geheimhaltungsmaßnahmen dokumentiert?",
+        "en": "Are appropriate secrecy measures documented?"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "id": "purpose-basis",
+      "version": "1",
+      "title": "Zweck und Rechtsgrundlage",
+      "titleEn": "Purpose and legal basis",
+      "terms": [
+        "Zwecke",
+        "Rechtsgrundlage"
+      ],
+      "statement": "The company documents purpose, data minimisation and a reviewed legal basis for the described personal-data processing.",
+      "action": "Datenkategorien, Zweck, Minimierung und Rechtsgrundlage mit Datenschutzverantwortlichen klären.",
+      "actionEn": "Document data categories, purpose, minimisation and legal basis with the privacy owner.",
+      "rule": {
+        "op": "branch",
+        "fact": "personalData",
+        "yes": {
+          "op": "require",
+          "facts": [
+            "purpose",
+            "legalBasis"
+          ]
+        },
+        "no": "not_applicable"
+      }
+    },
+    {
+      "id": "processor-contract",
+      "version": "1",
+      "title": "Auftragsverarbeitung",
+      "titleEn": "Processor agreement",
+      "terms": [
+        "Auftragsverarbeiter",
+        "Vertrags"
+      ],
+      "statement": "A reviewed processing agreement covers the selected provider arrangement.",
+      "action": "Rollen und Vertragsprodukt klären; gegebenenfalls passenden AV-Vertrag prüfen.",
+      "actionEn": "Clarify roles and contracted product; review the applicable processing agreement where required.",
+      "rule": {
+        "op": "branch",
+        "fact": "personalData",
+        "yes": {
+          "op": "branch",
+          "fact": "processor",
+          "yes": {
+            "op": "require",
+            "facts": [
+              "dpa"
+            ]
+          },
+          "no": "not_applicable"
+        },
+        "no": "not_applicable"
+      }
+    },
+    {
+      "id": "international-transfer",
+      "version": "1",
+      "title": "Drittlandübermittlung",
+      "titleEn": "International transfer",
+      "terms": [
+        "Drittland",
+        "Übermittlung"
+      ],
+      "statement": "Third-country processing and access have been reviewed and an applicable Chapter V basis is documented.",
+      "action": "Verarbeitungsorte, Fernzugriffe und Unterauftragnehmer prüfen; Grundlage nach Kapitel V dokumentieren.",
+      "actionEn": "Review processing locations, remote access and subprocessors; document the Chapter V basis.",
+      "rule": {
+        "op": "branch",
+        "fact": "personalData",
+        "yes": {
+          "op": "branch",
+          "fact": "transfer",
+          "yes": {
+            "op": "require",
+            "facts": [
+              "transferBasis"
+            ]
+          },
+          "no": "not_applicable"
+        },
+        "no": "not_applicable"
+      }
+    },
+    {
+      "id": "security-measures",
+      "version": "1",
+      "title": "Sicherheitsmaßnahmen",
+      "titleEn": "Security measures",
+      "terms": [
+        "technische",
+        "organisatorische",
+        "Risiko"
+      ],
+      "statement": "The company documents a risk-based review of access, permissions, secrets and execution safeguards.",
+      "action": "Risiken und Maßnahmen für Zugriffe, Berechtigungen, Geheimnisse und Ausführung fachlich prüfen.",
+      "actionEn": "Review risks and measures for access, permissions, secrets and execution.",
+      "rule": {
+        "op": "branch",
+        "fact": "personalData",
+        "yes": {
+          "op": "require",
+          "facts": [
+            "security"
+          ]
+        },
+        "no": "not_applicable"
+      }
+    },
+    {
+      "id": "privacy-risk",
+      "version": "1",
+      "title": "DSFA-Screening und Folgeschritt",
+      "titleEn": "DPIA screening and follow-up",
+      "terms": [
+        "hohes",
+        "Folgen",
+        "Risiko"
+      ],
+      "statement": "The company documents screening of likely high privacy risk and, where that screening requires it, a DPIA before use.",
+      "action": "Hohes Risiko fachlich prüfen; falls erforderlich DSFA vor dem Einsatz durchführen.",
+      "actionEn": "Review likely high risk; complete a DPIA before use where required.",
+      "rule": {
+        "op": "branch",
+        "fact": "personalData",
+        "yes": {
+          "op": "branch",
+          "fact": "screening",
+          "yes": {
+            "op": "branch",
+            "fact": "highRisk",
+            "yes": {
+              "op": "require",
+              "facts": [
+                "dpia"
+              ]
+            },
+            "no": "not_applicable"
+          },
+          "no": "gap"
+        },
+        "no": "not_applicable"
+      }
+    },
+    {
+      "id": "employee-data",
+      "version": "1",
+      "title": "Beschäftigtendaten",
+      "titleEn": "Employee data",
+      "terms": [
+        "Beschäftigten",
+        "erforderlich"
+      ],
+      "statement": "The company documents reviewed necessity and legal basis for processing employee data.",
+      "action": "Erforderlichkeit und aktuelle Rechtsgrundlage fachlich prüfen; Mitbestimmung gesondert klären.",
+      "actionEn": "Review necessity and current legal basis; assess worker participation separately.",
+      "rule": {
+        "op": "branch",
+        "fact": "personalData",
+        "yes": {
+          "op": "branch",
+          "fact": "employeeData",
+          "yes": {
+            "op": "require",
+            "facts": [
+              "employeeBasis"
+            ]
+          },
+          "no": "not_applicable"
+        },
+        "no": "not_applicable"
+      }
+    },
+    {
+      "id": "business-secrets",
+      "version": "1",
+      "title": "Geheimhaltungsmaßnahmen",
+      "titleEn": "Secrecy measures",
+      "terms": [
+        "Geheimhaltungsmaßnahmen"
+      ],
+      "statement": "The company documents information classification and secrecy measures for potentially secret business information.",
+      "action": "Informationen klassifizieren und angemessene Geheimhaltungsmaßnahmen festlegen.",
+      "actionEn": "Classify information and define appropriate secrecy measures.",
+      "rule": {
+        "op": "branch",
+        "fact": "confidential",
+        "yes": {
+          "op": "require",
+          "facts": [
+            "secrecy"
+          ]
+        },
+        "no": "not_applicable"
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "purpose-basis--gdpr-5-1bc",
+      "version": "1",
+      "requirementId": "purpose-basis",
+      "citationId": "gdpr-5-1bc",
+      "relation": "interpreted_from",
+      "provenance": {
+        "origin": "curated",
+        "record": "claude-adoption-checks-1",
+        "rationale": "Project-authored mapping for a documentary demonstrator, not a verified legal interpretation."
+      },
+      "verification": "unverified"
+    },
+    {
+      "id": "purpose-basis--gdpr-6-1",
+      "version": "1",
+      "requirementId": "purpose-basis",
+      "citationId": "gdpr-6-1",
+      "relation": "interpreted_from",
+      "provenance": {
+        "origin": "curated",
+        "record": "claude-adoption-checks-1",
+        "rationale": "Project-authored mapping for a documentary demonstrator, not a verified legal interpretation."
+      },
+      "verification": "unverified"
+    },
+    {
+      "id": "processor-contract--gdpr-28-3",
+      "version": "1",
+      "requirementId": "processor-contract",
+      "citationId": "gdpr-28-3",
+      "relation": "interpreted_from",
+      "provenance": {
+        "origin": "curated",
+        "record": "claude-adoption-checks-1",
+        "rationale": "Project-authored mapping for a documentary demonstrator, not a verified legal interpretation."
+      },
+      "verification": "unverified"
+    },
+    {
+      "id": "international-transfer--gdpr-44",
+      "version": "1",
+      "requirementId": "international-transfer",
+      "citationId": "gdpr-44",
+      "relation": "interpreted_from",
+      "provenance": {
+        "origin": "curated",
+        "record": "claude-adoption-checks-1",
+        "rationale": "Project-authored mapping for a documentary demonstrator, not a verified legal interpretation."
+      },
+      "verification": "unverified"
+    },
+    {
+      "id": "security-measures--gdpr-32-1",
+      "version": "1",
+      "requirementId": "security-measures",
+      "citationId": "gdpr-32-1",
+      "relation": "interpreted_from",
+      "provenance": {
+        "origin": "curated",
+        "record": "claude-adoption-checks-1",
+        "rationale": "Project-authored mapping for a documentary demonstrator, not a verified legal interpretation."
+      },
+      "verification": "unverified"
+    },
+    {
+      "id": "privacy-risk--gdpr-35-1",
+      "version": "1",
+      "requirementId": "privacy-risk",
+      "citationId": "gdpr-35-1",
+      "relation": "interpreted_from",
+      "provenance": {
+        "origin": "curated",
+        "record": "claude-adoption-checks-1",
+        "rationale": "Project-authored mapping for a documentary demonstrator, not a verified legal interpretation."
+      },
+      "verification": "unverified"
+    },
+    {
+      "id": "employee-data--bdsg-26-1",
+      "version": "1",
+      "requirementId": "employee-data",
+      "citationId": "bdsg-26-1",
+      "relation": "interpreted_from",
+      "provenance": {
+        "origin": "curated",
+        "record": "claude-adoption-checks-1",
+        "rationale": "Project-authored mapping for a documentary demonstrator, not a verified legal interpretation."
+      },
+      "verification": "unverified"
+    },
+    {
+      "id": "business-secrets--geschgehg-2-1b",
+      "version": "1",
+      "requirementId": "business-secrets",
+      "citationId": "geschgehg-2-1b",
+      "relation": "interpreted_from",
+      "provenance": {
+        "origin": "curated",
+        "record": "claude-adoption-checks-1",
+        "rationale": "Project-authored mapping for a documentary demonstrator, not a verified legal interpretation."
+      },
+      "verification": "unverified"
+    }
+  ],
+  "constraints": [
+    {
+      "id": "personal-scope-consistency",
+      "type": "conflict",
+      "when": {
+        "all": [
+          {
+            "fact": "personalData",
+            "equals": "no"
+          },
+          {
+            "any": [
+              {
+                "fact": "employeeData",
+                "equals": "yes"
+              },
+              {
+                "fact": "processor",
+                "equals": "yes"
+              },
+              {
+                "fact": "transfer",
+                "equals": "yes"
+              }
+            ]
+          }
+        ]
+      },
+      "requirements": [
+        "purpose-basis",
+        "processor-contract",
+        "international-transfer",
+        "security-measures",
+        "privacy-risk",
+        "employee-data"
+      ],
+      "message": "Personal-data scope contradicts employee, processor or transfer declarations."
+    },
+    {
+      "id": "access-route-consistency",
+      "type": "context_matches_scenario",
+      "field": "accessRoute",
+      "requirements": [
+        "purpose-basis",
+        "processor-contract",
+        "international-transfer",
+        "security-measures",
+        "privacy-risk",
+        "employee-data",
+        "business-secrets"
+      ],
+      "message": "Selected access variant differs from cited scenario; reassess evidence for this arrangement."
+    }
+  ]
+}

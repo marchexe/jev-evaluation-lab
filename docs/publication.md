@@ -12,13 +12,18 @@ Preserve the existing public repository history and authorship. Integrate review
 
 ## Manual Vercel deployment
 
-Use the Next.js preset, Node.js 24.x, `npm ci` and `npm run build`. The SDK is externalized server-side. Start with `JEV_LIVE_INFERENCE_ENABLED=false`. Configure hosting access protection for the UI and **both `/api/assess` and `/api/evidence`**, including production, preview and custom domains. Hosting authentication stays outside this application. Confirm protection scope rather than assuming preview protection covers production.
+Use the Next.js preset, Node.js 24.x, `npm ci` and `npm run build`. The SDK is externalized server-side. Start with `JEV_LIVE_INFERENCE_ENABLED=false`. Configure hosting access protection for the UI and **all inference routes: `/api/assess`, `/api/evidence` and `/api/regulatory-evidence`**, including production, preview and custom domains. Hosting authentication stays outside this application. Confirm protection scope rather than assuming preview protection covers production.
 
 Set `TYPESAFE_API_KEY` only as a server secret. Keep it out of `NEXT_PUBLIC_*`, screenshots, issue reports and exports. Configure provider budgets/quotas before enabling live inference. Environment changes require restarting/redeploying. Normal direct same-origin requests require no custom proxy settings.
 
 For an operator-controlled reverse proxy that overwrites forwarded headers, optional `JEV_ALLOWED_ORIGINS` and `JEV_TRUST_PROXY_HEADERS=true` must both be set. Allow exact public origins only; no paths or wildcard hosts. Spoofed forwarded headers alone cannot authorize a request. Localhost/127.0.0.1 retain exact host/port matching despite NextURL loopback normalization.
 
 ## Public file boundaries
+
+Keep original PDFs in ignored `data/local/regulatory/`. Only the reviewed legal
+text snapshot and source metadata belong in the public application. Check redistribution
+rights before publishing a complete PDF, particularly explanatory material or standards;
+public availability alone does not settle permission.
 
 Keep `.env`, credential files, local operator configuration and all `results/`
 contents out of Git. Results can contain user descriptions, private reviewer

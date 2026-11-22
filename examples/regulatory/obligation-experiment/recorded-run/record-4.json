@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 1,
+  "protocolHash": "e8d1b709ba9f4e05744fa4c95a86a01505846787c511dee6dff63cb0a621e8c8",
+  "unitId": "gdpr-31",
+  "useCaseId": "claude-adoption",
+  "assessment": {
+    "schemaVersion": 1,
+    "profile": "regulatory-obligation-experiment",
+    "mode": "live",
+    "startedAt": "2026-11-17T19:21:12.522Z",
+    "sdkVersion": "0.7.0",
+    "requestId": "req_01a1eaf4c626725d89775ba409005df6",
+    "latencyMs": 196.88,
+    "request": {
+      "model": "jev-latest",
+      "state": {
+        "source": {
+          "id": "gdpr",
+          "kind": "binding_law",
+          "revision": "2016-05-04",
+          "fileSha256": "27b720c812be1bdf1462ff468ad6410fe94da80b48f6d10fa7e2269b9e5a1597"
+        },
+        "provision": {
+          "id": "gdpr-31",
+          "sourceId": "gdpr",
+          "pageId": "gdpr:p51",
+          "pdfPage": 51,
+          "pinpoint": "DSGVO Art. 31",
+          "start": 2829,
+          "end": 3001,
+          "quote": "Der Verantwortliche und der Auftragsverarbeiter und gegebenenfalls deren Vertreter arbeiten auf Anfrage mit der \nAufsichtsbehörde bei der Erfüllung ihrer Aufgaben zusammen."
+        },
+        "spanOptions": [
+          {
+            "id": "span_der_verantwortliche_und_der_auftragsve_0",
+            "start": 2829,
+            "end": 3001,
+            "quote": "Der Verantwortliche und der Auftragsverarbeiter und gegebenenfalls deren Vertreter arbeiten auf Anfrage mit der \nAufsichtsbehörde bei der Erfüllung ihrer Aufgaben zusammen."
+          }
+        ],
+        "useCase": {
+          "id": "claude-adoption",
+          "description": "SYNTHETIC: A German company with 20 employees plans Claude Code for daily development. Named accounts and usage logs contain personal data. The company is controller and a provider processes these data on its behalf. Subprocessor arrangements are not reviewed. No supervisory-authority request has been received. Privacy high risk and appointment of a DPO are unknown. Source code may be confidential. No legal basis is assumed."
+        }
+      },
+      "questions": {
+        "source_function": {
+          "type": "choice",
+          "instructions": "What normative function does the selected `provision.quote` have? Classify this provision, not a cited or neighboring rule. Source metadata distinguishes legislation from technical recommendations and internal company rules.",
+          "criteria": {
+            "binding_obligation": "Legislative text directly requires or prohibits an action by a regulated actor, possibly subject to a condition.",
+            "permission": "States when an action is permitted or lawful, without independently commanding that action.",
+            "exception": "Limits or disapplies another rule under stated conditions; do not turn a qualified exemption into an unconditional exemption.",
+            "definition": "Defines a term or an element of a definition, rather than directly commanding an action.",
+            "recommendation": "Guidance or a technical standard recommends a practice; no independent legislative mandate is established here.",
+            "internal_control": "A synthetic company policy requires a practice inside that organization; it is not legislation.",
+            "descriptive_fact": "Describes an arrangement or past company practice without imposing a rule.",
+            "unclear": "The fragment does not establish one clear normative function."
+          }
+        },
+        "contains_obligation": {
+          "type": "noul",
+          "instructions": "Does `provision.quote` itself impose a legislative duty or prohibition?",
+          "criteria": {
+            "true": "The selected legislative provision directly requires or prohibits conduct, including a conditional duty.",
+            "false": "The text is a permission, definition, exemption, recommendation, internal company rule or factual description, or only refers to a duty found elsewhere."
+          }
+        },
+        "applicability": {
+          "type": "choice",
+          "instructions": "What relationship does this selected provision have to the current question in `useCase.description`? Do not infer actual provider terms, a risk finding or implementation from the product name.",
+          "criteria": {
+            "potentially_relevant": "The described facts establish a relevant actor, activity or condition for considering this provision. This is a candidate relationship, not legal approval.",
+            "not_relevant": "The described facts explicitly exclude the relevant scope or trigger, or this internal policy concerns another system or deployment.",
+            "needs_information": "An actor, trigger, exception or material use-case fact needed to assess the relationship is missing or conflicting."
+          }
+        },
+        "entity_span": {
+          "type": "choice",
+          "instructions": "Which exact option best identifies the actor regulated or addressed by `provision.quote`? Select only a source span, or not_stated if the actor is not stated. Do not supply an actor from another article.",
+          "criteria": {
+            "not_stated": "This role is not explicitly stated in the selected provision.",
+            "span_der_verantwortliche_und_der_auftragsve_0": "Der Verantwortliche und der Auftragsverarbeiter und gegebenenfalls deren Vertreter arbeiten auf Anfrage mit der \nAufsichtsbehörde bei der Erfüllung ihrer Aufgaben zusammen."
+          }
+        },
+        "entity_present": {
+          "type": "noul",
+          "instructions": "Is the addressed or regulated actor explicitly identifiable within `provision.quote`?",
+          "criteria": {
+            "true": "An actor is explicitly named or unambiguously identified in this provision.",
+            "false": "The actor is omitted, only available elsewhere, or cannot be identified from this fragment."
+          }
+        },
+        "action_span": {
+          "type": "choice",
+          "instructions": "Which exact option best states the required, prohibited, permitted or recommended action in `provision.quote`? Prefer the narrowest supporting option; not_stated if there is no action.",
+          "criteria": {
+            "not_stated": "This role is not explicitly stated in the selected provision.",
+            "span_der_verantwortliche_und_der_auftragsve_0": "Der Verantwortliche und der Auftragsverarbeiter und gegebenenfalls deren Vertreter arbeiten auf Anfrage mit der \nAufsichtsbehörde bei der Erfüllung ihrer Aufgaben zusammen."
+          }
+        },
+        "action_present": {
+          "type": "noul",
+          "instructions": "Does `provision.quote` explicitly state an action that is required, prohibited, permitted or recommended?",
+          "criteria": {
+            "true": "The provision states such conduct.",
+            "false": "This is only a definition, description or cross-reference without stated conduct of this kind."
+          }
+        },
+        "conditions_span": {
+          "type": "choice",
+          "instructions": "Which exact option best states the applicability trigger or scope condition in `provision.quote`? Preserve qualifications; not_stated if no condition is stated.",
+          "criteria": {
+            "not_stated": "This role is not explicitly stated in the selected provision.",
+            "span_der_verantwortliche_und_der_auftragsve_0": "Der Verantwortliche und der Auftragsverarbeiter und gegebenenfalls deren Vertreter arbeiten auf Anfrage mit der \nAufsichtsbehörde bei der Erfüllung ihrer Aufgaben zusammen."
+          }
+        },
+        "conditions_present": {
+          "type": "noul",
+          "instructions": "Does `provision.quote` explicitly state a condition limiting when or to whom its rule applies?",
+          "criteria": {
+            "true": "A trigger or scope condition is stated, such as processing on behalf, an authority request or likely high risk.",
+            "false": "No applicability condition is expressed within the selected text."
+          }
+        },
+        "exceptions_span": {
+          "type": "choice",
+          "instructions": "Which exact option best states an exception, carve-out or alternative arrangement in `provision.quote`? Do not mistake any ordinary condition for an exception. Select not_stated if none is stated.",
+          "criteria": {
+            "not_stated": "This role is not explicitly stated in the selected provision.",
+            "span_der_verantwortliche_und_der_auftragsve_0": "Der Verantwortliche und der Auftragsverarbeiter und gegebenenfalls deren Vertreter arbeiten auf Anfrage mit der \nAufsichtsbehörde bei der Erfüllung ihrer Aufgaben zusammen."
+          }
+        },
+        "exceptions_present": {
+          "type": "noul",
+          "instructions": "Does `provision.quote` explicitly state an exception, carve-out or alternative arrangement?",
+          "criteria": {
+            "true": "An exception or alternative arrangement is explicitly stated.",
+            "false": "No exception or alternative is stated; an ordinary trigger alone is not an exception."
+          }
+        }
+      }
+    },
+    "response": {
+      "model": "jev-1.14.0",
+      "answers": {
+        "source_function": {
+          "type": "choice",
+          "choice": "binding_obligation",
+          "confidence": 1,
+          "probabilities": {
+            "binding_obligation": 1,
+            "permission": 0,
+            "exception": 0,
+            "definition": 0,
+            "recommendation": 0,
+            "internal_control": 0,
+            "descriptive_fact": 0,
+            "unclear": 0
+          }
+        },
+        "contains_obligation": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "applicability": {
+          "type": "choice",
+          "choice": "potentially_relevant",
+          "confidence": 0.49,
+          "probabilities": {
+            "potentially_relevant": 0.66,
+            "not_relevant": 0.25,
+            "needs_information": 0.09
+          }
+        },
+        "entity_span": {
+          "type": "choice",
+          "choice": "span_der_verantwortliche_und_der_auftragsve_0",
+          "confidence": 1,
+          "probabilities": {
+            "not_stated": 0,
+            "span_der_verantwortliche_und_der_auftragsve_0": 1
+          }
+        },
+        "entity_present": {
+          "type": "noul",
+          "noul": 0.92
+        },
+        "action_span": {
+          "type": "choice",
+          "choice": "span_der_verantwortliche_und_der_auftragsve_0",
+          "confidence": 0.98,
+          "probabilities": {
+            "not_stated": 0.01,
+            "span_der_verantwortliche_und_der_auftragsve_0": 0.99
+          }
+        },
+        "action_present": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "conditions_span": {
+          "type": "choice",
+          "choice": "span_der_verantwortliche_und_der_auftragsve_0",
+          "confidence": 0.88,
+          "probabilities": {
+            "not_stated": 0.06,
+            "span_der_verantwortliche_und_der_auftragsve_0": 0.94
+          }
+        },
+        "conditions_present": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "exceptions_span": {
+          "type": "choice",
+          "choice": "not_stated",
+          "confidence": 0.46,
+          "probabilities": {
+            "not_stated": 0.73,
+            "span_der_verantwortliche_und_der_auftragsve_0": 0.27
+          }
+        },
+        "exceptions_present": {
+          "type": "noul",
+          "noul": 0.27
+        }
+      },
+      "usage": {
+        "input_tokens": 2128,
+        "output_tokens": 455
+      }
+    }
+  }
+}

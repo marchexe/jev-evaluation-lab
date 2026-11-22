@@ -40,3 +40,8 @@ response are unchanged. Offline browser tests replay it without paid inference.
 The 58 complete evidence research recordings are documented in
 `examples/evidence/jev-study/README.md`. AI design expectations and test review
 annotations are never independently confirmed human ground truth.
+
+`regulatory-report-v1.json` is a synthetic Claude assessment report exported before
+the reusable-engine refactor. It tests draft/report migration and exact citation
+retention. It contains no Jev runs, credentials or company data. It is not one of
+the historical model recordings or a human-confirmed legal reference.

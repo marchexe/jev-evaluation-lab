@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "kind": "evidence",
+  "version": "regulatory-evidence-1",
+  "questions": {
+    "evidence_judgment": {
+      "type": "choice",
+      "instructions": "What does `passage.text` document about `control.statement`? Judge the company passage only. The legalReferences supply a limited historical reference, not evidence of company practice. Do not determine legal compliance.",
+      "criteria": {
+        "supported": "The company passage explicitly documents the arrangement stated in the control. A legal rule alone cannot establish company implementation.",
+        "contradicted": "The company passage explicitly states an incompatible arrangement or expressly says the required documentation is absent. Missing information alone is not a contradiction.",
+        "insufficient_evidence": "The company passage gives no evidence about the arrangement, is unrelated, or only repeats a legal requirement.",
+        "ambiguous": "The company passage addresses the arrangement but is vague, conditional or internally conflicting."
+      }
+    },
+    "addresses_control": {
+      "type": "noul",
+      "instructions": "Does `passage.text` address the company arrangement in `control.statement`?",
+      "criteria": {
+        "true": "The passage addresses the arrangement, including explicit absence, uncertainty or conflict.",
+        "false": "The passage concerns another process or contains only general legal text without company-specific evidence."
+      }
+    }
+  }
+}

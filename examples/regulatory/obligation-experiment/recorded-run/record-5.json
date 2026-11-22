@@ -1,0 +1,333 @@
+{
+  "schemaVersion": 1,
+  "protocolHash": "e8d1b709ba9f4e05744fa4c95a86a01505846787c511dee6dff63cb0a621e8c8",
+  "unitId": "gdpr-35-1",
+  "useCaseId": "claude-adoption",
+  "assessment": {
+    "schemaVersion": 1,
+    "profile": "regulatory-obligation-experiment",
+    "mode": "live",
+    "startedAt": "2026-11-17T19:21:12.724Z",
+    "sdkVersion": "0.7.0",
+    "requestId": "req_01a1eaf4c6ec79359548efc91ac102f5",
+    "latencyMs": 209.83,
+    "request": {
+      "model": "jev-latest",
+      "state": {
+        "source": {
+          "id": "gdpr",
+          "kind": "binding_law",
+          "revision": "2016-05-04",
+          "fileSha256": "27b720c812be1bdf1462ff468ad6410fe94da80b48f6d10fa7e2269b9e5a1597"
+        },
+        "provision": {
+          "id": "gdpr-35-1",
+          "sourceId": "gdpr",
+          "pageId": "gdpr:p53",
+          "pdfPage": 53,
+          "pinpoint": "DSGVO Art. 35 Abs. 1",
+          "start": 1891,
+          "end": 2435,
+          "quote": "(1) Hat eine Form der Verarbeitung, insbesondere bei Verwendung neuer Technologien, aufgrund der Art, des \nUmfangs, der Umstände und der Zwecke der Verarbeitung voraussichtlich ein hohes Risiko für die Rechte und Freiheiten \nnatürlicher Personen zur Folge, so führt der Verantwortliche vorab eine Abschätzung der Folgen der vorgesehenen \nVerarbeitungsvorgänge für den Schutz personenbezogener Daten durch. Für die Untersuchung mehrerer ähnlicher \nVerarbeitungsvorgänge mit ähnlich hohen Risiken kann eine einzige Abschätzung vorgenommen werden."
+        },
+        "spanOptions": [
+          {
+            "id": "span__1_hat_eine_form_der_verarbeitung_insb_0",
+            "start": 1891,
+            "end": 2435,
+            "quote": "(1) Hat eine Form der Verarbeitung, insbesondere bei Verwendung neuer Technologien, aufgrund der Art, des \nUmfangs, der Umstände und der Zwecke der Verarbeitung voraussichtlich ein hohes Risiko für die Rechte und Freiheiten \nnatürlicher Personen zur Folge, so führt der Verantwortliche vorab eine Abschätzung der Folgen der vorgesehenen \nVerarbeitungsvorgänge für den Schutz personenbezogener Daten durch. Für die Untersuchung mehrerer ähnlicher \nVerarbeitungsvorgänge mit ähnlich hohen Risiken kann eine einzige Abschätzung vorgenommen werden."
+          },
+          {
+            "id": "span__1_hat_eine_form_der_verarbeitung__1",
+            "start": 1891,
+            "end": 1926,
+            "quote": "(1) Hat eine Form der Verarbeitung,"
+          },
+          {
+            "id": "span_insbesondere_bei_verwendung_neuer_tech_2",
+            "start": 1927,
+            "end": 1974,
+            "quote": "insbesondere bei Verwendung neuer Technologien,"
+          },
+          {
+            "id": "span_aufgrund_der_art__3",
+            "start": 1975,
+            "end": 1992,
+            "quote": "aufgrund der Art,"
+          },
+          {
+            "id": "span_des_umfangs__4",
+            "start": 1993,
+            "end": 2006,
+            "quote": "des \nUmfangs,"
+          },
+          {
+            "id": "span_der_umstände_und_der_zwecke_der_verarb_5",
+            "start": 2007,
+            "end": 2147,
+            "quote": "der Umstände und der Zwecke der Verarbeitung voraussichtlich ein hohes Risiko für die Rechte und Freiheiten \nnatürlicher Personen zur Folge,"
+          },
+          {
+            "id": "span_so_führt_der_verantwortliche_vorab_ein_6",
+            "start": 2148,
+            "end": 2296,
+            "quote": "so führt der Verantwortliche vorab eine Abschätzung der Folgen der vorgesehenen \nVerarbeitungsvorgänge für den Schutz personenbezogener Daten durch."
+          },
+          {
+            "id": "span_für_die_untersuchung_mehrerer_ähnliche_7",
+            "start": 2297,
+            "end": 2435,
+            "quote": "Für die Untersuchung mehrerer ähnlicher \nVerarbeitungsvorgänge mit ähnlich hohen Risiken kann eine einzige Abschätzung vorgenommen werden."
+          }
+        ],
+        "useCase": {
+          "id": "claude-adoption",
+          "description": "SYNTHETIC: A German company with 20 employees plans Claude Code for daily development. Named accounts and usage logs contain personal data. The company is controller and a provider processes these data on its behalf. Subprocessor arrangements are not reviewed. No supervisory-authority request has been received. Privacy high risk and appointment of a DPO are unknown. Source code may be confidential. No legal basis is assumed."
+        }
+      },
+      "questions": {
+        "source_function": {
+          "type": "choice",
+          "instructions": "What normative function does the selected `provision.quote` have? Classify this provision, not a cited or neighboring rule. Source metadata distinguishes legislation from technical recommendations and internal company rules.",
+          "criteria": {
+            "binding_obligation": "Legislative text directly requires or prohibits an action by a regulated actor, possibly subject to a condition.",
+            "permission": "States when an action is permitted or lawful, without independently commanding that action.",
+            "exception": "Limits or disapplies another rule under stated conditions; do not turn a qualified exemption into an unconditional exemption.",
+            "definition": "Defines a term or an element of a definition, rather than directly commanding an action.",
+            "recommendation": "Guidance or a technical standard recommends a practice; no independent legislative mandate is established here.",
+            "internal_control": "A synthetic company policy requires a practice inside that organization; it is not legislation.",
+            "descriptive_fact": "Describes an arrangement or past company practice without imposing a rule.",
+            "unclear": "The fragment does not establish one clear normative function."
+          }
+        },
+        "contains_obligation": {
+          "type": "noul",
+          "instructions": "Does `provision.quote` itself impose a legislative duty or prohibition?",
+          "criteria": {
+            "true": "The selected legislative provision directly requires or prohibits conduct, including a conditional duty.",
+            "false": "The text is a permission, definition, exemption, recommendation, internal company rule or factual description, or only refers to a duty found elsewhere."
+          }
+        },
+        "applicability": {
+          "type": "choice",
+          "instructions": "What relationship does this selected provision have to the current question in `useCase.description`? Do not infer actual provider terms, a risk finding or implementation from the product name.",
+          "criteria": {
+            "potentially_relevant": "The described facts establish a relevant actor, activity or condition for considering this provision. This is a candidate relationship, not legal approval.",
+            "not_relevant": "The described facts explicitly exclude the relevant scope or trigger, or this internal policy concerns another system or deployment.",
+            "needs_information": "An actor, trigger, exception or material use-case fact needed to assess the relationship is missing or conflicting."
+          }
+        },
+        "entity_span": {
+          "type": "choice",
+          "instructions": "Which exact option best identifies the actor regulated or addressed by `provision.quote`? Select only a source span, or not_stated if the actor is not stated. Do not supply an actor from another article.",
+          "criteria": {
+            "not_stated": "This role is not explicitly stated in the selected provision.",
+            "span__1_hat_eine_form_der_verarbeitung_insb_0": "(1) Hat eine Form der Verarbeitung, insbesondere bei Verwendung neuer Technologien, aufgrund der Art, des \nUmfangs, der Umstände und der Zwecke der Verarbeitung voraussichtlich ein hohes Risiko für die Rechte und Freiheiten \nnatürlicher Personen zur Folge, so führt der Verantwortliche vorab eine Abschätzung der Folgen der vorgesehenen \nVerarbeitungsvorgänge für den Schutz personenbezogener Daten durch. Für die Untersuchung mehrerer ähnlicher \nVerarbeitungsvorgänge mit ähnlich hohen Risiken kann eine einzige Abschätzung vorgenommen werden.",
+            "span__1_hat_eine_form_der_verarbeitung__1": "(1) Hat eine Form der Verarbeitung,",
+            "span_insbesondere_bei_verwendung_neuer_tech_2": "insbesondere bei Verwendung neuer Technologien,",
+            "span_aufgrund_der_art__3": "aufgrund der Art,",
+            "span_des_umfangs__4": "des \nUmfangs,",
+            "span_der_umstände_und_der_zwecke_der_verarb_5": "der Umstände und der Zwecke der Verarbeitung voraussichtlich ein hohes Risiko für die Rechte und Freiheiten \nnatürlicher Personen zur Folge,",
+            "span_so_führt_der_verantwortliche_vorab_ein_6": "so führt der Verantwortliche vorab eine Abschätzung der Folgen der vorgesehenen \nVerarbeitungsvorgänge für den Schutz personenbezogener Daten durch.",
+            "span_für_die_untersuchung_mehrerer_ähnliche_7": "Für die Untersuchung mehrerer ähnlicher \nVerarbeitungsvorgänge mit ähnlich hohen Risiken kann eine einzige Abschätzung vorgenommen werden."
+          }
+        },
+        "entity_present": {
+          "type": "noul",
+          "instructions": "Is the addressed or regulated actor explicitly identifiable within `provision.quote`?",
+          "criteria": {
+            "true": "An actor is explicitly named or unambiguously identified in this provision.",
+            "false": "The actor is omitted, only available elsewhere, or cannot be identified from this fragment."
+          }
+        },
+        "action_span": {
+          "type": "choice",
+          "instructions": "Which exact option best states the required, prohibited, permitted or recommended action in `provision.quote`? Prefer the narrowest supporting option; not_stated if there is no action.",
+          "criteria": {
+            "not_stated": "This role is not explicitly stated in the selected provision.",
+            "span__1_hat_eine_form_der_verarbeitung_insb_0": "(1) Hat eine Form der Verarbeitung, insbesondere bei Verwendung neuer Technologien, aufgrund der Art, des \nUmfangs, der Umstände und der Zwecke der Verarbeitung voraussichtlich ein hohes Risiko für die Rechte und Freiheiten \nnatürlicher Personen zur Folge, so führt der Verantwortliche vorab eine Abschätzung der Folgen der vorgesehenen \nVerarbeitungsvorgänge für den Schutz personenbezogener Daten durch. Für die Untersuchung mehrerer ähnlicher \nVerarbeitungsvorgänge mit ähnlich hohen Risiken kann eine einzige Abschätzung vorgenommen werden.",
+            "span__1_hat_eine_form_der_verarbeitung__1": "(1) Hat eine Form der Verarbeitung,",
+            "span_insbesondere_bei_verwendung_neuer_tech_2": "insbesondere bei Verwendung neuer Technologien,",
+            "span_aufgrund_der_art__3": "aufgrund der Art,",
+            "span_des_umfangs__4": "des \nUmfangs,",
+            "span_der_umstände_und_der_zwecke_der_verarb_5": "der Umstände und der Zwecke der Verarbeitung voraussichtlich ein hohes Risiko für die Rechte und Freiheiten \nnatürlicher Personen zur Folge,",
+            "span_so_führt_der_verantwortliche_vorab_ein_6": "so führt der Verantwortliche vorab eine Abschätzung der Folgen der vorgesehenen \nVerarbeitungsvorgänge für den Schutz personenbezogener Daten durch.",
+            "span_für_die_untersuchung_mehrerer_ähnliche_7": "Für die Untersuchung mehrerer ähnlicher \nVerarbeitungsvorgänge mit ähnlich hohen Risiken kann eine einzige Abschätzung vorgenommen werden."
+          }
+        },
+        "action_present": {
+          "type": "noul",
+          "instructions": "Does `provision.quote` explicitly state an action that is required, prohibited, permitted or recommended?",
+          "criteria": {
+            "true": "The provision states such conduct.",
+            "false": "This is only a definition, description or cross-reference without stated conduct of this kind."
+          }
+        },
+        "conditions_span": {
+          "type": "choice",
+          "instructions": "Which exact option best states the applicability trigger or scope condition in `provision.quote`? Preserve qualifications; not_stated if no condition is stated.",
+          "criteria": {
+            "not_stated": "This role is not explicitly stated in the selected provision.",
+            "span__1_hat_eine_form_der_verarbeitung_insb_0": "(1) Hat eine Form der Verarbeitung, insbesondere bei Verwendung neuer Technologien, aufgrund der Art, des \nUmfangs, der Umstände und der Zwecke der Verarbeitung voraussichtlich ein hohes Risiko für die Rechte und Freiheiten \nnatürlicher Personen zur Folge, so führt der Verantwortliche vorab eine Abschätzung der Folgen der vorgesehenen \nVerarbeitungsvorgänge für den Schutz personenbezogener Daten durch. Für die Untersuchung mehrerer ähnlicher \nVerarbeitungsvorgänge mit ähnlich hohen Risiken kann eine einzige Abschätzung vorgenommen werden.",
+            "span__1_hat_eine_form_der_verarbeitung__1": "(1) Hat eine Form der Verarbeitung,",
+            "span_insbesondere_bei_verwendung_neuer_tech_2": "insbesondere bei Verwendung neuer Technologien,",
+            "span_aufgrund_der_art__3": "aufgrund der Art,",
+            "span_des_umfangs__4": "des \nUmfangs,",
+            "span_der_umstände_und_der_zwecke_der_verarb_5": "der Umstände und der Zwecke der Verarbeitung voraussichtlich ein hohes Risiko für die Rechte und Freiheiten \nnatürlicher Personen zur Folge,",
+            "span_so_führt_der_verantwortliche_vorab_ein_6": "so führt der Verantwortliche vorab eine Abschätzung der Folgen der vorgesehenen \nVerarbeitungsvorgänge für den Schutz personenbezogener Daten durch.",
+            "span_für_die_untersuchung_mehrerer_ähnliche_7": "Für die Untersuchung mehrerer ähnlicher \nVerarbeitungsvorgänge mit ähnlich hohen Risiken kann eine einzige Abschätzung vorgenommen werden."
+          }
+        },
+        "conditions_present": {
+          "type": "noul",
+          "instructions": "Does `provision.quote` explicitly state a condition limiting when or to whom its rule applies?",
+          "criteria": {
+            "true": "A trigger or scope condition is stated, such as processing on behalf, an authority request or likely high risk.",
+            "false": "No applicability condition is expressed within the selected text."
+          }
+        },
+        "exceptions_span": {
+          "type": "choice",
+          "instructions": "Which exact option best states an exception, carve-out or alternative arrangement in `provision.quote`? Do not mistake any ordinary condition for an exception. Select not_stated if none is stated.",
+          "criteria": {
+            "not_stated": "This role is not explicitly stated in the selected provision.",
+            "span__1_hat_eine_form_der_verarbeitung_insb_0": "(1) Hat eine Form der Verarbeitung, insbesondere bei Verwendung neuer Technologien, aufgrund der Art, des \nUmfangs, der Umstände und der Zwecke der Verarbeitung voraussichtlich ein hohes Risiko für die Rechte und Freiheiten \nnatürlicher Personen zur Folge, so führt der Verantwortliche vorab eine Abschätzung der Folgen der vorgesehenen \nVerarbeitungsvorgänge für den Schutz personenbezogener Daten durch. Für die Untersuchung mehrerer ähnlicher \nVerarbeitungsvorgänge mit ähnlich hohen Risiken kann eine einzige Abschätzung vorgenommen werden.",
+            "span__1_hat_eine_form_der_verarbeitung__1": "(1) Hat eine Form der Verarbeitung,",
+            "span_insbesondere_bei_verwendung_neuer_tech_2": "insbesondere bei Verwendung neuer Technologien,",
+            "span_aufgrund_der_art__3": "aufgrund der Art,",
+            "span_des_umfangs__4": "des \nUmfangs,",
+            "span_der_umstände_und_der_zwecke_der_verarb_5": "der Umstände und der Zwecke der Verarbeitung voraussichtlich ein hohes Risiko für die Rechte und Freiheiten \nnatürlicher Personen zur Folge,",
+            "span_so_führt_der_verantwortliche_vorab_ein_6": "so führt der Verantwortliche vorab eine Abschätzung der Folgen der vorgesehenen \nVerarbeitungsvorgänge für den Schutz personenbezogener Daten durch.",
+            "span_für_die_untersuchung_mehrerer_ähnliche_7": "Für die Untersuchung mehrerer ähnlicher \nVerarbeitungsvorgänge mit ähnlich hohen Risiken kann eine einzige Abschätzung vorgenommen werden."
+          }
+        },
+        "exceptions_present": {
+          "type": "noul",
+          "instructions": "Does `provision.quote` explicitly state an exception, carve-out or alternative arrangement?",
+          "criteria": {
+            "true": "An exception or alternative arrangement is explicitly stated.",
+            "false": "No exception or alternative is stated; an ordinary trigger alone is not an exception."
+          }
+        }
+      }
+    },
+    "response": {
+      "model": "jev-1.14.0",
+      "answers": {
+        "source_function": {
+          "type": "choice",
+          "choice": "binding_obligation",
+          "confidence": 1,
+          "probabilities": {
+            "binding_obligation": 1,
+            "permission": 0,
+            "exception": 0,
+            "definition": 0,
+            "recommendation": 0,
+            "internal_control": 0,
+            "descriptive_fact": 0,
+            "unclear": 0
+          }
+        },
+        "contains_obligation": {
+          "type": "noul",
+          "noul": 0.99
+        },
+        "applicability": {
+          "type": "choice",
+          "choice": "potentially_relevant",
+          "confidence": 0.56,
+          "probabilities": {
+            "potentially_relevant": 0.71,
+            "not_relevant": 0,
+            "needs_information": 0.29
+          }
+        },
+        "entity_span": {
+          "type": "choice",
+          "choice": "span_so_führt_der_verantwortliche_vorab_ein_6",
+          "confidence": 0.96,
+          "probabilities": {
+            "not_stated": 0,
+            "span__1_hat_eine_form_der_verarbeitung_insb_0": 0.04,
+            "span__1_hat_eine_form_der_verarbeitung__1": 0,
+            "span_insbesondere_bei_verwendung_neuer_tech_2": 0,
+            "span_aufgrund_der_art__3": 0,
+            "span_des_umfangs__4": 0,
+            "span_der_umstände_und_der_zwecke_der_verarb_5": 0,
+            "span_so_führt_der_verantwortliche_vorab_ein_6": 0.96,
+            "span_für_die_untersuchung_mehrerer_ähnliche_7": 0
+          }
+        },
+        "entity_present": {
+          "type": "noul",
+          "noul": 0.96
+        },
+        "action_span": {
+          "type": "choice",
+          "choice": "span_so_führt_der_verantwortliche_vorab_ein_6",
+          "confidence": 0.79,
+          "probabilities": {
+            "not_stated": 0,
+            "span__1_hat_eine_form_der_verarbeitung_insb_0": 0.17,
+            "span__1_hat_eine_form_der_verarbeitung__1": 0,
+            "span_insbesondere_bei_verwendung_neuer_tech_2": 0,
+            "span_aufgrund_der_art__3": 0,
+            "span_des_umfangs__4": 0,
+            "span_der_umstände_und_der_zwecke_der_verarb_5": 0,
+            "span_so_führt_der_verantwortliche_vorab_ein_6": 0.81,
+            "span_für_die_untersuchung_mehrerer_ähnliche_7": 0.02
+          }
+        },
+        "action_present": {
+          "type": "noul",
+          "noul": 0.99
+        },
+        "conditions_span": {
+          "type": "choice",
+          "choice": "span_der_umstände_und_der_zwecke_der_verarb_5",
+          "confidence": 0.49,
+          "probabilities": {
+            "not_stated": 0,
+            "span__1_hat_eine_form_der_verarbeitung_insb_0": 0.45,
+            "span__1_hat_eine_form_der_verarbeitung__1": 0,
+            "span_insbesondere_bei_verwendung_neuer_tech_2": 0,
+            "span_aufgrund_der_art__3": 0,
+            "span_des_umfangs__4": 0,
+            "span_der_umstände_und_der_zwecke_der_verarb_5": 0.55,
+            "span_so_führt_der_verantwortliche_vorab_ein_6": 0,
+            "span_für_die_untersuchung_mehrerer_ähnliche_7": 0
+          }
+        },
+        "conditions_present": {
+          "type": "noul",
+          "noul": 0.99
+        },
+        "exceptions_span": {
+          "type": "choice",
+          "choice": "span_für_die_untersuchung_mehrerer_ähnliche_7",
+          "confidence": 1,
+          "probabilities": {
+            "not_stated": 0,
+            "span__1_hat_eine_form_der_verarbeitung_insb_0": 0,
+            "span__1_hat_eine_form_der_verarbeitung__1": 0,
+            "span_insbesondere_bei_verwendung_neuer_tech_2": 0,
+            "span_aufgrund_der_art__3": 0,
+            "span_des_umfangs__4": 0,
+            "span_der_umstände_und_der_zwecke_der_verarb_5": 0,
+            "span_so_führt_der_verantwortliche_vorab_ein_6": 0,
+            "span_für_die_untersuchung_mehrerer_ähnliche_7": 1
+          }
+        },
+        "exceptions_present": {
+          "type": "noul",
+          "noul": 0.93
+        }
+      },
+      "usage": {
+        "input_tokens": 4352,
+        "output_tokens": 1025
+      }
+    }
+  }
+}

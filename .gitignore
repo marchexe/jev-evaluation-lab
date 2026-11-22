@@ -30,3 +30,13 @@ jev-evidence*.json
 *.pfx
 id_rsa
 id_ed25519
+
+# Local original documents; publish reviewed snapshots and metadata instead
+/data/local/
+/*.pdf
+/*.docx
+
+# Optional Python ingestion tools
+__pycache__/
+*.py[cod]
+.venv/

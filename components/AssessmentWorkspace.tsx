@@ -21,6 +21,7 @@ import { AssessmentTable, CompareView, EvaluationView } from './LabViews';
 import { DocumentLibrary, type DocumentSelection, type EvidenceSelection } from './DocumentLibrary';
 import type { Passage } from '../src/ui/evidence';
 import { EvidenceExplorer } from './EvidenceExplorer';
+import { RegulatoryAssessment } from './RegulatoryAssessment';
 import { QuestionEditor, type QuestionConfiguration } from './QuestionEditor';
 import { defaultConfigurations, configurationIdentity } from '../src/question-config.js';
 import { importAssessmentHistory, parseImport, MAX_IMPORT_BYTES } from '../src/ui/import-export';
@@ -59,7 +60,7 @@ function messagesFor(record: AssessmentRecord): ThreadMessageLike[] {
 
 export default function AssessmentWorkspace({ liveEnabled = false }: { liveEnabled?: boolean }) {
   const { t, language, displayLabel } = useLanguage();
-  const [tab, setTab] = useState<'Assess' | 'Vergleich' | 'Evaluate' | 'Verlauf' | 'Evidence' | 'Documents'>('Assess');
+  const [tab, setTab] = useState<'Assess' | 'Vergleich' | 'Evaluate' | 'Verlauf' | 'Evidence' | 'Documents' | 'Regulatory'>('Assess');
   const [documentSelection, setDocumentSelection] = useState<DocumentSelection>();
   const [evidenceSelection, setEvidenceSelection] = useState<EvidenceSelection>();
   const [evaluationScope, setEvaluationScope] = useState<'systems' | 'evidence'>('systems');
@@ -202,7 +203,7 @@ export default function AssessmentWorkspace({ liveEnabled = false }: { liveEnabl
     } catch { setStorageError('Browserspeicher nicht verfügbar.'); }
   }
 
-  const workflow = tab === 'Documents' ? 'documents' : tab === 'Evidence' ? 'evidence' : tab === 'Evaluate' ? 'evaluate' : 'analyze';
+  const workflow = tab === 'Regulatory' ? 'regulatory' : tab === 'Documents' ? 'documents' : tab === 'Evidence' ? 'evidence' : tab === 'Evaluate' ? 'evaluate' : 'analyze';
   function openDocument(passage: Passage, controlId: string) {
     if (isRunning || evidenceRunning) return;
     setDocumentSelection({documentId:passage.documentId,revision:passage.revision,passageId:passage.id,section:passage.section,controlId});setTab('Documents');
@@ -230,8 +231,8 @@ export default function AssessmentWorkspace({ liveEnabled = false }: { liveEnabl
           </button>
         </div>
         <nav className="workflow-nav" aria-label={t("Arbeitsbereiche")}>
-          {([['analyze', 'Analyse'], ['evidence', 'Belege'], ['documents', 'Dokumente'], ['evaluate', 'Auswertung']] as const).map(([id, title]) =>
-            <button key={id} aria-label={t(title)} disabled={isRunning || evidenceRunning} aria-current={workflow === id ? 'page' : undefined} onClick={() => setTab(id === 'analyze' ? 'Assess' : id === 'evidence' ? "Evidence" : id === 'documents' ? "Documents" : "Evaluate")}>
+          {([['regulatory', 'Prüfungen'], ['analyze', 'Analyse'], ['evidence', 'Belege'], ['documents', 'Dokumente'], ['evaluate', 'Auswertung']] as const).map(([id, title]) =>
+            <button key={id} aria-label={t(title)} disabled={isRunning || evidenceRunning} aria-current={workflow === id ? 'page' : undefined} onClick={() => setTab(id === 'regulatory' ? 'Regulatory' : id === 'analyze' ? 'Assess' : id === 'evidence' ? "Evidence" : id === 'documents' ? "Documents" : "Evaluate")}>
               <span>{t(title)}</span>
             </button>)}
         </nav>
@@ -248,7 +249,7 @@ export default function AssessmentWorkspace({ liveEnabled = false }: { liveEnabl
       </aside>
 
       <main className="main-panel" id="workspace-content" tabIndex={-1}>
-        <header className="topbar"><h1>{tab === 'Verlauf' ? t("Verlauf") : tab === 'Vergleich' ? t("Vergleich") : workflow === 'analyze' ? t("Analyse") : workflow === 'evidence' ? t("Belege") : workflow === 'documents' ? t("Dokumente") : t("Auswertung")}</h1><div className="header-tools"><LanguageSelector /><button aria-label={t("Verlauf")} disabled={isRunning || evidenceRunning} onClick={() => setTab('Verlauf')}>{t("Verlauf")} <span className="count">{records.length}</span></button></div></header>
+        <header className="topbar"><h1>{tab === 'Verlauf' ? t("Verlauf") : tab === 'Vergleich' ? t("Vergleich") : workflow === 'regulatory' ? t('Prüfungen') : workflow === 'analyze' ? t("Analyse") : workflow === 'evidence' ? t("Belege") : workflow === 'documents' ? t("Dokumente") : t("Auswertung")}</h1><div className="header-tools"><LanguageSelector /><button aria-label={t("Verlauf")} disabled={isRunning || evidenceRunning} onClick={() => setTab('Verlauf')}>{t("Verlauf")} <span className="count">{records.length}</span></button></div></header>
         {workflow === 'analyze' && <nav className="workspace-actions" aria-label={t("Analysis tools")}><button onClick={newAssessment} disabled={isRunning || evidenceRunning}>{t("Neue Analyse")}</button>
           <button disabled={isRunning || evidenceRunning} aria-current={tab === 'Vergleich' ? 'page' : undefined} onClick={() => setTab('Vergleich')}>{t("Vergleich")}</button></nav>}
         {tab === 'Evaluate' && <nav className="workspace-actions" aria-label={t("Evaluation scope")}><button aria-current={evaluationScope === 'systems' ? 'page' : undefined} onClick={() => setEvaluationScope('systems')}>{t("Systemanalysen")}</button><button aria-current={evaluationScope === 'evidence' ? 'page' : undefined} onClick={() => setEvaluationScope('evidence')}>{t("Belegexperimente")}</button></nav>}
@@ -291,6 +292,7 @@ export default function AssessmentWorkspace({ liveEnabled = false }: { liveEnabl
           </ThreadPrimitive.Viewport>
           </div>}
           {tab !== 'Assess' && <div className="lab-panel">
+            {tab === 'Regulatory' && <RegulatoryAssessment liveEnabled={liveEnabled} onRunningChange={setEvidenceRunning} />}
             {tab === 'Documents' && <DocumentLibrary selection={documentSelection} onSelect={setDocumentSelection} onInspect={openEvidence} />}
             {tab === 'Vergleich' && <CompareView records={records} />}
 

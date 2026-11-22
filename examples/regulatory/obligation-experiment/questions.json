@@ -1,0 +1,30 @@
+{
+  "version": "obligation-span-selection-1",
+  "sourceFunction": {
+    "instructions": "What normative function does the selected `provision.quote` have? Classify this provision, not a cited or neighboring rule. Source metadata distinguishes legislation from technical recommendations and internal company rules.",
+    "criteria": {
+      "binding_obligation": "Legislative text directly requires or prohibits an action by a regulated actor, possibly subject to a condition.",
+      "permission": "States when an action is permitted or lawful, without independently commanding that action.",
+      "exception": "Limits or disapplies another rule under stated conditions; do not turn a qualified exemption into an unconditional exemption.",
+      "definition": "Defines a term or an element of a definition, rather than directly commanding an action.",
+      "recommendation": "Guidance or a technical standard recommends a practice; no independent legislative mandate is established here.",
+      "internal_control": "A synthetic company policy requires a practice inside that organization; it is not legislation.",
+      "descriptive_fact": "Describes an arrangement or past company practice without imposing a rule.",
+      "unclear": "The fragment does not establish one clear normative function."
+    }
+  },
+  "containsObligation": {
+    "instructions": "Does `provision.quote` itself impose a legislative duty or prohibition?",
+    "criteria": {"true":"The selected legislative provision directly requires or prohibits conduct, including a conditional duty.","false":"The text is a permission, definition, exemption, recommendation, internal company rule or factual description, or only refers to a duty found elsewhere."}
+  },
+  "applicability": {
+    "instructions": "What relationship does this selected provision have to the current question in `useCase.description`? Do not infer actual provider terms, a risk finding or implementation from the product name.",
+    "criteria": {"potentially_relevant":"The described facts establish a relevant actor, activity or condition for considering this provision. This is a candidate relationship, not legal approval.","not_relevant":"The described facts explicitly exclude the relevant scope or trigger, or this internal policy concerns another system or deployment.","needs_information":"An actor, trigger, exception or material use-case fact needed to assess the relationship is missing or conflicting."}
+  },
+  "roles": {
+    "entity":{"selection":"Which exact option best identifies the actor regulated or addressed by `provision.quote`? Select only a source span, or not_stated if the actor is not stated. Do not supply an actor from another article.","presence":"Is the addressed or regulated actor explicitly identifiable within `provision.quote`?","criteria":{"true":"An actor is explicitly named or unambiguously identified in this provision.","false":"The actor is omitted, only available elsewhere, or cannot be identified from this fragment."}},
+    "action":{"selection":"Which exact option best states the required, prohibited, permitted or recommended action in `provision.quote`? Prefer the narrowest supporting option; not_stated if there is no action.","presence":"Does `provision.quote` explicitly state an action that is required, prohibited, permitted or recommended?","criteria":{"true":"The provision states such conduct.","false":"This is only a definition, description or cross-reference without stated conduct of this kind."}},
+    "conditions":{"selection":"Which exact option best states the applicability trigger or scope condition in `provision.quote`? Preserve qualifications; not_stated if no condition is stated.","presence":"Does `provision.quote` explicitly state a condition limiting when or to whom its rule applies?","criteria":{"true":"A trigger or scope condition is stated, such as processing on behalf, an authority request or likely high risk.","false":"No applicability condition is expressed within the selected text."}},
+    "exceptions":{"selection":"Which exact option best states an exception, carve-out or alternative arrangement in `provision.quote`? Do not mistake any ordinary condition for an exception. Select not_stated if none is stated.","presence":"Does `provision.quote` explicitly state an exception, carve-out or alternative arrangement?","criteria":{"true":"An exception or alternative arrangement is explicitly stated.","false":"No exception or alternative is stated; an ordinary trigger alone is not an exception."}}
+  }
+}
