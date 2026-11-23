@@ -331,22 +331,108 @@ button.source-reference-link { display:inline; padding:0; border:0; background:t
 .document-metadata { margin-top:5px; font-size:11px; color:var(--muted); }
 .document-metadata > summary { padding:3px 0; font-size:11px; }
 
-/* Guided regulatory assessment within the existing workspace. */
-.regulatory-workspace { max-width: 1500px; }
-.regulatory-columns { display: grid; grid-template-columns: minmax(350px, .85fr) minmax(430px, 1.15fr); gap: 24px; align-items: start; }
-.regulatory-questions { display: grid; gap: 14px; margin: 16px 0; }
-.regulatory-fact { border-bottom: 1px solid var(--line); padding-bottom: 12px; }
-.regulatory-fact details { margin-top: 6px; }
-.regulatory-evidence-option { display: flex; align-items: center; gap: 8px; font-size: .85rem; }
-.regulatory-evidence-option input { width: auto; }
-.regulatory-citation { border: 1px solid var(--line); padding: 10px; margin: 10px 0; }
-.regulatory-citation blockquote { white-space: pre-wrap; font-size: .9rem; line-height: 1.55; }
-.regulatory-inspector { min-width: 0; }
-.regulatory-workspace code { overflow-wrap: anywhere; }
-.regulatory-inventory { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 12px; }
-.regulatory-workspace [data-outcome="gap"] { color: var(--danger, #bd5353); }
-.regulatory-workspace [data-outcome="unknown"] { font-weight: 600; }
-.regulatory-workspace label { display: block; margin: 10px 0; }
-.regulatory-workspace select, .regulatory-workspace textarea { width: 100%; }
-.regulatory-human { margin: 16px 0; }
-.regulatory-workspace .comparison-description { font: inherit; font-size: 14px; line-height: 1.65; white-space: pre-wrap; }
+/* Guided regulatory assessment: one focus column per step, secondary material on demand. */
+:root { --ok:#1f7a5c; --ok-bg:#e8f4ee; --warn:#8a5a0b; --warn-bg:#fbf3e2; --bad:#a83c3c; --bad-bg:#fbeceb; --na:#5f6b74; --na-bg:#eef1f3; }
+:root[data-theme=dark] { --ok:#7fd1ad; --ok-bg:#1d3a2f; --warn:#e6bf72; --warn-bg:#3a3020; --bad:#f0a3a3; --bad-bg:#3d2424; --na:#a9b5bf; --na-bg:#27313a; }
+.regulatory-workspace { max-width:1180px; }
+.regulatory-workspace label { display:block; margin:0; }
+.regulatory-workspace select, .regulatory-workspace textarea { width:100%; }
+.regulatory-workspace code { overflow-wrap:anywhere; }
+.regulatory-workspace .view-note { margin:8px 0; }
+.button-row { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:12px 0; }
+
+.regulatory-header { display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:16px 24px; }
+.regulatory-title h2 { font-size:20px; }
+.regulatory-disclaimer { margin-top:2px; }
+.regulatory-disclaimer > summary { padding:4px 0; }
+.regulatory-disclaimer > p { max-width:640px; font-size:12px; color:var(--muted); }
+.regulatory-pickers { display:flex; gap:12px; }
+.regulatory-pickers label { font-size:11px; color:var(--muted); font-weight:500; }
+.regulatory-pickers select { display:block; width:220px; margin-top:4px; padding:6px 8px; font-size:13px; }
+
+.regulatory-steps { display:flex; margin:20px 0 24px; border-bottom:1px solid var(--line); }
+.regulatory-workspace .regulatory-steps button { border:0; border-bottom:2px solid transparent; border-radius:0; background:transparent; padding:10px 16px; margin-bottom:-1px; color:var(--muted); font-size:13px; }
+.regulatory-workspace .regulatory-steps button:not(:disabled):hover { background:transparent; color:var(--ink); }
+.regulatory-workspace .regulatory-steps button[data-done] { color:var(--ink); }
+.regulatory-workspace .regulatory-steps button[aria-current] { color:var(--accent); border-bottom-color:var(--accent); font-weight:600; }
+
+.regulatory-form { max-width:760px; }
+.regulatory-lead { font-size:15px; line-height:1.6; padding:14px 16px; background:var(--subtle); border-radius:6px; }
+.regulatory-questions { display:grid; margin:16px 0; border:1px solid var(--line); border-radius:6px; }
+.regulatory-fact { padding:12px 14px; }
+.regulatory-fact + .regulatory-fact { border-top:1px solid var(--line); }
+.regulatory-fact > label { display:grid; grid-template-columns:minmax(0,1fr) 290px; align-items:center; gap:16px; font-size:13px; font-weight:500; }
+.regulatory-fact > label select { padding:6px 8px; font-size:13px; }
+.regulatory-fact[data-value=unknown] > label select { color:var(--warn); border-color:#e2c792; }
+.regulatory-fact details > summary { padding:4px 0 0; font-size:11px; }
+.regulatory-fact details[open] { padding-bottom:4px; }
+.regulatory-fact details textarea { margin-top:4px; }
+.regulatory-evidence-option { display:flex; align-items:center; gap:8px; font-size:12px; margin:4px 0; }
+.regulatory-evidence-option input { width:auto; }
+.regulatory-next { display:flex; justify-content:flex-end; }
+
+.regulatory-columns { display:grid; grid-template-columns:250px minmax(0,1fr); gap:28px; align-items:start; }
+.regulatory-checklist { position:sticky; top:16px; }
+.regulatory-checklist table { width:100%; border-collapse:collapse; }
+.regulatory-checklist thead { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+.regulatory-checklist td { padding:0; vertical-align:middle; }
+.regulatory-checklist tr[aria-current] td { background:var(--soft); }
+.regulatory-checklist td:first-child { border-radius:6px 0 0 6px; }
+.regulatory-checklist td:last-child { border-radius:0 6px 6px 0; padding-right:10px; text-align:right; white-space:nowrap; }
+.regulatory-workspace .regulatory-checklist button { width:100%; text-align:left; border:0; background:transparent; padding:9px 10px; font-size:13px; }
+.regulatory-workspace .regulatory-checklist button:not(:disabled):hover { background:transparent; text-decoration:underline; }
+.regulatory-workspace .regulatory-checklist button[aria-current] { font-weight:600; }
+.regulatory-checklist td[data-outcome] { font-size:0; }
+.regulatory-checklist td[data-outcome]::after { content:""; display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--na); }
+.regulatory-checklist td[data-outcome=satisfied]::after { background:var(--ok); }
+.regulatory-checklist td[data-outcome=gap]::after { background:var(--bad); }
+.regulatory-checklist td[data-outcome=unknown]::after { background:transparent; border:2px solid var(--warn); width:4px; height:4px; }
+
+.regulatory-main { min-width:0; max-width:780px; }
+.regulatory-check-heading { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+.regulatory-check-heading h3 { font-size:17px; }
+.regulatory-check-heading p { color:var(--muted); margin-top:4px; }
+.status-pill { flex-shrink:0; white-space:nowrap; font-size:12px; font-weight:600; padding:3px 10px; border-radius:999px; color:var(--na); background:var(--na-bg); }
+.status-pill[data-tone=satisfied] { color:var(--ok); background:var(--ok-bg); }
+.status-pill[data-tone=gap] { color:var(--bad); background:var(--bad-bg); }
+.status-pill[data-tone=unknown] { color:var(--warn); background:var(--warn-bg); }
+
+.regulatory-evidence { margin-top:28px; }
+.regulatory-evidence-head { display:flex; align-items:flex-end; justify-content:space-between; gap:16px; }
+.regulatory-evidence-head h4 { font-size:14px; }
+.regulatory-evidence-head label { font-size:11px; color:var(--muted); }
+.regulatory-evidence-head select { display:block; width:300px; margin-top:4px; padding:6px 8px; font-size:13px; }
+.regulatory-workspace .comparison-description { font:inherit; font-size:14px; line-height:1.65; white-space:pre-wrap; margin:12px 0 0; padding:12px 16px; border-left:3px solid var(--accent); background:var(--subtle); }
+.regulatory-human, .regulatory-jev, .regulatory-sources { border-top:1px solid var(--line); }
+.regulatory-human > summary, .regulatory-jev > summary, .regulatory-sources > summary { font-size:13px; font-weight:500; color:var(--ink); padding:11px 0; }
+.regulatory-human label, .regulatory-jev label, .regulatory-sources > label { margin:8px 0; }
+.regulatory-sources { margin-top:16px; border-bottom:1px solid var(--line); }
+.regulatory-sources[open] { padding-bottom:12px; }
+.regulatory-sources > label select { width:200px; display:block; margin-top:4px; }
+.regulatory-citation { border:1px solid var(--line); border-radius:6px; padding:0 12px; margin:8px 0; }
+.regulatory-citation[open] { padding-bottom:12px; }
+.regulatory-citation blockquote { white-space:pre-wrap; font-size:13px; line-height:1.55; margin:4px 0 10px; }
+
+.regulatory-report { max-width:980px; }
+.report-summary { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin-bottom:20px; }
+.report-summary > div { border:1px solid var(--line); border-radius:6px; padding:12px 14px; }
+.report-summary strong { display:block; font-size:22px; line-height:1.2; }
+.report-summary span { font-size:12px; color:var(--muted); }
+.report-summary [data-tone=satisfied] strong { color:var(--ok); }
+.report-summary [data-tone=gap] strong { color:var(--bad); }
+.report-summary [data-tone=unknown] strong { color:var(--warn); }
+.regulatory-workspace td[data-outcome] { white-space:nowrap; }
+.regulatory-workspace td[data-outcome=satisfied] { color:var(--ok); font-weight:600; }
+.regulatory-workspace td[data-outcome=gap] { color:var(--bad); font-weight:600; }
+.regulatory-workspace td[data-outcome=unknown] { color:var(--warn); font-weight:600; }
+.regulatory-workspace td[data-outcome=not_applicable] { color:var(--na); }
+.regulatory-workspace button.link-button { border:0; background:transparent; padding:0; font-size:inherit; text-align:left; color:var(--ink); text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:3px; }
+.regulatory-workspace button.link-button:not(:disabled):hover { background:transparent; text-decoration-color:currentColor; }
+.regulatory-workspace .file-import { font-size:12px; color:var(--muted); margin-left:auto; }
+.file-import input { display:block; padding:4px 0; font-size:12px; }
+
+.regulatory-more { margin-top:48px; padding-top:16px; border-top:1px solid var(--line); }
+.regulatory-more > h3 { font-size:11px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-bottom:4px; }
+.regulatory-research > details > p { color:var(--muted); font-size:12px; margin:6px 0; max-width:760px; }
+.regulatory-research > details > label { margin:10px 0; max-width:760px; }
+.regulatory-research > details[open], .regulatory-inventory[open] { padding-bottom:16px; }

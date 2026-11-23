@@ -236,9 +236,8 @@ export default function AssessmentWorkspace({ liveEnabled = false }: { liveEnabl
               <span>{t(title)}</span>
             </button>)}
         </nav>
-        <div className="history-heading"><h2>{t("Letzte Analysen")}</h2><span>{records.length}</span></div>
+        {records.length > 0 && <div className="history-heading"><h2>{t("Letzte Analysen")}</h2><span>{records.length}</span></div>}
         <nav className="history-list" aria-label={t("Assessment history")}>
-          {records.length === 0 && <p className="empty-history">{t("Noch keine Analysen.")}</p>}
           {records.slice(0, 5).map((record) => <button key={record.id} disabled={isRunning || evidenceRunning} onClick={() => openRecord(record)}
             className={`history-item ${activeId === record.id ? "active" : ''}`}>
             <span className="history-title">{language === 'de' ? translationFor(record.description) ?? t('Originalbeschreibung') : record.description}</span>
@@ -272,10 +271,10 @@ export default function AssessmentWorkspace({ liveEnabled = false }: { liveEnabl
             </div>
             <ComposerPrimitive.Input id="description" placeholder={t("Zweck, Daten, Ausgaben und menschliche Aufsicht beschreiben.")}
               rows={7} maxRows={12} maxLength={12_000} disabled={!ready || !!storageError || isRunning} submitMode="none" addAttachmentOnPaste={false} />
-            <div className="composer-bottom"><span>{t("Max. 12.000 Zeichen")}</span>
+            <div className="composer-bottom"><span>{t("Max. 12.000 Zeichen")} · {t("Ein kostenpflichtiger Aufruf. Keine automatischen Wiederholungen.")}</span>
               {isRunning ? <ComposerPrimitive.Cancel className="analyze-button cancel">{t("Abbrechen")}</ComposerPrimitive.Cancel>
                 : <ComposerPrimitive.Send className="analyze-button" disabled={!ready || !!storageError || !liveEnabled}>{t("Mit Jev analysieren")}</ComposerPrimitive.Send>}</div>
-          </ComposerPrimitive.Root><p className="composer-note">{t("Ein kostenpflichtiger Aufruf. Keine automatischen Wiederholungen.")}</p>
+          </ComposerPrimitive.Root>
           {!liveEnabled && <p className="notice" role="status">{t("Jev-Aufrufe deaktiviert. Gespeicherte Daten bleiben verfügbar.")}</p>}
           </div>
           <div className="question-editor-wrap"><QuestionEditor kind="governance" disabled={isRunning} onApply={setQuestionConfiguration} /></div></div>

@@ -7,6 +7,7 @@ test('guided Claude Code assessment runs offline, preserves exact citations and 
  await page.getByRole('button',{name:'Prüfung öffnen',exact:true}).click();
  await page.getByRole('button',{name:'Auftragsverarbeitung',exact:true}).click();
  await expect(page.locator('[data-outcome="gap"]').first()).toBeVisible();
+ await page.locator('.regulatory-sources > summary').click();
  const citation=page.locator('.regulatory-citation').filter({hasText:'Art. 28 Abs. 3'});await citation.locator('summary').click();
  await expect(citation.getByRole('blockquote')).toContainText('Die Verarbeitung durch einen Auftragsverarbeiter');
  await expect(citation).toContainText('EU_DSGVO.pdf');await expect(citation).toContainText('49');
